@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'login';
+$route['default_controller'] = 'dashboard';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['verify/(:any)']                = "login/verify_otp/$1";
@@ -66,9 +66,10 @@ $route['forgot-password']       = "login/forgot_password";
 $route['reset-password/(:any)/(:any)']  = "login/reset_password/$1/$2";
 $route['password-email-sent']   = "login/password_email_sent";
 //dashboard
-$route['dashboard']       = "dashboard";
+$route['dashboard1']       = "dashboard";
 $route['reset-password-success']        = "page/reset_password_success";
 
+$route['login'] = 'login';
 
 //logout
 $route['logout']              = "login/logout";

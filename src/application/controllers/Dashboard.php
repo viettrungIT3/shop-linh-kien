@@ -4,7 +4,7 @@ class Dashboard extends MY_Controller{
     {
 
         parent::__construct();
-        $this->verify_authentication();
+        // $this->verify_authentication();
 		
     }
     public function index(){

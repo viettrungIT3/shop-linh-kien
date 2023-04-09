@@ -1,37 +1,67 @@
 .header-bar-wrapper .logo {
-  margin-top: 30px;
-  margin-bottom: 30px;
-}
-.header-bar-wrapper .logo path {
-  fill: #1b5732;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
-.user-login .info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.header-bar-wrapper .logo path {
+    fill: #1b5732;
 }
-.user-login .info p {
-  margin-right: 40px;
-  margin-bottom: 0px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  font-size: 20px;
+
+.user-login .container-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-.user-login .info .btn-outline-danger {
-  color: #dc3545;
-  border-color: #dc3545;
+
+.user-login .container-head p {
+    margin-right: 40px;
+    margin-bottom: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-size: 20px;
 }
-.user-login .info .btn-outline-danger:hover {
-  color: #fff;
-  background-color: #dc3545;
-  border-color: #dc3545;
+
+.user-login .container-head .btn-outline-danger {
+    color: #dc3545;
+    border-color: #dc3545;
 }
-.user-login .info .btn-outline-danger a {
-  text-decoration: none;
+
+.user-login .container-head .btn-outline-danger:hover {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
 }
-.user-login .info .btn-outline-danger a:hover {
-  color: #fff;
+
+.user-login .container-head .btn-outline-danger a {
+    text-decoration: none;
+}
+
+.user-login .container-head .btn-outline-danger a:hover {
+    color: #fff;
+}
+
+
+/* container-nav */
+.container-nav {
+    display: flex;
+    align-items: center;
+}
+
+/* Main-nav */
+.main-nav-wrapper {}
+
+.main-nav-wrapper .menu {
+    display: flex;
+    align-items: center;
+}
+
+.main-nav-wrapper li {
+    list-style: none;
+}
+
+.main-nav-wrapper li .item {
+    padding: 8px 16px;
+    font-size: 16px;;
 }

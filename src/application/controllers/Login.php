@@ -14,7 +14,7 @@ class Login extends MY_Controller
 
 
 		if ($this->user->is_authenticated()) :
-			$this->verify_authentication(base_url("/dashboard"));
+			$this->verify_authentication(base_url(""));
 		endif;
 		
 
@@ -34,7 +34,7 @@ class Login extends MY_Controller
 					if(isset($res['use_two_way_auth']) && $res['use_two_way_auth'] == (int)USE_TWO_WAY_AUTH){
 						$this->verify_authentication_otp(base_url("/verify/".$res['hash']));
                     }else{
-                        redirect("/dashboard");
+                        redirect("/");
 					}
 					
                 else:
@@ -275,7 +275,7 @@ class Login extends MY_Controller
 				$res = $this->user->validate_otp($hash, $otp);
 
 				if(isset($res['status']) && $res['status']): 
-					redirect("/dashboard");
+					redirect("/");
 				else: 
 					 $this
 					->set_error($res['error']);
