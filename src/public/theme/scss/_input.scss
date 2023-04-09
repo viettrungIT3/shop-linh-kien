@@ -1,0 +1,258 @@
+@import "_global";
+
+
+.input-wrapper{
+    position: relative;
+    @include clearfix();
+    &.value-block-wrapper label{font-weight: bold;}
+    .input-inner{
+        
+        position: relative;
+        @include clearfix();
+
+    } // end of input inner 
+
+    .input-el-wrapper{
+        position: relative;
+        @include clearfix();
+        .input-el-inner{
+            position: relative;
+            @include clearfix();
+        }
+        .input-value{
+            display: block;
+            padding: 7px 15px;
+            background-color: $color-very-light-gray;
+            @include border-radius($other-border-radius);
+            @include box-sizing(border-box); 
+            min-height: 2.5rem;
+        }
+        &.input-value-wrapper{
+            .input-el-inner{
+                padding: 7px 15px;
+                background-color: $color-very-light-gray;
+                @include border-radius($other-border-radius);
+                @include box-sizing(border-box); 
+                min-height: 2.5rem;
+            }
+        }
+
+    } // en dof input el wrapper
+
+    input[data-status='waiting']{
+        & ~ .icon-loading{
+            display: block;
+        }
+        & ~ .icon{display: none;}
+
+    } // status waiting
+
+    
+    .icon-loading{
+        position: absolute; 
+        right: 6px;
+        top: 6px;
+        background-color: #fff;
+        width: 24px;
+        height: 24px;
+        text-align: center;
+        line-height: 24px;
+        z-index: 4;
+        display: none;
+    } // icon loading
+
+    .icon{ 
+        position: absolute; 
+        top: 6px;
+        right: 6px;
+        width: 24px;
+        height: 24px;
+        pointer-events: none;
+
+        @include flex_display();
+        align-items: center;
+        justify-content: center;
+
+        &>.wrapper-inner{
+            @include flex_display();
+            align-items: center;
+        }
+        svg{
+            margin: 0 auto;
+            width: 1rem;
+        }
+
+    }// end of icon for datepicker
+
+
+    .large-checkbox{
+
+        border: 1px solid red;
+        position: absolute;
+        top: 0;
+        left: 0;
+        @include opacity(0);
+        
+        & + .label-text{
+
+            display: block;
+            position: relative;
+            padding-left: 30px;
+            text-transform: none;
+
+            .sub{
+                display: block; 
+                font-style: italic; 
+                color: $color-dark-gray;
+            }
+
+            &:hover{cursor: pointer;}
+
+            &:before{
+                content: '';
+                width: 20px;
+                height: 20px;
+                border: 1px solid $color-dark-gray;
+                display: block;
+                position: absolute; 
+                left: 0; 
+                top: 5px;
+                
+           } // end of 
+
+        } //  end of label text
+
+        &:checked + .label-text:after{
+
+            content: '\f00c';
+            font-family: $font-awesome;
+            width: 20px;
+            height: 20px;
+            position: absolute; 
+            left: 0; 
+            top: 5px;
+            line-height: 19px;
+            text-align: center;
+
+        } // 
+
+    }// end of large checkbox
+
+    label .sub{display: block;}
+
+    // if disabled then all icon background are transparent
+    [disabled] ~ .icon, 
+    [disabled] ~ .icon-loading{
+        background-color: transparent;
+    }
+
+} // end of input wrapper
+
+label:empty{display: none;}
+
+// input mask
+.mask-onload{
+    .icon{
+        position: absolute; 
+        right: 0;
+        top: 0;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        &:after{
+            content: '\f070';
+            font-family: $font-awesome;
+        }
+        &:hover{cursor: pointer;}
+    }
+
+    [data-status='1'] + .icon{
+        &:after{
+            content: '\f06e';
+        }
+    }
+    
+}
+
+[type='number']{
+    &.no-increment-visual{
+        -moz-appearance: textfield;
+        &::-webkit-outer-spin-button, 
+        &::-webkit-inner-spin-button{
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    }
+}
+
+.replace-empty-label{
+    padding-top: 1.8em;
+}
+
+
+.css-select-wrapper, .select-wrapper {
+  position: relative;
+  border: 1px solid #ccc;
+  @include border-radius($other-border-radius);
+  $select-height: 36px;
+  background-color: #fff;
+
+  select {
+    font-size: 1em;
+    padding: 0px 15px;
+    height: $select-height !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    background: transparent;
+    width: 100%;
+    z-index: 2;
+    line-height: 120% !important;
+    &[data-status='waiting']{
+        & ~ .icon-loading{
+            display: block;
+        }
+        & ~ .icon{display: none;}
+
+    } // status waiting
+    &[disabled] + .icon{background-color: transparent;}
+
+  } // select
+
+  .icon-loading, .icon{
+      position: absolute; 
+      right: 6px;
+      top: 6px;
+      background-color: #fff;
+      width: 24px;
+      height: 24px;
+      text-align: center;
+      line-height: 24px;
+      z-index: 4;
+      display: none;
+  } // icons
+
+  .icon{display: block;}
+
+
+} // end of select wrapper
+.simple-html-item label{display: block;}
+.simple-html-item .input-value{
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 1rem;
+    background-color: var(--color-lighter-gray);
+    border-radius: var(--radius-size);
+}
+
+.sh-input-wrapper .sh-title{
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: normal;
+    margin-top: 0;
+    font-family: var(--font-label);
+}
+

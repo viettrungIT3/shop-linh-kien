@@ -1,0 +1,94 @@
+@import "_global";
+
+.css-floating-notification {
+  position: fixed;
+  bottom: -90px;
+  left: 0;
+  width: 100%;
+
+  @include box-sizing(border-box);
+
+  padding: 30px;
+  z-index: 100;
+
+  @include opacity(0);
+
+  visibility: hidden;
+
+  @include transition(bottom ease 0.3s, opacity ease 0.3s, visibility ease 0.3s);
+
+  .css-notification-inner {
+    background-color: $color-light-gray;
+    color: $color-darker-gray;
+
+    .css-the-notification-content {
+      position: relative;
+      padding: 15px;
+      padding-left: 55px;
+      font-size: 16px;
+
+    }
+
+  }
+
+  .icon{
+      position: absolute; 
+      left: 15px;
+      font-size: 2rem;
+      top: 7px;
+
+  }
+
+  &[data-visible="true"] {
+    bottom: 0;
+    visibility: visible;
+
+    @include opacity(100);
+  }
+
+  &[data-type="info-message"] {
+    .css-notification-inner {
+      background-color: $color-light-gray;
+      color: $color-darker-gray;
+    }
+  }
+
+  &[data-type="warning-message"] {
+    .css-notification-inner {
+      background-color: $color-orange;
+      color: #fff;
+    }
+  }
+
+  &[data-type="error-message"] {
+    .css-notification-inner {
+      background-color: $color-red;
+      color: #fff;
+
+    }
+  }
+
+  &[data-type="success-message"] {
+    .css-notification-inner {
+      background-color: $color-green;
+      color: #fff;
+    }
+  }
+} // end of floating notification
+
+
+.floating-message{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 30px;
+    z-index: 20;
+    .message{
+        margin: 0;
+        font-size: 1.2em;
+    }
+    &[data-show='0']{
+        bottom: -999px;
+    }
+}

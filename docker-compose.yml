@@ -1,0 +1,49 @@
+version: '3.0'
+services: 
+    shop: 
+        build: 
+            context: '.'
+            dockerfile: Dockerfile
+        container_name: shop
+        image: hutgate/php74-dev
+        volumes: 
+            - ./src:/var/www/html
+            # overwrite to run as user in config
+            - ./config/php/etc/apache2/apache2.conf:/etc/apache2/apache2.conf
+            # overwrite to allow other options
+            - ./config/php/etc/apache2/sites-available/000-default.conf:/etc/apache2/sites-available/000-default.conf
+        ports: 
+            - 9292:80
+        extra_hosts: 
+            - "shop.localhost.com:127.0.0.1"
+
+        networks:
+            shop-nw:
+                aliases:
+                    # to allow other service to connect via this domain
+                    # should later put this on a env file
+                    - "shop.localhost.com"
+
+    shop-nw-db: 
+        image: mysql:5.7
+        volumes:
+            - ./mysql-db:/var/lib/mysql
+            - ./db:/backup
+        environment:
+            MYSQL_ROOT_PASSWORD: "qdtjozdvhm1@"
+            MYSQL_PASSWORD: "20akaksdf29adfjaksdf__@"
+            MYSQL_USER: "admin"
+            MYSQL_DATABASE: gw_export_nw_db
+        ports: 
+            - "3939:3306"
+        networks:
+            shop-nw:
+                aliases:
+                    - "shop-nw-db-localhost"
+        container_name: "shop-nw-db"
+networks:
+    shop-nw:
+
+
+
+

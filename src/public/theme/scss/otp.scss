@@ -1,0 +1,21 @@
+@import "global";
+
+.login-otp-template{
+	#page-wrapper{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+	.logo{
+		padding-bottom: 30px;
+	}
+	.logo,
+	.otp{
+		max-width: 375px;
+		margin: 0px auto;
+	}
+	
+}
+
+

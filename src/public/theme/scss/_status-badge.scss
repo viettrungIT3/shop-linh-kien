@@ -1,0 +1,168 @@
+@import "_global";
+
+.status-badge{
+    display: block;
+    min-width: 75px;
+    text-align: center;
+    @include box-sizing(border-box);
+    @include clearfix();
+    @include border-radius(15px);
+    background-color: $color-lighter-gray;
+
+
+    &.status-compliant, &.status-published{
+        background-color: $color-status-active;
+        color: #fff;
+    }
+
+
+    &.status-upcoming{
+        background-color: $color-status-in-process;
+        color: #fff;
+    }
+
+    &.status-badge-color-red{
+        background-color: $color-red;
+        color: #fff;
+    }
+
+    &.status-badge-color-orange{
+        background-color: $color-orange;
+        color: #fff;
+    }
+    
+
+    &.status-badge-color-purple{
+        background-color: $color-purple;
+        color: #fff;
+    }
+
+    &.status-disabled{
+        background: $color-light-gray !important;
+        color: $color-dark-gray;
+    }
+    
+    
+    .status-text{
+        display: block;
+        margin-right: 30px;
+        text-align: center;
+        line-height: 22px;
+        font-weight: bold;
+        text-transform: uppercase;
+        &.text-active{display: none;}
+        &.text-inactive{ display: inline-block; }
+    } // end of status text
+
+    &.status-badge-active{ 
+        .status-text{
+            &.text-active{display: inline-block;} 
+            &.text-inactive{display: none;} 
+        }
+    }
+
+    &:after{
+        width: 24px;
+        height: 24px;
+        background-color: $color-green;
+        @include border-radius(50%);
+        position: absolute; 
+        right: 3px;
+        top: 3px;
+    } // end of statu 
+
+    &.no-roller:after{display: none;}
+    &[data-status='off'], &.status-off, &[data-status='0']{
+        .status-text{
+            margin-right: 0; 
+            margin-left: 30px
+        }
+        &:after{
+            right: auto; 
+            left: 3px;
+            background-color: $color-dark-gray;
+        }
+    }
+
+
+    &.status-active, &.status-Active, &.status-Open, &.status-open {
+    background-color: $color-status-active;
+    color: #fff;
+    }
+
+    &.status-Closed---Success, &.status-closed---success {
+    background-color: $color-status-active;
+    color: #fff;
+    }
+
+    &.status-In-Progress, &.status-in-progress {
+    background-color: $color-status-in-process;
+    color: #fff;
+    }
+
+    &.status-suspended {
+    background-color: $color-status-suspended;
+    }
+
+    &.status-pending {
+    background-color: $color-status-pending;
+    color: #fff;
+    }
+
+    &.status-teminated, &.status-failed-to-certify {
+    background-color: $color-status-failed-to-certify;
+    color: #fff;
+    }
+    &.status-in-process{
+      background-color: $color-status-in-process;
+      color: #fff;
+    }
+
+    &.inline-badge{display: inline-block;}
+
+    &[data-status='Archived'], &[data-status='Draft'], &[data-status='Inactive']{
+      @include border-radius(3px);
+      background-color: #fff;
+      border: 2px solid $color-lighter-gray;
+      color: $color-darker-gray;
+    }
+
+    &[data-status='Processed']{
+      @include border-radius(3px);
+      background-color: #fff;
+      border: 2px solid $color-purple;
+      color: $color-purple;
+    }
+    &[data-status='Sent to Carrier'],&[data-status='Received']{
+      @include border-radius(3px);
+      background-color: #fff;
+      border: 2px solid $color-purple;
+      color: $color-purple;
+    }
+    &[data-status='Incomplete']{
+      @include border-radius(3px);
+      background-color: #fff;
+      border: 2px solid $color-orange;
+      color: $color-orange;
+    }
+    &[data-status='Terminated']{
+      @include border-radius(3px);
+      background-color: #fff;
+      border: 2px solid $color-red;
+      color: $color-red;
+    }
+
+    &[data-status='Active']{
+      @include border-radius(3px);
+      background-color: #fff;
+      border: 2px solid $color-green;
+      color: $color-green;
+    }
+    &[data-status='Next Active']{
+      @include border-radius(3px);
+      background-color: #fff;
+      border: 2px solid $color-green;
+      color: $color-green;
+    }
+} // end of status badge
+

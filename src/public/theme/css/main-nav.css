@@ -1,0 +1,37 @@
+.header-bar-wrapper .logo {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.header-bar-wrapper .logo path {
+  fill: #1b5732;
+}
+
+.user-login .info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.user-login .info p {
+  margin-right: 40px;
+  margin-bottom: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-size: 20px;
+}
+.user-login .info .btn-outline-danger {
+  color: #dc3545;
+  border-color: #dc3545;
+}
+.user-login .info .btn-outline-danger:hover {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+.user-login .info .btn-outline-danger a {
+  text-decoration: none;
+}
+.user-login .info .btn-outline-danger a:hover {
+  color: #fff;
+}

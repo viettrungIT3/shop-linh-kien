@@ -1,0 +1,622 @@
+@import "_global";
+:root{
+    --page-width: #{$page_width};
+
+    --color-black: #{$color-black};
+    --color-darker-gray: #{$color-darker-gray};
+    --color-dark-gray: #{$color-dark-gray};
+    --color-gray: #{$color-gray};
+    --color-red: #{$color-red};
+    --color-white: #{$color-white};
+    --color-yellow: #{$color-yellow};
+    --color-lighter-gray: #{$color-lighter-gray};
+
+    // size
+    --radius-size: #{$radius-size};
+    --gutter-size: #{$gutter-size};
+
+    // fonts 
+    --font-primary: #{$font-ubuntu};
+    --font-label: #{$font-sg};
+
+}
+
+@keyframes blink-animation {
+    to {
+        opacity: 0.5;
+    }
+}
+
+@-webkit-keyframes blink-animation {
+    to {
+        opacity: 0.5;
+    }
+}
+
+.sr-only {
+    position: absolute;
+    visibility: hidden;
+}
+
+.wrapper,
+.wrapper-inner {
+    position: relative;
+    @include clearfix();
+    @include box-sizing(border-box);
+} // wrapper wrapper inner
+
+.text-color-blue{color: $color-blue;}
+.text-color-green{color: $color-green;}
+.text-color-orange{color: $color-orange;}
+
+html {
+    padding: 0;
+    margin: 0;
+    background-color: $color-background;
+    color: #ababab;
+    height: 100%;
+    font-size: 14px;
+    line-height: 1.3em;
+    body {
+        padding: 0;
+        margin: 0;
+        min-height: 100vh;
+        background: transparent;
+        position: relative;
+        font-family: $font-body;
+        &.floating-left-menu {
+            @include transition(left ease 0.3s);
+            left: 244px;
+        } // left menu
+    } // body
+} //  html
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: $font-header;
+    font-weight: 700;
+}
+
+label {
+    font-family: $font-sg;
+    text-transform: uppercase;
+}
+
+.no-wrap,
+.nowrap {
+    white-space: nowrap;
+} // nowrap
+.form-control {
+    border-color: #ccc;
+    @include box-shadow(none);
+} // form-control
+label {
+    font-weight: normal;
+}
+
+.form-control {
+    height: 38px;
+}
+
+input.form-control,
+select.form-control {
+    line-height: 1.3em;
+} //
+select.form-control {
+    padding-top: 0;
+    padding-bottom: 0;
+} //
+a {
+    color: #333;
+    position: relative;
+    @include transition(color ease 0.3s, border-color ease 0.3s);
+    &:hover {
+        color: $color-green;
+    }
+    &.underline,
+    &.subnav-links {
+        &:after {
+            content: '';
+            position: absolute;
+            top: 90%;
+            left: 0;
+            height: 0.4em;
+            width: 100%;
+            background-color: currentColor;
+            @include opacity(10);
+            @include transition(background-color ease 0.3s, opacity ease 0.3s);
+        }
+        &:active,
+        &:focus {
+            text-decoration: none;
+        }
+        &:hover,
+        &.active {
+            text-decoration: none;
+            color: currentColor;
+            &:after {
+                @include opacity(50);
+                background-color: $color-green;
+            }
+        } // acigve
+    } // end of underline
+} // end of genic a
+.bg-green {
+    background-color: $color-green;
+}
+
+.badge-width-full {
+    width: 100%;
+}
+
+.subnav-title {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.badge,
+.status-badge {
+    &.status-active,
+    &.status-Active,
+    &.status-Open,
+    &.status-open {
+        background-color: $color-status-active;
+        color: #fff;
+    }
+    &.status-Closed---Success,
+    &.status-closed---success {
+        background-color: $color-status-active;
+        color: #fff;
+    }
+    &.status-In-Progress,
+    &.status-in-progress {
+        background-color: $color-status-in-process;
+        color: #fff;
+    }
+    &.status-suspended {
+        background-color: $color-status-suspended;
+    }
+    &.status-pending {
+        background-color: $color-status-pending;
+        color: #fff;
+    }
+    &.status-terminated,
+    &.status-failed-to-certify {
+        background-color: $color-status-failed-to-certify;
+        color: #fff;
+    }
+    &.status-in-process {
+        background-color: $color-status-in-process;
+        color: #fff;
+    }
+    &.inline-badge {
+        display: inline-block;
+    }
+}
+
+td .status-badge {
+    display: inline-block;
+}
+
+.status-badge {
+    padding: 4px 15px;
+    @include border-radius(4px);
+    font-size: 0.9em;
+    line-height: 1.3em;
+}
+
+body[data-status="waiting"] {
+    #page-loading {
+        display: block !important;
+    }
+}
+
+table tr td .sub-info {
+    position: relative;
+    font-size: 0.8em;
+    line-height: 1.2em;
+    .sub-info-single {
+        display: block;
+        text-transform: uppercase;
+        .sub-info-single-value {
+            display: inline-block;
+            font-weight: bold;
+        }
+        .sub-info-single-key {
+            display: inline-block;
+            &:after {
+                content: ": ";
+            }
+        }
+    }
+}
+
+.table tr td p {
+    margin: 0;
+} // end of p inside table
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.table tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+.content-item-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    @include clearfix();
+    li {
+        display: block;
+        position: relative;
+        @include clearfix();
+        @include box-sizing(border-box);
+        span {
+            display: block;
+            float: left;
+            width: 100%;
+            font-size: 1.2em;
+            line-height: 1.5em;
+            &.item-title {
+                font-weight: bold;
+            }
+        }
+        @media screen and (min-width: $screen-tablet) {
+            span {
+                width: 50%;
+            }
+            .item-title {
+                max-width: 260px;
+            }
+        }
+    }
+} // 
+.team-hierarchy {
+    position: relative;
+    @include clearfix();
+    padding-left: 30px;
+    .ud-single-team {
+        margin-bottom: 10px;
+        @include clearfix();
+        &.top-line-team {
+            margin-left: -30px;
+            .single-inner {
+                background-color: $color-lighter-gray;
+            }
+        }
+        &.is-not-edit {
+            .single-inner {
+                background-color: $color-lighter-gray;
+            }
+        }
+        .single-inner {
+            padding: 5px 20px;
+            border: 1px solid $color-dark-gray;
+            float: left;
+            width: 100%;
+            max-width: 300px;
+            @include border-radius(5px);
+        } // end of single inner
+        .single-label {
+            display: block;
+            position: relative;
+            text-transform: uppercase;
+        }
+        .single-name {
+            display: block;
+        }
+        .note {
+            float: left;
+            clear: left;
+            color: $color-dark-gray;
+        }
+    } // end of single team
+    .ud-add-team {
+        position: relative;
+        @include clearfix();
+        padding-left: 30px;
+        .select-wrapper {
+            max-width: 400px;
+            float: left;
+            width: 100%;
+        }
+        button {
+            padding: 0;
+            text-align: center;
+            float: left;
+            margin-left: 10px;
+            width: 30px;
+            height: 30px;
+            @include border-radius(50%);
+        }
+    } // end of add team
+    .ud-single-team-child-wrapper {
+        //  padding-left: 30px;
+    } // en dof chld wrapper
+    .round-button {
+        width: 30px;
+        height: 30px;
+        float: left;
+        padding: 0;
+        margin-left: 10px;
+        text-align: center;
+        &.btn-transparent {
+            background-color: transparent;
+            color: $color-darker-gray;
+            border: none;
+            font-size: 1.5em;
+        }
+    }
+    [css-t-level='2'] {
+        padding-left: 60px;
+    }
+    [css-t-level='3'] {
+        padding-left: 90px;
+    }
+    [css-t-level='4'] {
+        padding-left: 120px;
+    }
+    [css-t-level='5'] {
+        padding-left: 150px;
+    }
+    [css-t-level='6'] {
+        padding-left: 180px;
+    }
+    [css-t-level='7'] {
+        padding-left: 210px;
+    }
+    [css-t-level='8'] {
+        padding-left: 240px;
+    }
+} // end of taem hierarchy
+.team-lob-container {
+    position: relative;
+    display: block;
+    @include clearfix();
+    .btn-add-lob {
+        width: calc(33.3% - 7px);
+        height: 150px;
+    } // 
+    .new-team-lob-container {
+        padding: 0 7px;
+        margin-left: -7px;
+    } //
+    .team-lob-listing-container {
+        position: relative;
+        @include clearfix();
+        margin-left: -7px;
+        margin-right: -7px;
+        // button single agent lob
+        .single-team-lob {
+            position: relative;
+            @include clearfix();
+            @include box-sizing(border-box);
+            width: 33.3%;
+            float: left;
+            padding: 0px 7px 0;
+            border: none;
+            background: none;
+            margin-bottom: 15px;
+            .team-lob-content-wrapper {
+                display: block;
+                position: relative;
+                background-color: #fff;
+                padding: 15px;
+                text-align: left;
+                border: 1px solid $color-dark-gray;
+                @include clearfix();
+                @include box-sizing(border-box);
+                @include border-radius(3px);
+                font-size: 0.9em;
+                .alob-name {
+                    display: block;
+                    font-size: 1.2em;
+                    font-weight: bold;
+                    float: left;
+                    width: 100%;
+                    margin-bottom: 15px;
+                } // end of alob nae
+                .status-badge {
+                    position: absolute;
+                    top: 15px;
+                    right: 15px;
+                }
+                .alob-status {
+                    float: left;
+                    display: block;
+                    line-height: 2em;
+                    background-color: $color-green;
+                    border: 1px solid;
+                    @include border-radius(20px);
+                    color: #fff;
+                    padding: 0 15px;
+                    text-align: center;
+                    min-width: 100px;
+                } // end of status
+                .alob-date {
+                    float: left;
+                    margin-left: 15px;
+                    margin-top: 5px;
+                } // end of date
+                .alob-team {
+                    float: left;
+                    width: 100%;
+                    margin-top: 15px;
+                } // end of team 
+                .alob-state {
+                    float: left;
+                    width: 100%;
+                } // end of state 
+                .alob-counties {
+                    float: left;
+                    width: 100%;
+                } // 
+            } // end of agent lob content wrapper
+            &:hover {
+                .team-lob-content-wrapper {
+                    border-color: $color-green;
+                } // end of content wrapper
+            } // 
+            &:focus,
+            &:active {
+                outline: none;
+                -moz-outline: none;
+                -webkit-outline: none;
+            } //   end of focus
+        } //  end of single agent lob 
+        .atc-lob-name {
+            display: block;
+            font-weight: bold;
+        } // atc lob name
+        .atc-lob-status {
+            display: block;
+            clear: both;
+            font-size: 0.8em;
+            line-height: 2em;
+            margin-bottom: 15px;
+            margin-top: 15px;
+            border: 1px solid;
+            width: 160px;
+            text-align: center;
+            @include border-radius(15px);
+            background-color: $color-green;
+            color: #fff;
+        }
+        .atc-team-info,
+        .atc-team-exp {
+            position: relative;
+            float: left;
+            width: 50%;
+            font-size: 0.8em;
+            line-height: 1.3em;
+        }
+        .atc-team-exp em {
+            display: inline-block;
+            width: 100px;
+            font-style: normal;
+        }
+    } // 
+} // end of agent lobs container
+.alcr-status-text {
+    font-weight: bold;
+    font-size: 1.2em;
+    .status-badge {
+        display: inline-block;
+        margin-left: 15px;
+        font-weight: normal;
+    }
+    .status-compliant {
+        background-color: $color-green;
+        color: #fff;
+    }
+}
+
+.alc-requirement-ready-to-sell,
+.alc-status-manual-override {
+    margin-top: 30px;
+    padding: 30px;
+    background-color: $color-very-light-gray;
+    border: 1px solid $color-light-gray;
+    &:empty {
+        display: none;
+    }
+} // end of alc ready to sell
+.team-overrides-requirement-listing-wrapper {
+    td {
+        div {
+            margin: 0;
+            span {
+                width: 70px;
+                display: inline-block;
+            }
+            span:nth-child(2) {
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+.show-logout {
+    .logout-wrapper {
+        // @include opacity(100);
+        // visibility: visible;
+		display: block;
+        z-index: 999;
+    }
+}
+
+.logout-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+	display: none;
+    // z-index: -1;
+    background-color: rgba(0, 0, 0, 0.8);
+    // @include opacity(0);
+    // visibility: hidden;
+    @include transition(opacity ease 0.3s, visibility ease 0.3s);
+    .logout-wrapper-inner {
+        position: absolute;
+        height: 0;
+        width: 100%;
+        top: 40%;
+        left: 0;
+        .logout-container {
+            max-width: 480px;
+            margin: 0 auto;
+            position: relative;
+            background-color: #fff;
+            margin-top: -150px;
+            @include transition(margin-top ease 0.3s);
+            @include box-sizing(border-box);
+            $padding: 30px;
+            .logout-container-inner {
+                position: relative;
+                @include box-sizing(border-box);
+                @include clearfix;
+                padding: $padding $padding 0 $padding;
+                &>h2 {
+                    margin: (-1 * $padding) (-1 * $padding) 0 (-1 * $padding);
+                    padding: ($padding / 2) $padding;
+                    border-bottom: 1px solid #ccc;
+                    font-size: 18px;
+                    text-transform: uppercase;
+                }
+                .logout-content {
+                    position: relative;
+                    padding: $padding 0;
+                }
+                .logout-footer {
+                    position: relative;
+                    @include clearfix;
+                    margin: 0 (-$padding) (-1 * $padding) (-1 * $padding);
+                    &>a {
+                        float: left;
+                        @include box-sizing(border-box);
+                        padding: 10px 0;
+                        text-align: center;
+                        width: 50%;
+                        background-color: $color-green;
+                        color: #fff;
+                        text-transform: uppercase;
+                        &:last-child {
+                            background-color: $color-darker-gray;
+                        }
+                    }
+                }
+            }
+        }
+    }
+} // logout wrapper
+
+.message.red{
+	color: #df5755;
+    font-size: 13px;
+    margin-bottom: 30px;
+}
+

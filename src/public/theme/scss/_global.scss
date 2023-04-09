@@ -1,0 +1,146 @@
+$screen-ipad: 767px;
+$screen-tablet: 767px;
+$screen-ipad-horizontal: 960px;
+$screen-hd: 1080px;
+$screen-small-screen: 1200px;
+$screen-laptop: 1400px;
+$screen-full-hd: 1980px;
+$screen-mobile: 474px;
+$screen-tablet: 767px;
+$screen-tablet-horizontal: 960px;
+$screen-desktop: 1080px;
+$screen-desktop-hd: 1980px;
+
+
+$page-width: 1400px;
+$page-content-width: 1200px;
+$other-border-radius: 5px;
+
+$page-background-color: #110F12;
+
+$color-black: #000;
+$color-darker-gray: #060507;
+$color-dark-gray: #1c1c1c;
+$color-gray: #535353;
+$color-red: #EC3136;
+$color-white: #fff;
+$color-yellow: #FCC433;
+
+$font-oswald: 'Oswald', sans-serif;
+$font-roboto: 'Roboto', sans-serif;
+
+$font-lato: "Lato", sans-serif;
+$font-ubuntu: 'Ubuntu', sans-serif;
+$font-sg: 'Segoe UI';
+$font-awesome: "FontAwesome";
+
+// colors
+$color-blue: #337ab7;
+$color-purple: #9E5CD6;
+$color-darker-blue: #163052;
+$color-green: rgb(0, 183, 155);
+$color-orange: rgb(255, 168, 52);
+$color-text: #ababab;
+$color-text-disable: #ababab;
+$color-red: #C20000;
+$color-dark-gray: rgb(164, 163, 164);
+$color-medium-gray: rgb(85,85,85);
+$color-darker-gray: #707070;
+$color-light-gray: rgb(215, 215, 215);
+$color-lighter-gray: #efefef;
+$color-very-light-gray: #fafafa;
+$color-purple: #9E5CD6;
+$color-background: rgb(240, 240, 240);
+
+$color-light-yellow: #FAE9A0;
+
+
+$color-status-active: $color-green;
+$color-status-suspended: $color-light-yellow;
+$color-status-compliant: $color-green;
+$color-status-failed-to-certify: $color-red;
+$color-status-in-process: $color-purple;
+$color-status-pending: $color-purple;
+$color-archived: $color-light-gray;
+
+
+$font-body: $font-sg;
+$font-header: $font-ubuntu;
+$other-border-radius: 5px;
+$button-border-radius: 5px;
+$radius-size: 5px;
+$pill-radius: 15px;
+
+$gutter-size: 1rem;
+
+// ===== other mixins ===========
+@mixin icon-check(){ content: $hex-icon-check; font-family: $font-awesome; font-weight: 900;}
+@mixin icon-close(){ content: $hex-icon-close; font-family: $font-awesome; font-weight: 900;}
+
+@mixin border-radius($radius){ -moz-border-radius: $radius; -webkit-border-radius: $radius; -o-border-radius: $radius; -ms-border-radius: $radius; border-radius: $radius; }
+@mixin flex_display(){ display: -webkit-box; display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex; }
+@mixin flex_wrap($str){ -moz-flex-wrap: $str; -ms-flex-wrap: $str; -webkit-flex-wrap: $str; flex-wrap: $str; } 
+@mixin box-sizing($str){ -moz-box-sizing: $str; -webkit-box-sizing: $str; box-sizing: $str; }
+@mixin box_shadow($str){ -moz-box-shadow: $str; -webkit-box-shadow: $str; box-shadow: $str; }
+
+@mixin clearfix(){
+    &:before, &:after {
+        content: "";
+        display: table;
+    }
+    &:after { clear: both;}
+}
+
+
+@mixin opacity($percent){
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$percent})";
+    filter: alpha(opacity=$percent);
+    opacity: $percent/100;
+}
+
+@mixin text-truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+@mixin transform($transforms) {
+    -webkit-transform: $transforms;
+    -moz-transform: $transforms;
+    -ms-transform: $transforms;
+    transform: $transforms;
+}
+
+
+// Rotate
+@mixin rotate ($deg){ @include transform(rotate(#{$deg}deg)); }
+
+
+// Scale
+@mixin scale($scale){ @include transform(scale($scale));}
+
+// Translate
+@mixin translate ($x, $y){ @include transform(translate($x, $y)); }
+
+// Skew
+@mixin skew ($x, $y){ @include transform(skew(#{$x}deg, #{$y}deg)); }
+
+// Transform Origin
+@mixin transform-origin ($origin){
+    -webkit-transform-origin: $origin;
+    -moz-transform-origin: $origin;
+    -ms-transform-origin: $origin;
+    transform-origin: $origin;
+}
+
+@mixin transition($args...) {
+    -webkit-transition: $args;
+    -moz-transition: $args;
+    -ms-transition: $args;
+    -o-transition: $args;
+    transition: $args;
+}
+
+@function tint($color, $percentage) { @return mix(white, $color, $percentage); }
+@function shade($color, $percentage) { @return mix(black, $color, $percentage); }
+
+@mixin panel-style(){
+    @include box-shadow(0 0 10px 0 rgba(0,0,0,0.12));
+    @include border-radius($other-border-radius);
+}

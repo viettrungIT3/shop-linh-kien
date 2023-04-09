@@ -1,0 +1,9 @@
+{
+    "lockfileVersion": 1,
+    "devDependencies": {},
+    "dependencies": {
+        "flatpickr": "^4.6.9",
+        "chart.js": "^3.2.1",
+        "fixed-table-js": "^1.5.3"
+    }
+}

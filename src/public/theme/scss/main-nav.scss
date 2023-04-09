@@ -1,0 +1,42 @@
+@import "_global";
+.header-bar-wrapper{
+	.logo{
+		path {fill:#1b5732;}
+		margin-top: 30px;
+		margin-bottom: 30px;
+		
+	}
+
+}// 
+
+.user-login{
+	.info{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		p{
+			margin-right: 40px;
+			margin-bottom: 0px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 5px;
+			font-size: 20px;
+		}
+		.btn-outline-danger {
+			color: #dc3545;
+			border-color: #dc3545;
+			&:hover{
+				color: #fff;
+				background-color: #dc3545;
+				border-color: #dc3545;
+			}
+			a{
+				text-decoration: none;
+				&:hover{
+					color: #fff;
+				}
+			}
+		}
+	}
+}

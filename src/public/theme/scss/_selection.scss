@@ -1,0 +1,50 @@
+$other-border-radius: 5px;
+
+.css-select-wrapper, .select-wrapper {
+    position: relative;
+    border: 1px solid #ccc;
+    @include border-radius($other-border-radius);
+    $select-height: 30px;
+    background-color: #fff;
+  
+    select {
+      font-size: 1em;
+      padding: 0px 15px;
+      height: $select-height !important;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      border: none;
+      background: transparent;
+      width: 100%;
+      z-index: 2;
+    }
+  
+    &:after {
+      content: "";
+      font-family: $font-awesome;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: $select-height;
+      height: $select-height;
+      line-height: $select-height;
+      text-align: center;
+      z-index: 1;
+      pointer-events: none;
+      font-size: 0.8em;
+    }
+    .icon-loading{
+        position: absolute; 
+        right: 3px;
+        top: 3px;
+        background-color: #fff;
+        width: 24px;
+        height: 24px;
+        text-align: center;
+        line-height: 24px;
+        z-index: 4;
+        display: none;
+    }
+  
+  } // end of select wrapper

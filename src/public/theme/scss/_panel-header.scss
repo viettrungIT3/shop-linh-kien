@@ -1,0 +1,60 @@
+@import "_global";
+
+.panel-content + .panel-header{margin-top: 30px;}
+.panel-header{
+    position: relative;
+    @include clearfix();
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid $color-darker-gray;
+    .status-badge{
+        display: block;
+        @media screen and (min-width: $screen-tablet){
+            position: absolute; top: 0px; right: 0;
+        }
+    }
+    .panel-header-inner{
+
+        h3{
+            margin: 0;
+            font-weight: bold;
+            font-size: 1.85em;
+            color: $color-medium-gray;
+        }
+
+        input{
+            border: none;
+            display: block; 
+            width: 100%;
+        }
+
+
+    } // end of panel header inner
+
+    .sub-header{margin-top: 1rem; margin-bottom: -1rem;}
+    .sub-header:empty{display: none;}
+
+    .controls-wrapper{
+
+        margin-top: 15px;
+        &[data-status='inactive']{display: none;}
+        ul{
+            list-style: none;
+            display: block;
+            padding: 0;
+            margin: 0;
+        } // 
+
+        @media screen and (min-width: $screen-tablet){
+            position: absolute; 
+            right: 0px;
+            margin: 0;
+            top: -7px;
+
+        }// end of screen tablet
+
+
+    } // end of controls wrapper
+
+
+} // end of panel header

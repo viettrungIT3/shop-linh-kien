@@ -1,0 +1,14 @@
+.login-otp-template #page-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.login-otp-template .logo {
+  padding-bottom: 30px;
+}
+.login-otp-template .logo,
+.login-otp-template .otp {
+  max-width: 375px;
+  margin: 0px auto;
+}

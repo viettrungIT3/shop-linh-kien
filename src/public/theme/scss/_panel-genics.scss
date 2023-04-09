@@ -1,0 +1,71 @@
+@import "_global";
+
+.panel-wrapper{
+    position: relative;
+    @include clearfix();
+    padding: 30px 15px;
+    background-color: #fff;
+    @include panel-style();
+    &.filter-wrapper{
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    
+    .panel-inner{
+        position: relative;
+        @include clearfix();
+        .section-body{padding: 0;}
+        .section-body-inner{padding: 0;}
+        .section:first-child .section-inner{
+            h2{margin-top: 0;}
+        }
+        &>h3:first-child{margin-top: 0;}
+        h1{
+            text-transform: uppercase;
+            margin: 0;
+            .pre-header{
+                display: block;
+                font-size: 12px;
+                margin-bottom: 5px;
+            }
+            .post-header{
+                display: block;
+                font-size: 12px;
+                margin-top: 5px;
+            }
+            
+        }
+    } // end of panel inner
+    
+    & + .panel-wrapper{
+        margin-top: 30px;
+    }
+
+    .panel-header + .after-header{
+        margin-top: -5px;
+        margin-bottom: 15px;
+        .status-badge{
+            display: inline-block;
+            margin-left: 5px;
+        }
+    } // end of after header
+
+    .child-panel{
+        .panel-header{
+            margin-bottom: 0;
+            border: none;
+        }
+    }
+
+    .panel-inner-content{
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    & + .row{margin-top: 30px;}
+
+}// endof panel wrapper
+
+.section-header ~ .panel-wrapper{
+    margin-top: 30px;
+}
+

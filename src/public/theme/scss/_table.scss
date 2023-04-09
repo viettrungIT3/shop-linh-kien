@@ -1,0 +1,75 @@
+@import "_global";
+
+.table {
+  .css-col-btn-switch {
+    width: 80px;
+  }
+
+  thead tr th{text-transform: uppercase; vertical-align: top; a{padding-right: 15px;}}
+  tbody tr:nth-child(even){
+      background-color: $color-very-light-gray;
+  }
+  tbody tr[data-link]:hover{
+      cursor: pointer;
+      td{color: $color-green;}
+  }
+  tr th, tr td {
+
+    a {
+        position: relative;
+        .icon{
+            position: absolute; 
+            right: 0;
+        }
+      &[data-dir='asc'] {
+
+        display: block;
+        position: relative;
+
+
+      } // data dir
+
+      &[data-dir='desc'] {
+
+        position: relative;
+        display: block;
+
+        .icon{ @include transform(rotate(180deg)); }
+
+      }// data dir
+    } // a
+  }
+  tr td .icon{
+      float: right;
+      padding-right: 15px;
+  }
+
+} // end of table
+
+.table-wrapper{
+    position: relative;
+    @include clearfix();
+    &.large-table{
+        overflow-x: auto;
+        thead tr th:first-child, 
+        tbody tr td:first-child{
+            width: 220px;
+            position: sticky;
+            left: 0;
+            background-color: #fff;
+            z-index: 5;
+            &:hover{
+                background-color: $color-very-light-gray;
+            }
+        }
+
+        tbody tr:nth-child(even) td:first-child{
+            background-color: $color-very-light-gray;
+        }
+
+        & > .table{
+            min-width: 1600px;
+        }
+    } // large table
+} // table wrapper
+
