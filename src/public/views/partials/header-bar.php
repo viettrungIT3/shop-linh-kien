@@ -3,7 +3,7 @@
 </style>
 <div class="shop">
 	<div class="wrapper-inner">
-		<!-- <div class="container">
+		<div class="container">
 			<div class="info">
 				<div class="logo">
 					<?php $this->load->view("partials/icons/logo") ?>
@@ -11,7 +11,7 @@
 
 			</div>
 
-		</div> -->
+		</div>
 		<?php if ($params['user']) : ?>
 			<div class="user-login">
 				<div class="container">
