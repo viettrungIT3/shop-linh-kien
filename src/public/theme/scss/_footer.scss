@@ -1,0 +1,142 @@
+.wrapper {
+    .container {
+        .main-footer-wrapper {
+            .wrapper-inner {
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                margin-bottom: 30px;
+
+                .footer-block {
+                    color: var(--color-white);
+                    display: flex;
+                    flex-direction: column;
+                    white-space: inherit;
+                    width: 100%;
+                    padding-right: 30px;
+                    min-width: 250px;
+                    max-width: 300px;
+
+                    .block {
+                        margin-top: 30px;
+                        
+                        .fb-title {
+                            font-family: "Ubuntu", sans-serif;
+                            font-size: 16px;
+                            font-weight: 700;
+                            line-height: 22px;
+                            text-transform: uppercase;
+                            display: block;
+                            color: var(--color-white);
+                        }
+
+                        p {
+                            font-size: 16px;
+                            font-weight: 400;
+                            line-height: 22px;
+                            margin: 0 !important;
+
+                            a {
+                                text-decoration: none;
+                                color: var(--color-white);
+
+                                br {
+                                }
+                            }
+                        }
+
+                        a {
+                            color: var(--color-accent);
+                        }
+                    }
+
+                    .footer-icon-social-wrapper {
+                        display: flex;
+                        margin-top: 15px;
+
+                        .fs-single-block {
+                            margin-right: 12px;
+                            .link-text {
+                                svg {
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .after-footer-wrapper {
+            .wrapper-inner {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                .copy-right {
+                    .copy {
+                        font-size: 16px;
+                        color: var(--color-white);
+                    }
+                }
+
+                .wrapper {
+                    a {
+                    }
+                }
+            }
+        }
+    }
+}
+
+.wrapper {
+    .container {
+        .main-footer-wrapper {
+            .wrapper-inner {
+                .footer-block {
+                    .block {
+                        .fb-title {
+                        }
+
+                        p {
+                            a {
+                                br {
+                                }
+                            }
+                        }
+                    }
+
+                    .footer-icon-social-wrapper {
+                        .fs-single-block {
+                            .link-text {
+                                svg {
+                                    path {
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .after-footer-wrapper {
+            .wrapper-inner {
+                .copy-right {
+                    .copy {
+                    }
+                }
+
+                .wrapper {
+                    a {
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+// @media (min-width: 768px)
+// .container {
+//     width: 750px;
+// }
