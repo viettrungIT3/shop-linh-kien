@@ -311,15 +311,22 @@ class Login extends MY_Controller
 
 			case "POST":
 				$posting_data = $this->get_posting_data();
-				$input_user_fname = $posting_data['input_user_fname'] ?? NULL;
-				$input_user_lname = $posting_data['input_user_lname'] ?? NULL;
+				$input_user_first_name = $posting_data['input_user_first_name'] ?? NULL;
+				$input_user_last_name = $posting_data['input_user_last_name'] ?? NULL;
 				$input_user_login = $posting_data['input_user_login'] ?? NULL;
 				$input_user_password = $posting_data['input_user_password'] ?? NULL;
 				$input_user_password2 = $posting_data['input_user_password2'] ?? NULL;
 
-				if ($input_user_login !== "" && $input_user_password !== "") :
+				if ($input_user_password != $input_user_password2) {
+					$this->set_error("password_valid");
+				} else if ($input_user_login !== "" && $input_user_password !== "" && $input_user_first_name !== "" && $input_user_last_name !== "") {
 
-					$res = $this->user->create($input_user_login, $input_user_password);
+					$res = $this->user->create(
+						$input_user_first_name,
+						$input_user_last_name,
+						$input_user_login,
+						$input_user_password
+					);
 
 					if (isset($res['status']) && $res['status']) :
 
@@ -332,9 +339,8 @@ class Login extends MY_Controller
 					else :
 						isset($res->errors[0]) ?  $this->set_error($res->errors[0]) :  $this->set_error("invalid_account");
 					endif;
-				else :
+				} else
 					$this->set_error("username_password_valid");
-				endif;
 
 				break;
 

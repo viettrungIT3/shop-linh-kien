@@ -14,16 +14,16 @@
 				</div>
 
 				<div class="fname">
-					<label for="email">Tên: </label>
+					<label for="text">Tên: </label>
 					<div class="sec-2">
-						<input type="email" name="input_user_fname" placeholder="Vui lòng nhập tên...">
+						<input type="text" name="input_user_first_name" placeholder="Vui lòng nhập tên...">
 					</div>
 				</div>
 
 				<div class="lname">
-					<label for="email">Họ đệm: </label>
+					<label for="text">Họ đệm: </label>
 					<div class="sec-2">
-						<input type="email" name="input_user_lname" placeholder="Vui lòng nhập họ đệm...">
+						<input type="text" name="input_user_last_name" placeholder="Vui lòng nhập họ đệm...">
 					</div>
 				</div>
 
