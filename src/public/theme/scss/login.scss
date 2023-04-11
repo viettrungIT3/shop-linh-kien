@@ -1,14 +1,14 @@
 @import "global";
-$p: hsl(213deg 85% 97%);
-$s: hsl(233deg 36% 38%);
+$p: #f1f7fe;
+$s: #3e4684;
 
 @mixin screen {
 	background: $p;
-	padding: 2em;
+	padding: 1em;
 	display: flex;
 	flex-direction: column;
 	border-radius: 30px;
-	box-shadow: 0 0 2em hsl(231deg 62% 94%);
+	box-shadow: 0 0 2em #e6e9f9;
 }
 body {
 	user-select: none;
@@ -16,44 +16,48 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background: hsl(218deg 50% 91%);
+	background: #dde5f4;
 	height: 100vh;
 }
 
-.forgot-password,.reset-password{
-	.logo{
-		path {fill:#1b5732;}
+.forgot-password,
+.reset-password {
+	.logo {
+		path {
+			fill: #1b5732;
+		}
 		padding: 30px;
 		display: flex;
-		justify-content:center;
+		justify-content: center;
 	}
 }
 
-.login-wrapper{
+.login-wrapper {
 	min-width: 375px;
 	.screen-1 {
 		@include screen;
-		gap: 2em;
-		.logo{
-			path {fill:#1b5732;}
+		gap: 1em;
+		.logo {
+			path {
+				fill: #1b5732;
+			}
 			padding: 30px;
 			display: flex;
-			justify-content:center;
+			justify-content: center;
 		}
 
-		.error{
-			
+		.error {
 		}
-		.email {
-			background: hsl(0deg 0% 100%);
-			box-shadow: 0 0 2em hsl(231deg 62% 94%);
+		.email,
+		.fname,
+		.lname {
+			background: #fff;
+			box-shadow: 0 0 2em #e6e9f9;
 			padding: 1em;
 			display: flex;
 			flex-direction: column;
-			gap: 0.5em;
 			border-radius: 20px;
-			color: hsl(0deg 0% 30%);
-			margin-top: -3em;
+			color: #4d4d4d;
 			input {
 				outline: none;
 				border: none;
@@ -63,19 +67,22 @@ body {
 				}
 			}
 			ion-icon {
-				color: hsl(0deg 0% 30%);
-				margin-bottom: -.2em;
+				color: #4d4d4d;
+				margin-bottom: -0.2em;
 			}
 		}
+		input {
+			width: 100%;
+		}
+
 		.password {
-			background: hsl(0deg 0% 100%);
-			box-shadow: 0 0 2em hsl(231deg 62% 94%);
+			background: #ffffff;
+			box-shadow: 0 0 2em #e6e9f9;
 			padding: 1em;
 			display: flex;
 			flex-direction: column;
-			gap: 0.5em;
 			border-radius: 20px;
-			color: hsl(0deg 0% 30%);
+			color: #4d4d4d;
 			input {
 				outline: none;
 				border: none;
@@ -85,8 +92,8 @@ body {
 				}
 			}
 			ion-icon {
-				color: hsl(0deg 0% 30%);
-				margin-bottom: -.2em;
+				color: #4d4d4d;
+				margin-bottom: -0.2em;
 			}
 			.show-hide {
 				margin-right: -5em;
@@ -94,21 +101,24 @@ body {
 		}
 		.login {
 			padding: 1em;
-			background: hsl(233deg 36% 38%);
-			color: hsl(0 0 100);
+			background: #3e4684;
+			color: #ffffff;
 			border: none;
 			border-radius: 30px;
 			font-weight: 600;
 		}
 		.footer {
 			display: flex;
-			font-size: 0.7em;
-			color: hsl(0deg 0% 37%);
+			color: #5e5e5e;
 			gap: 14em;
-			padding-bottom: 10em;
-			span { cursor: pointer }
+			padding-bottom: 1em;
+			span {
+				cursor: pointer;
+			}
 		}
 	}
 }
 
-button { cursor: pointer; }
+button {
+	cursor: pointer;
+}

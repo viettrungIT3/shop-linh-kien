@@ -16,7 +16,7 @@
     <main id="page-wrapper">
         <?php
         $currentPage = basename($_SERVER['REQUEST_URI']);
-        if ($currentPage !== "login") {
+        if ($currentPage !== "login" && $currentPage !== "register") {
             $this->load->view("partials/header-bar");
         }
         ?>

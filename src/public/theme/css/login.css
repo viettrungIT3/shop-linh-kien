@@ -4,16 +4,18 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: hsl(218deg, 50%, 91%);
+  background: #dde5f4;
   height: 100vh;
 }
 
-.forgot-password .logo, .reset-password .logo {
+.forgot-password .logo,
+.reset-password .logo {
   padding: 30px;
   display: flex;
   justify-content: center;
 }
-.forgot-password .logo path, .reset-password .logo path {
+.forgot-password .logo path,
+.reset-password .logo path {
   fill: #1b5732;
 }
 
@@ -21,13 +23,13 @@ body {
   min-width: 375px;
 }
 .login-wrapper .screen-1 {
-  background: hsl(213deg, 85%, 97%);
-  padding: 2em;
+  background: #f1f7fe;
+  padding: 1em;
   display: flex;
   flex-direction: column;
   border-radius: 30px;
-  box-shadow: 0 0 2em hsl(231deg, 62%, 94%);
-  gap: 2em;
+  box-shadow: 0 0 2em #e6e9f9;
+  gap: 1em;
 }
 .login-wrapper .screen-1 .logo {
   padding: 30px;
@@ -37,38 +39,46 @@ body {
 .login-wrapper .screen-1 .logo path {
   fill: #1b5732;
 }
-.login-wrapper .screen-1 .email {
-  background: hsl(0deg, 0%, 100%);
-  box-shadow: 0 0 2em hsl(231deg, 62%, 94%);
+.login-wrapper .screen-1 .email,
+.login-wrapper .screen-1 .fname,
+.login-wrapper .screen-1 .lname {
+  background: #fff;
+  box-shadow: 0 0 2em #e6e9f9;
   padding: 1em;
   display: flex;
   flex-direction: column;
-  gap: 0.5em;
   border-radius: 20px;
-  color: hsl(0deg, 0%, 30%);
-  margin-top: -3em;
+  color: #4d4d4d;
 }
-.login-wrapper .screen-1 .email input {
+.login-wrapper .screen-1 .email input,
+.login-wrapper .screen-1 .fname input,
+.login-wrapper .screen-1 .lname input {
   outline: none;
   border: none;
 }
-.login-wrapper .screen-1 .email input::placeholder {
+.login-wrapper .screen-1 .email input::placeholder,
+.login-wrapper .screen-1 .fname input::placeholder,
+.login-wrapper .screen-1 .lname input::placeholder {
   color: rgb(153, 153, 153);
   font-size: 0.9em;
 }
-.login-wrapper .screen-1 .email ion-icon {
-  color: hsl(0deg, 0%, 30%);
+.login-wrapper .screen-1 .email ion-icon,
+.login-wrapper .screen-1 .fname ion-icon,
+.login-wrapper .screen-1 .lname ion-icon {
+  color: #4d4d4d;
   margin-bottom: -0.2em;
 }
+.login-wrapper .screen-1 input {
+  width: 100%;
+}
 .login-wrapper .screen-1 .password {
-  background: hsl(0deg, 0%, 100%);
-  box-shadow: 0 0 2em hsl(231deg, 62%, 94%);
+  background: #ffffff;
+  box-shadow: 0 0 2em #e6e9f9;
   padding: 1em;
   display: flex;
   flex-direction: column;
-  gap: 0.5em;
   border-radius: 20px;
-  color: hsl(0deg, 0%, 30%);
+  color: #4d4d4d;
 }
 .login-wrapper .screen-1 .password input {
   outline: none;
@@ -79,7 +89,7 @@ body {
   font-size: 0.9em;
 }
 .login-wrapper .screen-1 .password ion-icon {
-  color: hsl(0deg, 0%, 30%);
+  color: #4d4d4d;
   margin-bottom: -0.2em;
 }
 .login-wrapper .screen-1 .password .show-hide {
@@ -87,18 +97,17 @@ body {
 }
 .login-wrapper .screen-1 .login {
   padding: 1em;
-  background: hsl(233deg, 36%, 38%);
-  color: hsl(0deg, 0%, 100%);
+  background: #3e4684;
+  color: #ffffff;
   border: none;
   border-radius: 30px;
   font-weight: 600;
 }
 .login-wrapper .screen-1 .footer {
   display: flex;
-  font-size: 0.7em;
-  color: hsl(0deg, 0%, 37%);
+  color: #5e5e5e;
   gap: 14em;
-  padding-bottom: 10em;
+  padding-bottom: 1em;
 }
 .login-wrapper .screen-1 .footer span {
   cursor: pointer;
