@@ -232,13 +232,12 @@ class User_model extends MY_Model
 		if (!$this->is_authenticated()) return NULL;
 
 		return array(
-
-			"user" => $this->session->userdata("user"),
+			"id"    => $this->session->userdata("id"),
 			"first_name" => $this->session->userdata("first_name"),
 			"last_name" => $this->session->userdata("last_name"),
 			"login" => $this->session->userdata("login"),
-			"id"    => $this->session->userdata("id"),
-			"type"    => $this->session->userdata("type")
+			"status" => $this->session->userdata("status"),
+			"role" => $this->session->userdata("role"),
 		); //
 
 	} //

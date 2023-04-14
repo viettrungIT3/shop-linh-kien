@@ -8,9 +8,13 @@ class Dashboard extends MY_Controller{
 		
     }
     public function index(){
+
+		$this->load->model('User_model', 'user');
+		$user = $this->user->get_detail();
 		
 		return $this
-        ->set("data_source", base_url(""))
+        ->set("user", $user)
+        ->set("data_source", "")
 		->set_full_layout(TRUE)
 		->set_body_class("dashboard-listing")
 		->set_page_title("dashboard_listing")
