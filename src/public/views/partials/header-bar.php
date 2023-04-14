@@ -8,9 +8,7 @@
 			<div class="container">
 
 				<div class="container-head">
-					<a href="" class="logo">
-						<?php $this->load->view("partials/icons/logo") ?>
-					</a>
+					<?php $this->load->view("partials/icons/logo") ?>
 
 					<div class="container-nav">
 						<?php $this->load->view("partials/header-nav") ?>

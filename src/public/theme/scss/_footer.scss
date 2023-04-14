@@ -20,7 +20,7 @@
 
                     .block {
                         margin-top: 30px;
-                        
+
                         .fb-title {
                             font-family: "Ubuntu", sans-serif;
                             font-size: 16px;
@@ -44,10 +44,11 @@
                                 br {
                                 }
                             }
-                        }
-
-                        a {
-                            color: var(--color-accent);
+                            a {
+                                &:hover {
+                                    color: rgb(0, 183, 155);
+                                }
+                            }
                         }
                     }
 
@@ -134,7 +135,6 @@
         }
     }
 }
-
 
 // @media (min-width: 768px)
 // .container {

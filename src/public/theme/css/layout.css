@@ -1824,8 +1824,8 @@ label:empty {
   text-decoration: none;
   color: var(--color-white);
 }
-.wrapper .container .main-footer-wrapper .wrapper-inner .footer-block .block a {
-  color: var(--color-accent);
+.wrapper .container .main-footer-wrapper .wrapper-inner .footer-block .block p a:hover {
+  color: rgb(0, 183, 155);
 }
 .wrapper .container .main-footer-wrapper .wrapper-inner .footer-block .footer-icon-social-wrapper {
   display: flex;
