@@ -5,11 +5,22 @@
     --color-black: #{$color-black};
     --color-darker-gray: #{$color-darker-gray};
     --color-dark-gray: #{$color-dark-gray};
-    --color-gray: #{$color-gray};
+    // --color-gray: #{$color-gray};
     --color-red: #{$color-red};
     --color-white: #{$color-white};
     --color-yellow: #{$color-yellow};
-    --color-lighter-gray: #{$color-lighter-gray};
+    // --color-lighter-gray: #{$color-lighter-gray};
+    --color-green: #1b5732;
+    --color-orange: #d16832;
+    --color-gray: #414042;
+    --color-lighter-gray: #757575;
+    --color-lighter-black: #333;
+    --color-primary: var(--color-green);
+    --color-accent: var(--color-orange);
+    --color-neutral: var(--color-gray);
+    --rc-color: #040404;
+    --rc-active-bg: #efefef;
+    --rc-active-color: #000000;
 
     // size
     --radius-size: #{$radius-size};

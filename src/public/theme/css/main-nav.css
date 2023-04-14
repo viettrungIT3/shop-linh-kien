@@ -6,12 +6,12 @@
   fill: #1b5732;
 }
 
-.user-login .info {
+.user-login .container-head {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.user-login .info p {
+.user-login .container-head p {
   margin-right: 40px;
   margin-bottom: 0px;
   display: flex;
@@ -20,18 +20,36 @@
   gap: 5px;
   font-size: 20px;
 }
-.user-login .info .btn-outline-danger {
+.user-login .container-head .btn-outline-danger {
   color: #dc3545;
   border-color: #dc3545;
 }
-.user-login .info .btn-outline-danger:hover {
+.user-login .container-head .btn-outline-danger:hover {
   color: #fff;
   background-color: #dc3545;
   border-color: #dc3545;
 }
-.user-login .info .btn-outline-danger a {
+.user-login .container-head .btn-outline-danger a {
   text-decoration: none;
 }
-.user-login .info .btn-outline-danger a:hover {
+.user-login .container-head .btn-outline-danger a:hover {
   color: #fff;
+}
+
+.container-nav {
+  display: flex;
+  align-items: center;
+}
+
+.main-nav-wrapper .menu {
+  display: flex;
+  align-items: center;
+  margin: 0 !important;
+}
+.main-nav-wrapper li {
+  list-style: none;
+}
+.main-nav-wrapper li .item {
+  padding: 8px 16px;
+  font-size: 16px;
 }

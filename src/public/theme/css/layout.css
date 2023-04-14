@@ -6,11 +6,20 @@
   --color-black: #000;
   --color-darker-gray: #707070;
   --color-dark-gray: rgb(164, 163, 164);
-  --color-gray: #535353;
   --color-red: #C20000;
   --color-white: #fff;
   --color-yellow: #FCC433;
-  --color-lighter-gray: #efefef;
+  --color-green: #1b5732;
+  --color-orange: #d16832;
+  --color-gray: #414042;
+  --color-lighter-gray: #757575;
+  --color-lighter-black: #333;
+  --color-primary: var(--color-green);
+  --color-accent: var(--color-orange);
+  --color-neutral: var(--color-gray);
+  --rc-color: #040404;
+  --rc-active-bg: #efefef;
+  --rc-active-color: #000000;
   --radius-size: 5px;
   --gutter-size: 1rem;
   --font-primary: Ubuntu, sans-serif;
@@ -1774,4 +1783,63 @@ label:empty {
 }
 .floating-message[data-show="0"] {
   bottom: -999px;
+}
+
+.wrapper .container .main-footer-wrapper .wrapper-inner {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-bottom: 30px;
+}
+.wrapper .container .main-footer-wrapper .wrapper-inner .footer-block {
+  color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  white-space: inherit;
+  width: 100%;
+  padding-right: 30px;
+  min-width: 250px;
+  max-width: 300px;
+}
+.wrapper .container .main-footer-wrapper .wrapper-inner .footer-block .block {
+  margin-top: 30px;
+}
+.wrapper .container .main-footer-wrapper .wrapper-inner .footer-block .block .fb-title {
+  font-family: "Ubuntu", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 22px;
+  text-transform: uppercase;
+  display: block;
+  color: var(--color-white);
+}
+.wrapper .container .main-footer-wrapper .wrapper-inner .footer-block .block p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  margin: 0 !important;
+}
+.wrapper .container .main-footer-wrapper .wrapper-inner .footer-block .block p a {
+  text-decoration: none;
+  color: var(--color-white);
+}
+.wrapper .container .main-footer-wrapper .wrapper-inner .footer-block .block p a:hover {
+  color: rgb(0, 183, 155);
+}
+.wrapper .container .main-footer-wrapper .wrapper-inner .footer-block .footer-icon-social-wrapper {
+  display: flex;
+  margin-top: 15px;
+}
+.wrapper .container .main-footer-wrapper .wrapper-inner .footer-block .footer-icon-social-wrapper .fs-single-block {
+  margin-right: 12px;
+}
+.wrapper .container .after-footer-wrapper .wrapper-inner {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.wrapper .container .after-footer-wrapper .wrapper-inner .copy-right .copy {
+  font-size: 16px;
+  color: var(--color-white);
 }

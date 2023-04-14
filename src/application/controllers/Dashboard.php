@@ -4,10 +4,21 @@ class Dashboard extends MY_Controller{
     {
 
         parent::__construct();
-        $this->verify_authentication();
+        // $this->verify_authentication();
 		
     }
     public function index(){
+		
+		return $this
+        ->set("data_source", base_url(""))
+		->set_full_layout(TRUE)
+		->set_body_class("dashboard-listing")
+		->set_page_title("dashboard_listing")
+		->set_main_template("index")
+		->render();
+    }
+
+    public function team(){
 		
 		return $this
         ->set("data_source", base_url("/order/search"))

@@ -1,20 +1,19 @@
 @import "_global";
-.header-bar-wrapper{
-	.logo{
-		path {fill:#1b5732;}
+.header-bar-wrapper {
+	.logo {
 		margin-top: 30px;
 		margin-bottom: 30px;
-		
+		path {
+			fill: #1b5732;
+		}
 	}
-
-}// 
-
-.user-login{
-	.info{
+}
+.user-login {
+	.container-head {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		p{
+		p {
 			margin-right: 40px;
 			margin-bottom: 0px;
 			display: flex;
@@ -26,17 +25,35 @@
 		.btn-outline-danger {
 			color: #dc3545;
 			border-color: #dc3545;
-			&:hover{
+			&:hover {
 				color: #fff;
 				background-color: #dc3545;
 				border-color: #dc3545;
 			}
-			a{
+			a {
 				text-decoration: none;
-				&:hover{
+				&:hover {
 					color: #fff;
 				}
 			}
+		}
+	}
+}
+.container-nav {
+	display: flex;
+	align-items: center;
+}
+.main-nav-wrapper {
+	.menu {
+		display: flex;
+		align-items: center;
+		margin: 0 !important;
+	}
+	li {
+		list-style: none;
+		.item {
+			padding: 8px 16px;
+			font-size: 16px;
 		}
 	}
 }
