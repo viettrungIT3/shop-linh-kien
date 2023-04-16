@@ -6,7 +6,7 @@
 			<div class="col-8">
 				<div class="info">
 					<div class="content">
-						<h4>A Code has been sent to your email.</h4>
+						<h4>Mã OTP đã được gửi đến email của bạn.</h4>
 					</div>
 				</div>
 				<form class="" action="" method="post">
@@ -14,7 +14,7 @@
 						<?php
 						if (isset($errors[0])) :
 						?>
-							<div class="text-errors-wrapper text-danger">
+							<div class="text-errors-wrapper text-danger" style="margin-right: 15px;margin-left: 15px;">
 								<?php echo $errors; ?>
 							</div>
 						<?php
@@ -23,7 +23,7 @@
 						<?php
 						if (isset($messages[0])) :
 						?>
-							<div class="text-messages-wrapper text-notice">
+							<div class="text-messages-wrapper text-notice" style="margin-right: 15px;margin-left: 15px;">
 								<?php echo $messages; ?>
 							</div>
 						<?php
@@ -33,19 +33,19 @@
 						<?php if (!isset($messages[0])) :  ?>
 
 							<div class="col-md-12">
-								<p class="bg-warning" style="padding: 5px 15px;">If you don't see the code in your inbox, please check your spam folder.</p>
+								<p class="bg-warning" style="padding: 5px 15px;">Nếu bạn không thấy mã trong hộp thư đến của mình, vui lòng kiểm tra thư mục thư rác.</p>
 							</div>
 							<div class="col-sm-12">
 								<div class="form-group">
-									<label>YOUR CODE:</label>
-									<input type="text" name="input_otp" value="" class="form-control" placeholder="Your Code" />
+									<label>Nhập mã OTP:</label>
+									<input type="text" name="input_otp" value="" class="form-control" placeholder="Nhập mã ..." />
 								</div>
 								<!--end of form group-->
 							</div>
 							<!--end of cols 12-->
 							<div class="col-sm-12" id="otp">
 
-								<button type="submit" class="btn btn-lg btn-primary">SUBMIT</button>
+								<button type="submit" class="btn btn-lg btn-primary">Gửi</button>
 
 								<!-- <button type="submit" data-type="otp" id="submit_otp" class="btn btn-lg btn-cancel">SEND CODE AGAIN</button>
 

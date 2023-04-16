@@ -9,13 +9,12 @@ class Login extends MY_Controller
 	}
 
 
-	// login
 	public function index()
 	{
 
 
 		if ($this->user->is_authenticated()) :
-			$this->verify_authentication(base_url(""));
+			$this->verify_authentication(base_url("/dashboard"));
 		endif;
 
 
@@ -33,13 +32,13 @@ class Login extends MY_Controller
 					if (isset($res['status']) && $res['status']) :
 
 						if (isset($res['use_two_way_auth']) && $res['use_two_way_auth'] == (int)USE_TWO_WAY_AUTH) {
-							$this->verify_authentication_otp(base_url("/verify/" . $res['hash']));
+							$this->verify_authentication_otp(base_url("/verify/" . $res['data'][0]->id));
 						} else {
-							redirect("/");
+							redirect("/dashboard");
 						}
 
 					else :
-						isset($res->errors[0]) ?  $this->set_error($res->errors[0]) :  $this->set_error("invalid_account");
+						isset($res['error']) ?  $this->set_error($res['error']) :  $this->set_error("invalid_account");
 					endif;
 				else :
 					$this->set_error("username_password_valid");
@@ -58,7 +57,7 @@ class Login extends MY_Controller
 
 	public function forgot_password()
 	{
-
+		$this->load->model("Forgot_password_hash_model", "hash");
 
 		switch ($this->input->server("REQUEST_METHOD")):
 
@@ -73,29 +72,35 @@ class Login extends MY_Controller
 
 					if (isset($res['status']) && count($res['data']) > 0) :
 
-						$data = $res['data'][0];
+						$check_hash_exist = $this->hash->get($res['data'][0]->id);
 
-						$hash_id = md5($data->id);
+						if (isset($check_hash_exist) && count($check_hash_exist['data']) <   1) {
+							$data = $res['data'][0];
 
-						if (!file_exists(OTP_CODE_PATH)) {
-							mkdir(OTP_CODE_PATH, 0777, true);
+							$hash_id = md5($data->id);
+
+							$insert_hash = $this->hash->create([
+								"input_user_id" => $data->id,
+								"input_hash" => $hash_id
+							]);
+
+							if (isset($insert_hash["status"]) && $insert_hash["status"]) {
+
+
+								$send_email = $this->send($input_email, array("first_name" => $data->first_name, "link" =>  $_ENV["BASE_URL"] . "reset-password/{$data->id}/{$hash_id}", "link_label" => "Reset Password"));
+
+								$send_email_status = json_decode($send_email->final_output);
+
+								if (isset($send_email_status->status) && $send_email_status->status) {
+
+									redirect("/password-email-sent");
+								} else {
+									$this->set_error("Send email failed");
+								}
+							};
+						} else {
+							$this->set_error("Email has been sent, please check your inbox or spam folder.");
 						}
-
-						$myfile = fopen(OTP_CODE_PATH . $hash_id . ".txt", "w") or die("Unable to open file!");
-						$txt = "$data->id";
-						fwrite($myfile, $txt);
-						fclose($myfile);
-
-
-						$send_email = $this->send($input_email, array("first_name" => $data->first_name, "link" =>  $_ENV["BASE_URL"] . "reset-password/{$data->id}/{$hash_id}", "link_label" => "Reset Password"));
-
-						$send_email_status = json_decode($send_email->final_output);
-
-						if (isset($send_email_status->status) && $send_email_status->status) {
-
-							redirect("/password-email-sent");
-						};
-
 
 					else :
 						isset($res->errors[0]) ?  $this->set_error($res->errors[0]) :  $this->set_error("no_account");
@@ -120,9 +125,7 @@ class Login extends MY_Controller
 	{
 
 		if (NULL === $input_to) {
-			return $this
-				->failed("Missing input email")
-				->render_json();
+			return $this->failed("Email is required.")->render_json();
 		}
 
 		// usign this key to communicate
@@ -207,37 +210,37 @@ class Login extends MY_Controller
 
 	public function reset_password(int $input_id = NULL, $input_hash = NULL)
 	{
+		$this->load->model("Forgot_password_hash_model", "hash");
+
 
 		switch ($this->input->server("REQUEST_METHOD")):
 			case "POST":
 				$posting = $this->input->post();
-				// do change password
-				$path = OTP_CODE_PATH . $input_hash . ".txt";
 
-				$myfile = fopen($path, "r") or die("Unable to open file!");
+				$check_user_exist = $this->hash->get($input_id);
 
-				$data = fread($myfile, filesize($path));
-				fclose($myfile);
-
-				if (trim($data) == trim($input_id)) {
-
-					if (file_exists($path)) {
-						unlink($path);
-					}
-
-					$res = $this->user->users_set_password($input_id, $posting['input_password']);
-
-					if (isset($res['status']) && $res['status']) :
-						redirect("/reset-password-success");
-					else :
-						$this
-							->set_error($res['error']);
-					endif;
+				if ($check_user_exist['data'][0]->hash != $input_hash) {
+					$this->set_error("Incorrect data");
 				} else {
-					$this
-						->set_error("Invalid data");
-				}
 
+					if (isset($check_user_exist['status']) && count($check_user_exist['data']) < 1) {
+						$this->set_error("Incorrect data");
+					} else {
+
+						$res = $this->user->users_set_password($input_id, $posting['input_password']);
+
+						if (isset($res['status']) && $res['status']) :
+
+							$delete_hash = $this->hash->delete($input_id);
+							if (isset($delete_hash['status']) && $delete_hash['status']) {
+								redirect("/reset-password-success");
+							};
+
+						else :
+							$this->set_error($res['error']);
+						endif;
+					}
+				}
 
 
 				break;
@@ -267,7 +270,7 @@ class Login extends MY_Controller
 	}
 
 
-	public function verify_otp($hash = NULL)
+	public function verify_otp($input_id)
 	{
 
 
@@ -279,13 +282,12 @@ class Login extends MY_Controller
 
 				$otp = $posting['input_otp'];
 
-				$res = $this->user->validate_otp($hash, $otp);
+				$res = $this->user->validate_otp($input_id, $otp);
 
 				if (isset($res['status']) && $res['status']) :
 					redirect("/");
 				else :
-					$this
-						->set_error($res['error']);
+					$this->set_error("Mã OTP không hợp lệ");
 				endif;
 
 
@@ -333,7 +335,7 @@ class Login extends MY_Controller
 						if (isset($res['use_two_way_auth']) && $res['use_two_way_auth'] == (int)USE_TWO_WAY_AUTH) {
 							$this->verify_authentication_otp(base_url("/verify/" . $res['hash']));
 						} else {
-							redirect("/");
+							redirect("/login");
 						}
 
 					else :
