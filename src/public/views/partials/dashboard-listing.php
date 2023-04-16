@@ -19,12 +19,13 @@
 
 <script>
      window.keys_mapping = {
-		customer_first_name: "<?=__('Customer First Name')?>", 
-		customer_last_name: "<?=__('Customer Last Name')?>", 
-		product_name: "<?=__('Product Name')?>", 
-        order_total: "<?=__('Order Total')?>",
-		created_at: "<?=__('Created At')?>", 
+		customer_first_name: "<?=__('First Name')?>", 
+		customer_last_name: "<?=__('Last Name')?>", 
+        order_number: "<?=__('Order Number')?>",
+        order_date: "<?=__('Order Date')?>",
+		order_price: "<?=__('Order Price')?>",
 		invoice_number: "<?=__('Invoice Number')?>", 
+        transId: "<?=__('Trans ID')?>", 
 		transaction_date: "<?=__('Transaction Date')?>", 
 		amount: "<?=__('Amount')?>"
     };
@@ -32,10 +33,11 @@
     window.sort_mapping = {
         customer_first_name: "customer_first_name",
         customer_last_name: "customer_last_name",
-        product_name: "product_name",
-        order_total: "order_total",
-        created_at: "created_at",
+        order_number: "order_number",
+        order_date: "order_date",
+        order_price: "order_price",
         invoice_number: "invoice_number",
+        transId: "transId",
         transaction_date: "transaction_date",
         amount: "amount"
     };

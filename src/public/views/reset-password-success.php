@@ -5,6 +5,9 @@
 		<div class="logo">
 					<?php  $this->load->view("partials/icons/logo") ?>
 				</div>
+				<div class="error">
+				<?php $this->load->view("/partials/messages")?>
+				</div>
            <div class="content">
                 <h1>Success</h1>
                 <p style="font-weight: normal;">

@@ -97,7 +97,7 @@ class MY_Model extends CI_Model{
     // reset function  need to run every
     // time the statement was called
     public function reset_result(&$res){
-        // @$res->next_result();
+        @$res->next_result();
         @$res->free_result();
         return $res;
     }
@@ -149,7 +149,7 @@ class MY_Model extends CI_Model{
                 $results[] = $row;
             endforeach;
         endif;
-
+		
         $this->reset_result($res);
 
         return $results;

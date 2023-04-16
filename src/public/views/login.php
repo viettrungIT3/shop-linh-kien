@@ -9,7 +9,7 @@
 				<div class="logo">
 					<?php $this->load->view("partials/icons/logo") ?>
 				</div>
-				<div class="error">
+				<div class="error text-center">
 					<?php $this->load->view("/partials/messages") ?>
 				</div>
 				<div class="email">

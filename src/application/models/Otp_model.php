@@ -42,10 +42,6 @@ class Otp_model extends MY_Model
 	{
 
 		$res = $this->db->query($this->queries['otp_get'], array($user_id));
-		// echo '<pre>'; 
-		// var_dump($res);
-		// echo '</pre>';
-		// die();
 
 		return $this->process_results($res)->get_results();
 	}
