@@ -102,7 +102,6 @@ class User_model extends MY_Model
 			return $this->login_failed();
 		endif;
 
-
 		if (hash_password($in_char_password) !== $res_user['data'][0]->password) :
 			return $this->login_failed();
 		endif;
@@ -111,13 +110,15 @@ class User_model extends MY_Model
 		$the_user = $res_user['data'][0];
 
 
+
 		if ((int)1 !==  (int)USE_TWO_WAY_AUTH) {
 			$this->remember_this_user($res_user['data'][0]);
 			$this->session->set_userdata(self::KEY_LOGGED_IN, '1');
 			return $this->success("Welcome {$res_user['data'][0]->first_name}")->get_results();
 		} else {
-			$hash = $this->get_auto_hash();
-			$res_create_otp = $this->create_otp($hash, $in_char_login, $res_user['data'][0]);
+
+
+			$res_create_otp = $this->create_otp($in_char_login, $res_user['data'][0]);
 
 			if (isset($res_create_otp['status']) && $res_create_otp['status']) {
 
@@ -125,7 +126,6 @@ class User_model extends MY_Model
 				$this->session->set_userdata(self::KEY_LOGGED_IN_OTP, '2');
 				return $this->success("Welcome {$res_user['data'][0]->first_name}")
 					->set("use_two_way_auth", USE_TWO_WAY_AUTH)
-					->set("hash", $hash)
 					->get_results();
 			} else {
 				return $this
@@ -135,30 +135,30 @@ class User_model extends MY_Model
 		}
 	}
 
-	public function create_otp($input_hash = NULL, $in_char_email = NULL, $the_user = NULL)
+	public function create_otp($in_char_email = NULL, $the_user = NULL)
 	{
 
 		$this->load->model("Misc_model", "misc");
+		$this->load->model("Otp_model", "otp");
 
+		$otp_number = $this->misc->randomNumber(6);
+		mysqli_next_result( $this->db->conn_id );
 
-		if (!file_exists(OTP_CODE_PATH)) {
-			mkdir(OTP_CODE_PATH, 0777, true);
-		}
-		try {
-			$otp = $this->misc->randomNumber(6);
+		$res = $this->otp->create([
+			"input_user_id" => $the_user->id,
+			"input_otp_hash" => $otp_number
+		]);
+		
 
-			$myfile = fopen(OTP_CODE_PATH . $input_hash . ".txt", "w") or die("Unable to open file!");
-			$txt = "$otp";
-			fwrite($myfile, $txt);
-			fclose($myfile);
+		// var_dump($res); die;
 
-
+		if (isset($res['status']) && $res['status']) {
 			$content_otp = "<p>Hi $the_user->first_name  ! </p>
-				<p>You just requested a login code. Your code is : </p>
-				<p style='font-size:20px;'> $otp </p>
-				<p>If you didn't request this. Please contact us for support at 1800-xxx-xxxx</p>
-				<p>Thanks,</p>
-				<p>Supports @ GW DEV</p>";
+			<p>You just requested a login code. Your code is : </p>
+			<p style='font-size:20px;'> $otp_number </p>
+			<p>If you didn't request this. Please contact us for support at 1800-xxx-xxxx</p>
+			<p>Thanks,</p>
+			<p>Supports @ GW DEV</p>";
 			$res_email = $this->misc->send_mail($in_char_email, "GW DEV - OTP", $content_otp);
 
 			if (isset($res_email['status']) && $res_email['status']) :
@@ -168,9 +168,9 @@ class User_model extends MY_Model
 			else :
 				return $this->failed("Error send Code to your mail")->get_results();
 			endif;
-		} catch (\Exception $e) {
+		} else {
 			return $this
-				->failed($e)
+				->failed("Send email failed.")
 				->get_results();
 		}
 	}
@@ -232,51 +232,44 @@ class User_model extends MY_Model
 		if (!$this->is_authenticated()) return NULL;
 
 		return array(
-			"id"    => $this->session->userdata("id"),
+
+			"user" => $this->session->userdata("user"),
 			"first_name" => $this->session->userdata("first_name"),
 			"last_name" => $this->session->userdata("last_name"),
 			"login" => $this->session->userdata("login"),
-			"status" => $this->session->userdata("status"),
-			"role" => $this->session->userdata("role"),
+			"id"    => $this->session->userdata("id"),
+			"type"    => $this->session->userdata("type")
 		); //
 
 	} //
 
-	public function validate_otp($input_hash = NULL, $input_otp = NULL)
+	public function validate_otp($input_id = NULL, $input_otp = NULL)
 	{
+
+		$this->load->model("Otp_model", "otp");
 
 		if (!isset($input_otp) || empty($input_otp)) {
 			return $this->failed("The otp code you entered is incorrect!")->get_results();
 		}
 
 
+		$res = $this->otp->get($input_id);
 
-		if (!file_exists(OTP_CODE_PATH)) {
-			return $this->failed("Missing folder")->get_results();
-		}
+		if (isset($res['status']) && count($res['data']) > 0) {
 
-		try {
-			$path = OTP_CODE_PATH . $input_hash . ".txt";
+			if ((int)$input_otp === (int)$res['data'][0]->otp_hash) {
 
-			$myfile = fopen($path, "r") or die("Unable to open file!");
+				$remove_otp = $this->otp->delete_otp($res['data'][0]->id);
 
-			$data = fread($myfile, filesize($path));
-			fclose($myfile);
-
-			if (trim($data) == trim($input_otp)) {
-
-				if (file_exists($path)) {
-					unlink($path);
-				}
-				$this->session->set_userdata(self::KEY_LOGGED_IN, '1');
-				return $this->success()->get_results();
+				if (isset($remove_otp['status']) && $remove_otp['status']) :
+					$this->session->set_userdata(self::KEY_LOGGED_IN, '1');
+					return $this->success()->get_results();
+				endif;
 			} else {
-				return $this->failed("Your code is invalid. Please check your message again and make sure that the code entered matches what is in your email.")->get_results();
+				return $this->failed("The otp code you entered is incorrect, please enter the correct code.")->get_results();
 			}
-		} catch (\Exception $e) {
-			return $this->failed($e->getMessage())->get_results();
+		} else {
+			return $this->failed("Your code is invalid. Please check your message again and make sure that the code entered matches what is in your email.")->get_results();
 		}
-
-		return $this->success()->get_results();
 	}
 }

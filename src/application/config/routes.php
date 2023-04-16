@@ -52,13 +52,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'dashboard';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
-// order routing
-$route['order/search-today'] = "Shopify_order/search_today";
-$route['order/(:any)/transactions'] = "Shopify_order/get_transactions/$1";
-$route['authnet/list'] = "Authnet_transaction/list";
-$route['authnet/(:any)/transactions'] = "Authnet_transaction/get_transactions/$1";
-
-$route['order/search'] = "Shopify_order/orders_search";
 
 $route['login'] = 'login';
 $route['verify/(:any)']                = "login/verify_otp/$1";

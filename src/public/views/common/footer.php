@@ -5,7 +5,11 @@
 
 <?php
 $currentPage = basename($_SERVER['REQUEST_URI']);
-if ($currentPage !== "login" && $currentPage !== "register") {
+$path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH); // Lấy phần đường dẫn của URL
+$parts = explode('/', $path); // Tách đường dẫn thành các phần dựa trên ký tự '/'
+$verify = $parts[1]; // Lấy phần tử thứ 2
+
+if ($currentPage !== "login" && $currentPage !== "register" && $verify != "verify") {
 	$this->load->view("partials/footer");
 }
 ?>
