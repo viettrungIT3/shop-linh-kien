@@ -21,19 +21,6 @@ class Theme_model extends MY_Model {
 
         ),  // end of default assets load
 
-        "default_production" => array(
-
-            "css" => array(
-                ["path"      => "https://cdnjs.cloudflare.com/ajax/libs/ajax-bootstrap-select/1.4.4/css/ajax-bootstrap-select.min.css", "media"     => "screen"]
-            ),
-
-            "js" => [
-                "/public/theme/js/core.js",
-                "https://kit.fontawesome.com/fbf7b37366.js",
-                "/public/theme/js/downstream.min.js"
-            ]
-
-        ),  // end of production load
     );
 
 

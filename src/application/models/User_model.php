@@ -142,15 +142,11 @@ class User_model extends MY_Model
 		$this->load->model("Otp_model", "otp");
 
 		$otp_number = $this->misc->randomNumber(6);
-		mysqli_next_result( $this->db->conn_id );
 
 		$res = $this->otp->create([
 			"input_user_id" => $the_user->id,
 			"input_otp_hash" => $otp_number
 		]);
-		
-
-		// var_dump($res); die;
 
 		if (isset($res['status']) && $res['status']) {
 			$content_otp = "<p>Hi $the_user->first_name  ! </p>

@@ -35,22 +35,9 @@ class DataTableRow extends Base{
         Object.keys(keys_mapping).forEach(s => {
             let td = document.createElement("td");
             switch(s){
-                case "phone":
-                case "cell_phone":
-                case "home_phone":
-                case "phone_number":
-                case "phone_number_called":
-                    td.innerHTML = `${this.format_phone(the_data[s] || "")}`;
-                    break;
-                case "duration":
-                    td.innerHTML = `${this.format_duration(the_data[s] || "")}`;
-                    break;
-                case "record_content":
+                case "order_number":
                     td.innerHTML = `
-                        <audio controls="controls" class="record" preload="none">
-                            <source src="${the_data[s] || ""}">
-                            <a href="${the_data[s]}">Unsupported Browsers &raquo; Download Audio</a>
-                        </audio>
+                        <a href="https://greenwellfarms-dev2.myshopify.com/admin/orders/${the_data[s]}" class="link_to_order" target="_blank">${the_data[s]}</a>
                     `;
                 break;
                 default: 
