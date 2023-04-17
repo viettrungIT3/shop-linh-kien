@@ -132,7 +132,7 @@ class Login extends MY_Controller
 		$sg_api_key = $_ENV['SG_API_KEY'];
 
 		// sendgrid template id
-		$sg_id_template = $_ENV['SG_ID_TEMPLATE_FORGET_PASSWORD'];
+		$sg_id_template = $_ENV['SG_ID_TEMPLATE'];
 
 		// sendgrid api url
 		$sp_api_url = "https://api.sendgrid.com/v3/mail/send";
