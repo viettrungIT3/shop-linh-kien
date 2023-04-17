@@ -538,18 +538,3 @@ $config['allowed_origins'] = [
     '127.0.0.1'
 ];
 
-
-// configuration for shopify
-$config["shopify"] = array(
-    "ShopUrl"           => $_ENV['SHOPIFY_SHOP_URL'],
-    "ApiKey"            => $_ENV['SHOPIFY_API_KEY'],
-    "Password"          => $_ENV['SHOPIFY_ADMIN_ACCESS_TOKEN'],
-    "ApiVersion"        => $_ENV['SHOPIFY_API_VERSION']
-);
-
-// configuration for authorize.net
-$config["authorizenet"] = array(
-	"ApiLoginId"		=> $_ENV['AUTHNET_LOGIN_ID'],
-	"TransactionKey"	=> $_ENV['AUTHNET_TRANSACTION_KEY']
-);
-
