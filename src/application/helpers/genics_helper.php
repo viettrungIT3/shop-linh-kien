@@ -141,7 +141,7 @@ endif;
 if(!function_exists("get_script_uri")):
     function get_script_uri($the_path = NULL){
         if(NULL === $the_path || empty($the_path)) return base_url("/public/theme/js");
-        $the_path = "{$the_path}.js?r=" . APP_VERSION . "_" . ASSETS_VERSION;
+        $the_path = "{$the_path}.js";
         return base_url("public/theme/js/{$the_path}");
     }
 endif;
@@ -153,7 +153,7 @@ if(!function_exists("get_media_uri")):
 
         $file_name = $the_path;
 
-        $file_path = "img/{$file_name}";
+        $file_path = "images/{$file_name}";
 
         $the_file =  ASSETS_PATH . $file_path;
 
@@ -171,7 +171,7 @@ if(!function_exists("get_media_path")):
         if(NULL  === $the_path) return NULL;
         $file_name = $the_path;
 
-        $file_path = "img/{$file_name}";
+        $file_path = "images/{$file_name}";
         $the_file =  ASSETS_PATH . $file_path;
 
         if(!file_exists($the_file)) return NULL;
