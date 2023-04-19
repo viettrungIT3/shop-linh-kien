@@ -17,8 +17,8 @@
 						<?php if (isset($params['user'])) { ?>
 							<button type="button" class="btn btn-outline-danger"><a href="/logout">Đăng xuất</a></button>
 						<?php } else { ?>
-							<button type="button" class="btn btn-outline-primary"><a href="/register">Đăng ký</a></button>
-							<button type="button" class="btn btn-outline-primary"><a href="/login">Đăng nhập</a></button>
+							<button type="button" class="btn btn-outline-primary"><a href="/register">Register</a></button>
+							<button type="button" class="btn btn-outline-primary"><a href="/login">Log in</a></button>
 						<?php } ?>
 					</div>
 

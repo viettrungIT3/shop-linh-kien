@@ -17,7 +17,7 @@ class Dashboard extends MY_Controller{
         ->set("data_source", "")
 		->set_full_layout(TRUE)
 		->set_body_class("dashboard-listing")
-		->set_page_title("dashboard_listing")
+		->set_page_title("Welcome")
 		->set_main_template("index")
 		->render();
     }
