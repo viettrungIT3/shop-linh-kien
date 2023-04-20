@@ -211,7 +211,7 @@ class User_model extends MY_Model
 	{
 
 
-		return $this->session->userdata(self::KEY_LOGGED_IN) === '1';
+		var_dump( $this->session->userdata(self::KEY_LOGGED_IN) === '1'); die();
 	} // end of function is_authenticated
 
 
@@ -228,13 +228,13 @@ class User_model extends MY_Model
 		if (!$this->is_authenticated()) return NULL;
 
 		return array(
-
 			"user" => $this->session->userdata("user"),
 			"first_name" => $this->session->userdata("first_name"),
 			"last_name" => $this->session->userdata("last_name"),
 			"login" => $this->session->userdata("login"),
 			"id"    => $this->session->userdata("id"),
-			"type"    => $this->session->userdata("type")
+			"status"    => $this->session->userdata("status"),
+			"role_id"    => $this->session->userdata("role_id")
 		); //
 
 	} //

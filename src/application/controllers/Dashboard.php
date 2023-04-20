@@ -80,6 +80,10 @@ class Dashboard extends MY_Controller{
 
     public function admin(){
 		$user = $this->user->get_detail();
+		// if ( $user ) {
+		// 	# code...
+		// }
+
 		var_dump($user); die();
 		
 		return $this
