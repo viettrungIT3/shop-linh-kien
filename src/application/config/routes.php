@@ -67,3 +67,10 @@ $route['reset-password-success']        = "page/reset_password_success";
 //logout
 $route['logout']              = "login/logout";
 $route['logout-due-to-inactivity']  = "login/activity_logout";
+
+// single-product
+$route['single-product']  = "dashboard/single_product";
+$route['shop']  = "dashboard/shop";
+$route['checkout']  = "dashboard/checkout";
+$route['cart']  = "dashboard/cart";
+$route['admin']  = "dashboard/admin";

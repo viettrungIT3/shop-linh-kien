@@ -1,27 +1,21 @@
-<style id="css-responsive">
-    <?= load_css("style"); ?>
-</style>
-<style id="css-owl-carousel">
-    <?= load_css("owl.carousel"); ?>
-</style>
-<style id="css-responsive">
-    <?= load_css("responsive"); ?>
-</style>
+
 
 <style>
     .slide-one {
-	background-image: url("<?php echo (get_media_uri('slide-1.jpg'));?>");
+        background-image: url("<?php echo (get_media_uri('slide-1.jpg')); ?>");
     }
+
     .slide-two {
-        background-image: url("<?php echo (get_media_uri('slide-2.jpg'));?>");
+        background-image: url("<?php echo (get_media_uri('slide-2.jpg')); ?>");
     }
+
     .slide-three {
-        background-image: url("<?php echo (get_media_uri('slide-3.jpg'));?>");
+        background-image: url("<?php echo (get_media_uri('slide-3.jpg')); ?>");
     }
 
     .product-big-title-area {
-        background: url("<?php echo (get_media_uri('crossword.png'));?>) repeat scroll 0 0 #1ABC9C;
-    } 
+        background: url("<?php echo (get_media_uri('crossword.png')); ?>") repeat scroll 0 0 #1ABC9C;
+    }
 </style>
 
 <div class="wrapper main-page-wrapper">
@@ -159,11 +153,11 @@
                                         <img src="<?php echo (get_media_uri('product-1.jpg')); ?>" alt="">
                                         <div class="product-hover">
                                             <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                            <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                            <a href="single-product" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                         </div>
                                     </div>
 
-                                    <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
+                                    <h2><a href="single-product">Sony Smart TV - 2015</a></h2>
 
                                     <div class="product-carousel-price">
                                         <ins>$700.00</ins> <del>$800.00</del>
@@ -174,11 +168,11 @@
                                         <img src="<?php echo (get_media_uri('product-2.jpg')); ?>" alt="">
                                         <div class="product-hover">
                                             <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                            <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                            <a href="single-product" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                         </div>
                                     </div>
 
-                                    <h2><a href="single-product.html">Apple new mac book 2015 March :P</a></h2>
+                                    <h2><a href="single-product">Apple new mac book 2015 March :P</a></h2>
                                     <div class="product-carousel-price">
                                         <ins>$899.00</ins> <del>$999.00</del>
                                     </div>
@@ -188,11 +182,11 @@
                                         <img src="<?php echo (get_media_uri('product-3.jpg')); ?>" alt="">
                                         <div class="product-hover">
                                             <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                            <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                            <a href="single-product" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                         </div>
                                     </div>
 
-                                    <h2><a href="single-product.html">Apple new i phone 6</a></h2>
+                                    <h2><a href="single-product">Apple new i phone 6</a></h2>
 
                                     <div class="product-carousel-price">
                                         <ins>$400.00</ins> <del>$425.00</del>
@@ -203,11 +197,11 @@
                                         <img src="<?php echo (get_media_uri('product-4.jpg')); ?>" alt="">
                                         <div class="product-hover">
                                             <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                            <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                            <a href="single-product" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                         </div>
                                     </div>
 
-                                    <h2><a href="single-product.html">Sony playstation microsoft</a></h2>
+                                    <h2><a href="single-product">Sony playstation microsoft</a></h2>
 
                                     <div class="product-carousel-price">
                                         <ins>$200.00</ins> <del>$225.00</del>
@@ -218,11 +212,11 @@
                                         <img src="<?php echo (get_media_uri('product-5.jpg')); ?>" alt="">
                                         <div class="product-hover">
                                             <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                            <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                            <a href="single-product" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                         </div>
                                     </div>
 
-                                    <h2><a href="single-product.html">Sony Smart Air Condtion</a></h2>
+                                    <h2><a href="single-product">Sony Smart Air Condtion</a></h2>
 
                                     <div class="product-carousel-price">
                                         <ins>$1200.00</ins> <del>$1355.00</del>
@@ -233,11 +227,11 @@
                                         <img src="<?php echo (get_media_uri('product-6.jpg')); ?>" alt="">
                                         <div class="product-hover">
                                             <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                            <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                            <a href="single-product" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                         </div>
                                     </div>
 
-                                    <h2><a href="single-product.html">Samsung gallaxy note 4</a></h2>
+                                    <h2><a href="single-product">Samsung gallaxy note 4</a></h2>
 
                                     <div class="product-carousel-price">
                                         <ins>$400.00</ins>
@@ -282,8 +276,8 @@
                             <h2 class="product-wid-title">Top Sellers</h2>
                             <a href="" class="wid-view-more">View All</a>
                             <div class="single-wid-product">
-                                <a href="single-product.html"><img src="<?php echo (get_media_uri('product-thumb-1.jpg')); ?>" alt="" class="product-thumb"></a>
-                                <h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>
+                                <a href="single-product"><img src="<?php echo (get_media_uri('product-thumb-1.jpg')); ?>" alt="" class="product-thumb"></a>
+                                <h2><a href="single-product">Sony Smart TV - 2015</a></h2>
                                 <div class="product-wid-rating">
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
@@ -296,8 +290,8 @@
                                 </div>
                             </div>
                             <div class="single-wid-product">
-                                <a href="single-product.html"><img src="<?php echo (get_media_uri('product-thumb-2.jpg')); ?>" alt="" class="product-thumb"></a>
-                                <h2><a href="single-product.html">Apple new mac book 2015</a></h2>
+                                <a href="single-product"><img src="<?php echo (get_media_uri('product-thumb-2.jpg')); ?>" alt="" class="product-thumb"></a>
+                                <h2><a href="single-product">Apple new mac book 2015</a></h2>
                                 <div class="product-wid-rating">
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
@@ -310,8 +304,8 @@
                                 </div>
                             </div>
                             <div class="single-wid-product">
-                                <a href="single-product.html"><img src="<?php echo (get_media_uri('product-thumb-3.jpg')); ?>" alt="" class="product-thumb"></a>
-                                <h2><a href="single-product.html">Apple new i phone 6</a></h2>
+                                <a href="single-product"><img src="<?php echo (get_media_uri('product-thumb-3.jpg')); ?>" alt="" class="product-thumb"></a>
+                                <h2><a href="single-product">Apple new i phone 6</a></h2>
                                 <div class="product-wid-rating">
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
@@ -330,8 +324,8 @@
                             <h2 class="product-wid-title">Recently Viewed</h2>
                             <a href="#" class="wid-view-more">View All</a>
                             <div class="single-wid-product">
-                                <a href="single-product.html"><img src="<?php echo (get_media_uri('product-thumb-4.jpg')); ?>" alt="" class="product-thumb"></a>
-                                <h2><a href="single-product.html">Sony playstation microsoft</a></h2>
+                                <a href="single-product"><img src="<?php echo (get_media_uri('product-thumb-4.jpg')); ?>" alt="" class="product-thumb"></a>
+                                <h2><a href="single-product">Sony playstation microsoft</a></h2>
                                 <div class="product-wid-rating">
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
@@ -344,8 +338,8 @@
                                 </div>
                             </div>
                             <div class="single-wid-product">
-                                <a href="single-product.html"><img src="<?php echo (get_media_uri('product-thumb-1.jpg')); ?>" alt="" class="product-thumb"></a>
-                                <h2><a href="single-product.html">Sony Smart Air Condtion</a></h2>
+                                <a href="single-product"><img src="<?php echo (get_media_uri('product-thumb-1.jpg')); ?>" alt="" class="product-thumb"></a>
+                                <h2><a href="single-product">Sony Smart Air Condtion</a></h2>
                                 <div class="product-wid-rating">
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
@@ -358,8 +352,8 @@
                                 </div>
                             </div>
                             <div class="single-wid-product">
-                                <a href="single-product.html"><img src="<?php echo (get_media_uri('product-thumb-2.jpg')); ?>" alt="" class="product-thumb"></a>
-                                <h2><a href="single-product.html">Samsung gallaxy note 4</a></h2>
+                                <a href="single-product"><img src="<?php echo (get_media_uri('product-thumb-2.jpg')); ?>" alt="" class="product-thumb"></a>
+                                <h2><a href="single-product">Samsung gallaxy note 4</a></h2>
                                 <div class="product-wid-rating">
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
@@ -378,8 +372,8 @@
                             <h2 class="product-wid-title">Top New</h2>
                             <a href="#" class="wid-view-more">View All</a>
                             <div class="single-wid-product">
-                                <a href="single-product.html"><img src="<?php echo (get_media_uri('product-thumb-3.jpg')); ?>" alt="" class="product-thumb"></a>
-                                <h2><a href="single-product.html">Apple new i phone 6</a></h2>
+                                <a href="single-product"><img src="<?php echo (get_media_uri('product-thumb-3.jpg')); ?>" alt="" class="product-thumb"></a>
+                                <h2><a href="single-product">Apple new i phone 6</a></h2>
                                 <div class="product-wid-rating">
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
@@ -392,8 +386,8 @@
                                 </div>
                             </div>
                             <div class="single-wid-product">
-                                <a href="single-product.html"><img src="<?php echo (get_media_uri('product-thumb-4.jpg')); ?>" alt="" class="product-thumb"></a>
-                                <h2><a href="single-product.html">Samsung gallaxy note 4</a></h2>
+                                <a href="single-product"><img src="<?php echo (get_media_uri('product-thumb-4.jpg')); ?>" alt="" class="product-thumb"></a>
+                                <h2><a href="single-product">Samsung gallaxy note 4</a></h2>
                                 <div class="product-wid-rating">
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
@@ -406,8 +400,8 @@
                                 </div>
                             </div>
                             <div class="single-wid-product">
-                                <a href="single-product.html"><img src="<?php echo (get_media_uri('product-thumb-1.jpg')); ?>" alt="" class="product-thumb"></a>
-                                <h2><a href="single-product.html">Sony playstation microsoft</a></h2>
+                                <a href="single-product"><img src="<?php echo (get_media_uri('product-thumb-1.jpg')); ?>" alt="" class="product-thumb"></a>
+                                <h2><a href="single-product">Sony playstation microsoft</a></h2>
                                 <div class="product-wid-rating">
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>

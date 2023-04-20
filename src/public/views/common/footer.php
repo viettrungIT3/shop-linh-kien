@@ -21,6 +21,10 @@ if ($currentPage !== "login" && $currentPage !== "register" && $currentPage !== 
 <?php echo $scripts; ?>
 
 <!-- <script type="module" src="<?= get_script_uri('controllers/inactivity') ?>"> </script> -->
+<script type="module" src="<?= get_script_uri('jquery.easing.1.3.min') ?>"> </script>
+<script type="module" src="<?= get_script_uri('jquery.sticky') ?>"> </script>
+<script type="module" src="<?= get_script_uri('owl.carousel.min') ?>"> </script>
+<script type="module" src="<?= get_script_uri('main') ?>"> </script>
 
 </div>
 
