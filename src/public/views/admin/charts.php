@@ -18,7 +18,7 @@
             <?= load_css("icons.min") ?>
         </style>
         <style id="app-stylesheet">
-            <?= load_css("app.min") ?>
+            <?= load_css("admin/app.min") ?>
         </style>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js" integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.2.96/css/materialdesignicons.min.css" integrity="sha512-LX0YV/MWBEn2dwXCYgQHrpa9HJkwB+S+bnBpifSOTO1No27TqNMKYoAn6ff2FBh03THAzAiiCwQ+aPX+/Qt/Ow==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -38,22 +38,22 @@
 
                     <li class="dropdown d-none d-lg-block">
                         <a class="nav-link dropdown-toggle mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                            <img src="public\theme\images\admin\flags\us.jpg" alt="user-image" class="mr-2" height="12"> <span class="align-middle">English <i class="fas fa-chevron-down"></i> </span>
+                            <img src="<?php echo (get_media_uri('admin/flags/us.jpg')); ?>" alt="user-image" class="mr-2" height="12"> <span class="align-middle">English <i class="fas fa-chevron-down"></i> </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
                              <!-- item-->
                              <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <img src="public\theme\images\admin\flags\spain.jpg" alt="user-image" class="mr-2" height="12"> <span class="align-middle">Spanish</span>
+                                    <img src="<?php echo (get_media_uri('admin/flags/spain.jpg')); ?>" alt="user-image" class="mr-2" height="12"> <span class="align-middle">Spanish</span>
                              </a>
 
                              <!-- item-->
                              <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <img src="public\theme\images\admin\flags\italy.jpg" alt="user-image" class="mr-2" height="12"> <span class="align-middle">Italian</span>
+                                    <img src="<?php echo (get_media_uri('admin/flags/italy.jpg')); ?>" alt="user-image" class="mr-2" height="12"> <span class="align-middle">Italian</span>
                              </a>
 
                             <!-- item-->
                             <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <img src="public\theme\images\admin\flags\french.jpg" alt="user-image" class="mr-2" height="12"> <span class="align-middle">French</span>
+                                <img src="<?php echo (get_media_uri('admin/flags/french.jpg')); ?>" alt="user-image" class="mr-2" height="12"> <span class="align-middle">French</span>
                             </a>
 
                             <!-- item-->
@@ -129,7 +129,7 @@
 
                     <li class="dropdown notification-list">
                         <a class="nav-link dropdown-toggle nav-user mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                            <img src="public\theme\images\admin\users\avatar-1.jpg" alt="user-image" class="rounded-circle">
+                            <img src="<?php echo (get_media_uri('admin\users\avatar-1.jpg')); ?>" alt="user-image" class="rounded-circle">
                             <span class="pro-user-name ml-1">
                                     Maxine K  <i class="fas fa-chevron-down"></i> 
                             </span>
@@ -180,7 +180,7 @@
 
                 <!-- LOGO -->
                 <div class="logo-box">
-                    <a href="index.html" class="logo text-center logo-dark">
+                    <a href="" class="logo text-center logo-dark">
                         <span class="logo-lg">
                             <img src="public\theme\images\admin\logo-dark.png" alt="" height="26">
                             <!-- <span class="logo-lg-text-dark">Simple</span> -->
@@ -191,7 +191,7 @@
                         </span>
                     </a>
 
-                    <a href="index.html" class="logo text-center logo-light">
+                    <a href="" class="logo text-center logo-light">
                         <span class="logo-lg">
                             <img src="public\theme\images\admin\logo-light.png" alt="" height="26">
                             <!-- <span class="logo-lg-text-light">Simple</span> -->
@@ -206,7 +206,7 @@
                 <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
                     <li>
                         <button class="button-menu-mobile">
-                            <i class="fas fa-menu"></i>
+                            <i class="fas fa-bars"></i>
                         </button>
                     </li>
         
@@ -232,7 +232,7 @@
 
                 <div class="user-box">
                         <div class="float-left">
-                            <img src="public\theme\images\admin\users\avatar-1.jpg" alt="" class="avatar-md rounded-circle">
+                            <img src="<?php echo (get_media_uri('admin\users\avatar-1.jpg')); ?>" alt="" class="avatar-md rounded-circle">
                         </div>
                         <div class="user-info">
                             <a href="#">Stanley Jones</a>
@@ -248,7 +248,7 @@
                     <li class="menu-title">Navigation</li>
     
                     <li>
-                        <a href="index.html">
+                        <a href="">
                             <i class="fas fa-home"></i>
                             <span> Dashboard </span>
                         </a>
@@ -688,7 +688,7 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-md-12">
-                                    2017 - 2020 &copy; Simple theme by <a href="">Coderthemes</a>
+                                    2023 &copy; <a href="https://github.com/viettrungIT3">viettrungIT3</a>
                                 </div>
                             </div>
                         </div>
@@ -751,36 +751,34 @@
         <!-- Right bar overlay-->
         <div class="rightbar-overlay"></div>
 
-        <a href="javascript:void(0);" class="right-bar-toggle demos-show-btn">
-            <i class="fas fa-settings-outline mdi-spin"></i> &nbsp;Choose Demos
-        </a>
+        
 
         <!-- Vendor js -->
-        <script src="assets\js\vendor.min.js"></script>
+        <script src="public\theme\js\vendor.min.js"></script>
 
-        <script src="assets\libs\morris-js\morris.min.js"></script>
-        <script src="assets\libs\raphael\raphael.min.js"></script>
+        <script src="public\theme\libs\morris-js\morris.min.js"></script>
+        <script src="public\theme\libs\raphael\raphael.min.js"></script>
 
-        <script src="assets\js\pages\morris.init.js"></script>
+        <script src="public\theme\js\pages\morris.init.js"></script>
 
-        <script src="assets\libs\flot-charts\jquery.flot.js"></script>
-        <script src="assets\libs\flot-charts\jquery.flot.time.js"></script>
-        <script src="assets\libs\flot-charts\jquery.flot.tooltip.min.js"></script>
-        <script src="assets\libs\flot-charts\jquery.flot.resize.js"></script>
-        <script src="assets\libs\flot-charts\jquery.flot.pie.js"></script>
-        <script src="assets\libs\flot-charts\jquery.flot.selection.js"></script>
-        <script src="assets\libs\flot-charts\jquery.flot.stack.js"></script>
-        <script src="assets\libs\flot-charts\jquery.flot.orderBars.js"></script>
-        <script src="assets\libs\flot-charts\jquery.flot.crosshair.js"></script>
-        <script src="assets\libs\flot-charts\jquery.flot.axislabels.js"></script>
+        <script src="public\theme\libs\flot-charts\jquery.flot.js"></script>
+        <script src="public\theme\libs\flot-charts\jquery.flot.time.js"></script>
+        <script src="public\theme\libs\flot-charts\jquery.flot.tooltip.min.js"></script>
+        <script src="public\theme\libs\flot-charts\jquery.flot.resize.js"></script>
+        <script src="public\theme\libs\flot-charts\jquery.flot.pie.js"></script>
+        <script src="public\theme\libs\flot-charts\jquery.flot.selection.js"></script>
+        <script src="public\theme\libs\flot-charts\jquery.flot.stack.js"></script>
+        <script src="public\theme\libs\flot-charts\jquery.flot.orderBars.js"></script>
+        <script src="public\theme\libs\flot-charts\jquery.flot.crosshair.js"></script>
+        <script src="public\theme\libs\flot-charts\jquery.flot.axislabels.js"></script>
 
         <!-- KNOB JS -->
-        <script src="assets\libs\jquery-knob\jquery.knob.min.js"></script>
+        <script src="public\theme\libs\jquery-knob\jquery.knob.min.js"></script>
 
-        <script src="assets\js\pages\flot.init.js"></script>
+        <script src="public\theme\js\pages\flot.init.js"></script>
 
         <!-- App js -->
-        <script src="assets\js\app.min.js"></script>
+        <script src="public\theme\js\app.min.js"></script>
 
     </body>
 
@@ -805,7 +803,7 @@
             <?= load_css("icons.min") ?>
         </style>
         <style id="app-stylesheet">
-            <?= load_css("app.min") ?>
+            <?= load_css("admin/app.min") ?>
         </style>
 
     </head>
@@ -822,22 +820,22 @@
 
                     <li class="dropdown d-none d-lg-block">
                         <a class="nav-link dropdown-toggle mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                            <img src="public\theme\images\admin\flags\us.jpg" alt="user-image" class="mr-2" height="12"> <span class="align-middle">English <i class="fas fa-chevron-down"></i> </span>
+                            <img src="<?php echo (get_media_uri('admin/flags/us.jpg')); ?>" alt="user-image" class="mr-2" height="12"> <span class="align-middle">English <i class="fas fa-chevron-down"></i> </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
                              <!-- item-->
                              <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <img src="public\theme\images\admin\flags\spain.jpg" alt="user-image" class="mr-2" height="12"> <span class="align-middle">Spanish</span>
+                                    <img src="<?php echo (get_media_uri('admin/flags/spain.jpg')); ?>" alt="user-image" class="mr-2" height="12"> <span class="align-middle">Spanish</span>
                              </a>
 
                              <!-- item-->
                              <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <img src="public\theme\images\admin\flags\italy.jpg" alt="user-image" class="mr-2" height="12"> <span class="align-middle">Italian</span>
+                                    <img src="<?php echo (get_media_uri('admin/flags/italy.jpg')); ?>" alt="user-image" class="mr-2" height="12"> <span class="align-middle">Italian</span>
                              </a>
 
                             <!-- item-->
                             <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <img src="public\theme\images\admin\flags\french.jpg" alt="user-image" class="mr-2" height="12"> <span class="align-middle">French</span>
+                                <img src="<?php echo (get_media_uri('admin/flags/french.jpg')); ?>" alt="user-image" class="mr-2" height="12"> <span class="align-middle">French</span>
                             </a>
 
                             <!-- item-->
@@ -913,7 +911,7 @@
 
                     <li class="dropdown notification-list">
                         <a class="nav-link dropdown-toggle nav-user mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                            <img src="public\theme\images\admin\users\avatar-1.jpg" alt="user-image" class="rounded-circle">
+                            <img src="<?php echo (get_media_uri('admin\users\avatar-1.jpg')); ?>" alt="user-image" class="rounded-circle">
                             <span class="pro-user-name ml-1">
                                     Maxine K  <i class="fas fa-chevron-down"></i> 
                             </span>
@@ -964,7 +962,7 @@
 
                 <!-- LOGO -->
                 <div class="logo-box">
-                    <a href="index.html" class="logo text-center logo-dark">
+                    <a href="" class="logo text-center logo-dark">
                         <span class="logo-lg">
                             <img src="public\theme\images\admin\logo-dark.png" alt="" height="26">
                             <!-- <span class="logo-lg-text-dark">Simple</span> -->
@@ -975,7 +973,7 @@
                         </span>
                     </a>
 
-                    <a href="index.html" class="logo text-center logo-light">
+                    <a href="" class="logo text-center logo-light">
                         <span class="logo-lg">
                             <img src="public\theme\images\admin\logo-light.png" alt="" height="26">
                             <!-- <span class="logo-lg-text-light">Simple</span> -->
@@ -990,7 +988,7 @@
                 <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
                     <li>
                         <button class="button-menu-mobile">
-                            <i class="fas fa-menu"></i>
+                            <i class="fas fa-bars"></i>
                         </button>
                     </li>
         
@@ -1016,7 +1014,7 @@
 
                 <div class="user-box">
                         <div class="float-left">
-                            <img src="public\theme\images\admin\users\avatar-1.jpg" alt="" class="avatar-md rounded-circle">
+                            <img src="<?php echo (get_media_uri('admin\users\avatar-1.jpg')); ?>" alt="" class="avatar-md rounded-circle">
                         </div>
                         <div class="user-info">
                             <a href="#">Stanley Jones</a>
@@ -1032,7 +1030,7 @@
                     <li class="menu-title">Navigation</li>
     
                     <li>
-                        <a href="index.html">
+                        <a href="">
                             <i class="fas fa-home"></i>
                             <span> Dashboard </span>
                         </a>
@@ -1472,7 +1470,7 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-md-12">
-                                    2017 - 2020 &copy; Simple theme by <a href="">Coderthemes</a>
+                                    2023 &copy; <a href="https://github.com/viettrungIT3">viettrungIT3</a>
                                 </div>
                             </div>
                         </div>
@@ -1535,36 +1533,34 @@
         <!-- Right bar overlay-->
         <div class="rightbar-overlay"></div>
 
-        <a href="javascript:void(0);" class="right-bar-toggle demos-show-btn">
-            <i class="fas fa-settings-outline mdi-spin"></i> &nbsp;Choose Demos
-        </a>
+        
 
         <!-- Vendor js -->
-        <script src="assets\js\vendor.min.js"></script>
+        <script src="public\theme\js\vendor.min.js"></script>
 
-        <script src="assets\libs\morris-js\morris.min.js"></script>
-        <script src="assets\libs\raphael\raphael.min.js"></script>
+        <script src="public\theme\libs\morris-js\morris.min.js"></script>
+        <script src="public\theme\libs\raphael\raphael.min.js"></script>
 
-        <script src="assets\js\pages\morris.init.js"></script>
+        <script src="public\theme\js\pages\morris.init.js"></script>
 
-        <script src="assets\libs\flot-charts\jquery.flot.js"></script>
-        <script src="assets\libs\flot-charts\jquery.flot.time.js"></script>
-        <script src="assets\libs\flot-charts\jquery.flot.tooltip.min.js"></script>
-        <script src="assets\libs\flot-charts\jquery.flot.resize.js"></script>
-        <script src="assets\libs\flot-charts\jquery.flot.pie.js"></script>
-        <script src="assets\libs\flot-charts\jquery.flot.selection.js"></script>
-        <script src="assets\libs\flot-charts\jquery.flot.stack.js"></script>
-        <script src="assets\libs\flot-charts\jquery.flot.orderBars.js"></script>
-        <script src="assets\libs\flot-charts\jquery.flot.crosshair.js"></script>
-        <script src="assets\libs\flot-charts\jquery.flot.axislabels.js"></script>
+        <script src="public\theme\libs\flot-charts\jquery.flot.js"></script>
+        <script src="public\theme\libs\flot-charts\jquery.flot.time.js"></script>
+        <script src="public\theme\libs\flot-charts\jquery.flot.tooltip.min.js"></script>
+        <script src="public\theme\libs\flot-charts\jquery.flot.resize.js"></script>
+        <script src="public\theme\libs\flot-charts\jquery.flot.pie.js"></script>
+        <script src="public\theme\libs\flot-charts\jquery.flot.selection.js"></script>
+        <script src="public\theme\libs\flot-charts\jquery.flot.stack.js"></script>
+        <script src="public\theme\libs\flot-charts\jquery.flot.orderBars.js"></script>
+        <script src="public\theme\libs\flot-charts\jquery.flot.crosshair.js"></script>
+        <script src="public\theme\libs\flot-charts\jquery.flot.axislabels.js"></script>
 
         <!-- KNOB JS -->
-        <script src="assets\libs\jquery-knob\jquery.knob.min.js"></script>
+        <script src="public\theme\libs\jquery-knob\jquery.knob.min.js"></script>
 
-        <script src="assets\js\pages\flot.init.js"></script>
+        <script src="public\theme\js\pages\flot.init.js"></script>
 
         <!-- App js -->
-        <script src="assets\js\app.min.js"></script>
+        <script src="public\theme\js\app.min.js"></script>
 
     </body>
 

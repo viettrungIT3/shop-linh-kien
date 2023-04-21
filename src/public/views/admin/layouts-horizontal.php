@@ -18,7 +18,7 @@
             <?= load_css("icons.min") ?>
         </style>
         <style id="app-stylesheet">
-            <?= load_css("app.min") ?>
+            <?= load_css("admin/app.min") ?>
         </style>
 
     </head>
@@ -49,22 +49,22 @@
 
                             <li class="dropdown d-none d-lg-block">
                                 <a class="nav-link dropdown-toggle mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                    <img src="public\theme\images\admin\flags\us.jpg" alt="user-image" height="12"> <span class="align-middle d-none d-xl-inline-block ml-2">English <i class="fas fa-chevron-down"></i> </span>
+                                    <img src="<?php echo (get_media_uri('admin/flags/us.jpg')); ?>" alt="user-image" height="12"> <span class="align-middle d-none d-xl-inline-block ml-2">English <i class="fas fa-chevron-down"></i> </span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <!-- item-->
                                     <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                        <img src="public\theme\images\admin\flags\spain.jpg" alt="user-image" class="mr-2" height="12"> <span class="align-middle">Spanish</span>
+                                        <img src="<?php echo (get_media_uri('admin/flags/spain.jpg')); ?>" alt="user-image" class="mr-2" height="12"> <span class="align-middle">Spanish</span>
                                     </a>
 
                                     <!-- item-->
                                     <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                        <img src="public\theme\images\admin\flags\italy.jpg" alt="user-image" class="mr-2" height="12"> <span class="align-middle">Italian</span>
+                                        <img src="<?php echo (get_media_uri('admin/flags/italy.jpg')); ?>" alt="user-image" class="mr-2" height="12"> <span class="align-middle">Italian</span>
                                     </a>
 
                                     <!-- item-->
                                     <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                        <img src="public\theme\images\admin\flags\french.jpg" alt="user-image" class="mr-2" height="12"> <span class="align-middle">French</span>
+                                        <img src="<?php echo (get_media_uri('admin/flags/french.jpg')); ?>" alt="user-image" class="mr-2" height="12"> <span class="align-middle">French</span>
                                     </a>
 
                                     <!-- item-->
@@ -140,7 +140,7 @@
 
                             <li class="dropdown notification-list">
                                 <a class="nav-link dropdown-toggle nav-user mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                    <img src="public\theme\images\admin\users\avatar-1.jpg" alt="user-image" class="rounded-circle">
+                                    <img src="<?php echo (get_media_uri('admin\users\avatar-1.jpg')); ?>" alt="user-image" class="rounded-circle">
                                     <span class="pro-user-name d-none d-xl-inline-block ml-2">
                                                             Maxine K  <i class="fas fa-chevron-down"></i> 
                                                     </span>
@@ -190,7 +190,7 @@
 
                         <!-- LOGO -->
                         <div class="logo-box">
-                            <a href="index.html" class="logo text-center">
+                            <a href="" class="logo text-center">
                                 <span class="logo-lg">
                                         <img src="public\theme\images\admin\logo-light.png" alt="" height="26">
                                         <!-- <span class="logo-lg-text-light">Simple</span> -->
@@ -207,7 +207,7 @@
                             <ul class="navigation-menu">
 
                                 <li class="has-submenu">
-                                    <a href="index.html">
+                                    <a href="">
                                         <i class="fas fa-home"></i>Dashboard
                                     </a>
                                 </li>
@@ -458,7 +458,7 @@
                                                             <label for="checkbox1"></label>
                                                         </div>
 
-                                                        <img src="public\theme\images\admin\users\avatar-1.jpg" alt="contact-img" title="contact-img" class="rounded-circle avatar-sm">
+                                                        <img src="<?php echo (get_media_uri('admin\users\avatar-1.jpg')); ?>" alt="contact-img" title="contact-img" class="rounded-circle avatar-sm">
                                                     </td>
 
                                                     <td>
@@ -613,7 +613,7 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-md-12">
-                                    2017 - 2020 &copy; Simple theme by <a href="">Coderthemes</a>
+                                    2023 &copy; <a href="https://github.com/viettrungIT3">viettrungIT3</a>
                                 </div>
                             </div>
                         </div>
@@ -677,20 +677,18 @@
         <!-- Right bar overlay-->
         <div class="rightbar-overlay"></div>
 
-        <a href="javascript:void(0);" class="right-bar-toggle demos-show-btn">
-            <i class="fas fa-settings-outline mdi-spin"></i> &nbsp;Choose Demos
-        </a>
+        
 
         <!-- Vendor js -->
-        <script src="assets\js\vendor.min.js"></script>
+        <script src="public\theme\js\vendor.min.js"></script>
 
-        <script src="assets\libs\morris-js\morris.min.js"></script>
-        <script src="assets\libs\raphael\raphael.min.js"></script>
+        <script src="public\theme\libs\morris-js\morris.min.js"></script>
+        <script src="public\theme\libs\raphael\raphael.min.js"></script>
 
-        <script src="assets\js\pages\dashboard.init.js"></script>
+        <script src="public\theme\js\pages\dashboard.init.js"></script>
 
         <!-- App js -->
-        <script src="assets\js\app.min.js"></script>
+        <script src="public\theme\js\app.min.js"></script>
 
     </body>
 </html>

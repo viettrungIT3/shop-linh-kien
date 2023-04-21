@@ -23,7 +23,7 @@
             <?= load_css("icons.min") ?>
         </style>
         <style id="app-stylesheet">
-            <?= load_css("app.min") ?>
+            <?= load_css("admin/app.min") ?>
         </style>
 
     </head>
@@ -40,22 +40,22 @@
 
                     <li class="dropdown d-none d-lg-block">
                         <a class="nav-link dropdown-toggle mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                            <img src="public\theme\images\admin\flags\us.jpg" alt="user-image" class="mr-2" height="12"> <span class="align-middle">English <i class="fas fa-chevron-down"></i> </span>
+                            <img src="<?php echo (get_media_uri('admin/flags/us.jpg')); ?>" alt="user-image" class="mr-2" height="12"> <span class="align-middle">English <i class="fas fa-chevron-down"></i> </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
                              <!-- item-->
                              <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <img src="public\theme\images\admin\flags\spain.jpg" alt="user-image" class="mr-2" height="12"> <span class="align-middle">Spanish</span>
+                                    <img src="<?php echo (get_media_uri('admin/flags/spain.jpg')); ?>" alt="user-image" class="mr-2" height="12"> <span class="align-middle">Spanish</span>
                              </a>
 
                              <!-- item-->
                              <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <img src="public\theme\images\admin\flags\italy.jpg" alt="user-image" class="mr-2" height="12"> <span class="align-middle">Italian</span>
+                                    <img src="<?php echo (get_media_uri('admin/flags/italy.jpg')); ?>" alt="user-image" class="mr-2" height="12"> <span class="align-middle">Italian</span>
                              </a>
 
                             <!-- item-->
                             <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <img src="public\theme\images\admin\flags\french.jpg" alt="user-image" class="mr-2" height="12"> <span class="align-middle">French</span>
+                                <img src="<?php echo (get_media_uri('admin/flags/french.jpg')); ?>" alt="user-image" class="mr-2" height="12"> <span class="align-middle">French</span>
                             </a>
 
                             <!-- item-->
@@ -131,7 +131,7 @@
 
                     <li class="dropdown notification-list">
                         <a class="nav-link dropdown-toggle nav-user mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                            <img src="public\theme\images\admin\users\avatar-1.jpg" alt="user-image" class="rounded-circle">
+                            <img src="<?php echo (get_media_uri('admin\users\avatar-1.jpg')); ?>" alt="user-image" class="rounded-circle">
                             <span class="pro-user-name ml-1">
                                     Maxine K  <i class="fas fa-chevron-down"></i> 
                             </span>
@@ -182,7 +182,7 @@
 
                 <!-- LOGO -->
                 <div class="logo-box">
-                    <a href="index.html" class="logo text-center logo-dark">
+                    <a href="" class="logo text-center logo-dark">
                         <span class="logo-lg">
                             <img src="public\theme\images\admin\logo-dark.png" alt="" height="26">
                             <!-- <span class="logo-lg-text-dark">Simple</span> -->
@@ -193,7 +193,7 @@
                         </span>
                     </a>
 
-                    <a href="index.html" class="logo text-center logo-light">
+                    <a href="" class="logo text-center logo-light">
                         <span class="logo-lg">
                             <img src="public\theme\images\admin\logo-light.png" alt="" height="26">
                             <!-- <span class="logo-lg-text-light">Simple</span> -->
@@ -208,7 +208,7 @@
                 <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
                     <li>
                         <button class="button-menu-mobile">
-                            <i class="fas fa-menu"></i>
+                            <i class="fas fa-bars"></i>
                         </button>
                     </li>
         
@@ -234,7 +234,7 @@
 
                 <div class="user-box">
                         <div class="float-left">
-                            <img src="public\theme\images\admin\users\avatar-1.jpg" alt="" class="avatar-md rounded-circle">
+                            <img src="<?php echo (get_media_uri('admin\users\avatar-1.jpg')); ?>" alt="" class="avatar-md rounded-circle">
                         </div>
                         <div class="user-info">
                             <a href="#">Stanley Jones</a>
@@ -250,7 +250,7 @@
                     <li class="menu-title">Navigation</li>
     
                     <li>
-                        <a href="index.html">
+                        <a href="">
                             <i class="fas fa-home"></i>
                             <span> Dashboard </span>
                         </a>
@@ -2846,7 +2846,7 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-md-12">
-                                    2017 - 2020 &copy; Simple theme by <a href="">Coderthemes</a>
+                                    2023 &copy; <a href="https://github.com/viettrungIT3">viettrungIT3</a>
                                 </div>
                             </div>
                         </div>
@@ -2910,37 +2910,35 @@
         <!-- Right bar overlay-->
         <div class="rightbar-overlay"></div>
 
-        <a href="javascript:void(0);" class="right-bar-toggle demos-show-btn">
-            <i class="fas fa-settings-outline mdi-spin"></i> &nbsp;Choose Demos
-        </a>
+        
 
         <!-- Vendor js -->
-        <script src="assets\js\vendor.min.js"></script>
+        <script src="public\theme\js\vendor.min.js"></script>
 
         <!-- Required datatable js -->
-        <script src="assets\libs\datatables\jquery.dataTables.min.js"></script>
-        <script src="assets\libs\datatables\dataTables.bootstrap4.min.js"></script>
+        <script src="public\theme\libs\datatables\jquery.dataTables.min.js"></script>
+        <script src="public\theme\libs\datatables\dataTables.bootstrap4.min.js"></script>
 
         <!-- Buttons examples -->
-        <script src="assets\libs\datatables\dataTables.buttons.min.js"></script>
-        <script src="assets\libs\datatables\buttons.bootstrap4.min.js"></script>
-        <script src="assets\libs\datatables\dataTables.keyTable.min.js"></script>
-        <script src="assets\libs\datatables\dataTables.select.min.js"></script>
-        <script src="assets\libs\jszip\jszip.min.js"></script>
-        <script src="assets\libs\pdfmake\pdfmake.min.js"></script>
-        <script src="assets\libs\pdfmake\vfs_fonts.js"></script>
-        <script src="assets\libs\datatables\buttons.html5.min.js"></script>
-        <script src="assets\libs\datatables\buttons.print.min.js"></script>
+        <script src="public\theme\libs\datatables\dataTables.buttons.min.js"></script>
+        <script src="public\theme\libs\datatables\buttons.bootstrap4.min.js"></script>
+        <script src="public\theme\libs\datatables\dataTables.keyTable.min.js"></script>
+        <script src="public\theme\libs\datatables\dataTables.select.min.js"></script>
+        <script src="public\theme\libs\jszip\jszip.min.js"></script>
+        <script src="public\theme\libs\pdfmake\pdfmake.min.js"></script>
+        <script src="public\theme\libs\pdfmake\vfs_fonts.js"></script>
+        <script src="public\theme\libs\datatables\buttons.html5.min.js"></script>
+        <script src="public\theme\libs\datatables\buttons.print.min.js"></script>
 
         <!-- Responsive examples -->
-        <script src="assets\libs\datatables\dataTables.responsive.min.js"></script>
-        <script src="assets\libs\datatables\responsive.bootstrap4.min.js"></script>
+        <script src="public\theme\libs\datatables\dataTables.responsive.min.js"></script>
+        <script src="public\theme\libs\datatables\responsive.bootstrap4.min.js"></script>
 
         <!-- Datatables init -->
-        <script src="assets\js\pages\datatables.init.js"></script>
+        <script src="public\theme\js\pages\datatables.init.js"></script>
 
         <!-- App js -->
-        <script src="assets\js\app.min.js"></script>
+        <script src="public\theme\js\app.min.js"></script>
 
     </body>
 

@@ -18,7 +18,7 @@
             <?= load_css("icons.min") ?>
         </style>
         <style id="app-stylesheet">
-            <?= load_css("app.min") ?>
+            <?= load_css("admin/app.min") ?>
         </style>
 
     </head>
@@ -31,7 +31,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="text-center mb-4 mt-3">
-                                    <a href="index.html">
+                                    <a href="">
                                         <span><img src="public\theme\images\admin\logo-dark.png" alt="" height="30"></span>
                                     </a>
                                 </div>
@@ -79,10 +79,10 @@
         <!-- end page -->
 
         <!-- Vendor js -->
-        <script src="assets\js\vendor.min.js"></script>
+        <script src="public\theme\js\vendor.min.js"></script>
 
         <!-- App js -->
-        <script src="assets\js\app.min.js"></script>
+        <script src="public\theme\js\app.min.js"></script>
 
     </body>
 

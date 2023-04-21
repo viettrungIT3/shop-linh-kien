@@ -18,7 +18,7 @@
             <?= load_css("icons.min") ?>
         </style>
         <style id="app-stylesheet">
-            <?= load_css("app.min") ?>
+            <?= load_css("admin/app.min") ?>
         </style>
 
     </head>
@@ -32,7 +32,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="text-center mb-4 mt-3">
-                                    <a href="index.html">
+                                    <a href="">
                                         <span><img src="public\theme\images\admin\logo-dark.png" alt="" height="30"></span>
                                     </a>
                                 </div>
@@ -43,7 +43,7 @@
                                 </div>
 
                                 <div class="mb-3 mt-4 text-center">
-                                    <a href="index.html" class="btn btn-primary btn-block">Back to Home</a>
+                                    <a href="" class="btn btn-primary btn-block">Back to Home</a>
                                 </div>
                             </div>
                             <!-- end card-body -->
@@ -59,10 +59,10 @@
         <!-- end page -->
 
         <!-- Vendor js -->
-        <script src="assets\js\vendor.min.js"></script>
+        <script src="public\theme\js\vendor.min.js"></script>
 
         <!-- App js -->
-        <script src="assets\js\app.min.js"></script>
+        <script src="public\theme\js\app.min.js"></script>
 
     </body>
 

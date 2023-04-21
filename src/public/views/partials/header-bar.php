@@ -103,7 +103,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="logo">
-                        <h1><a href="index.html">e<span>Electronics</span></a></h1>
+                        <h1><a href="">e<span>Electronics</span></a></h1>
                     </div>
                 </div>
 
@@ -129,7 +129,7 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="index.html">Home</a></li>
+                        <li class="active"><a href="">Home</a></li>
                         <li><a href="shop">Shop page</a></li>
                         <li><a href="single-product">Single product</a></li>
                         <li><a href="cart">Cart</a></li>
