@@ -211,7 +211,7 @@ class User_model extends MY_Model
 	{
 
 
-		var_dump( $this->session->userdata(self::KEY_LOGGED_IN) === '1'); die();
+		return $this->session->userdata(self::KEY_LOGGED_IN) === '1';
 	} // end of function is_authenticated
 
 

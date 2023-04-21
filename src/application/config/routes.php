@@ -68,9 +68,11 @@ $route['reset-password-success']        = "page/reset_password_success";
 $route['logout']              = "login/logout";
 $route['logout-due-to-inactivity']  = "login/activity_logout";
 
-// single-product
+// Dashboard 
 $route['single-product']  = "dashboard/single_product";
 $route['shop']  = "dashboard/shop";
 $route['checkout']  = "dashboard/checkout";
 $route['cart']  = "dashboard/cart";
-$route['admin']  = "dashboard/admin";
+
+// Dashboard_Admin
+$route['admin']  = "Dashboard_Admin/index";
