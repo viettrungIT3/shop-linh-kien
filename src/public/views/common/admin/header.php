@@ -18,6 +18,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <?php echo $styles; ?>
 
+    <!-- include the required stylesheets -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
+
     <!-- App favicon -->
     <link rel="shortcut icon" href="<?= get_assets_uri('admin/favicon.ico') ?>">
     <!-- App css -->
@@ -32,8 +35,10 @@
     </style>
 
     <!-- icon -->
-    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/themify-icons/0.1.2/css/themify-icons.min.css">
+    <!-- <link rel="stylesheet" href="https://cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.2.96/css/materialdesignicons.min.css" integrity="sha512-LX0YV/MWBEn2dwXCYgQHrpa9HJkwB+S+bnBpifSOTO1No27TqNMKYoAn6ff2FBh03THAzAiiCwQ+aPX+/Qt/Ow==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/themify-icons/0.1.2/css/themify-icons.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.min.css" integrity="sha512-kDmbIQZ10fxeKP5NSt3+tz77HO42IJiS+YPIirOIKTdokl4LtuXYo3NNvq9mTAF+rzdV1plp0sm9E6nvtVpnFQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
 
@@ -245,7 +250,7 @@
 
             <div class="user-box">
                 <div class="float-left">
-                <img src="<?php echo (get_media_uri('admin/users/avatar-1.jpg')); ?>" alt="" class="avatar-md rounded-circle">
+                    <img src="<?php echo (get_media_uri('admin/users/avatar-1.jpg')); ?>" alt="" class="avatar-md rounded-circle">
                 </div>
                 <div class="user-info">
                     <a href="#">Stanley Jones</a>
@@ -268,7 +273,7 @@
                     </li>
 
                     <li>
-                        <a href="ui-elements.html">
+                        <a href="ui-elements">
                             <i class="fas fa-fill-drip"></i>
                             <span> UI Elements </span>
                             <span class="badge badge-primary float-right">11</span>
@@ -282,15 +287,15 @@
                             <span class="menu-arrow"></span>
                         </a>
                         <ul class="nav-second-level" aria-expanded="false">
-                            <li><a href="components-range-slider.html">Range Slider</a></li>
-                            <li><a href="components-alerts.html">Alerts</a></li>
-                            <li><a href="components-icons.html">Icons</a></li>
-                            <li><a href="components-widgets.html">Widgets</a></li>
+                            <li><a href="components-range-slider">Range Slider</a></li>
+                            <li><a href="components-alerts">Alerts</a></li>
+                            <li><a href="components-icons">Icons</a></li>
+                            <li><a href="components-widgets">Widgets</a></li>
                         </ul>
                     </li>
 
                     <li>
-                        <a href="typography.html">
+                        <a href="typography">
                             <i class="fas fa-spray-can"></i>
                             <span> Typography </span>
                         </a>
@@ -303,8 +308,8 @@
                             <span class="menu-arrow"></span>
                         </a>
                         <ul class="nav-second-level" aria-expanded="false">
-                            <li><a href="forms-general.html">General Elements</a></li>
-                            <li><a href="forms-advanced.html">Advanced Form</a></li>
+                            <li><a href="forms-general">General Elements</a></li>
+                            <li><a href="forms-advanced">Advanced Form</a></li>
                         </ul>
                     </li>
 
@@ -315,13 +320,13 @@
                             <span class="menu-arrow"></span>
                         </a>
                         <ul class="nav-second-level" aria-expanded="false">
-                            <li><a href="tables-basic.html">Basic Tables</a></li>
-                            <li><a href="tables-advanced.html">Advanced Tables</a></li>
+                            <li><a href="tables-basic">Basic Tables</a></li>
+                            <li><a href="tables-advanced">Advanced Tables</a></li>
                         </ul>
                     </li>
 
                     <li>
-                        <a href="charts.html">
+                        <a href="charts">
                             <i class="fas fa-chart-pie"></i>
                             <span> Charts </span>
                             <span class="badge badge-primary float-right">5</span>
@@ -329,7 +334,7 @@
                     </li>
 
                     <li>
-                        <a href="maps.html">
+                        <a href="maps">
                             <i class="fas fa-map-marker-alt"></i>
                             <span> Maps </span>
                         </a>
@@ -342,14 +347,14 @@
                             <span class="menu-arrow"></span>
                         </a>
                         <ul class="nav-second-level" aria-expanded="false">
-                            <li><a href="pages-login.html">Login</a></li>
-                            <li><a href="pages-register.html">Register</a></li>
-                            <li><a href="pages-forget-password.html">Forget Password</a></li>
-                            <li><a href="pages-lock-screen.html">Lock-screen</a></li>
-                            <li><a href="pages-blank.html">Blank page</a></li>
-                            <li><a href="pages-404.html">Error 404</a></li>
-                            <li><a href="pages-confirm-mail.html">Confirm Mail</a></li>
-                            <li><a href="pages-session-expired.html">Session Expired</a></li>
+                            <li><a href="pages-login">Login</a></li>
+                            <li><a href="pages-register">Register</a></li>
+                            <li><a href="pages-forget-password">Forget Password</a></li>
+                            <li><a href="pages-lock-screen">Lock-screen</a></li>
+                            <li><a href="pages-blank">Blank page</a></li>
+                            <li><a href="pages-404">Error 404</a></li>
+                            <li><a href="pages-confirm-mail">Confirm Mail</a></li>
+                            <li><a href="pages-session-expired">Session Expired</a></li>
                         </ul>
                     </li>
 
@@ -361,13 +366,13 @@
                         </a>
                         <ul class="nav-second-level" aria-expanded="false">
 
-                            <li><a href="extras-timeline.html">Timeline</a></li>
-                            <li><a href="extras-invoice.html">Invoice</a></li>
-                            <li><a href="extras-profile.html">Profile</a></li>
-                            <li><a href="extras-calendar.html">Calendar</a></li>
-                            <li><a href="extras-faqs.html">FAQs</a></li>
-                            <li><a href="extras-pricing.html">Pricing</a></li>
-                            <li><a href="extras-contacts.html">Contacts</a></li>
+                            <li><a href="extras-timeline">Timeline</a></li>
+                            <li><a href="extras-invoice">Invoice</a></li>
+                            <li><a href="extras-profile">Profile</a></li>
+                            <li><a href="extras-calendar">Calendar</a></li>
+                            <li><a href="extras-faqs">FAQs</a></li>
+                            <li><a href="extras-pricing">Pricing</a></li>
+                            <li><a href="extras-contacts">Contacts</a></li>
                         </ul>
                     </li>
 
@@ -378,10 +383,10 @@
                             <span class="badge badge-danger badge-pill float-right">New</span>
                         </a>
                         <ul class="nav-second-level" aria-expanded="false">
-                            <li><a href="layouts-horizontal.html">Horizontal</a></li>
-                            <li><a href="layouts-dark-sidebar.html">Dark Sidebar</a></li>
-                            <li><a href="layouts-small-sidebar.html">Small Sidebar</a></li>
-                            <li><a href="layouts-sidebar-collapsed.html">Sidebar Collapsed</a></li>
+                            <li><a href="layouts-horizontal">Horizontal</a></li>
+                            <li><a href="layouts-dark-sidebar">Dark Sidebar</a></li>
+                            <li><a href="layouts-small-sidebar">Small Sidebar</a></li>
+                            <li><a href="layouts-sidebar-collapsed">Sidebar Collapsed</a></li>
                         </ul>
                     </li>
 

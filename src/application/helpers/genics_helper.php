@@ -130,6 +130,42 @@ if(!function_exists("load_script")):
     }  // end of function to load script
 
 endif;
+if(!function_exists("load_lib")):
+
+    function load_lib($the_path = NULL, $defer = FALSE, $echo = FALSE){
+
+        global $js_stacks; 
+        NULL === $js_stacks && $js_stacks = [];
+
+        if(in_array($the_path, $js_stacks)) return "";
+
+        $file_name = $the_path;
+
+        $file_path = "libs/{$file_name}";
+        $the_file = ASSETS_PATH . $file_path;
+
+        
+
+        if(!file_exists($the_file)) return NULL;
+
+        $js_stacks[] = $the_path;
+
+        if($defer):
+            $the_uri = base_url("public/theme/{$file_path}");
+            $the_content = "<script href='{$the_uri}' defer></script>";
+            if($echo): echo $the_content; return $this; endif;
+            return $the_content;
+        endif;
+
+        $the_content = file_get_contents($the_file);
+
+        if($echo): echo "<script>{$the_content}</script>"; return $this; endif;
+
+        return $the_content;
+
+    }  // end of function to load script
+
+endif;
 
 if(!function_exists("get_assets_uri")):
     function get_assets_uri($the_path = NULL){

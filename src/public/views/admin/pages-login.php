@@ -42,7 +42,7 @@
                                         <input class="form-control" type="email" id="emailaddress" required="" placeholder="john@deo.com">
                                     </div>
                                     <div class="form-group">
-                                        <a href="page-recoverpw.html" class="text-muted float-right">Forgot your password?</a>
+                                        <a href="page-recoverpw" class="text-muted float-right">Forgot your password?</a>
                                         <label for="password">Password</label>
                                         <input class="form-control" type="password" required="" id="password" placeholder="Enter your password">
                                     </div>
@@ -63,7 +63,7 @@
                         <!-- end card -->
                         <div class="row mt-4">
                             <div class="col-sm-12 text-center">
-                                <p class="text-muted mb-0">Don't have an account? <a href="pages-register.html" class="text-dark ml-1"><b>Sign Up</b></a></p>
+                                <p class="text-muted mb-0">Don't have an account? <a href="pages-register" class="text-dark ml-1"><b>Sign Up</b></a></p>
                             </div>
                         </div>
                     </div>

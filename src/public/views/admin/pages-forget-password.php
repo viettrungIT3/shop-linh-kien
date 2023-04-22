@@ -54,7 +54,7 @@
                         <!-- end card -->
                         <div class="row mt-4">
                             <div class="col-sm-12 text-center">
-                                <p class="text-muted mb-0">Back to <a href="pages-login.html" class="text-dark ml-1"><b>Sign In</b></a></p>
+                                <p class="text-muted mb-0">Back to <a href="pages-login" class="text-dark ml-1"><b>Sign In</b></a></p>
                             </div>
                         </div>
                     </div>
