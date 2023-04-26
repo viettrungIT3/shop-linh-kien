@@ -49,8 +49,10 @@
 
 <body class="<?php echo $body_classes; ?>" <?php if (isset($is_ie) && $is_ie) : ?> data-browser='ie' <?php endif; ?>>
 
+    
     <!-- Begin page -->
     <div id="wrapper">
+        <? echo ("xxx"); die; ?>
 
 
         <!-- Topbar Start -->

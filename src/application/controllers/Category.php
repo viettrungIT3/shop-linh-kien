@@ -35,7 +35,7 @@ class Category extends MY_Controller
     }
 
     /**
-     * action:      category/list/{user_id}
+     * action:      category/list/
      * method:      get
      * description: get info category by user_id     
      * return:      object

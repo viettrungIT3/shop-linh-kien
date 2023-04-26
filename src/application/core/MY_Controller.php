@@ -361,14 +361,14 @@ class MY_Controller extends CI_Controller
         ];
         $dropdown_menu = null;
 
-        $the_user = $this->get_current_user();
+        $the_user = $this->get_current_user()['data'][0];
 
         $assets = [
 
             "params"        => array_merge(
                 $this->get_params(),
                 [
-                    "user" => $the_user ?? NULL,
+                    "user" => $the_user ,
                     "text_logout" => $this->get_lang_text("action_logout"),
                     "text_login" => $this->get_lang_text("action_login"),
                 ],
@@ -564,7 +564,7 @@ class MY_Controller extends CI_Controller
     {
         $this->load->model("User_model", "user_model");
         if (!$this->user_model->is_authenticated()) :
-            redirect("/" . (NULL !== $redirect ? "?redirect={$redirect}" : ""));
+            redirect("/" . (NULL !== $redirect ? "{$redirect}" : ""));
         endif;
         if (NULL !== $redirect) {
             redirect($redirect);
@@ -577,7 +577,7 @@ class MY_Controller extends CI_Controller
     public function get_current_user()
     {
         $this->load->model("User_model", "user_model");
-        return $this->user_model->get_detail();
+        return $this->user_model->get_user_current();
     }
 
 
@@ -589,6 +589,43 @@ class MY_Controller extends CI_Controller
         endif;
         if (NULL !== $redirect) {
             redirect($redirect);
+        }
+    }
+
+    public function upload($field_name, $file_name = NULL)
+    {
+        $config['upload_path'] = $_ENV["UPLOAD_PATH"];
+        $config['allowed_types'] = 'jpg|jpeg|png|gif';
+        $config['file_name'] = $file_name;
+        $config['overwrite'] = TRUE;
+
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload($field_name)) {
+            $error = array('error' => $this->upload->display_errors());
+            return $error;
+        } else {
+            $data = array('upload_data' => $this->upload->data());
+            return $data;
+        }
+    }
+
+    public function delete_img($file_name = NULL)
+    {
+        if ($file_name == NULL) {
+            return true;
+        }
+
+        $file_path = $_ENV["UPLOAD_PATH"] . '/' . $file_name;
+
+        if (file_exists($file_path)) {
+            if (unlink($file_path)) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return true; // file không tồn tại, coi như đã xóa thành công
         }
     }
 } // class core
