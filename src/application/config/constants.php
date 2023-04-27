@@ -100,32 +100,9 @@ defined("APP_VERSION")                              OR define("APP_VERSION"     
 defined("ASSETS_VERSION")                           OR define("ASSETS_VERSION"      , $_ENV['ASSETS_VERSION'] ?? "r001");
 
 
-defined("META_DEFAULT_PAGE_TITLE")  OR define("META_DEFAULT_PAGE_TITLE", $_ENV['DEFAULT_PAGE_TITLE'] ?? "");
-
-
 defined("ASSETS_PATH")                              OR define("ASSETS_PATH", $_ENV['ASSETS_PATH']);
 defined("LOG_PATH")                                 OR define("LOG_PATH", $_ENV['LOG_PATH'] ?? "");
 defined("ROOT_PATH")                                 OR define("ROOT_PATH", $_ENV['ROOT_PATH'] ?? "");
 
-
-defined("SENDGRID_API_KEY")                                 OR define("SENDGRID_API_KEY", $_ENV['SENDGRID_API_KEY'] ?? "");
-
-defined("SENDGRID_TEMPLATE_ID")                                 OR define("SENDGRID_TEMPLATE_ID", $_ENV['SENDGRID_TEMPLATE_ID'] ?? "");
-
-define("EMAIL_SENDGRID_FROM", $_ENV['EMAIL_SENDGRID_FROM'] ?? "");
-
 defined("BASE_URL")                                 OR define("BASE_URL", $_ENV['BASE_URL'] ?? "");
-
-defined("DF_NUM_ROWS")                      OR define("DF_NUM_ROWS", 25);
-
-
-defined("LIST_SORT_ASC")                    OR define("LIST_SORT_ASC"                   , "asc");
-
-defined("DF_SORT_DIR")                      OR define("DF_SORT_DIR"                     , LIST_SORT_ASC);
-
-defined("MAX_NUM_ROWS")                             OR define("MAX_NUM_ROWS", 999999);
-defined("LIST_SORT_DESC")                   OR define("LIST_SORT_DESC"                  , "desc");
-
-
-define("USE_TWO_WAY_AUTH", $_ENV['USE_TWO_WAY_AUTH'] ?? "");
-defined("OTP_CODE_PATH")                         OR define("OTP_CODE_PATH", ROOT_PATH ."/"."hash"."/");
+defined("META_DEFAULT_PAGE_TITLE")  OR define("META_DEFAULT_PAGE_TITLE", $_ENV['DEFAULT_PAGE_TITLE'] ?? "");

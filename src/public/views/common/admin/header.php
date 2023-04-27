@@ -18,7 +18,7 @@
     <!-- Bootstrap -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js" integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="<?= get_assets_uri('libs/fontawesome/all.min.css') ?>">
     <?php echo $styles; ?>
 
     <!-- include the required stylesheets -->
@@ -52,7 +52,12 @@
     
     <!-- Begin page -->
     <div id="wrapper">
-        <? echo ("xxx"); die; ?>
+
+    <?php 
+        $user = $params["user_info"]['data'][0]; 
+        // var_dump($user);
+        // die;
+    ?>
 
 
         <!-- Topbar Start -->
@@ -152,9 +157,12 @@
 
                 <li class="dropdown notification-list">
                     <a class="nav-link dropdown-toggle nav-user mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                        <img src="<?php echo (get_media_uri('admin/users/avatar-1.jpg')); ?>" alt="user-image" class="rounded-circle">
-                        <span class="pro-user-name ml-1">
-                            Maxine K <i class="fas fa-chevron-down"></i>
+                        
+                        
+                    <img src="<?php echo (get_uploads_file("{$user->avatar}")); ?>" alt="user-image" class="rounded-circle">
+                        <span class="pro-user-name ml-1"> 
+                            <?php echo $user->first_name . ' ' . $user->last_name ?>                        
+                            <i class="fas fa-chevron-down"></i>
                         </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -255,11 +263,20 @@
 
             <div class="user-box">
                 <div class="float-left">
-                    <img src="<?php echo (get_media_uri('admin/users/avatar-1.jpg')); ?>" alt="" class="avatar-md rounded-circle">
+                    <img src="<?php echo (get_uploads_file("{$user->avatar}")); ?>" alt="" class="avatar-md rounded-circle">
                 </div>
                 <div class="user-info">
-                    <a href="#">Stanley Jones</a>
-                    <p class="text-muted m-0">Administrator</p>
+                    <a href="#"><?php echo $user->first_name . ' ' . $user->last_name ?></a>
+                    <p class="text-muted m-0">
+                        <?php 
+                            if ($user->role_id == 1) {
+                                echo 'Admin';
+                            } else {
+                                echo 'Staff';
+                            }
+                            
+                        ?>
+                    </p>
                 </div>
             </div>
 

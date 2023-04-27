@@ -16,6 +16,7 @@ class MY_Controller extends CI_Controller
 
     private $format  = "";
     private $request_params   = array();
+    public $params   = array();
 
     private $has_permission = TRUE;
     private $page_title = "";

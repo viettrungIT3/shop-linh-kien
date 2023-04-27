@@ -78,6 +78,7 @@ $route['cart']  = "dashboard/cart";
 $route['admin']  = "Dashboard_Admin/index";
 $route['admin/products']  = "Dashboard_Admin/products";
 $route['admin/categories']  = "Dashboard_Admin/categories";
+$route['admin/products']  = "Dashboard_Admin/products";
 
 
 $route['api/v1/categories']  = "category/list";

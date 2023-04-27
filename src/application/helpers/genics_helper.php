@@ -200,6 +200,24 @@ if(!function_exists("get_media_uri")):
 
 endif;
 
+if(!function_exists("get_uploads_file")):
+
+    function get_uploads_file($file_name = NULL){
+
+        if(NULL  === $file_name) return NULL;
+
+        
+        $file_path = "{$file_name}";
+        
+        $the_file =  ASSETS_PATH . $file_path;
+        // var_dump(base_url("uploads/{$file_path}")); die;
+        
+        return base_url("uploads/{$file_path}");
+
+    } // end of function get media uri
+
+endif;
+
 if(!function_exists("get_media_path")):
 
     function get_media_path($the_path = NULL){
