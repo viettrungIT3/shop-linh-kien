@@ -362,7 +362,7 @@ class MY_Controller extends CI_Controller
         ];
         $dropdown_menu = null;
 
-        $the_user = $this->get_current_user()['data'][0];
+        $the_user = $this->get_current_user()['data'][0] ?? NULL;
 
         $assets = [
 

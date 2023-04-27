@@ -18,24 +18,25 @@
     <!-- Bootstrap -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js" integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="<?= get_assets_uri('libs/fontawesome/all.min.css') ?>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- <link rel="stylesheet" href="<?= get_assets_uri('libs/fontawesome/all.min.css') ?>"> -->
     <?php echo $styles; ?>
 
     <!-- include the required stylesheets -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
 
     <!-- App favicon -->
-    <link rel="shortcut icon" href="<?= get_assets_uri('admin/favicon.ico') ?>">
+    <link rel="shortcut icon" href="<?= get_assets_uri('images/favicon.ico') ?>">
+    <!-- Plugin css -->
+    <link href="<?= get_assets_uri("libs/sweetalert2/sweetalert2.min.css") ?>" rel="stylesheet" type="text/css">
+
     <!-- App css -->
-    <style id="bootstrap-stylesheet">
-        <?= load_css("admin/bootstrap.min"); ?>
-    </style>
-    <style>
-        <?= load_css("admin/icons.min") ?>
-    </style>
-    <style id="app-stylesheet">
-        <?= load_css("admin/app.min") ?>
-    </style>
+    <link href="<?= get_assets_uri("css/admin/bootstrap.min.css") ?>" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
+    <link href="<?= get_assets_uri("css/admin/icons.min.css") ?>" rel="stylesheet" type="text/css" id="icons">
+    <link href="<?= get_assets_uri("css/admin/app.min.css") ?>" rel="stylesheet" type="text/css" id="app-stylesheet">
+    <!-- <link href="assets\css\bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
+    <link href="assets\css\icons.min.css" rel="stylesheet" type="text/css">
+    <link href="assets\css\app.min.css" rel="stylesheet" type="text/css" id="app-stylesheet"> -->
 
     <!-- icon -->
     <!-- <link rel="stylesheet" href="https://cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css"> -->
@@ -49,44 +50,45 @@
 
 <body class="<?php echo $body_classes; ?>" <?php if (isset($is_ie) && $is_ie) : ?> data-browser='ie' <?php endif; ?>>
 
-    
+
     <!-- Begin page -->
     <div id="wrapper">
 
-    <?php 
-        $user = $params["user_info"]['data'][0]; 
+        <?php
+        $user = $params["user_info"]['data'][0];
         // var_dump($user);
         // die;
-    ?>
+        ?>
 
 
         <!-- Topbar Start -->
         <div class="navbar-custom">
             <ul class="list-unstyled topnav-menu float-right mb-0">
 
+                <!-- language -->
                 <li class="dropdown d-none d-lg-block">
                     <a class="nav-link dropdown-toggle mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                        <img src="<?php echo (get_media_uri('admin/flags/us.jpg')); ?>" alt="user-image" class="mr-2" height="12"> <span class="align-middle">English <i class="fas fa-chevron-down"></i> </span>
+                        <img src="<?php echo (get_media_uri('flags/us.jpg')); ?>" alt="user-image" class="mr-2" height="12"> <span class="align-middle">English <i class="fas fa-chevron-down"></i> </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <!-- item-->
                         <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <img src="<?php echo (get_media_uri('admin/flags/spain.jpg')); ?>" alt="user-image" class="mr-2" height="12"> <span class="align-middle">Spanish</span>
+                            <img src="<?php echo (get_media_uri('flags/spain.jpg')); ?>" alt="user-image" class="mr-2" height="12"> <span class="align-middle">Spanish</span>
                         </a>
 
                         <!-- item-->
                         <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <img src="<?php echo (get_media_uri('admin/flags/italy.jpg')); ?>" alt="user-image" class="mr-2" height="12"> <span class="align-middle">Italian</span>
+                            <img src="<?php echo (get_media_uri('flags/italy.jpg')); ?>" alt="user-image" class="mr-2" height="12"> <span class="align-middle">Italian</span>
                         </a>
 
                         <!-- item-->
                         <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <img src="<?php echo (get_media_uri('admin/flags/french.jpg')); ?>" alt="user-image" class="mr-2" height="12"> <span class="align-middle">French</span>
+                            <img src="<?php echo (get_media_uri('flags/french.jpg')); ?>" alt="user-image" class="mr-2" height="12"> <span class="align-middle">French</span>
                         </a>
 
                         <!-- item-->
                         <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <img src="<?php echo (get_media_uri('admin/flags/russia.jpg')); ?>" alt="user-image" class="mr-2" height="12"> <span class="align-middle">Russian</span>
+                            <img src="<?php echo (get_media_uri('flags/russia.jpg')); ?>" alt="user-image" class="mr-2" height="12"> <span class="align-middle">Russian</span>
                         </a>
                     </div>
                 </li>
@@ -157,11 +159,11 @@
 
                 <li class="dropdown notification-list">
                     <a class="nav-link dropdown-toggle nav-user mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                        
-                        
-                    <img src="<?php echo (get_uploads_file("{$user->avatar}")); ?>" alt="user-image" class="rounded-circle">
-                        <span class="pro-user-name ml-1"> 
-                            <?php echo $user->first_name . ' ' . $user->last_name ?>                        
+
+
+                        <img src="<?php echo (get_uploads_file("{$user->avatar}")); ?>" alt="user-image" class="rounded-circle">
+                        <span class="pro-user-name ml-1">
+                            <?php echo $user->first_name . ' ' . $user->last_name ?>
                             <i class="fas fa-chevron-down"></i>
                         </span>
                     </a>
@@ -213,25 +215,21 @@
             <div class="logo-box">
                 <a href="" class="logo text-center logo-dark">
                     <span class="logo-lg">
-                        <img src="<?php echo (get_media_uri('admin/logo-dark.png')); ?>" alt="" height="26">
-                        <!-- <span class="logo-lg-text-dark">Simple</span> -->
+                        <?php $this->load->view("partials/icons/logo") ?>
                     </span>
-                    <span class="logo-sm">
-                        <!-- <span class="logo-lg-text-dark">S</span> -->
-                        <img src="<?php echo (get_media_uri('admin/logo-sm.png')); ?>" alt="" height="22">
-                    </span>
+                    <!-- <span class="logo-sm">
+                        <?php $this->load->view("partials/icons/logo") ?>
+                    </span> -->
                 </a>
 
-                <a href="" class="logo text-center logo-light">
+                <!-- <a href="" class="logo text-center logo-light">
                     <span class="logo-lg">
-                        <img src="<?php echo (get_media_uri('admin/logo-light.png')); ?>" alt="" height="26">
-                        <!-- <span class="logo-lg-text-light">Simple</span> -->
+                        <?php $this->load->view("partials/icons/logo") ?>
                     </span>
                     <span class="logo-sm">
-                        <!-- <span class="logo-lg-text-light">S</span> -->
-                        <img src="<?php echo (get_media_uri('admin/logo-sm.png')); ?>" alt="" height="22">
+                        <?php $this->load->view("partials/icons/logo") ?>
                     </span>
-                </a>
+                </a> -->
             </div>
 
             <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
@@ -268,13 +266,13 @@
                 <div class="user-info">
                     <a href="#"><?php echo $user->first_name . ' ' . $user->last_name ?></a>
                     <p class="text-muted m-0">
-                        <?php 
-                            if ($user->role_id == 1) {
-                                echo 'Admin';
-                            } else {
-                                echo 'Staff';
-                            }
-                            
+                        <?php
+                        if ($user->role_id == 1) {
+                            echo 'Admin';
+                        } else {
+                            echo 'Staff';
+                        }
+
                         ?>
                     </p>
                 </div>
@@ -288,28 +286,19 @@
                     <li class="menu-title">Navigation</li>
 
                     <li>
-                        <a href="">
+                        <a href="<?php echo base_url("/admin"); ?>">
                             <i class="fas fa-home"></i>
                             <span> Dashboard </span>
                         </a>
                     </li>
-
-                    <li>
-                        <a href="ui-elements">
-                            <i class="fas fa-fill-drip"></i>
-                            <span> UI Elements </span>
-                            <span class="badge badge-primary float-right">11</span>
-                        </a>
-                    </li>
-
                     <li>
                         <a href="javascript: void(0);">
-                            <i class="far fa-lightbulb"></i>
-                            <span> Components </span>
+                            <i class="material-icons">category</i>
+                            <span> Categories </span>
                             <span class="menu-arrow"></span>
                         </a>
                         <ul class="nav-second-level" aria-expanded="false">
-                            <li><a href="components-range-slider">Range Slider</a></li>
+                            <li><a href="<?php echo base_url("/admin/categories"); ?>">Categories</a></li>
                             <li><a href="components-alerts">Alerts</a></li>
                             <li><a href="components-icons">Icons</a></li>
                             <li><a href="components-widgets">Widgets</a></li>
@@ -318,7 +307,7 @@
 
                     <li>
                         <a href="typography">
-                            <i class="fas fa-spray-can"></i>
+                            <i class="fa fa-shopping-basket"></i>
                             <span> Typography </span>
                         </a>
                     </li>
@@ -447,3 +436,10 @@
 
         </div>
         <!-- Left Sidebar End -->
+
+        <!-- ============================================================== -->
+        <!-- Start Page Content here -->
+        <!-- ============================================================== -->
+
+        <div class="content-page">
+            <div class="content">

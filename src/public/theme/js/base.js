@@ -449,6 +449,100 @@ class Base{
         return str;
     }
 
+    
+    prep_selector(selector, options){
+
+        if("undefined" === typeof selector || null === selector){
+            selector = document.createElement(options.tag || "div");
+            selector.innerHTML = `<${options.tag || "div"} class="wrapper-inner" data-type="js-container"></${options.tag || "div"}>`;
+        }else{
+            let container = selector.querySelector("[data-type='js-container']");
+
+            if(null === container && selector.childNodes.length === 0){
+                selector.innerHTML = `<${options.tag || "div"} class="wrapper-inner" data-type="js-container"></${options.tag || "div"}>`;
+            }
+        }
+        if("undefined" !== typeof options.classes && options.classes.length > 0){
+            options.classes.forEach(c => selector.classList.add(c));
+        }
+        return selector;
+    }
+
+    /*
+     * @description: to return the current cache version
+     * @return string
+     * */
+    get_cache_version(){ return `${window.__constants.app_version}-${window.__constants.assets_version}`; }
+    
+
+    /*
+     * @description: to load multiple scirpts into dom
+     * @param: string scripts
+     * @return this
+     * */
+    load_scripts(the_scripts){
+        if(null === the_scripts || the_scripts.length === 0) return this;
+        the_scripts.forEach(s => this.load_single_script(s));
+        return this;
+    }
+
+
+    /*
+     * @description: to add a new load a new style to head element. this method will lazy load 
+     * the access which will not affect TBT. It also check if style is already loaded by defined
+     * key. If not then load, if the key exist then stop the loading. 
+     * @param: string key
+     * @param: string path
+     * @param: string media
+     * @return this
+     * */
+    load_style(key, path, media) {
+        if ("undefined" === typeof path || null === path) return this;
+        if ("undefined" === typeof media || null === media) media = "screen";
+
+        if (document.querySelector(`link#${key}`) !== null) return this;
+
+        let the_style = document.createElement("link");
+
+        the_style.id = key;
+
+        the_style.href = `${window.__constants.assets_url}${path}?v=${window.__constants.assets_version}`;
+
+        the_style.setAttribute("rel", "stylesheet");
+        the_style.setAttribute("media", "print");
+        the_style.setAttribute("onload", `this.media='${media}';`);
+
+        document.head.append(the_style);
+
+        return this;
+
+    } // loading style
+
+
+    /*
+     * @description: to add a new load to body - defer, 
+     * the script can be a full path or relative path to asset folder which is defined
+     * globally in windows object.
+     * @param: string script
+     * @return this
+     * */
+    load_single_script(script){
+
+        let the_path = this.get_asset_url(script);
+        
+        if(null !== document.querySelector(`script[src^='${the_path}']`)){
+            return this;
+        }
+        let the_script = document.createElement("script");
+        the_script.setAttribute("defer", "defer");
+        the_script.src = the_path.indexOf("?") > -1 ? `${the_path}&__v=${this.get_cache_version()}` : `${the_path}?v=${this.get_cache_version()}`;
+
+        document.body.append(the_script);
+
+        return this;
+
+    } //
+
     /*
      * @description: to convert js relative path to uri
      * @param: string path
@@ -457,6 +551,101 @@ class Base{
     get_asset_url(path){
         if(/^https*/.test(path)) return path;
         return `${__constants.assets_url}${path}?v=${__constants.app_version}_${__constants.assets_version}`;
+    }
+ 
+
+    /*
+     * @description: get base url for  path
+     * @param: string path
+     * @return string
+     * */
+    get_base_url(path){
+        return `${__constants.base_url}${path}`;
+    }
+ 
+
+    /*
+     * @description: add more classes to the container
+     * @param: string value
+     * @return this
+     * */
+    add_class(value){
+        this.get("el").classList.add(value); 
+        return this;
+    }
+
+    /*
+         * @description: set attribute data-display to 1
+         * @return this
+         * */
+    open(){
+        this.get("el").setAttribute("data-display", 1);
+        return this;
+    }
+
+    /*
+	 * @description: set attribute data-display to -1
+	 * @return this
+	 * */
+    close(){
+        this.get("el").setAttribute("data-display", -1);
+        return this;
+    }
+
+    /*
+	  * @description: set attribute data-mode to preview
+	  * @return this
+	  * */
+    preview(){
+        this.get("el").setAttribute("data-mode", 'preview');
+        return this;
+
+    }
+
+    /*
+	 * @description: set attribute data-mode to inactive
+	 * @return this
+	 * */
+    inactivate(){
+        this.get("el").setAttribute("data-mode", 'inactive');
+        return this;
+    }
+
+    /*
+	 * @description: set attribute data-mode to active
+	 * @return this
+	 * */
+    activate(){
+        this.get("el").setAttribute("data-mode", 'active');
+        return this;
+    }
+
+    /*
+     * @description: function to format_money - us dollars
+     * @param: float n
+     * @param: string currency
+     * @return this
+     * */
+    format_phone(the_string = null) {
+        if(null === the_string || the_string.length === 0) return "";
+        let cleaned = ('' + the_string).replace(/\D/g, ''),
+            match = cleaned.match(/^1*(\d{3})(\d{3})(\d{4,})$/);
+
+        if (match) return  match[1] + '-' + match[2] + '-' + match[3];
+        
+        return null;
+    }
+
+    format_duration(the_string = null) {
+        if(null === the_string || the_string.length === 0) return "n/a";
+
+        let minutes = Math.floor((the_string % 3600)/60);
+        let second = the_string % 60;
+        let hours = Math.floor(the_string / 3600);
+        
+        if(hours > 0) return hours + ':' + minutes + ':' + second;
+
+        return minutes + ':' + second;
     }
 
 }
