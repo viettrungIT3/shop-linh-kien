@@ -67,3 +67,18 @@ $route['reset-password-success']        = "page/reset_password_success";
 //logout
 $route['logout']              = "login/logout";
 $route['logout-due-to-inactivity']  = "login/activity_logout";
+
+// Dashboard 
+$route['single-product']  = "dashboard/single_product";
+$route['shop']  = "dashboard/shop";
+$route['checkout']  = "dashboard/checkout";
+$route['cart']  = "dashboard/cart";
+
+// Dashboard_Admin
+$route['admin']  = "Dashboard_Admin/index";
+$route['admin/products']  = "Dashboard_Admin/products";
+$route['admin/categories']  = "Dashboard_Admin/categories";
+$route['admin/products']  = "Dashboard_Admin/products";
+
+
+$route['api/v1/categories']  = "category/list";

@@ -100,7 +100,6 @@ defined("APP_VERSION")                              OR define("APP_VERSION"     
 defined("ASSETS_VERSION")                           OR define("ASSETS_VERSION"      , $_ENV['ASSETS_VERSION'] ?? "r001");
 
 
-defined("META_DEFAULT_PAGE_TITLE")  OR define("META_DEFAULT_PAGE_TITLE", $_ENV['DEFAULT_PAGE_TITLE'] ?? "");
 
 
 defined("ASSETS_PATH")                              OR define("ASSETS_PATH", $_ENV['ASSETS_PATH']);
@@ -115,6 +114,7 @@ defined("SENDGRID_TEMPLATE_ID")                                 OR define("SENDG
 define("EMAIL_SENDGRID_FROM", $_ENV['EMAIL_SENDGRID_FROM'] ?? "");
 
 defined("BASE_URL")                                 OR define("BASE_URL", $_ENV['BASE_URL'] ?? "");
+defined("META_DEFAULT_PAGE_TITLE")  OR define("META_DEFAULT_PAGE_TITLE", $_ENV['DEFAULT_PAGE_TITLE'] ?? "");
 
 defined("DF_NUM_ROWS")                      OR define("DF_NUM_ROWS", 25);
 

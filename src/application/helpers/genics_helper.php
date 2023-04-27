@@ -130,6 +130,42 @@ if(!function_exists("load_script")):
     }  // end of function to load script
 
 endif;
+if(!function_exists("load_lib")):
+
+    function load_lib($the_path = NULL, $defer = FALSE, $echo = FALSE){
+
+        global $js_stacks; 
+        NULL === $js_stacks && $js_stacks = [];
+
+        if(in_array($the_path, $js_stacks)) return "";
+
+        $file_name = $the_path;
+
+        $file_path = "libs/{$file_name}";
+        $the_file = ASSETS_PATH . $file_path;
+
+        
+
+        if(!file_exists($the_file)) return NULL;
+
+        $js_stacks[] = $the_path;
+
+        if($defer):
+            $the_uri = base_url("public/theme/{$file_path}");
+            $the_content = "<script href='{$the_uri}' defer></script>";
+            if($echo): echo $the_content; return $this; endif;
+            return $the_content;
+        endif;
+
+        $the_content = file_get_contents($the_file);
+
+        if($echo): echo "<script>{$the_content}</script>"; return $this; endif;
+
+        return $the_content;
+
+    }  // end of function to load script
+
+endif;
 
 if(!function_exists("get_assets_uri")):
     function get_assets_uri($the_path = NULL){
@@ -141,7 +177,7 @@ endif;
 if(!function_exists("get_script_uri")):
     function get_script_uri($the_path = NULL){
         if(NULL === $the_path || empty($the_path)) return base_url("/public/theme/js");
-        $the_path = "{$the_path}.js?r=" . APP_VERSION . "_" . ASSETS_VERSION;
+        $the_path = "{$the_path}.js";
         return base_url("public/theme/js/{$the_path}");
     }
 endif;
@@ -153,12 +189,30 @@ if(!function_exists("get_media_uri")):
 
         $file_name = $the_path;
 
-        $file_path = "img/{$file_name}";
+        $file_path = "images/{$file_name}";
 
         $the_file =  ASSETS_PATH . $file_path;
 
         if(!file_exists($the_file)) return NULL;
         return base_url("public/theme/{$file_path}");
+
+    } // end of function get media uri
+
+endif;
+
+if(!function_exists("get_uploads_file")):
+
+    function get_uploads_file($file_name = NULL){
+
+        if(NULL  === $file_name) return NULL;
+
+        
+        $file_path = "{$file_name}";
+        
+        $the_file =  ASSETS_PATH . $file_path;
+        // var_dump(base_url("uploads/{$file_path}")); die;
+        
+        return base_url("uploads/{$file_path}");
 
     } // end of function get media uri
 
@@ -171,7 +225,7 @@ if(!function_exists("get_media_path")):
         if(NULL  === $the_path) return NULL;
         $file_name = $the_path;
 
-        $file_path = "img/{$file_name}";
+        $file_path = "images/{$file_name}";
         $the_file =  ASSETS_PATH . $file_path;
 
         if(!file_exists($the_file)) return NULL;

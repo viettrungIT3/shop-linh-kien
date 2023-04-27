@@ -1,6 +1,9 @@
 @import "global";
 
 .login-otp-template{
+	.header-bar-wrapper{
+		display: none !important;
+	}
 	#page-wrapper{
 		position: absolute;
 		top: 50%;
@@ -16,6 +19,13 @@
 		margin: 0px auto;
 	}
 	
+
+	.logo{
+		text-align: center;
+		svg path{
+			fill: #1b5732;
+		}
+	}
 }
 
 

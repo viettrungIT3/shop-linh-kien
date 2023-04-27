@@ -14,49 +14,49 @@
 				</div>
 
 				<div class="fname">
-					<label for="text">Tên: </label>
+					<label for="text">First name: </label>
 					<div class="sec-2">
-						<input type="text" name="input_user_first_name" placeholder="Vui lòng nhập tên...">
+						<input type="text" name="input_user_first_name" placeholder="Please enter first name...">
 					</div>
 				</div>
 
 				<div class="lname">
-					<label for="text">Họ đệm: </label>
+					<label for="text">Last name: </label>
 					<div class="sec-2">
-						<input type="text" name="input_user_last_name" placeholder="Vui lòng nhập họ đệm...">
+						<input type="text" name="input_user_last_name" placeholder="Please enter last name...">
 					</div>
 				</div>
 
 				<div class="email">
 					<label for="email">Email: </label>
 					<div class="sec-2">
-						<input type="email" name="input_user_login" placeholder="Vui lòng nhập email...">
+						<input type="email" name="input_user_login" placeholder="Please enter email...">
 					</div>
 				</div>
 
 				<div class="password">
-					<label for="password">Mật khẩu:</label>
+					<label for="password">Password::</label>
 					<div class="sec-2">
-						<input class="pas" type="password" name="input_user_password" placeholder="Vui lòng nhập mật khẩu...">
+						<input class="pas" type="password" name="input_user_password" placeholder="Please enter a password...">
 						<ion-icon class="show-hide md hydrated" name="eye-outline" role="img" aria-label="eye outline">
 						</ion-icon>
 					</div>
 				</div>
 
 				<div class="password">
-					<label for="password">Nhập lại mật khẩu:</label>
+					<label for="password">Re-enter the password:</label>
 					<div class="sec-2">
-						<input class="pas" type="password" name="input_user_password2" placeholder="Vui lòng nhập lại mật khẩu...">
+						<input class="pas" type="password" name="input_user_password2" placeholder="Please re-enter password...">
 						<ion-icon class="show-hide md hydrated" name="eye-outline" role="img" aria-label="eye outline">
 						</ion-icon>
 					</div>
 				</div>
 
-				<button type="submit" class='btn btn-lg btn-primary' id="register">Đăng ký</button>
+				<button type="submit" class='btn btn-lg btn-primary' id="register">Register</button>
 
 				<div class="footer">
-					<span><a href="/login">Đăng nhập</a></span>
-					<span><a href="/forgot-password">Quên mật khẩu?</a></span>
+					<span><a href="/login">Log in</a></span>
+					<span><a href="/forgot-password">Forgot password?</a></span>
 				</div>
 			</div>
 

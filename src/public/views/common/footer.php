@@ -9,7 +9,7 @@ $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH); // Lấy phần đư�
 $parts = explode('/', $path); // Tách đường dẫn thành các phần dựa trên ký tự '/'
 $verify = $parts[1]; // Lấy phần tử thứ 2
 
-if ($currentPage !== "login" && $currentPage !== "register" && $verify != "verify") {
+if ($currentPage !== "login" && $currentPage !== "register" && $currentPage !== "forgot-password" && $verify != "verify") {
 	$this->load->view("partials/footer");
 }
 ?>
@@ -20,7 +20,11 @@ if ($currentPage !== "login" && $currentPage !== "register" && $verify != "verif
 
 <?php echo $scripts; ?>
 
-<script type="module" src="<?= get_script_uri('controllers/inactivity') ?>"> </script>
+<!-- <script type="module" src="<?= get_script_uri('controllers/inactivity') ?>"> </script> -->
+<script type="module" src="<?= get_script_uri('jquery.easing.1.3.min') ?>"> </script>
+<script type="module" src="<?= get_script_uri('jquery.sticky') ?>"> </script>
+<script type="module" src="<?= get_script_uri('owl.carousel.min') ?>"> </script>
+<script type="module" src="<?= get_script_uri('main') ?>"> </script>
 
 </div>
 

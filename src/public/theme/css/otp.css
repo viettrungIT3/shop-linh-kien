@@ -1,3 +1,6 @@
+.login-otp-template .header-bar-wrapper {
+  display: none !important;
+}
 .login-otp-template #page-wrapper {
   position: absolute;
   top: 50%;
@@ -11,4 +14,10 @@
 .login-otp-template .otp {
   max-width: 375px;
   margin: 0px auto;
+}
+.login-otp-template .logo {
+  text-align: center;
+}
+.login-otp-template .logo svg path {
+  fill: #1b5732;
 }

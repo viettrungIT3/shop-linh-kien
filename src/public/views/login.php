@@ -17,23 +17,23 @@
 					<div class="sec-2">
 						<ion-icon name="mail-outline" role="img" class="md hydrated" aria-label="mail outline">
 						</ion-icon>
-						<input type="email" name="input_user_login" placeholder="Vui lòng nhập email...">
+						<input type="email" name="input_user_login" placeholder="Please enter email...">
 					</div>
 				</div>
 				<div class="password">
-					<label for="password">Mật khẩu:</label>
+					<label for="password">Password::</label>
 					<div class="sec-2">
 						<ion-icon name="lock-closed-outline" role="img" class="md hydrated" aria-label="lock closed outline"></ion-icon>
-						<input class="pas" type="password" name="input_user_password" placeholder="Vui lòng nhập mật khẩu...">
+						<input class="pas" type="password" name="input_user_password" placeholder="Please enter a password...">
 						<ion-icon class="show-hide md hydrated" name="eye-outline" role="img" aria-label="eye outline">
 						</ion-icon>
 					</div>
 				</div>
-				<button type="submit" class='btn btn-lg btn-primary' id="login">Đăng nhập</button>
+				<button type="submit" class='btn btn-lg btn-primary' id="login">Log in</button>
 
 				<div class="footer">
-					<span><a href="/register">Đăng ký</a></span>
-					<span><a href="/forgot-password">Quên mật khẩu?</a></span>
+					<span><a href="/register">Register</a></span>
+					<span><a href="/forgot-password">Forgot password?</a></span>
 				</div>
 			</div>
 
