@@ -295,3 +295,12 @@
 
 </div>
 <!-- end container-fluid -->
+
+<!-- Vendor js -->
+<script src="<?= get_assets_uri("js/admin/vendor.min.js") ?>"></script>
+
+<script src="<?= get_assets_uri("libs/morris-js/morris.min.js") ?>"></script>
+
+<script src="<?= get_assets_uri("libs/raphael/raphael.min.js") ?>"></script>
+
+<script src="<?= get_assets_uri("js/admin/pages/dashboard.init.js") ?>"></script>

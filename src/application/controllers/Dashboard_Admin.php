@@ -8,6 +8,7 @@ class Dashboard_Admin extends MY_Controller
 		parent::__construct();
 		$this->verify_authentication();
 		$this->load->model('User_model', 'user');
+		$this->load->model('Category_model', 'category');
 		$this->check_login_admin();
 	}
 
@@ -50,6 +51,7 @@ class Dashboard_Admin extends MY_Controller
 	public function categories()
 	{
 		$users = $this->user->get_user_current();
+		$categories = $this->category->list();
 
 		// echo '<pre>'; 
 		// var_dump($users);
@@ -58,6 +60,7 @@ class Dashboard_Admin extends MY_Controller
 
 		return $this
 			->set("user_info", ($users))
+			->set("categories", ($categories))
 			->set("download_url", get_csv_url())
 			->set("download_filename", "Category")
 			// ->set_full_layout(TRUE)
