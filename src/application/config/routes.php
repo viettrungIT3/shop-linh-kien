@@ -81,4 +81,10 @@ $route['admin/categories']  = "Dashboard_Admin/categories";
 $route['admin/products']  = "Dashboard_Admin/products";
 
 
-$route['api/v1/categories']  = "category/list";
+// ---------api----------
+$route_prefix = "api/v1/";
+
+// category
+$route[$route_prefix.'categories']          = "category/list";
+$route[$route_prefix.'category/(:num)']     = "category/get/$1";
+$route[$route_prefix.'category/update']     = "category/update";
