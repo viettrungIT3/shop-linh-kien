@@ -1,8 +1,7 @@
 ﻿<!-- Start container-fluid -->
 
 <style id="css-header-bar">
-    <?= load_css("category-admin") ?>
-    <?= load_css("modal-admin") ?>
+    <?= load_css("category-admin") ?><?= load_css("modal-admin") ?>
 </style>
 
 
@@ -27,27 +26,43 @@
                 <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
-                            <th>#</th>
+                            <th style="max-width: 10px!important;">#</th>
                             <th>Name</th>
                             <th>Description</th>
-                            <th>Actions</th>
+                            <th>Total Product</th>
+                            <th>Create by</th>
+                            <th style="max-width: 100px!important;">Date</th>
+                            <th>Status</th>
+                            <th style="max-width: 110px!important;">Actions</th>
                         </tr>
                     </thead>
 
                     <tbody>
 
-                        <?php foreach ($categories as $category) { ?>
+                        <?php $i = 0;
+                        foreach ($categories as $category) {
+                            $i++;
+                        ?>
 
                             <tr>
-                                <td><?= $category->id ?></td>
+                                <td style="text-align: end;"><?= $i ?></td>
                                 <td><?= $category->name ?></td>
                                 <td><?= $category->description ?></td>
+                                <td><?= $category->total_product ?></td>
+                                <td><?= $category->user_name ?></td>
+                                <td><?= $category->updated_at ?></td>
                                 <td>
-                                    <button type="button" class="btn btn-primary"><i class="far fa-eye"></i></button>
-                                    <button type="button" class="btn btn-success" href="#editCategoryModal" onclick="editCategoryModal(<?= $category->id ?>)" class="edit" data-toggle="modal" style="color: #fff;">
+                                    <?= ($category->status == 1 ? '<button type="button" style="cursor:default;" class="btn btn-success" disabled>Showing</button>' : ($category->status == 0 ? '<button type="button" style="cursor:default;" class="btn btn-warning" disabled>Blocked</button>' :
+                                        '<button type="button" style="cursor:default;" class="btn btn-danger" disabled>Deleted</button>')) ?>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-primary" onclick="CategoryID(<?= $category->id ?>)"><i class="far fa-eye"></i></button>
+                                    
+                                    <button type="button" class="btn btn-warning" href="#editCategoryModal" onclick="CategoryID(<?= $category->id ?>)" class="edit" data-toggle="modal" style="color: #fff;">
                                         <i class="fas fa-edit" data-toggle="tooltip" title="Edit"></i>
                                     </button>
-                                    <button type="button" class="btn btn-danger" href="#deleteCategoryModal" class="delete" data-toggle="modal" style="color: #fff;">
+                                    
+                                    <button type="button" class="btn btn-danger" href="#deleteCategoryModal" <?= ($category->status == 2) ? 'disabled' : "onclick='CategoryID($category->id)'" ?> class="delete" data-toggle="modal" style="color: #fff;">
                                         <i class="far fa-trash-alt" data-toggle="tooltip" title="Delete"></i>
                                     </button>
                                 </td>
@@ -92,8 +107,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                        <input type="submit" class="btn btn-success" value="Add">
+                        <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Cancel">
+                        <input type="button" class="btn btn-success" value="Add">
                     </div>
                 </form>
             </div>
@@ -110,17 +125,30 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>Name</label>
-                            <input type="text" class="form-control" required>
+                            <label>Name <span style="color: red;">(*)</span></label>
+                            <input id="name_edit" type="text" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label>Description</label>
-                            <textarea class="form-control" required></textarea>
+                            <textarea id="desc_edit" class="form-control" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Status</label>
+                            <div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="customRadioInline1" name="editRadio" class="custom-control-input" value="1" <?= $category->status == 1 ? 'checked' : '' ?>>
+                                    <label class="custom-control-label" for="customRadioInline1">Show</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="customRadioInline2" name="editRadio" class="custom-control-input" value="0" <?= $category->status == 0 ? 'checked' : '' ?>>
+                                    <label class="custom-control-label" for="customRadioInline2">Block</label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                        <input type="submit" class="btn btn-info" value="Save">
+                        <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Cancel">
+                        <input class="btn btn-info" style="width: 100px;" value="Save" onclick="submitEdit()">
                     </div>
                 </form>
             </div>
@@ -140,8 +168,8 @@
                         <p class="text-warning"><small>This action cannot be undone.</small></p>
                     </div>
                     <div class="modal-footer">
-                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                        <input type="submit" class="btn btn-danger" value="Delete">
+                        <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Cancel">
+                        <input type="button" class="btn btn-danger" value="Delete" onclick="deleteCategory()">
                     </div>
                 </form>
             </div>

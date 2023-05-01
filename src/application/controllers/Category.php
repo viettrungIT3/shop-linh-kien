@@ -12,7 +12,7 @@ class Category extends MY_Controller
     /**
      * action:      category/get/{id}
      * method:      get
-     * description: get info category by id and user_id
+     * description: get info category by id
      * return:      object
      */
     public function get(
@@ -36,7 +36,7 @@ class Category extends MY_Controller
     /**
      * action:      category/list/
      * method:      get
-     * description: get info category by user_id     
+     * description: get list categories
      * return:      object
      */
     public function list()
@@ -87,16 +87,16 @@ class Category extends MY_Controller
             $in_id,
             isset($posting_data['name']) ? $posting_data['name'] : $the_category->name,
             isset($posting_data['description']) ? $posting_data['description'] : $the_category->description,
+            isset($posting_data['status']) ? $posting_data['status'] : $the_category->status,
         );
 
         if (false === ($res['status'] ?? FALSE) || 0 == count($res['data'])) :
-            return $this->failed("Failed to update category id: {$in_id}")->set("data", [])->render_json();
+            return $this->failed("Failed to update category ID= {$in_id}")->set("data", [])->render_json();
         endif;
 
         return $this
-            ->success("category ID: {$in_id} was updated")
+            ->success("Category has ID = {$in_id} was updated")
             ->set("data", $res['data'])
-            ->set("errors", [])
             ->render_json();
     }
 }
