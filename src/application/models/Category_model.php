@@ -30,23 +30,15 @@ class Category_model extends MY_Model
 
     // description: func create category
     public function create(
-        $in_user_id         = NULL,
-        $in_clone_id        = NULL,
-        $in_title           = NULL,
-        $in_type            = NULL,
-        $in_image           = NULL,
-        $in_description1    = NULL,
-        $in_description2    = NUll
+        $in_user_id     = NULL,
+        $in_name        = NULL,
+        $in_description = NULL
     ) {
 
-        $res = $this->db->query("call category_create(?,?,?,?,?,?,?)", array(
+        $res = $this->db->query("call category_create(?,?,?)", array(
             $in_user_id,
-            $in_clone_id,
-            $in_title,
-            $in_type,
-            $in_image,
-            $in_description1,
-            $in_description2
+            $in_name,
+            $in_description 
         ));
 
         return $this->process_results($res)->get_results();

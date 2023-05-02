@@ -55,6 +55,44 @@ class Category extends MY_Controller
             ->render_json();
     }
 
+        /**
+     * action:      category/create
+     * method:      post
+     * body:        json {}
+     * description: create category and create question    
+     * return:      object
+     */
+    public function create()
+    {
+
+        $posting_data = $this->get_posting_data();
+
+        if (!isset($posting_data['user_id']) || NULL === $posting_data['user_id'])
+            return $this->failed("Missing user id")->render_json();
+
+        $in_user_id     = $posting_data['user_id'];
+        $in_name        = NULL;
+        $in_description = NULL;
+
+        isset($posting_data['name'])        && $in_name = $posting_data['name'];
+        isset($posting_data['description']) && $in_description = $posting_data['description'];
+
+        $res = $this->category->create(
+            $in_user_id,
+            $in_name,
+            $in_description 
+        );
+
+        if (false === ($res['status'] ?? FALSE) || 0 == count($res['data'])) :
+            return $this->failed('Create category fail')->set("data", [])->render_json();
+        endif;
+
+        return $this
+            ->success("Create category successfull!")
+            ->set("data", $res['data'])
+            ->render_json();
+    }
+
     /**
      * action:      category/update
      * method:      post
