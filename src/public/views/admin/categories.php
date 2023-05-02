@@ -10,11 +10,14 @@
 
     <!-- start  -->
     <div class="row">
-        <div class="col-sm-9">
+        <div class="col-sm-10">
             <h2 class="header-title mb-3 fs-2" style="font-size: 2rem;">Categories</h2>
         </div>
-        <div class="col-sm-3 text-left">
-            <a href="#addCategoryModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Category</span></a>
+        <div class="col-sm-2 text-left">
+            <a href="#addCategoryModal" class="btn btn-success" data-toggle="modal" style="display: grid;">
+                <i class="material-icons">&#xE147;</i> 
+                <span>Add New Category</span>
+            </a>
         </div>
     </div>
     <!-- end row -->
@@ -57,11 +60,11 @@
                                 </td>
                                 <td>
                                     <button type="button" class="btn btn-primary" onclick="CategoryID(<?= $category->id ?>)"><i class="far fa-eye"></i></button>
-                                    
+
                                     <button type="button" class="btn btn-warning" href="#editCategoryModal" onclick="CategoryID(<?= $category->id ?>, <?= $category->status ?>)" class="edit" data-toggle="modal" style="color: #fff;">
                                         <i class="fas fa-edit" data-toggle="tooltip" title="Edit"></i>
                                     </button>
-                                    
+
                                     <button type="button" class="btn btn-danger" href="#deleteCategoryModal" <?= ($category->status == 2) ? 'disabled' : "onclick='CategoryID($category->id)'" ?> class="delete" data-toggle="modal" style="color: #fff;">
                                         <i class="far fa-trash-alt" data-toggle="tooltip" title="Delete"></i>
                                     </button>
@@ -91,24 +94,16 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Name</label>
-                            <input type="text" class="form-control" required>
+                            <input id="name_add" type="text" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Address</label>
-                            <textarea class="form-control" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>Phone</label>
-                            <input type="text" class="form-control" required>
+                            <label>Description</label>
+                            <textarea id="desc_add" class="form-control" required></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Cancel">
-                        <input type="button" class="btn btn-success" value="Add">
+                        <input type="button" class="btn btn-success" value="Add" onclick="AddCategory()">
                     </div>
                 </form>
             </div>
