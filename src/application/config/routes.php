@@ -78,6 +78,7 @@ $route['cart']  = "dashboard/cart";
 $route['admin']  = "Dashboard_Admin/index";
 $route['admin/products']  = "Dashboard_Admin/products";
 $route['admin/categories']  = "Dashboard_Admin/categories";
+$route['admin/my_categories']  = "Dashboard_Admin/my_categories";
 $route['admin/products']  = "Dashboard_Admin/products";
 
 
@@ -85,6 +86,7 @@ $route['admin/products']  = "Dashboard_Admin/products";
 $route_prefix = "api/v1/";
 
 // category
-$route[$route_prefix.'categories']          = "category/list";
-$route[$route_prefix.'category/(:num)']     = "category/get/$1";
-$route[$route_prefix.'category/update']     = "category/update";
+$route[$route_prefix.'categories']                      = "category/list";
+$route[$route_prefix.'category/(:num)']                 = "category/get/$1";
+$route[$route_prefix.'category/update']                 = "category/update";
+$route[$route_prefix.'category/delete/(:num)/(:num)']   = "category/delete/$1/$2";

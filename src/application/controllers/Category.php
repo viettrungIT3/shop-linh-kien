@@ -99,4 +99,33 @@ class Category extends MY_Controller
             ->set("data", $res['data'])
             ->render_json();
     }
+
+        /**
+     * action:      category/delete/{user_id}/{id}
+     * method:      delete
+     * description: get info category by id and user_id
+     * return:      object
+     */
+    public function delete(
+        $in_user_id         = NULL,
+        $in_id              = NULL
+    ) {
+        if (NULL === $in_id) return $this->failed("Missing category id")->render_json();
+
+        $res = $this->category->delete($in_user_id, $in_id);
+
+        if (false === ($res['status'] ?? FALSE)) :
+            return $this->failed("Update failed")->set("data", [])->render_json();
+        endif;
+
+        // echo '<pre>'; 
+		// var_dump($res['data'][0]->message);
+		// echo '</pre>';
+		// die();
+
+        return $this
+            ->success("Delete successful!")
+            ->set("data", $res['data'])
+            ->render_json();
+    }
 }
