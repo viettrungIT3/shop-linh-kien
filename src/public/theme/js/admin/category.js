@@ -1,12 +1,19 @@
 let user_id = parseInt(document.getElementById("user_id").innerText);
 let user_role_id = parseInt(document.getElementById("user_role_id").innerText);
 let category_id;
-function CategoryID(val) {
-    category_id = val;
-    console.log(category_id);
+function CategoryID(id, status) {
+    category_id = id, status;
+    console.log(status);
+    if (status == 1) {
+        document.getElementById('customRadioInline1').checked = true;
+    } 
+    if (status == 0) {
+        document.getElementById('customRadioInline2').checked = true;
+    }
 }
 
-function submitEdit() {
+// edit category
+function EditCategory() {
     let name_edit = document.getElementById("name_edit").value;
     let desc_edit = document.getElementById("desc_edit").value;
     let status_edit = document.querySelector('input[name="editRadio"]:checked').value;
@@ -24,11 +31,11 @@ function submitEdit() {
         "status": parseInt(status_edit)
     }
     // console.log(data);
-    editToServer(data);
+    sendToServer(data);
 }
 
 // send data /
-function editToServer(data) {
+function sendToServer(data) {
 
     // Sử dụng Ajax để gửi dữ liệu lên server
     $.ajax({
@@ -45,4 +52,15 @@ function editToServer(data) {
             console.error("Error sending data:", error);
         }
     });
+}
+
+// delete category
+function DeleteCategory() {    
+    let data = {
+        "user_id": user_id,
+        "id": category_id,
+        "status": 2
+    }
+    // console.log(data);
+    sendToServer(data);
 }

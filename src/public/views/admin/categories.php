@@ -58,7 +58,7 @@
                                 <td>
                                     <button type="button" class="btn btn-primary" onclick="CategoryID(<?= $category->id ?>)"><i class="far fa-eye"></i></button>
                                     
-                                    <button type="button" class="btn btn-warning" href="#editCategoryModal" onclick="CategoryID(<?= $category->id ?>)" class="edit" data-toggle="modal" style="color: #fff;">
+                                    <button type="button" class="btn btn-warning" href="#editCategoryModal" onclick="CategoryID(<?= $category->id ?>, <?= $category->status ?>)" class="edit" data-toggle="modal" style="color: #fff;">
                                         <i class="fas fa-edit" data-toggle="tooltip" title="Edit"></i>
                                     </button>
                                     
@@ -136,11 +136,11 @@
                             <label>Status</label>
                             <div>
                                 <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="customRadioInline1" name="editRadio" class="custom-control-input" value="1" <?= $category->status == 1 ? 'checked' : '' ?>>
+                                    <input type="radio" id="customRadioInline1" name="editRadio" class="custom-control-input" value="1">
                                     <label class="custom-control-label" for="customRadioInline1">Show</label>
                                 </div>
                                 <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="customRadioInline2" name="editRadio" class="custom-control-input" value="0" <?= $category->status == 0 ? 'checked' : '' ?>>
+                                    <input type="radio" id="customRadioInline2" name="editRadio" class="custom-control-input" value="0">
                                     <label class="custom-control-label" for="customRadioInline2">Block</label>
                                 </div>
                             </div>
@@ -148,7 +148,7 @@
                     </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Cancel">
-                        <input class="btn btn-info" style="width: 100px;" value="Save" onclick="submitEdit()">
+                        <input class="btn btn-info" style="width: 100px;" value="Save" onclick="EditCategory()">
                     </div>
                 </form>
             </div>
@@ -169,7 +169,7 @@
                     </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Cancel">
-                        <input type="button" class="btn btn-danger" value="Delete" onclick="deleteCategory()">
+                        <input type="button" class="btn btn-danger" value="Delete" onclick="DeleteCategory()">
                     </div>
                 </form>
             </div>
