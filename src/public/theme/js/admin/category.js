@@ -115,3 +115,8 @@ function sendNewToServer(data) {
         }
     });
 }
+
+// don't permission 
+function DontPermission(str) {
+    alert("You don't have permission to " + str);
+}

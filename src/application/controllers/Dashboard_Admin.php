@@ -35,11 +35,6 @@ class Dashboard_Admin extends MY_Controller
 	{
 		$users = $this->user->get_user_current();
 
-		// echo '<pre>'; 
-		// var_dump($users);
-		// echo '</pre>';
-		// die();
-
 		return $this
 			->set("user_info", ($users))
 			->set_body_class("dashboard-listing")
@@ -53,11 +48,23 @@ class Dashboard_Admin extends MY_Controller
 		$users = $this->user->get_user_current();
 		$categories = $this->category->list();
 
-		// echo '<pre>'; 
-		// var_dump($users);
-		// echo '</pre>';
-		// die();
+		return $this
+			->set("user_info", ($users))
+			->set("categories", ($categories))
+			->set("download_url", get_csv_url())
+			->set("download_filename", "Category")
+			// ->set_full_layout(TRUE)
+			->set_body_class("dashboard-listing")
+			->set_page_title("Category")
+			->set_main_template("admin/categories")
+			->render();
+	}
 
+	public function my_categories()
+	{
+		$users = $this->user->get_user_current();		
+		$categories = $this->category->listByUserID($users['data'][0]->id);
+		
 		return $this
 			->set("user_info", ($users))
 			->set("categories", ($categories))

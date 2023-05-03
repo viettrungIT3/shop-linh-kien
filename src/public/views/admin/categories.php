@@ -9,7 +9,7 @@
         </div>
         <div class="col-sm-2 text-left">
             <a href="#addCategoryModal" class="btn btn-success" data-toggle="modal" style="display: grid;">
-                <i class="material-icons">&#xE147;</i> 
+                <i class="material-icons">&#xE147;</i>
                 <span>Add New Category</span>
             </a>
         </div>
@@ -59,13 +59,21 @@
                                 <td>
                                     <button type="button" class="btn btn-primary" href="#detailCategoryModal" onclick="Detail(<?= $category->id ?>)" class="detail" data-toggle="modal" style="color: #fff;"><i class="far fa-eye" title="Detail"></i></button>
 
-                                    <button type="button" class="btn btn-warning" href="#editCategoryModal" onclick="CategoryID(<?= $category->id ?>, <?= $category->status ?>)" class="edit" data-toggle="modal" style="color: #fff;">
-                                        <i class="fas fa-edit" data-toggle="tooltip" title="Edit"></i>
-                                    </button>
-
-                                    <button type="button" class="btn btn-danger" href="#deleteCategoryModal" <?= ($category->status == 2) ? 'disabled' : "onclick='CategoryID($category->id, $category->status)'" ?> class="delete" data-toggle="modal" style="color: #fff;">
-                                        <i class="far fa-trash-alt" data-toggle="tooltip" title="Delete"></i>
-                                    </button>
+                                    <?php if ($category->updated_by == $params["user_info"]['data'][0]->id || $category->role_id >= $params["user_info"]['data'][0]->role_id) { ?>
+                                        <button type="button" class="btn btn-warning" href="#editCategoryModal" onclick="CategoryID(<?= $category->id ?>, <?= $category->status ?>)" class="edit" data-toggle="modal" style="color: #fff;">
+                                            <i class="fas fa-edit" data-toggle="tooltip" title="Edit"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-danger" href="#deleteCategoryModal" <?= ($category->status == 2) ? 'disabled' : "onclick='CategoryID($category->id, $category->status)'" ?> class="delete" data-toggle="modal" style="color: #fff;">
+                                            <i class="far fa-trash-alt" data-toggle="tooltip" title="Delete"></i>
+                                        </button>
+                                    <?php } else { ?>
+                                        <button type="button" class="btn btn-warning" onclick="DontPermission('edit')" style="color: #fff; opacity: .65;">
+                                            <i class="fas fa-edit" data-toggle="tooltip" title="You don't have permission to edit"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-danger" onclick="DontPermission('delete')" style="color: #fff; opacity: .65;">
+                                            <i class="far fa-trash-alt" data-toggle="tooltip" title="You don't have permission to delete"></i>
+                                        </button>
+                                    <?php } ?>
                                 </td>
                             </tr>
                         <?php } ?>
