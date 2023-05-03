@@ -8,7 +8,7 @@
 
     const params = {
         idle_time: new Date().getTime(),
-        time_out: 15 * 60, // 15minutes
+        time_out: 24 * 60 * 60, // 24h
         time_check: null,
         second_counter: null,
         logout_count: 90, //seconds
