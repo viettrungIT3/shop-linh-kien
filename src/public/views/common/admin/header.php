@@ -163,6 +163,8 @@
 
                         <img src="<?php echo (get_uploads_file("{$user->avatar}")); ?>" alt="user-image" class="rounded-circle">
                         <span class="pro-user-name ml-1">
+                            <span style="display: none;" id="user_id"><?php echo $user->id ?></span>
+                            <span style="display: none;" id="user_role_id"><?php echo $user->role_id ?></span>
                             <?php echo $user->first_name . ' ' . $user->last_name ?>
                             <i class="fas fa-chevron-down"></i>
                         </span>
@@ -298,10 +300,8 @@
                             <span class="menu-arrow"></span>
                         </a>
                         <ul class="nav-second-level" aria-expanded="false">
-                            <li><a href="<?php echo base_url("/admin/categories"); ?>">Categories</a></li>
-                            <li><a href="components-alerts">Alerts</a></li>
-                            <li><a href="components-icons">Icons</a></li>
-                            <li><a href="components-widgets">Widgets</a></li>
+                            <li><a href="<?php echo base_url("/admin/categories"); ?>">All</a></li>
+                            <li><a href="<?php echo base_url("/admin/my_categories"); ?>">My Categories</a></li>
                         </ul>
                     </li>
 
