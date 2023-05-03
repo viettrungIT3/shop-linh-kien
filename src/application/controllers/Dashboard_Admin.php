@@ -9,6 +9,7 @@ class Dashboard_Admin extends MY_Controller
 		$this->verify_authentication();
 		$this->load->model('User_model', 'user');
 		$this->load->model('Category_model', 'category');
+		$this->load->model('Product_model', 'product');
 		$this->check_login_admin();
 	}
 
@@ -81,14 +82,17 @@ class Dashboard_Admin extends MY_Controller
 	{
 
 		$users = $this->user->get_user_current();
+		$products = $this->product->list();
 
 		// echo '<pre>'; 
-		// var_dump($users);
+		// var_dump($products);
 		// echo '</pre>';
 		// die();
 
 		return $this
 			->set("user_info", ($users))
+			->set("products", ($products))
+			->set("download_url", get_csv_url())
 			->set("download_filename", "Products")
 			// ->set_full_layout(TRUE)
 			->set_body_class("dashboard-listing")
