@@ -1,10 +1,4 @@
 ﻿<!-- Start container-fluid -->
-
-<style id="css-header-bar">
-    <?= load_css("category-admin") ?><?= load_css("modal-admin") ?>
-</style>
-
-
 <?php $categories = $params["categories"]['data'] ?>
 <div class="container-fluid">
 
@@ -32,9 +26,11 @@
                             <th style="max-width: 10px!important;">#</th>
                             <th>Name</th>
                             <th>Description</th>
-                            <th>Total Product</th>
-                            <th>Create by</th>
-                            <th style="max-width: 100px!important;">Date</th>
+                            <th>Total Products</th>
+                            <th class="d-none">Created by</th>
+                            <th class="d-none">Updated by</th>
+                            <th class="d-none">Created at</th>
+                            <th class="d-none">Update at</th>
                             <th>Status</th>
                             <th style="max-width: 110px!important;">Actions</th>
                         </tr>
@@ -49,23 +45,25 @@
 
                             <tr>
                                 <td style="text-align: end;"><?= $i ?></td>
-                                <td><?= $category->name ?></td>
-                                <td><?= $category->description ?></td>
-                                <td><?= $category->total_product ?></td>
-                                <td><?= $category->user_name ?></td>
-                                <td><?= $category->updated_at ?></td>
-                                <td>
+                                <td id="ca-name-<?= $category->id ?>"><?= $category->name ?></td>
+                                <td id="ca-desc-<?= $category->id ?>"><?= $category->description ?></td>
+                                <td id="ca-total-<?= $category->id ?>"><?= $category->total_product ?></td>
+                                <td id="ca-nameC-<?= $category->id ?>" class="d-none"><?= $category->name_of_created_by ?></td>
+                                <td id="ca-nameU-<?= $category->id ?>" class="d-none"><?= $category->name_of_updated_by ?></td>
+                                <td id="ca-timeC-<?= $category->id ?>" class="d-none"><?= $category->created_at ?></td>
+                                <td id="ca-timeU-<?= $category->id ?>" class="d-none"><?= $category->updated_at ?></td>
+                                <td id="ca-status-<?= $category->id ?>">
                                     <?= ($category->status == 1 ? '<button type="button" style="cursor:default;" class="btn btn-success" disabled>Showing</button>' : ($category->status == 0 ? '<button type="button" style="cursor:default;" class="btn btn-warning" disabled>Blocked</button>' :
                                         '<button type="button" style="cursor:default;" class="btn btn-danger" disabled>Deleted</button>')) ?>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-primary" onclick="CategoryID(<?= $category->id ?>)"><i class="far fa-eye"></i></button>
+                                    <button type="button" class="btn btn-primary" href="#detailCategoryModal" onclick="Detail(<?= $category->id ?>)" class="detail" data-toggle="modal" style="color: #fff;"><i class="far fa-eye" title="Detail"></i></button>
 
                                     <button type="button" class="btn btn-warning" href="#editCategoryModal" onclick="CategoryID(<?= $category->id ?>, <?= $category->status ?>)" class="edit" data-toggle="modal" style="color: #fff;">
                                         <i class="fas fa-edit" data-toggle="tooltip" title="Edit"></i>
                                     </button>
 
-                                    <button type="button" class="btn btn-danger" href="#deleteCategoryModal" <?= ($category->status == 2) ? 'disabled' : "onclick='CategoryID($category->id)'" ?> class="delete" data-toggle="modal" style="color: #fff;">
+                                    <button type="button" class="btn btn-danger" href="#deleteCategoryModal" <?= ($category->status == 2) ? 'disabled' : "onclick='CategoryID($category->id, $category->status)'" ?> class="delete" data-toggle="modal" style="color: #fff;">
                                         <i class="far fa-trash-alt" data-toggle="tooltip" title="Delete"></i>
                                     </button>
                                 </td>
@@ -82,6 +80,53 @@
     <!-- end row -->
 
     <!-- ===modal=== -->
+    <!-- Detail Modal HTML -->
+    <div id="detailCategoryModal" class="modal fade">
+        <div class="modal-dialog modal-lg mt-5" style="max-width: 600px !important;">
+            <div class="modal-content">
+                <form>
+                    <div class="modal-header">
+                        <h4 class="modal-title">Detail Category</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label> - Name: </label>
+                            <span id="name_detail" style="font-size: 1rem;"></span>
+                        </div>
+                        <div class="form-group">
+                            <label> - Description: </label>
+                            <span id="desc_detail" style="font-size: 1rem;"></span>
+                        </div>
+                        <div class="form-group">
+                            <label> - Total Products: </label>
+                            <span id="total_detail" style="font-size: 1rem;"></span>
+                        </div>
+                        <div class="form-group">
+                            <label> - Created by: </label>
+                            <span id="cb_detail" style="font-size: 1rem;"></span>
+                        </div>
+                        <div class="form-group">
+                            <label> - Updated by: </label>
+                            <span id="ub_detail" style="font-size: 1rem;"></span>
+                        </div>
+                        <div class="form-group">
+                            <label> - Created at: </label>
+                            <span id="ca_detail" style="font-size: 1rem;"></span>
+                        </div>
+                        <div class="form-group">
+                            <label> - Update ay: </label>
+                            <span id="ua_detail" style="font-size: 1rem;"></span>
+                        </div>
+                        <div class="form-group">
+                            <label> - Status: </label>
+                            <span id="status_detail" style="font-size: 1rem;"></span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <!-- Add Modal HTML -->
     <div id="addCategoryModal" class="modal fade">
         <div class="modal-dialog modal-lg mt-5">
@@ -173,11 +218,11 @@
 
     <!-- partial -->
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script>
-    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
+    <script src='https://maxbn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
     <script src="">
         $(document).ready(function() {
             // Activate tooltip
-            $('[data-toggle="tooltip"]').tooltip();
+            $('[data-toggle=btooltip"]').tooltip();
 
             // Select/Deselect checkboxes
             var checkbox = $('table tbody input[type="checkbox"]');
@@ -237,3 +282,8 @@
 
 <!-- Category js -->
 <script src="<?= get_assets_uri("js/admin/category.js") ?>"></script>
+
+
+<style id="css-header-bar">
+    <?= load_css("category-admin") ?><?= load_css("modal-admin") ?>
+</style>
