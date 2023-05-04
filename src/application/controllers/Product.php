@@ -79,7 +79,6 @@ class Product extends MY_Controller
         $in_warranty            = NULL;
         $in_gift_info           = NULL;
         $in_quantity            = 0;
-        $in_sold_quantity       = 0;
         $in_size                = NULL;
         $in_weight              = 0.0;
         $in_special_features    = NULL;
@@ -91,7 +90,6 @@ class Product extends MY_Controller
         isset($posting_data['warranty'])        && $in_warranty = $posting_data['warranty'];
         isset($posting_data['gift_info'])       && $in_gift_info = $posting_data['gift_info'];
         isset($posting_data['quantity'])        && $in_quantity = $posting_data['quantity'];
-        isset($posting_data['sold_quantity'])   && $in_sold_quantity = $posting_data['sold_quantity'];
         isset($posting_data['size'])            && $in_size = $posting_data['size'];
         isset($posting_data['weight'])          && $in_weight = $posting_data['weight'];
         isset($posting_data['special_features']) && $in_special_features = $posting_data['special_features'];
@@ -106,7 +104,6 @@ class Product extends MY_Controller
             $in_warranty,
             $in_gift_info,
             $in_quantity,
-            $in_sold_quantity,
             $in_size,
             $in_weight,
             $in_special_features
@@ -161,7 +158,6 @@ class Product extends MY_Controller
             isset($posting_data['warranty']) ? $posting_data['warranty'] : $the_product->warranty,
             isset($posting_data['gift_info']) ? $posting_data['gift_info'] : $the_product->gift_info,
             isset($posting_data['quantity']) ? $posting_data['quantity'] : $the_product->quantity,
-            isset($posting_data['sold_quantity']) ? $posting_data['sold_quantity'] : $the_product->sold_quantity,
             isset($posting_data['size']) ? $posting_data['size'] : $the_product->size,
             isset($posting_data['weight']) ? $posting_data['weight'] : $the_product->weight,
             isset($posting_data['special_features']) ? $posting_data['special_features'] : $the_product->special_features,

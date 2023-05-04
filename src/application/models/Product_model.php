@@ -38,13 +38,12 @@ class Product_model extends MY_Model
         $in_warranty            = NULL,
         $in_gift_info           = NULL,
         $in_quantity            = NULL,
-        $in_sold_quantity       = NULL,
         $in_size                = NULL,
         $in_weight              = NULL,
         $in_special_features    = NULL
     ) {
 
-        $res = $this->db->query("call product_create(?,?,?,?,?,?,?,?,?,?,?,?,?)", array(
+        $res = $this->db->query("call product_create(?,?,?,?,?,?,?,?,?,?,?,?)", array(
             $in_user_id,
             $in_category_id,
             $in_name,
@@ -54,7 +53,6 @@ class Product_model extends MY_Model
             $in_warranty,
             $in_gift_info,
             $in_quantity,
-            $in_sold_quantity,
             $in_size,
             $in_weight,
             $in_special_features
@@ -75,7 +73,6 @@ class Product_model extends MY_Model
         $in_warranty        = NULL,
         $in_gift_info       = NULL,
         $in_quantity        = NULL,
-        $in_sold_quantity   = NULL,
         $in_size            = NULL,
         $in_weight          = NULL,
         $in_special_features    = NULL,
@@ -86,7 +83,7 @@ class Product_model extends MY_Model
         if (NULL === $in_id)        return $this->failed("Missing product id")->get_results();
 
         $res = $this->db->query(
-            "call product_update(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+            "call product_update(?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
             array(
                 $in_user_id,
                 $in_id,
@@ -98,7 +95,6 @@ class Product_model extends MY_Model
                 $in_warranty,
                 $in_gift_info,
                 $in_quantity,
-                $in_sold_quantity,
                 $in_size,
                 $in_weight,
                 $in_special_features,
