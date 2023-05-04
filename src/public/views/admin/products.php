@@ -1,10 +1,12 @@
 ﻿<!-- Start container-fluid -->
+<?php $categories = $params["categories"]['data'] ?>
 <?php $products = $params["products"]['data'] ?>
 
 <!-- style -->
 <link rel='stylesheet' href='<?= get_assets_uri("libs/summernote/summernote-bs4.css") ?>'>
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/codemirror.css'>
-<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/theme/monokai.css'>
+<link rel='stylesheet' href='<?= get_assets_uri("libs/monokai/monokai.css") ?>'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.css">
 
 <div class="container-fluid">
 
@@ -100,7 +102,7 @@
     <!-- ===modal=== -->
     <!-- Detail Modal HTML -->
     <div id="detailProductModal" class="modal fade">
-        <div class="modal-dialog modal-lg mt-5" style="max-width: 600px !important;">
+        <div class="modal-dialog modal-lg mt-5" style="max-width: 850px !important;">
             <div class="modal-content">
                 <form>
                     <div class="modal-header">
@@ -155,30 +157,132 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
                     <div class="modal-body">
-                        <div class="form-group">
-                            <label>Name</label>
-                            <input id="name_add" type="text" class="form-control" required>
+                        <div class="row">
+                            <div class="form-group col-7">
+                                <label>Name</label>
+                                <input id="name_add" type="text" class="form-control" required>
+                            </div>
+                            <div class="form-group col-5">
+                                <label>Category</label>
+                                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                    <option selected>Choose...</option>
+                                    <?php foreach ($categories as $category) { ?>
+                                        <option value="<?= $category->id ?>"><?= $category->name ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-3">
+                                <label>Price</label>
+                                <input id="name_add" type="text" class="form-control" required>
+                            </div>
+                            <div class="form-group col-3">
+                                <label>quantity</label>
+                                <input id="name_add" type="text" class="form-control" required>
+                            </div>
+                            <div class="form-group col-3">
+                                <label>size</label>
+                                <input id="name_add" type="text" class="form-control" required>
+                            </div>
+                            <div class="form-group col-3">
+                                <label>weight</label>
+                                <input id="name_add" type="text" class="form-control" required>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label>Description</label>
-                            <textarea id="desc_add" class="form-control" required></textarea>
-                        </div>
-                        <div class="form-group" style="padding: 15px 0;">
-                            <label>Description</label>
-                            <textarea id="summernote" name="editordata"></textarea>
-                            <script>
-                                $(document).ready(function() {
-                                    $('#summernote').summernote({
-                                        toolbar: [
-                                            ['style', ['bold', 'italic', 'underline']],
-                                            ['para', ['ul', 'ol']],
-                                            ['insert', ['table']],
-                                            ['codeview']
-                                        ],
-                                        height: 150
-                                    });
-                                })
-                            </script>
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link" id="home-tab" data-toggle="tab" href="#wrapper-summernote" role="tab" aria-controls="wrapper-summernote" aria-selected="true">Description</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Special Features</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Gift info</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="warranty-tab" data-toggle="tab" href="#warranty" role="tab" aria-controls="warranty" aria-selected="false">Warranty</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="brand-tab" data-toggle="tab" href="#brand" role="tab" aria-controls="brand" aria-selected="false">Brand</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="wrapper-summernote" role="tabpanel" aria-labelledby="home-tab">
+                                    <textarea id="summernote" name="editordata"></textarea>
+                                    <script>
+                                        $(document).ready(function() {
+                                            $('#summernote').summernote({
+                                                placeholder: 'Description...',
+                                                toolbar: [
+                                                    ['style', ['bold', 'italic', 'underline']],
+                                                    ['para', ['ul', 'ol']],
+                                                    ['insert', ['table']],
+                                                    ['codeview']
+                                                ],
+                                                height: 200,
+                                                codemirror: {
+                                                    theme: 'monokai'
+                                                }
+                                            });
+                                        })
+                                    </script>
+
+                                    <style>
+                                        .note-editor button {
+                                            color: #797979 !important;
+                                            min-width: unset !important;
+                                        }
+                                    </style>
+                                </div>
+                                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                    <textarea id="summernote2" name="editordata"></textarea>
+                                    <script>
+                                        $(document).ready(function() {
+                                            $('#summernote2').summernote({
+                                                placeholder: 'Special Features...',
+                                                toolbar: [
+                                                    ['style', ['bold', 'italic', 'underline']],
+                                                    ['para', ['ul', 'ol']],
+                                                    ['insert', ['table']],
+                                                    ['codeview']
+                                                ],
+                                                height: 200,
+                                                codemirror: {
+                                                    theme: 'monokai'
+                                                }
+                                            });
+                                        })
+                                    </script>
+                                </div>
+                                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                                    <textarea id="summernote3" name="editordata"></textarea>
+                                    <script>
+                                        $(document).ready(function() {
+                                            $('#summernote3').summernote({
+                                                placeholder: 'Gift info...',
+                                                toolbar: [
+                                                    ['style', ['bold', 'italic', 'underline']],
+                                                    ['para', ['ul', 'ol']],
+                                                    ['insert', ['table']],
+                                                    ['codeview']
+                                                ],
+                                                height: 200,
+                                                codemirror: {
+                                                    theme: 'monokai'
+                                                }
+                                            });
+                                        })
+                                    </script>
+                                </div>
+                                <div class="tab-pane fade" id="brand" role="tabpanel" aria-labelledby="brand-tab">
+                                    Brand
+                                </div>
+                                <div class="tab-pane fade" id="warranty" role="tabpanel" aria-labelledby="warranty-tab">
+                                    Warranty
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -191,7 +295,7 @@
     </div>
     <!-- Edit Modal HTML -->
     <div id="editProductModal" class="modal fade">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-lg" style="max-width: 850px !important;">
             <div class="modal-content">
                 <form>
                     <div class="modal-header">
@@ -315,10 +419,15 @@
 <!-- Datatables init -->
 <script src="<?= get_assets_uri("js/admin/pages/datatables.init.js") ?>"></script>
 
-<script src='https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/codemirror.js'></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css" integrity="sha512-uf06llspW44/LZpHzHT6qBOIVODjWtv4MxCricRxkzvopAlSWnTf6hpZTFxuuZcuNE9CBQhqE0Seu1CoRk84nQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs4.min.css" integrity="sha512-ngQ4IGzHQ3s/Hh8kMyG4FC74wzitukRMIcTOoKT3EyzFZCILOPF0twiXOQn75eDINUfKBYmzYn2AA8DkAk8veQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote.min.js" integrity="sha512-6rE6Bx6fCBpRXG/FWpQmvguMWDLWMQjPycXMr35Zx/HRD9nwySZswkkLksgyQcvrpYMx0FELLJVBvWFtubZhDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.js" integrity="sha512-8RnEqURPUc5aqFEN04aQEiPlSAdE0jlFS/9iGgUyNtwFnSKCXhmB6ZTNl7LnDtDWKabJIASzXrzD0K+LYexU9g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/mode/xml/xml.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/2.36.0/formatting.js'></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/theme-monokai.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/js/bootstrap.bundle.js"></script>
 
 <!-- Product js -->
 <script src="<?= get_assets_uri("js/admin/product.js") ?>"></script>

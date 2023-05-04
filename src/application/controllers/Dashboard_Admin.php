@@ -82,6 +82,7 @@ class Dashboard_Admin extends MY_Controller
 	{
 
 		$users = $this->user->get_user_current();
+		$categories = $this->category->list();
 		$products = $this->product->list();
 
 		// echo '<pre>'; 
@@ -92,6 +93,7 @@ class Dashboard_Admin extends MY_Controller
 		return $this
 			->set("user_info", ($users))
 			->set("products", ($products))
+			->set("categories", ($categories))
 			->set("download_url", get_csv_url())
 			->set("download_filename", "Products")
 			// ->set_full_layout(TRUE)
