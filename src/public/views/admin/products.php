@@ -13,7 +13,7 @@
     <!-- start  -->
     <div class="row">
         <div class="col-sm-10">
-            <h2 class="header-title mb-3 fs-2" style="font-size: 2rem;">Categories</h2>
+            <h2 class="header-title mb-3 fs-2" style="font-size: 2rem;">Products</h2>
         </div>
         <div class="col-sm-2 text-left">
             <a href="#addProductModal" class="btn btn-success" data-toggle="modal" style="display: grid;">
@@ -33,11 +33,17 @@
                         <tr>
                             <th style="max-width: 10px!important;">#</th>
                             <th>Name</th>
+                            <th>Category</th>
+                            <th class="d-none">Brand</th>
                             <th>Price</th>
-                            <th>Brand</th>
                             <th>Quantity sold</th>
-                            <th>Quantity in stock</th>
-                            <th class="d-none">Created by</th>
+                            <th>Quantity stock</th>
+                            <th class="d-none">Size</th>
+                            <th class="d-none">Weight</th>
+                            <th class="d-none">Description</th>
+                            <th class="d-none">Special features</th>
+                            <th class="d-none">Gift info</th>
+                            <th class="d-none">Warranty</th>
                             <th class="d-none">Updated by</th>
                             <th class="d-none">Created at</th>
                             <th class="d-none">Update at</th>
@@ -55,16 +61,23 @@
 
                             <tr>
                                 <td style="text-align: end;"><?= $i ?></td>
-                                <td id="ca-name-<?= $product->id ?>"><?= $product->name ?></td>
-                                <td id="ca-desc-<?= $product->id ?>"><?= $product->price ?></td>
-                                <td id="ca-total-<?= $product->id ?>"><?= $product->brand ?></td>
-                                <td id="ca-total-<?= $product->id ?>"><?= $product->sold_quantity ?></td>
-                                <td id="ca-total-<?= $product->id ?>"><?= $product->quantity - $product->sold_quantity ?></td>
-                                <td id="ca-nameC-<?= $product->id ?>" class="d-none"><?= $product->name_of_created_by ?></td>
-                                <td id="ca-nameU-<?= $product->id ?>" class="d-none"><?= $product->name_of_updated_by ?></td>
-                                <td id="ca-timeC-<?= $product->id ?>" class="d-none"><?= $product->created_at ?></td>
-                                <td id="ca-timeU-<?= $product->id ?>" class="d-none"><?= $product->updated_at ?></td>
-                                <td id="ca-status-<?= $product->id ?>">
+                                <td id="p-name-<?= $product->id ?>"><?= $product->name ?></td>
+                                <td id="p-category_name-<?= $product->id ?>"><?= $product->category_name ?></td>
+                                <td id="p-brand-<?= $product->id ?>" class="d-none"><?= $product->brand ?></td>
+                                <td id="p-price-<?= $product->id ?>"><?= $product->price ?></td>
+                                <td id="p-total-<?= $product->id ?>"><?= $product->sold_quantity ?></td>
+                                <td id="p-total-<?= $product->id ?>"><?= $product->quantity - $product->sold_quantity ?></td>
+                                <td id="p-size-<?= $product->id ?>" class="d-none"><?= $product->size ?></td>
+                                <td id="p-weight-<?= $product->id ?>" class="d-none"><?= $product->weight ?></td>
+                                <td id="p-description-<?= $product->id ?>" class="d-none"><?= $product->description ?></td>
+                                <td id="p-special_features-<?= $product->id ?>" class="d-none"><?= $product->special_features ?></td>
+                                <td id="p-gift_info-<?= $product->id ?>" class="d-none"><?= $product->gift_info ?></td>
+                                <td id="p-warranty-<?= $product->id ?>" class="d-none"><?= $product->warranty ?></td>
+                                <td id="p-nameC-<?= $product->id ?>" class="d-none"><?= $product->name_of_created_by ?></td>
+                                <td id="p-nameU-<?= $product->id ?>" class="d-none"><?= $product->name_of_updated_by ?></td>
+                                <td id="p-timeC-<?= $product->id ?>" class="d-none"><?= $product->created_at ?></td>
+                                <td id="p-timeU-<?= $product->id ?>" class="d-none"><?= $product->updated_at ?></td>
+                                <td id="p-status-<?= $product->id ?>">
                                     <?= ($product->status == 1 ? '<button type="button" style="cursor:default;" class="btn btn-success" disabled>Showing</button>' : ($product->status == 0 ? '<button type="button" style="cursor:default;" class="btn btn-warning" disabled>Blocked</button>' :
                                         '<button type="button" style="cursor:default;" class="btn btn-danger" disabled>Deleted</button>')) ?>
                                 </td>
@@ -164,7 +177,7 @@
                             </div>
                             <div class="form-group col-5">
                                 <label>Category</label>
-                                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                <select class="custom-select mr-sm-2" id="category_add">
                                     <option selected>Choose...</option>
                                     <?php foreach ($categories as $category) { ?>
                                         <option value="<?= $category->id ?>"><?= $category->name ?></option>
@@ -175,22 +188,22 @@
                         <div class="row">
                             <div class="form-group col-3">
                                 <label>Price</label>
-                                <input id="name_add" type="text" class="form-control" required>
+                                <input id="price_add" type="number" class="form-control" step="0.01" min="0" required>
                             </div>
                             <div class="form-group col-3">
                                 <label>quantity</label>
-                                <input id="name_add" type="text" class="form-control" required>
+                                <input id="quantity_add" type="number" class="form-control" min="0" required>
                             </div>
                             <div class="form-group col-3">
-                                <label>size</label>
-                                <input id="name_add" type="text" class="form-control" required>
+                                <label>Weight</label>
+                                <input id="weight_add" type="number" class="form-control" step="0.01" min="0" required>
                             </div>
                             <div class="form-group col-3">
-                                <label>weight</label>
-                                <input id="name_add" type="text" class="form-control" required>
+                                <label>Size</label>
+                                <input id="size_add" type="text" class="form-control" required>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" style="min-height: 321px;">
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link" id="home-tab" data-toggle="tab" href="#wrapper-summernote" role="tab" aria-controls="wrapper-summernote" aria-selected="true">Description</a>
@@ -276,11 +289,30 @@
                                         })
                                     </script>
                                 </div>
-                                <div class="tab-pane fade" id="brand" role="tabpanel" aria-labelledby="brand-tab">
-                                    Brand
-                                </div>
                                 <div class="tab-pane fade" id="warranty" role="tabpanel" aria-labelledby="warranty-tab">
-                                    Warranty
+                                    <textarea id="summernote4" name="editordata"></textarea>
+                                    <script>
+                                        $(document).ready(function() {
+                                            $('#summernote4').summernote({
+                                                placeholder: 'Gift info...',
+                                                toolbar: [
+                                                    ['style', ['bold', 'italic', 'underline']],
+                                                    ['para', ['ul', 'ol']],
+                                                    ['insert', ['table']],
+                                                    ['codeview']
+                                                ],
+                                                height: 200,
+                                                codemirror: {
+                                                    theme: 'monokai'
+                                                }
+                                            });
+                                        })
+                                    </script>
+                                </div>
+                                <div class="tab-pane fade" id="brand" role="tabpanel" aria-labelledby="brand-tab">
+                                    <!-- <div class="row"> -->
+                                        <input id="brand_add" class="col-4" type="text" class="form-control" placeholder="Enter brand..." required>
+                                    <!-- </div> -->
                                 </div>
                             </div>
                         </div>
@@ -357,7 +389,7 @@
 
     <!-- partial -->
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script>
-    <script src='https://maxbn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/tooltip.js/1.3.0/tooltip.min.js'></script>
     <script src="">
         $(document).ready(function() {
             // Activate tooltip
@@ -426,7 +458,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.js" integrity="sha512-8RnEqURPUc5aqFEN04aQEiPlSAdE0jlFS/9iGgUyNtwFnSKCXhmB6ZTNl7LnDtDWKabJIASzXrzD0K+LYexU9g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/mode/xml/xml.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/2.36.0/formatting.js'></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/theme-monokai.js"></script>
+<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/theme-monokai.js"></script> -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/js/bootstrap.bundle.js"></script>
 
 <!-- Product js -->
