@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : shop-linh-kien
+ Source Server         : shop
  Source Server Type    : MySQL
  Source Server Version : 50741
- Source Host           : localhost:3939
+ Source Host           : shop-nw-db-localhost:3939
  Source Schema         : shop_nw_db
 
  Target Server Type    : MySQL
  Target Server Version : 50741
  File Encoding         : 65001
 
- Date: 04/05/2023 03:19:35
+ Date: 04/05/2023 17:50:22
 */
 
 SET NAMES utf8mb4;
@@ -485,7 +485,6 @@ CREATE PROCEDURE `product_create`(IN in_user_id INT,
   IN in_warranty VARCHAR(255) CHARACTER SET utf8mb4,
   IN in_gift_info VARCHAR(1000) CHARACTER SET utf8mb4,
   IN in_quantity INT,
-  IN in_sold_quantity INT,
   IN in_size VARCHAR(255) CHARACTER SET utf8mb4,
   IN in_weight FLOAT,
   IN in_special_features VARCHAR(1000) CHARACTER SET utf8mb4)
@@ -499,7 +498,6 @@ BEGIN
 			warranty,
 			gift_info,
 			quantity,
-			sold_quantity,
 			size,
 			weight,
 			special_features,
@@ -516,7 +514,6 @@ BEGIN
 			in_warranty,
 			in_gift_info,
 			in_quantity,
-			in_sold_quantity,
 			in_size,
 			in_weight,
 			in_special_features,
