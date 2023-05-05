@@ -33,10 +33,17 @@
                         <tr>
                             <th style="max-width: 10px!important;">#</th>
                             <th>Name</th>
+                            <th>Category</th>
+                            <th class="d-none">Brand</th>
                             <th>Price</th>
-                            <th>Brand</th>
                             <th>Quantity sold</th>
-                            <th>Quantity in stock</th>
+                            <th>Quantity stock</th>
+                            <th class="d-none">Size</th>
+                            <th class="d-none">Weight</th>
+                            <th class="d-none">Description</th>
+                            <th class="d-none">Special features</th>
+                            <th class="d-none">Gift info</th>
+                            <th class="d-none">Warranty</th>
                             <th class="d-none">Created by</th>
                             <th class="d-none">Updated by</th>
                             <th class="d-none">Created at</th>
@@ -55,16 +62,23 @@
 
                             <tr>
                                 <td style="text-align: end;"><?= $i ?></td>
-                                <td id="ca-name-<?= $product->id ?>"><?= $product->name ?></td>
-                                <td id="ca-desc-<?= $product->id ?>"><?= $product->price ?></td>
-                                <td id="ca-total-<?= $product->id ?>"><?= $product->brand ?></td>
-                                <td id="ca-total-<?= $product->id ?>"><?= $product->sold_quantity ?></td>
-                                <td id="ca-total-<?= $product->id ?>"><?= $product->quantity - $product->sold_quantity ?></td>
-                                <td id="ca-nameC-<?= $product->id ?>" class="d-none"><?= $product->name_of_created_by ?></td>
-                                <td id="ca-nameU-<?= $product->id ?>" class="d-none"><?= $product->name_of_updated_by ?></td>
-                                <td id="ca-timeC-<?= $product->id ?>" class="d-none"><?= $product->created_at ?></td>
-                                <td id="ca-timeU-<?= $product->id ?>" class="d-none"><?= $product->updated_at ?></td>
-                                <td id="ca-status-<?= $product->id ?>">
+                                <td id="p-name-<?= $product->id ?>"><?= $product->name ?></td>
+                                <td id="p-category_name-<?= $product->id ?>"><?= $product->category_name ?></td>
+                                <td id="p-brand-<?= $product->id ?>" class="d-none"><?= $product->brand ?></td>
+                                <td id="p-price-<?= $product->id ?>"><?= $product->price ?></td>
+                                <td id="p-sold_quantity-<?= $product->id ?>"><?= $product->sold_quantity ?></td>
+                                <td id="p-total-<?= $product->id ?>"><?= $product->quantity - $product->sold_quantity ?></td>
+                                <td id="p-size-<?= $product->id ?>" class="d-none"><?= $product->size ?></td>
+                                <td id="p-weight-<?= $product->id ?>" class="d-none"><?= $product->weight ?></td>
+                                <td id="p-desc-<?= $product->id ?>" class="d-none"><?= $product->description ?></td>
+                                <td id="p-special_features-<?= $product->id ?>" class="d-none"><?= $product->special_features ?></td>
+                                <td id="p-gift_info-<?= $product->id ?>" class="d-none"><?= $product->gift_info ?></td>
+                                <td id="p-warranty-<?= $product->id ?>" class="d-none"><?= $product->warranty ?></td>
+                                <td id="p-nameC-<?= $product->id ?>" class="d-none"><?= $product->name_of_created_by ?></td>
+                                <td id="p-nameU-<?= $product->id ?>" class="d-none"><?= $product->name_of_updated_by ?></td>
+                                <td id="p-timeC-<?= $product->id ?>" class="d-none"><?= $product->created_at ?></td>
+                                <td id="p-timeU-<?= $product->id ?>" class="d-none"><?= $product->updated_at ?></td>
+                                <td id="p-status-<?= $product->id ?>">
                                     <?= ($product->status == 1 ? '<button type="button" style="cursor:default;" class="btn btn-success" disabled>Showing</button>' : ($product->status == 0 ? '<button type="button" style="cursor:default;" class="btn btn-warning" disabled>Blocked</button>' :
                                         '<button type="button" style="cursor:default;" class="btn btn-danger" disabled>Deleted</button>')) ?>
                                 </td>
@@ -297,9 +311,7 @@
                                     </script>
                                 </div>
                                 <div class="tab-pane fade" id="brand" role="tabpanel" aria-labelledby="brand-tab">
-                                    <!-- <div class="row"> -->
-                                        <input id="brand_add" class="col-4" type="text" class="form-control" placeholder="Enter brand..." required>
-                                    <!-- </div> -->
+                                    <input id="brand_add" class="col-4" type="text" class="form-control" placeholder="Enter brand..." required>
                                 </div>
                             </div>
                         </div>
