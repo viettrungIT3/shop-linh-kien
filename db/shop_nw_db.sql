@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : shop
+ Source Server         : shop-linh-kien
  Source Server Type    : MySQL
  Source Server Version : 50741
- Source Host           : shop-nw-db-localhost:3939
+ Source Host           : localhost:3939
  Source Schema         : shop_nw_db
 
  Target Server Type    : MySQL
  Target Server Version : 50741
  File Encoding         : 65001
 
- Date: 04/05/2023 17:50:22
+ Date: 05/05/2023 07:35:49
 */
 
 SET NAMES utf8mb4;
@@ -104,7 +104,7 @@ CREATE TABLE `Products`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `category_id`(`category_id`) USING BTREE,
   CONSTRAINT `products_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `Categories` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Table structure for Promotion_Products
@@ -584,7 +584,6 @@ CREATE PROCEDURE `product_update`(IN in_user_id INT,
   IN in_warranty VARCHAR(255) CHARACTER SET utf8mb4,
   IN in_gift_info VARCHAR(1000) CHARACTER SET utf8mb4,
   IN in_quantity INT,
-  IN in_sold_quantity INT,
   IN in_size VARCHAR(255) CHARACTER SET utf8mb4,
   IN in_weight FLOAT,
   IN in_special_features VARCHAR(1000) CHARACTER SET utf8mb4,
@@ -601,10 +600,9 @@ BEGIN
 		warranty = in_warranty,
 		gift_info = in_gift_info,
 		quantity = in_quantity,
-		sold_quantity = in_sold_quantity,
 		size = in_size,
 		weight = in_weight,
-		special_features = in_sold_quantity,
+		special_features = in_special_features,
 		`status` = in_status,
 		updated_by = in_user_id,
 		updated_at = NOW()

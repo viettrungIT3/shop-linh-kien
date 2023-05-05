@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : shop
+ Source Server         : shop-linh-kien
  Source Server Type    : MySQL
  Source Server Version : 50741
- Source Host           : shop-nw-db-localhost:3939
+ Source Host           : localhost:3939
  Source Schema         : shop_nw_db
 
  Target Server Type    : MySQL
  Target Server Version : 50741
  File Encoding         : 65001
 
- Date: 04/05/2023 17:49:55
+ Date: 05/05/2023 07:35:27
 */
 
 SET NAMES utf8mb4;
@@ -37,11 +37,11 @@ CREATE TABLE `Categories`  (
 -- ----------------------------
 -- Records of Categories
 -- ----------------------------
-INSERT INTO `Categories` VALUES (1, 'Phụ Kiện Laptop', '', 0, 5, 1, 1, '2023-05-03 11:26:25', '2023-05-03 11:26:25');
+INSERT INTO `Categories` VALUES (1, 'Phụ Kiện Laptop', '', 0, 6, 1, 1, '2023-05-03 11:26:25', '2023-05-03 11:26:25');
 INSERT INTO `Categories` VALUES (2, 'Phụ Kiện PC', '', 0, 5, 1, 1, '2023-05-03 11:26:25', '2023-05-03 05:21:16');
-INSERT INTO `Categories` VALUES (3, 'Phụ Kiện Setup Bàn Làm Việc', NULL, 2, 2, 1, 1, '2023-05-03 11:26:25', '2023-05-03 11:26:25');
-INSERT INTO `Categories` VALUES (4, 'Phụ kiện tai nghe', NULL, 1, 0, 1, 1, '2023-05-03 11:26:25', '2023-05-03 11:26:25');
-INSERT INTO `Categories` VALUES (5, 'Ổ cứng', NULL, 2, 0, 1, 1, '2023-05-03 11:26:25', '2023-05-03 05:20:23');
+INSERT INTO `Categories` VALUES (3, 'Phụ Kiện Setup Bàn Làm Việc', NULL, 2, 4, 1, 1, '2023-05-03 11:26:25', '2023-05-03 11:26:25');
+INSERT INTO `Categories` VALUES (4, 'Phụ kiện tai nghe', NULL, 1, 1, 1, 1, '2023-05-03 11:26:25', '2023-05-03 11:26:25');
+INSERT INTO `Categories` VALUES (5, 'Ổ cứng', NULL, 2, 2, 1, 1, '2023-05-03 11:26:25', '2023-05-03 05:20:23');
 INSERT INTO `Categories` VALUES (6, 'Dây cap', NULL, 1, 0, 1, 1, '2023-05-03 11:26:25', '2023-05-03 11:26:25');
 INSERT INTO `Categories` VALUES (7, 'Thiết bị chuyển đổi', NULL, 1, 0, 1, 1, '2023-05-03 11:26:25', '2023-05-03 11:26:25');
 INSERT INTO `Categories` VALUES (8, 'Bộ chia tín hiệu', NULL, 1, 0, 1, 1, '2023-05-03 11:26:25', '2023-05-03 11:26:25');
@@ -130,12 +130,12 @@ CREATE TABLE `Products`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `category_id`(`category_id`) USING BTREE,
   CONSTRAINT `products_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `Categories` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of Products
 -- ----------------------------
-INSERT INTO `Products` VALUES (1, 1, 'Product 2', 1000000.00, 'desc 2', 'Thương hiệu sản phẩm', 'Bảo hành sản phẩm', 'Thông tin khuyến mãi', 10, 0, 'Kích thước sản phẩm', 1.5, '0', 2, 1, 1, '2023-05-03 10:30:32', '2023-05-03 16:44:30');
+INSERT INTO `Products` VALUES (1, 1, 'Product 3', 1000000.00, 'desc 2', 'Thương hiệu sản phẩm', 'Bảo hành sản phẩm', 'Thông tin khuyến mãi', 10, 0, 'Kích thước sản phẩm', 1.5, '0', 2, 1, 1, '2023-05-03 10:30:32', '2023-05-04 12:19:12');
 INSERT INTO `Products` VALUES (2, 1, 'Product name', 1000000.00, 'Product description', 'Product brand', 'Product warranty', 'Promotion information', 10, 0, 'Product size', 1.5, '0', 2, 1, 1, '2023-05-03 10:31:32', '2023-05-03 17:40:12');
 INSERT INTO `Products` VALUES (3, 1, 'test', 1.00, 'Product description', 'Product brand', 'Product warranty', 'Promotion information', 100, 0, 'XXL', 1.5, 'Special features', 1, 1, 1, '2023-05-03 11:56:31', '2023-05-03 11:56:31');
 INSERT INTO `Products` VALUES (4, 1, 'test 2', 1.00, 'Product description', 'Product brand', 'Product warranty', 'Promotion information', 100, 0, 'XXL', 1.5, 'Special features', 1, 1, 1, '2023-05-03 17:00:25', NULL);
@@ -144,6 +144,12 @@ INSERT INTO `Products` VALUES (6, 2, 'test 2', 1.00, 'Product description', 'Pro
 INSERT INTO `Products` VALUES (7, 2, 'test 2', 1.00, 'Product description', 'Product brand', 'Product warranty', 'Promotion information', 100, 0, 'XXL', 1.5, 'Special features', 1, 1, 1, '2023-05-03 17:04:10', NULL);
 INSERT INTO `Products` VALUES (8, 3, 'test 2', 1.00, 'Product description', 'Product brand', 'Product warranty', 'Promotion information', 100, 0, 'XXL', 1.5, 'Special features', 1, 1, 1, '2023-05-03 17:04:31', NULL);
 INSERT INTO `Products` VALUES (9, 3, 'test 2', 1.00, 'Product description', 'Product brand', 'Product warranty', 'Promotion information', 100, 0, 'XXL', 1.5, 'Special features', 1, 1, 1, '2023-05-03 17:05:08', NULL);
+INSERT INTO `Products` VALUES (10, 3, 'test 2', 1.00, 'Product description', 'Product brand', 'Product warranty', 'Promotion information', 100, 0, 'XXL', 1.5, 'Special features', 1, 1, 1, '2023-05-04 11:58:13', NULL);
+INSERT INTO `Products` VALUES (11, 1, 'test', 1.00, '<p>ádcvasdvc</p>', '', '', '<p>zxcvzxcvzxcvzxcvzxc</p>', 1, 0, 'x', 1, '<p>zxvzxcvzxcv</p>', 1, 1, 1, '2023-05-04 14:01:36', NULL);
+INSERT INTO `Products` VALUES (12, 5, 'aaa', 11.00, '<p>11</p>', NULL, '<p>11</p>', '<p>11</p>', 11, 0, '11', 11, '<p>11</p>', 1, 1, 1, '2023-05-04 19:31:32', NULL);
+INSERT INTO `Products` VALUES (13, 3, 'test 2', 1.00, 'Product description', 'Product brand', 'Product warranty', 'Promotion information', 100, 0, 'XXL', 1.5, 'Special features', 1, 1, 1, '2023-05-04 19:32:56', NULL);
+INSERT INTO `Products` VALUES (14, 4, 'test', 112.00, '', NULL, '', '', 123, 0, '123', 123, '', 1, 1, 1, '2023-05-04 19:33:51', NULL);
+INSERT INTO `Products` VALUES (15, 5, 'test', 22.00, '<p><b>abc</b></p>', NULL, '', '', 22, 0, '2', 2, '<p><b>xyz</b></p>', 1, 1, 1, '2023-05-04 19:37:40', NULL);
 
 -- ----------------------------
 -- Table structure for Promotion_Products
@@ -656,7 +662,6 @@ CREATE PROCEDURE `product_update`(IN in_user_id INT,
   IN in_warranty VARCHAR(255) CHARACTER SET utf8mb4,
   IN in_gift_info VARCHAR(1000) CHARACTER SET utf8mb4,
   IN in_quantity INT,
-  IN in_sold_quantity INT,
   IN in_size VARCHAR(255) CHARACTER SET utf8mb4,
   IN in_weight FLOAT,
   IN in_special_features VARCHAR(1000) CHARACTER SET utf8mb4,
@@ -673,10 +678,9 @@ BEGIN
 		warranty = in_warranty,
 		gift_info = in_gift_info,
 		quantity = in_quantity,
-		sold_quantity = in_sold_quantity,
 		size = in_size,
 		weight = in_weight,
-		special_features = in_sold_quantity,
+		special_features = in_special_features,
 		`status` = in_status,
 		updated_by = in_user_id,
 		updated_at = NOW()
