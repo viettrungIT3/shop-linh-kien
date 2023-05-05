@@ -164,7 +164,7 @@
                             </div>
                             <div class="form-group col-5">
                                 <label>Category</label>
-                                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                <select class="custom-select mr-sm-2" id="category_add">
                                     <option selected>Choose...</option>
                                     <?php foreach ($categories as $category) { ?>
                                         <option value="<?= $category->id ?>"><?= $category->name ?></option>
@@ -175,22 +175,22 @@
                         <div class="row">
                             <div class="form-group col-3">
                                 <label>Price</label>
-                                <input id="name_add" type="text" class="form-control" required>
+                                <input id="price_add" type="number" class="form-control" step="0.01" min="0" required>
                             </div>
                             <div class="form-group col-3">
                                 <label>quantity</label>
-                                <input id="name_add" type="text" class="form-control" required>
+                                <input id="quantity_add" type="number" class="form-control" min="0" required>
                             </div>
                             <div class="form-group col-3">
-                                <label>size</label>
-                                <input id="name_add" type="text" class="form-control" required>
+                                <label>Weight</label>
+                                <input id="weight_add" type="number" class="form-control" step="0.01" min="0" required>
                             </div>
                             <div class="form-group col-3">
-                                <label>weight</label>
-                                <input id="name_add" type="text" class="form-control" required>
+                                <label>Size</label>
+                                <input id="size_add" type="text" class="form-control" required>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" style="min-height: 321px;">
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link" id="home-tab" data-toggle="tab" href="#wrapper-summernote" role="tab" aria-controls="wrapper-summernote" aria-selected="true">Description</a>
@@ -276,11 +276,30 @@
                                         })
                                     </script>
                                 </div>
-                                <div class="tab-pane fade" id="brand" role="tabpanel" aria-labelledby="brand-tab">
-                                    Brand
-                                </div>
                                 <div class="tab-pane fade" id="warranty" role="tabpanel" aria-labelledby="warranty-tab">
-                                    Warranty
+                                    <textarea id="summernote4" name="editordata"></textarea>
+                                    <script>
+                                        $(document).ready(function() {
+                                            $('#summernote4').summernote({
+                                                placeholder: 'Gift info...',
+                                                toolbar: [
+                                                    ['style', ['bold', 'italic', 'underline']],
+                                                    ['para', ['ul', 'ol']],
+                                                    ['insert', ['table']],
+                                                    ['codeview']
+                                                ],
+                                                height: 200,
+                                                codemirror: {
+                                                    theme: 'monokai'
+                                                }
+                                            });
+                                        })
+                                    </script>
+                                </div>
+                                <div class="tab-pane fade" id="brand" role="tabpanel" aria-labelledby="brand-tab">
+                                    <!-- <div class="row"> -->
+                                        <input id="brand_add" class="col-4" type="text" class="form-control" placeholder="Enter brand..." required>
+                                    <!-- </div> -->
                                 </div>
                             </div>
                         </div>
