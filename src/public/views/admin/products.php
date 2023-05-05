@@ -36,8 +36,8 @@
                             <th>Category</th>
                             <th class="d-none">Brand</th>
                             <th>Price</th>
-                            <th>Quantity sold</th>
-                            <th>Quantity stock</th>
+                            <th>Sold</th>
+                            <th>Inventory</th>
                             <th class="d-none">Size</th>
                             <th class="d-none">Weight</th>
                             <th class="d-none">Description</th>
@@ -49,7 +49,7 @@
                             <th class="d-none">Created at</th>
                             <th class="d-none">Update at</th>
                             <th>Status</th>
-                            <th style="max-width: 110px!important;">Actions</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
 
@@ -83,7 +83,9 @@
                                         '<button type="button" style="cursor:default;" class="btn btn-danger" disabled>Deleted</button>')) ?>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-primary" href="#detailProductModal" onclick="Detail(<?= $product->id ?>)" class="detail" data-toggle="modal" style="color: #fff;"><i class="far fa-eye" title="Detail"></i></button>
+                                    <button type="button" class="btn btn-primary" href="#detailProductModal" onclick="Detail(<?= $product->id ?>)" class="detail" data-toggle="modal" style="color: #fff;">
+                                        <i class="far fa-eye" title="Detail"></i>
+                                    </button>
 
                                     <?php if ($product->updated_by == $params["user_info"]['data'][0]->id || $product->role_id >= $params["user_info"]['data'][0]->role_id) { ?>
                                         <button type="button" class="btn btn-warning" href="#editProductModal" onclick="ProductID(<?= $product->id ?>, <?= $product->status ?>)" class="edit" data-toggle="modal" style="color: #fff;">
@@ -116,7 +118,7 @@
     <!-- ===modal=== -->
     <!-- Detail Modal HTML -->
     <div id="detailProductModal" class="modal fade">
-        <div class="modal-dialog modal-lg mt-5" style="max-width: 850px !important;">
+        <div class="modal-dialog modal-lg mt-5" style="max-width: 900px !important;">
             <div class="modal-content">
                 <form>
                     <div class="modal-header">
@@ -124,38 +126,157 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
                     <div class="modal-body">
-                        <div class="form-group">
-                            <label> - Name: </label>
-                            <span id="name_detail" style="font-size: 1rem;"></span>
+                        <link href="<?= get_assets_uri("css/owl.carousel.css") ?>" rel="stylesheet" type="text/css" id="carousel-stylesheet">
+                        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+                        <div class="pd-wrap">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <div id="product-slider" class="owl-carousel product-slider">
+                                            <div class="item">
+                                                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" />
+                                            </div>
+                                            <div class="item">
+                                                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" />
+                                            </div>
+                                            <div class="item">
+                                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
+                                            </div>
+                                            <div class="item">
+                                                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" />
+                                            </div>
+                                            <div class="item">
+                                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
+                                            </div>
+                                            <div class="item">
+                                                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" />
+                                            </div>
+                                            <div class="item">
+                                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
+                                            </div>
+                                        </div>
+                                        <div id="product-thumb" class="owl-carousel product-thumb">
+                                            <div class="item">
+                                                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" />
+                                            </div>
+                                            <div class="item">
+                                                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" />
+                                            </div>
+                                            <div class="item">
+                                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
+                                            </div>
+                                            <div class="item">
+                                                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" />
+                                            </div>
+                                            <div class="item">
+                                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
+                                            </div>
+                                            <div class="item">
+                                                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" />
+                                            </div>
+                                            <div class="item">
+                                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <div class="product-dtl">
+                                            <div class="product-info">
+                                                <h2>
+                                                    <span id="name_detail"></span>
+                                                    <span id="status_detail"></span>
+                                                </h2>
+                                                <div class="product-price-discount">
+                                                    $<span id="price_detail"></span>
+                                                    <span class="line-through">$...</span>
+                                                </div>
+                                            </div>
+                                            <p></p>
+                                            <div class="row">
+                                                <table class="table table-hover table-bordered">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">Category</th>
+                                                            <td><span id="category_name_detail"></span></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">Brand</th>
+                                                            <td><span id="brand_detail"></span></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">Quantity stock</th>
+                                                            <td><span id="total_detail"></span></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">Quantity sold</th>
+                                                            <td><span id="sold_quantity_detail"></span></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">Size</th>
+                                                            <td><span id="size_detail"></span></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">Weight</th>
+                                                            <td><span id="weight_detail"></span></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">Created by</th>
+                                                            <td><span id="cb_detail"></span> (<span id="ca_detail"></span>).</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">Updated by</th>
+                                                            <td><span id="ub_detail"></span> (<span id="ua_detail"></span>).</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product-info-tabs" style="min-height: 350px;">
+                                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" id="description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">Description</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="special_features_detail-tab" data-toggle="tab" href="#special_features_detail" role="tab" aria-controls="special_features_detail" aria-selected="false">Special features</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="gift_info_detail-tab" data-toggle="tab" href="#gift_info_detail" role="tab" aria-controls="gift_info_detail" aria-selected="false">Gift info</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="warranty_detail-tab" data-toggle="tab" href="#warranty_detail" role="tab" aria-controls="warranty_detail" aria-selected="false">Warranty information</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false">Reviews (0)</a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content" id="myTabContent">
+                                        <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+                                            <span id="desc_detail"></span>
+                                        </div>
+                                        <div class="tab-pane fade" id="special_features_detail" role="tabpanel" aria-labelledby="special_features_detail-tab">
+                                            <span id="special_features_detail"></span>
+                                        </div>
+                                        <div class="tab-pane fade" id="gift_info_detail" role="tabpanel" aria-labelledby="gift_info_detail-tab">
+                                            <span id="gift_info_detail"></span>
+                                        </div>
+                                        <div class="tab-pane fade" id="warranty_detail" role="tabpanel" aria-labelledby="warranty_detail-tab">
+                                            <span id="warranty_detail"></span>
+                                        </div>
+                                        <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
+                                            <div class="review-heading">REVIEWS</div>
+                                            <p>There are no reviews yet.</p>
+                                            <div class="review-form">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label> - Description: </label>
-                            <span id="desc_detail" style="font-size: 1rem;"></span>
-                        </div>
-                        <div class="form-group">
-                            <label> - Total Products: </label>
-                            <span id="total_detail" style="font-size: 1rem;"></span>
-                        </div>
-                        <div class="form-group">
-                            <label> - Created by: </label>
-                            <span id="cb_detail" style="font-size: 1rem;"></span>
-                        </div>
-                        <div class="form-group">
-                            <label> - Updated by: </label>
-                            <span id="ub_detail" style="font-size: 1rem;"></span>
-                        </div>
-                        <div class="form-group">
-                            <label> - Created at: </label>
-                            <span id="ca_detail" style="font-size: 1rem;"></span>
-                        </div>
-                        <div class="form-group">
-                            <label> - Update ay: </label>
-                            <span id="ua_detail" style="font-size: 1rem;"></span>
-                        </div>
-                        <div class="form-group">
-                            <label> - Status: </label>
-                            <span id="status_detail" style="font-size: 1rem;"></span>
-                        </div>
+                        <link href="<?= get_assets_uri("css/product.css") ?>" rel="stylesheet" type="text/css" id="product-stylesheet">
+                        <script src="<?= get_assets_uri("js/owl.carousel.min.js") ?>"></script>
                     </div>
                 </form>
             </div>
@@ -163,7 +284,7 @@
     </div>
     <!-- Add Modal HTML -->
     <div id="addProductModal" class="modal fade">
-        <div class="modal-dialog modal-lg mt-5" style="max-width: 850px !important;">
+        <div class="modal-dialog modal-lg mt-5" style="max-width: 900px !important;">
             <div class="modal-content">
                 <form>
                     <div class="modal-header">
@@ -326,7 +447,7 @@
     </div>
     <!-- Edit Modal HTML -->
     <div id="editProductModal" class="modal fade">
-        <div class="modal-dialog modal-lg" style="max-width: 850px !important;">
+        <div class="modal-dialog modal-lg" style="max-width: 900px !important;">
             <div class="modal-content">
                 <form>
                     <div class="modal-header">
@@ -388,7 +509,6 @@
 
     <!-- partial -->
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script>
-    <script src='https://maxbn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
     <script src="">
         $(document).ready(function() {
             // Activate tooltip
@@ -467,3 +587,20 @@
 <style id="css-header-bar">
     <?= load_css("product-admin") ?><?= load_css("modal-admin") ?>
 </style>
+
+<script>
+    $(document).ready(function() {
+        $('#datatable-buttons').DataTable({
+            responsive: true,
+            columnDefs: [{
+                    responsivePriority: 1,
+                    targets: 0
+                }, // cột đầu tiên
+                {
+                    responsivePriority: 2,
+                    targets: -1
+                } // cột cuối cùng
+            ]
+        });
+    });
+</script>
