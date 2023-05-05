@@ -58,14 +58,23 @@ function AddProduct() {
 
 // Detail product
 function Detail(id) {
-    document.getElementById("name_detail").innerHTML = document.getElementById("ca-name-" + id).innerText;
-    document.getElementById("desc_detail").innerHTML = document.getElementById("ca-desc-" + id).innerText;
-    document.getElementById("total_detail").innerHTML = document.getElementById("ca-total-" + id).innerText;
-    document.getElementById("cb_detail").innerHTML = document.getElementById("ca-nameC-" + id).innerText;
-    document.getElementById("ub_detail").innerHTML = document.getElementById("ca-nameU-" + id).innerText;
-    document.getElementById("ca_detail").innerHTML = document.getElementById("ca-timeC-" + id).innerText;
-    document.getElementById("ua_detail").innerHTML = document.getElementById("ca-timeU-" + id).innerText;
-    document.getElementById("status_detail").innerHTML = document.getElementById("ca-status-" + id).innerText;
+    document.getElementById("name_detail").innerHTML = document.getElementById("p-name-" + id).innerText;
+    document.getElementById("category_name_detail").innerHTML = document.getElementById("p-category_name-" + id).innerText;
+    document.getElementById("brand_detail").innerHTML = document.getElementById("p-brand-" + id).innerText;
+    document.getElementById("price_detail").innerHTML = document.getElementById("p-price-" + id).innerText;
+    document.getElementById("sold_quantity_detail").innerHTML = document.getElementById("p-sold_quantity-" + id).innerText;
+    document.getElementById("total_detail").innerHTML = document.getElementById("p-total-" + id).innerText;
+    document.getElementById("size_detail").innerHTML = document.getElementById("p-size-" + id).innerText;
+    document.getElementById("weight_detail").innerHTML = document.getElementById("p-weight-" + id).innerText;
+    document.getElementById("desc_detail").innerHTML = document.getElementById("p-desc-" + id).innerText;
+    document.getElementById("special_features_detail").innerHTML = document.getElementById("p-special_features-" + id).innerText;
+    document.getElementById("gift_info_detail").innerHTML = document.getElementById("p-gift_info-" + id).innerText;
+    document.getElementById("warranty_detail").innerHTML = document.getElementById("p-warranty-" + id).innerText;
+    document.getElementById("cb_detail").innerHTML = document.getElementById("p-nameC-" + id).innerText;
+    document.getElementById("ub_detail").innerHTML = document.getElementById("p-nameU-" + id).innerText;
+    document.getElementById("ca_detail").innerHTML = document.getElementById("p-timeC-" + id).innerText;
+    document.getElementById("ua_detail").innerHTML = document.getElementById("p-timeU-" + id).innerText;
+    document.getElementById("status_detail").innerHTML = document.getElementById("p-status-" + id).innerText;
 }
 
 // edit product

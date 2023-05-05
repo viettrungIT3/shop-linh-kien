@@ -65,11 +65,11 @@
                                 <td id="p-category_name-<?= $product->id ?>"><?= $product->category_name ?></td>
                                 <td id="p-brand-<?= $product->id ?>" class="d-none"><?= $product->brand ?></td>
                                 <td id="p-price-<?= $product->id ?>"><?= $product->price ?></td>
-                                <td id="p-total-<?= $product->id ?>"><?= $product->sold_quantity ?></td>
+                                <td id="p-sold_quantity-<?= $product->id ?>"><?= $product->sold_quantity ?></td>
                                 <td id="p-total-<?= $product->id ?>"><?= $product->quantity - $product->sold_quantity ?></td>
                                 <td id="p-size-<?= $product->id ?>" class="d-none"><?= $product->size ?></td>
                                 <td id="p-weight-<?= $product->id ?>" class="d-none"><?= $product->weight ?></td>
-                                <td id="p-description-<?= $product->id ?>" class="d-none"><?= $product->description ?></td>
+                                <td id="p-desc-<?= $product->id ?>" class="d-none"><?= $product->description ?></td>
                                 <td id="p-special_features-<?= $product->id ?>" class="d-none"><?= $product->special_features ?></td>
                                 <td id="p-gift_info-<?= $product->id ?>" class="d-none"><?= $product->gift_info ?></td>
                                 <td id="p-warranty-<?= $product->id ?>" class="d-none"><?= $product->warranty ?></td>
@@ -124,35 +124,69 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label> - Name: </label>
+                            <label>Name: </label>
                             <span id="name_detail" style="font-size: 1rem;"></span>
                         </div>
+                        <div class="row">
+                            <div class="form-group col-6">
+                                <label>Category: </label>
+                                <span id="category_name_detail" style="font-size: 1rem;"></span>
+                            </div>
+                            <div class="form-group col-6">
+                                <label>Brand: </label>
+                                <span id="brand_detail" style="font-size: 1rem;"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-4">
+                                <label>Price: </label>
+                                <span id="price_detail" style="font-size: 1rem;"></span>
+                            </div>
+                            <div class="form-group col-4">
+                                <label>Quantity sold: </label>
+                                <span id="sold_quantity_detail" style="font-size: 1rem;"></span>
+                            </div>
+                            <div class="form-group col-4">
+                                <label>Quantity stock: </label>
+                                <span id="total_detail" style="font-size: 1rem;"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-4">
+                                <label>Weight: </label>
+                                <span id="weight_detail" style="font-size: 1rem;"></span>
+                            </div>
+                            <div class="form-group col-4">
+                                <label>Size: </label>
+                                <span id="size_detail" style="font-size: 1rem;"></span>
+                            </div>
+                        </div>
                         <div class="form-group">
-                            <label> - Description: </label>
+                            <label>Description: </label>
                             <span id="desc_detail" style="font-size: 1rem;"></span>
                         </div>
                         <div class="form-group">
-                            <label> - Total Products: </label>
+                            <label>Total Products: </label>
                             <span id="total_detail" style="font-size: 1rem;"></span>
                         </div>
                         <div class="form-group">
-                            <label> - Created by: </label>
+                            <label>Created by: </label>
                             <span id="cb_detail" style="font-size: 1rem;"></span>
                         </div>
                         <div class="form-group">
-                            <label> - Updated by: </label>
+                            <label>Updated by: </label>
                             <span id="ub_detail" style="font-size: 1rem;"></span>
                         </div>
                         <div class="form-group">
-                            <label> - Created at: </label>
+                            <label>Created at: </label>
                             <span id="ca_detail" style="font-size: 1rem;"></span>
                         </div>
                         <div class="form-group">
-                            <label> - Update ay: </label>
+                            <label>Update ay: </label>
                             <span id="ua_detail" style="font-size: 1rem;"></span>
                         </div>
                         <div class="form-group">
-                            <label> - Status: </label>
+                            <label>Status: </label>
                             <span id="status_detail" style="font-size: 1rem;"></span>
                         </div>
                     </div>
@@ -311,7 +345,7 @@
                                 </div>
                                 <div class="tab-pane fade" id="brand" role="tabpanel" aria-labelledby="brand-tab">
                                     <!-- <div class="row"> -->
-                                        <input id="brand_add" class="col-4" type="text" class="form-control" placeholder="Enter brand..." required>
+                                    <input id="brand_add" class="col-4" type="text" class="form-control" placeholder="Enter brand..." required>
                                     <!-- </div> -->
                                 </div>
                             </div>
