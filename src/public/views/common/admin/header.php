@@ -306,21 +306,14 @@
                     </li>
 
                     <li>
-                        <a href="typography">
-                            <i class="fa fa-shopping-basket"></i>
-                            <span> Typography </span>
-                        </a>
-                    </li>
-
-                    <li>
                         <a href="javascript: void(0);">
-                            <i class="fas fa-pencil-alt"></i>
-                            <span> Forms </span>
+                        <i class="fa fa-shopping-basket"></i>
+                            <span> Products </span>
                             <span class="menu-arrow"></span>
                         </a>
                         <ul class="nav-second-level" aria-expanded="false">
-                            <li><a href="forms-general">General Elements</a></li>
-                            <li><a href="forms-advanced">Advanced Form</a></li>
+                            <li><a href="<?php echo base_url("/admin/products"); ?>">ALL</a></li>
+                            <li><a href="<?php echo base_url("/admin/products"); ?>">Advanced Form</a></li>
                         </ul>
                     </li>
 

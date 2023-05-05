@@ -91,3 +91,10 @@ $route[$route_prefix.'category/(:num)']                 = "category/get/$1";
 $route[$route_prefix.'category/create']                 = "category/create";
 $route[$route_prefix.'category/update']                 = "category/update";
 $route[$route_prefix.'category/delete/(:num)/(:num)']   = "category/delete/$1/$2";
+
+// product
+$route[$route_prefix.'products']                        = "product/list";
+$route[$route_prefix.'product/(:num)']                  = "product/get/$1";
+$route[$route_prefix.'product/create']                  = "product/create";
+$route[$route_prefix.'product/update']                  = "product/update";
+$route[$route_prefix.'product/delete/(:num)/(:num)']    = "product/delete/$1/$2";
