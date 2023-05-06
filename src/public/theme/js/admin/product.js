@@ -25,14 +25,13 @@ function AddProduct() {
     let gift_info = document.getElementById("summernote3").value;
     let warranty = document.getElementById("summernote4").value;
     let brand = document.getElementById("brand").value;
-
     var settings = {
         "url": "http://shop.localhost.com:9292/api/v1/product/create",
         "method": "POST",
         "timeout": 0,
         "headers": {
             "Content-Type": "application/json",
-            "Cookie": "lskafi_9w98zad=573b60d7f90e20fa3aa11e04e1a0b75b91dd4b19"
+            "Cookie": document.cookie
         },
         "data": JSON.stringify({
             "user_id": user_id,
@@ -51,9 +50,36 @@ function AddProduct() {
     };
 
     $.ajax(settings).done(function (response) {
-        alert('Create product successful!');
+        product_id = response.data[0].id;
+        uploadImage(product_id);
+        // alert('Create product successful!');
         window.location.reload();
     });
+
+}
+
+function uploadImage(product_id) {
+    var files = $('input[name="image[]"]').prop('files');
+    var formData = new FormData();
+    $.each(files, function (key, value) {
+        formData.append('image[]', value);
+    });
+    formData.append('product_id', product_id);
+
+    $.ajax({
+        url: 'http://shop.localhost.com:9292/api/v1/product_images/create',
+        type: 'POST',
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function (response) {
+            console.log(response);
+            alert('Create product successful!');
+        },
+        error: function (xhr, status, error) {
+            console.log(error);
+        }
+    })
 }
 
 // Detail product
