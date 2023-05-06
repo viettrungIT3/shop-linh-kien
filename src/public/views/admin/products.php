@@ -3,10 +3,15 @@
 <?php $products = $params["products"]['data'] ?>
 
 <!-- style -->
-<link rel='stylesheet' href='<?= get_assets_uri("libs/summernote/summernote-bs4.css") ?>'>
-<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/codemirror.css'>
-<link rel='stylesheet' href='<?= get_assets_uri("libs/monokai/monokai.css") ?>'>
+<!-- CSS Summernote -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.css" rel="stylesheet">
+
+<!-- CSS CodeMirror -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/codemirror.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/theme/blackboard.min.css" rel="stylesheet">
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 
 <div class="container-fluid">
 
@@ -326,6 +331,86 @@
                                 <input id="size_add" type="text" class="form-control" required>
                             </div>
                         </div>
+
+                        <!-- Multiple File Upload -->
+                        <link href="<?= get_assets_uri("css/Multiple-img-upload-preview.css") ?>" rel="stylesheet" type="text/css" id="multi-img-stylesheet">
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label>Image: </label>
+                                <div class="upload__box">
+                                    <div class="upload__img-wrap"></div>
+                                    <div class="upload__btn-box">
+                                        <label class="upload__btn">
+                                            <p>Upload images</p>
+                                            <input type="file" multiple="" data-max_length="20" class="upload__inputfile">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <script>
+                            jQuery(document).ready(function() {
+                                ImgUpload();
+                            });
+
+                            function ImgUpload() {
+                                var imgWrap = "";
+                                var imgArray = [];
+
+                                $('.upload__inputfile').each(function() {
+                                    $(this).on('change', function(e) {
+                                        imgWrap = $(this).closest('.upload__box').find('.upload__img-wrap');
+                                        var maxLength = $(this).attr('data-max_length');
+
+                                        var files = e.target.files;
+                                        var filesArr = Array.prototype.slice.call(files);
+                                        var iterator = 0;
+                                        filesArr.forEach(function(f, index) {
+
+                                            if (!f.type.match('image.*')) {
+                                                return;
+                                            }
+
+                                            if (imgArray.length > maxLength) {
+                                                return false
+                                            } else {
+                                                var len = 0;
+                                                for (var i = 0; i < imgArray.length; i++) {
+                                                    if (imgArray[i] !== undefined) {
+                                                        len++;
+                                                    }
+                                                }
+                                                if (len > maxLength) {
+                                                    return false;
+                                                } else {
+                                                    imgArray.push(f);
+
+                                                    var reader = new FileReader();
+                                                    reader.onload = function(e) {
+                                                        var html = "<div class='upload__img-box'><div style='background-image: url(" + e.target.result + ")' data-number='" + $(".upload__img-close").length + "' data-file='" + f.name + "' class='img-bg'><div class='upload__img-close'></div></div></div>";
+                                                        imgWrap.append(html);
+                                                        iterator++;
+                                                    }
+                                                    reader.readAsDataURL(f);
+                                                }
+                                            }
+                                        });
+                                    });
+                                });
+
+                                $('body').on('click', ".upload__img-close", function(e) {
+                                    var file = $(this).parent().data("file");
+                                    for (var i = 0; i < imgArray.length; i++) {
+                                        if (imgArray[i].name === file) {
+                                            imgArray.splice(i, 1);
+                                            break;
+                                        }
+                                    }
+                                    $(this).parent().parent().remove();
+                                });
+                            }
+                        </script>
+
                         <div class="form-group" style="min-height: 321px;">
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
@@ -359,7 +444,7 @@
                                                 ],
                                                 height: 200,
                                                 codemirror: {
-                                                    theme: 'monokai'
+                                                    theme: 'blackboard'
                                                 }
                                             });
                                         })
@@ -386,7 +471,7 @@
                                                 ],
                                                 height: 200,
                                                 codemirror: {
-                                                    theme: 'monokai'
+                                                    theme: 'blackboard'
                                                 }
                                             });
                                         })
@@ -406,7 +491,7 @@
                                                 ],
                                                 height: 200,
                                                 codemirror: {
-                                                    theme: 'monokai'
+                                                    theme: 'blackboard'
                                                 }
                                             });
                                         })
@@ -426,7 +511,7 @@
                                                 ],
                                                 height: 200,
                                                 codemirror: {
-                                                    theme: 'monokai'
+                                                    theme: 'blackboard'
                                                 }
                                             });
                                         })
@@ -520,8 +605,8 @@
                         </div>
                         <div class="form-group" style="min-height: 321px;">
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link" id="desc_edit-tab" data-toggle="tab" href="#desc_edit" role="tab" aria-controls="desc_edit" aria-selected="true">Description</a>
+                                <li class="nav-item active">
+                                    <a class="nav-link active" id="desc_edit-tab" data-toggle="tab" href="#desc_edit" role="tab" aria-controls="desc_edit" aria-selected="true">Description</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" id="special_features_edit-tab" data-toggle="tab" href="#special_features_edit" role="tab" aria-controls="special_features_edit" aria-selected="false">Special Features</a>
@@ -551,7 +636,7 @@
                                                 ],
                                                 height: 200,
                                                 codemirror: {
-                                                    theme: 'monokai'
+                                                    theme: 'blackboard'
                                                 }
                                             });
                                         })
@@ -578,7 +663,7 @@
                                                 ],
                                                 height: 200,
                                                 codemirror: {
-                                                    theme: 'monokai'
+                                                    theme: 'blackboard'
                                                 }
                                             });
                                         })
@@ -598,7 +683,7 @@
                                                 ],
                                                 height: 200,
                                                 codemirror: {
-                                                    theme: 'monokai'
+                                                    theme: 'blackboard'
                                                 }
                                             });
                                         })
@@ -618,7 +703,7 @@
                                                 ],
                                                 height: 200,
                                                 codemirror: {
-                                                    theme: 'monokai'
+                                                    theme: 'blackboard'
                                                 }
                                             });
                                         })
@@ -736,14 +821,13 @@
 <!-- Datatables init -->
 <script src="<?= get_assets_uri("js/admin/pages/datatables.init.js") ?>"></script>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css" integrity="sha512-uf06llspW44/LZpHzHT6qBOIVODjWtv4MxCricRxkzvopAlSWnTf6hpZTFxuuZcuNE9CBQhqE0Seu1CoRk84nQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs4.min.css" integrity="sha512-ngQ4IGzHQ3s/Hh8kMyG4FC74wzitukRMIcTOoKT3EyzFZCILOPF0twiXOQn75eDINUfKBYmzYn2AA8DkAk8veQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!-- JS Summernote -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote.min.js" integrity="sha512-6rE6Bx6fCBpRXG/FWpQmvguMWDLWMQjPycXMr35Zx/HRD9nwySZswkkLksgyQcvrpYMx0FELLJVBvWFtubZhDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.js" integrity="sha512-8RnEqURPUc5aqFEN04aQEiPlSAdE0jlFS/9iGgUyNtwFnSKCXhmB6ZTNl7LnDtDWKabJIASzXrzD0K+LYexU9g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/mode/xml/xml.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/2.36.0/formatting.js'></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/theme-monokai.js"></script>
+<!-- JS CodeMirror -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/mode/xml/xml.min.js"></script>
+
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/js/bootstrap.bundle.js"></script>
 
 <!-- Product js -->
