@@ -100,3 +100,9 @@ $route[$route_prefix.'product/(:num)']                  = "product/get/$1";
 $route[$route_prefix.'product/create']                  = "product/create";
 $route[$route_prefix.'product/update']                  = "product/update";
 $route[$route_prefix.'product/delete/(:num)/(:num)']    = "product/delete/$1/$2";
+
+// product_images
+$route[$route_prefix.'product_images/create']                  = "product_images/create";
+
+// upload image
+$route['upload']            = "upload/index";

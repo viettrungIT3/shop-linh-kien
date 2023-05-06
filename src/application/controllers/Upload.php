@@ -23,8 +23,8 @@ class Upload extends MY_Controller
         }
 
         return $this
-            ->success("Upload image successfull!")
-            ->set("data", "https://cdl-practice.org/uploads/" . $name_file)
+            ->success("Upload image successful!")
+            ->set("data", $name_file)
             ->render_json();
     }
 }
