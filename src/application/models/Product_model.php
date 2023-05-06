@@ -21,9 +21,9 @@ class Product_model extends MY_Model
 
     // description: func to get list product by use
     public function listByUserID(
-        $created_at = NULL
+        $in_user_id = NULL
     ) {
-        $res = $this->db->query("call product_list_by_userID($created_at)", array());
+        $res = $this->db->query("call product_list_by_user(?)", array($in_user_id));
         return $this->process_results($res)->get_results();
     }
 
