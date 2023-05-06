@@ -296,7 +296,7 @@
                         </a>
                         <ul class="nav-second-level" aria-expanded="false">
                             <li><a href="<?php echo base_url("/admin/categories"); ?>">All</a></li>
-                            <li><a href="<?php echo base_url("/admin/my_categories"); ?>">My Categories</a></li>
+                            <li><a href="<?php echo base_url("/admin/my-categories"); ?>">My Categories</a></li>
                         </ul>
                     </li>
 
@@ -308,24 +308,23 @@
                         </a>
                         <ul class="nav-second-level" aria-expanded="false">
                             <li><a href="<?php echo base_url("/admin/products"); ?>">ALL</a></li>
-                            <li><a href="<?php echo base_url("/admin/products"); ?>">My list products</a></li>
+                            <li><a href="<?php echo base_url("/admin/my-products"); ?>">My products</a></li>
                             <li><a href="<?php echo base_url("/admin/products"); ?>">Showing</a></li>
                             <li><a href="<?php echo base_url("/admin/products"); ?>">Blocked</a></li>
                             <li><a href="<?php echo base_url("/admin/products"); ?>">Deleted</a></li>
                         </ul>
                     </li>
-
                     <li>
                         <a href="javascript: void(0);">
-                            <i class="fas fa-ambulance"></i>
+                        <i class="fas fa-ambulance"></i>
                             <span> Order  </span>
                             <span class="menu-arrow"></span>
                         </a>
                         <ul class="nav-second-level" aria-expanded="false">
-                            <li><a href="<?php echo base_url("/admin"); ?>">Processing</a></li>
-                            <li><a href="<?php echo base_url("/admin"); ?>">Processed</a></li>
-                            <li><a href="<?php echo base_url("/admin"); ?>">Delivery in progress</a></li>
-                            <li><a href="<?php echo base_url("/admin"); ?>">Accomplished</a></li>
+                        <li><a href="<?php echo base_url("/admin/o"); ?>">Processing</a></li>
+                            <li><a href="<?php echo base_url("/admin/o"); ?>">Processed</a></li>
+                            <li><a href="<?php echo base_url("/admin/o"); ?>">Delivery in progress</a></li>
+                            <li><a href="<?php echo base_url("/admin/o"); ?>">Accomplished</a></li>
                         </ul>
                     </li>
 
