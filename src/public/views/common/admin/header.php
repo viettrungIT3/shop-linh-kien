@@ -309,9 +309,9 @@
                         <ul class="nav-second-level" aria-expanded="false">
                             <li><a href="<?php echo base_url("/admin/products"); ?>">ALL</a></li>
                             <li><a href="<?php echo base_url("/admin/my-products"); ?>">My products</a></li>
-                            <li><a href="<?php echo base_url("/admin/products"); ?>">Showing</a></li>
-                            <li><a href="<?php echo base_url("/admin/products"); ?>">Blocked</a></li>
-                            <li><a href="<?php echo base_url("/admin/products"); ?>">Deleted</a></li>
+                            <li><a href="<?php echo base_url("/admin/products/1"); ?>">Showing</a></li>
+                            <li><a href="<?php echo base_url("/admin/products/0"); ?>">Blocked</a></li>
+                            <li><a href="<?php echo base_url("/admin/products/2"); ?>">Deleted</a></li>
                         </ul>
                     </li>
                     <li>

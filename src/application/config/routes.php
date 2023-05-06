@@ -69,18 +69,19 @@ $route['logout']              = "login/logout";
 $route['logout-due-to-inactivity']  = "login/activity_logout";
 
 // Dashboard 
-$route['single-product']  = "dashboard/single_product";
-$route['shop']  = "dashboard/shop";
-$route['checkout']  = "dashboard/checkout";
-$route['cart']  = "dashboard/cart";
+$route['single-product']            = "dashboard/single_product";
+$route['shop']                      = "dashboard/shop";
+$route['checkout']                  = "dashboard/checkout";
+$route['cart']                      = "dashboard/cart";
 
 // Dashboard_Admin
-$route['admin']  = "Dashboard_Admin/index";
-$route['admin/products']  = "Dashboard_Admin/products";
-$route['admin/categories']  = "Dashboard_Admin/categories";
-$route['admin/my-categories']  = "Dashboard_Admin/my_categories";
-$route['admin/products']  = "Dashboard_Admin/products";
-$route['admin/my-products']  = "Dashboard_Admin/my_products";
+$route['admin']                     = "Dashboard_Admin/index";
+$route['admin/products']            = "Dashboard_Admin/products";
+$route['admin/categories']          = "Dashboard_Admin/categories";
+$route['admin/my-categories']       = "Dashboard_Admin/my_categories";
+$route['admin/products']            = "Dashboard_Admin/products";
+$route['admin/my-products']         = "Dashboard_Admin/my_products";
+$route['admin/products/(:num)']     = "Dashboard_Admin/products_by_status/$1";
 
 
 // ---------api----------

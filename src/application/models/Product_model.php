@@ -27,6 +27,14 @@ class Product_model extends MY_Model
         return $this->process_results($res)->get_results();
     }
 
+    // description: func to get list product by status
+    public function listByStatus(
+        $in_status = NULL
+    ) {
+        $res = $this->db->query("call product_list_by_status(?)", array($in_status));
+        return $this->process_results($res)->get_results();
+    }
+
     // description: func create product
     public function create(
         $in_user_id             = NULL,

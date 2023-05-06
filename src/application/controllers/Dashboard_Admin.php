@@ -112,10 +112,27 @@ class Dashboard_Admin extends MY_Controller
 		$categories = $this->category->list();
 		$products = $this->product->listByUserID($users['data'][0]->id);
 
-		// echo '<pre>'; 
-		// var_dump($products);
-		// echo '</pre>';
-		// die();
+		return $this
+		->set("total", ($total))
+			->set("user_info", ($users))
+			->set("products", ($products))
+			->set("categories", ($categories))
+			->set("download_url", get_csv_url())
+			->set("download_filename", "Products")
+			// ->set_full_layout(TRUE)
+			->set_body_class("dashboard-listing")
+			->set_page_title("Products")
+			->set_main_template("admin/products")
+			->render();
+	}
+
+	public function products_by_status(
+        $in_status = NULL
+    ) {
+		$total = $this->statistical->total();
+		$users = $this->user->get_user_current();
+		$categories = $this->category->list();
+		$products = $this->product->listByStatus($in_status);
 
 		return $this
 		->set("total", ($total))
