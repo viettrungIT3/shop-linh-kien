@@ -18,7 +18,7 @@
     <!-- start  -->
     <div class="row">
         <div class="col-sm-10">
-            <h2 class="header-title mb-3 fs-2" style="font-size: 2rem;">Categories</h2>
+            <h2 class="header-title mb-3 fs-2" style="font-size: 2rem;">Products</h2>
         </div>
         <div class="col-sm-2 text-left">
             <a href="#addProductModal" class="btn btn-success" data-toggle="modal" style="display: grid;">
@@ -40,6 +40,7 @@
                             <th>Name</th>
                             <th>Category</th>
                             <th class="d-none">Brand</th>
+                            <th>Image</th>
                             <th>Price</th>
                             <th>Sold</th>
                             <th>Inventory</th>
@@ -70,6 +71,9 @@
                                 <td id="p-name-<?= $product->id ?>"><?= $product->name ?></td>
                                 <td id="p-category_name-<?= $product->id ?>"><?= $product->category_name ?></td>
                                 <td id="p-brand-<?= $product->id ?>" class="d-none"><?= $product->brand ?></td>
+                                <td> <span id="p-image-<?= $product->id ?>" class="d-none"><?= $product->images ?></span>
+                                    <img style="height: 50px;" src="<?php $arr  = explode("," , $product->images); echo (count($arr) > 0 ? 'http://shop.localhost.com:9292/uploads/' . $arr[0] : '') ?>" alt="">
+                                </td>
                                 <td id="p-price-<?= $product->id ?>"><?= $product->price ?></td>
                                 <td id="p-sold_quantity-<?= $product->id ?>"><?= $product->sold_quantity ?></td>
                                 <td id="p-total-<?= $product->id ?>"><?= $product->quantity - $product->sold_quantity ?></td>
@@ -342,7 +346,7 @@
                                     <div class="upload__btn-box">
                                         <label class="upload__btn">
                                             <p>Upload images</p>
-                                            <input type="file"  name="image[]" multiple data-max_length="20" class="upload__inputfile" accept="image/*">
+                                            <input type="file" name="image[]" multiple data-max_length="20" class="upload__inputfile" accept="image/*">
                                         </label>
                                     </div>
                                 </div>

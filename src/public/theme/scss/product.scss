@@ -1,8 +1,16 @@
 // dataTables
-.table-striped tbody tr td:nth-child(1),
-.table-striped tbody tr td:nth-child(2),
-.table-striped tbody tr td:nth-child(3) {
+table.dataTable tbody tr,
+table.dataTable.nowrap th,
+table.dataTable tbody tr td:nth-child(2),
+table.dataTable tbody tr td:nth-child(3),
+table.dataTable tbody tr td:nth-child(4) {
+    min-height: 50px;
     white-space: pre-wrap !important;
+}
+
+table.dataTable tbody td {
+    min-height: 50px;
+    vertical-align: middle;
 }
 
 table.dataTable tr th:last-child,
