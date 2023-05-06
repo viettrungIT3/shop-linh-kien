@@ -94,7 +94,7 @@ function EditProduct() {
     let warranty = document.getElementById("sn-warranty_edit").value;
     let brand = document.getElementById("in-brand_edit").value;
     let selectedRadio = document.querySelector('input[name="editRadio"]:checked');
-    
+
     if (name_edit.trim() === "") {
         alert("Cannot be left blank for input name!");
         return;
@@ -160,11 +160,18 @@ function sendToServer(data) {
 
 // delete product
 function DeleteProduct() {
-    let data = {
-        "user_id": user_id,
-        "id": product_id,
-        "status": 2
-    }
-    // console.log(data);
-    sendToServer(data);
+    var settings = {
+        "url": "http://shop.localhost.com:9292/api/v1/product/delete/" + user_id + "/" + product_id,
+        "method": "DELETE",
+        "timeout": 0,
+    };
+
+    $.ajax(settings)
+        .done(function (response) {
+            alert(response['messages'][0]);
+            window.location.reload();
+        })
+        .fail(function (jqXHR, textStatus, errorThrown) {
+            alert('Error: Delete Failed!');
+        });
 }
