@@ -20,6 +20,10 @@ table.dataTable tr td:last-child {
     }
 }
 
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    padding: 0 !important;
+}
+
 
 .form-group {
 

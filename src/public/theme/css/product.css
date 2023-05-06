@@ -18,6 +18,10 @@ table.dataTable tr td:last-child {
     display: table-cell !important;
   }
 }
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+  padding: 0 !important;
+}
+
 .form-group .nav .nav-item .nav-link {
   font-weight: normal !important;
   font-size: 14px !important;
