@@ -54,11 +54,7 @@
     <!-- Begin page -->
     <div id="wrapper">
 
-        <?php
-        $user = $params["user_info"]['data'][0];
-        // var_dump($user);
-        // die;
-        ?>
+        <?php $user = $params["user_info"]['data'][0]; ?>
 
 
         <!-- Topbar Start -->
@@ -166,7 +162,6 @@
                             <span style="display: none;" id="user_id"><?php echo $user->id ?></span>
                             <span style="display: none;" id="user_role_id"><?php echo $user->role_id ?></span>
                             <?php echo $user->first_name . ' ' . $user->last_name ?>
-                            <i class="fas fa-chevron-down"></i>
                         </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -196,7 +191,7 @@
                         <div class="dropdown-divider"></div>
 
                         <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <a href="<?php echo base_url("/logout"); ?>" class="dropdown-item notify-item">
                             <i class="fas fa-logout-variant"></i>
                             <span>Logout</span>
                         </a>
@@ -307,32 +302,45 @@
 
                     <li>
                         <a href="javascript: void(0);">
-                        <i class="fa fa-shopping-basket"></i>
+                            <i class="fa fa-shopping-basket"></i>
                             <span> Products </span>
                             <span class="menu-arrow"></span>
                         </a>
                         <ul class="nav-second-level" aria-expanded="false">
                             <li><a href="<?php echo base_url("/admin/products"); ?>">ALL</a></li>
-                            <li><a href="<?php echo base_url("/admin/products"); ?>">Advanced Form</a></li>
+                            <li><a href="<?php echo base_url("/admin/products"); ?>">My list products</a></li>
+                            <li><a href="<?php echo base_url("/admin/products"); ?>">Showing</a></li>
+                            <li><a href="<?php echo base_url("/admin/products"); ?>">Blocked</a></li>
+                            <li><a href="<?php echo base_url("/admin/products"); ?>">Deleted</a></li>
                         </ul>
                     </li>
 
                     <li>
                         <a href="javascript: void(0);">
-                            <i class="fas fa-bars"></i>
-                            <span> Tables </span>
+                            <i class="fas fa-ambulance"></i>
+                            <span> Order  </span>
                             <span class="menu-arrow"></span>
                         </a>
                         <ul class="nav-second-level" aria-expanded="false">
-                            <li><a href="tables-basic">Basic Tables</a></li>
-                            <li><a href="tables-advanced">Advanced Tables</a></li>
+                            <li><a href="<?php echo base_url("/admin"); ?>">Processing</a></li>
+                            <li><a href="<?php echo base_url("/admin"); ?>">Processed</a></li>
+                            <li><a href="<?php echo base_url("/admin"); ?>">Delivery in progress</a></li>
+                            <li><a href="<?php echo base_url("/admin"); ?>">Accomplished</a></li>
                         </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);">
+                            <i class="text-info mdi mdi-account-multiple"></i>
+                            <span> Employee  </span>
+                            <span class="menu-arrow"></span>
+                        </a>
                     </li>
 
                     <li>
                         <a href="charts">
                             <i class="fas fa-chart-pie"></i>
-                            <span> Charts </span>
+                            <span> Chat </span>
                             <span class="badge badge-primary float-right">5</span>
                         </a>
                     </li>
@@ -347,77 +355,17 @@
                     <li>
                         <a href="javascript: void(0);">
                             <i class="far fa-file"></i>
-                            <span> Pages </span>
+                            <span> Blog </span>
                             <span class="menu-arrow"></span>
                         </a>
-                        <ul class="nav-second-level" aria-expanded="false">
-                            <li><a href="pages-login">Login</a></li>
-                            <li><a href="pages-register">Register</a></li>
-                            <li><a href="pages-forget-password">Forget Password</a></li>
-                            <li><a href="pages-lock-screen">Lock-screen</a></li>
-                            <li><a href="pages-blank">Blank page</a></li>
-                            <li><a href="pages-404">Error 404</a></li>
-                            <li><a href="pages-confirm-mail">Confirm Mail</a></li>
-                            <li><a href="pages-session-expired">Session Expired</a></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="javascript: void(0);">
-                            <i class="fas fa-chevron-down"></i>
-                            <span> Extra Pages </span>
-                            <span class="menu-arrow"></span>
-                        </a>
-                        <ul class="nav-second-level" aria-expanded="false">
-
-                            <li><a href="extras-timeline">Timeline</a></li>
-                            <li><a href="extras-invoice">Invoice</a></li>
-                            <li><a href="extras-profile">Profile</a></li>
-                            <li><a href="extras-calendar">Calendar</a></li>
-                            <li><a href="extras-faqs">FAQs</a></li>
-                            <li><a href="extras-pricing">Pricing</a></li>
-                            <li><a href="extras-contacts">Contacts</a></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="javascript: void(0);">
-                            <i class="fas fa-th-large"></i>
-                            <span> Layouts </span>
-                            <span class="badge badge-danger badge-pill float-right">New</span>
-                        </a>
-                        <ul class="nav-second-level" aria-expanded="false">
-                            <li><a href="layouts-horizontal">Horizontal</a></li>
-                            <li><a href="layouts-dark-sidebar">Dark Sidebar</a></li>
-                            <li><a href="layouts-small-sidebar">Small Sidebar</a></li>
-                            <li><a href="layouts-sidebar-collapsed">Sidebar Collapsed</a></li>
-                        </ul>
                     </li>
 
                     <li>
                         <a href="javascript: void(0);">
                             <i class="fas fa-share-alt"></i>
-                            <span> Multi Level </span>
+                            <span> Introduce </span>
                             <span class="menu-arrow"></span>
                         </a>
-                        <ul class="nav-second-level nav" aria-expanded="false">
-                            <li>
-                                <a href="javascript: void(0);">Level 1.1</a>
-                            </li>
-                            <li>
-                                <a href="javascript: void(0);" aria-expanded="false">Level 1.2
-                                    <span class="menu-arrow"></span>
-                                </a>
-                                <ul class="nav-third-level nav" aria-expanded="false">
-                                    <li>
-                                        <a href="javascript: void(0);">Level 2.1</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript: void(0);">Level 2.2</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
                     </li>
                 </ul>
 

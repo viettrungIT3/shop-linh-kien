@@ -1,1 +1,22 @@
+.table-striped tbody tr td:nth-child(1),
+.table-striped tbody tr td:nth-child(2),
+.table-striped tbody tr td:nth-child(3) {
+  white-space: pre-wrap !important;
+}
 
+table.dataTable tr th:last-child,
+table.dataTable tr td:last-child {
+  display: table-cell !important;
+  max-width: 110px !important;
+  min-width: 100px !important;
+}
+
+@media screen and (max-width: 767px) {
+  table.dataTable tr td:last-child,
+  table.dataTable tr th:last-child {
+    display: table-cell !important;
+  }
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+  padding: 0 !important;
+}

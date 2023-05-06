@@ -7,6 +7,7 @@ class Dashboard_Admin extends MY_Controller
 
 		parent::__construct();
 		$this->verify_authentication();
+		$this->load->model('Statistical_model', 'statistical');
 		$this->load->model('User_model', 'user');
 		$this->load->model('Category_model', 'category');
 		$this->load->model('Product_model', 'product');
@@ -34,9 +35,18 @@ class Dashboard_Admin extends MY_Controller
 
 	public function index()
 	{
+		$total = $this->statistical->total();
+		$top_5_bestsellers = $this->statistical->top_5_bestsellers();
+
+		// echo '<pre>'; 
+		// var_dump($top_5_bestsellers);
+		// echo '</pre>';
+		// die();
 		$users = $this->user->get_user_current();
 
 		return $this
+			->set("total", ($total))
+			->set("top_5_bestsellers", ($top_5_bestsellers))
 			->set("user_info", ($users))
 			->set_body_class("dashboard-listing")
 			->set_page_title("Admin")
@@ -46,10 +56,12 @@ class Dashboard_Admin extends MY_Controller
 
 	public function categories()
 	{
+		$total = $this->statistical->total();
 		$users = $this->user->get_user_current();
 		$categories = $this->category->list();
 
 		return $this
+			->set("total", ($total))
 			->set("user_info", ($users))
 			->set("categories", ($categories))
 			->set("download_url", get_csv_url())
@@ -63,10 +75,12 @@ class Dashboard_Admin extends MY_Controller
 
 	public function my_categories()
 	{
+		$total = $this->statistical->total();
 		$users = $this->user->get_user_current();		
 		$categories = $this->category->listByUserID($users['data'][0]->id);
 		
 		return $this
+		->set("total", ($total))
 			->set("user_info", ($users))
 			->set("categories", ($categories))
 			->set("download_url", get_csv_url())
@@ -80,7 +94,7 @@ class Dashboard_Admin extends MY_Controller
 
 	public function products()
 	{
-
+		$total = $this->statistical->total();
 		$users = $this->user->get_user_current();
 		$categories = $this->category->list();
 		$products = $this->product->list();
@@ -91,6 +105,7 @@ class Dashboard_Admin extends MY_Controller
 		// die();
 
 		return $this
+		->set("total", ($total))
 			->set("user_info", ($users))
 			->set("products", ($products))
 			->set("categories", ($categories))
