@@ -72,7 +72,8 @@
                                 <td id="p-category_name-<?= $product->id ?>"><?= $product->category_name ?></td>
                                 <td id="p-brand-<?= $product->id ?>" class="d-none"><?= $product->brand ?></td>
                                 <td> <span id="p-image-<?= $product->id ?>" class="d-none"><?= $product->images ?></span>
-                                    <img style="height: 50px;" src="<?php $arr  = explode("," , $product->images); echo (count($arr) > 0 ? 'http://shop.localhost.com:9292/uploads/' . $arr[0] : '') ?>" alt="">
+                                    <img style="height: 50px;" src="<?php $arr  = explode(",", $product->images);
+                                                                    echo (count($arr) > 0 ? 'http://shop.localhost.com:9292/uploads/' . $arr[0] : '') ?>" alt="">
                                 </td>
                                 <td id="p-price-<?= $product->id ?>"><?= $product->price ?></td>
                                 <td id="p-sold_quantity-<?= $product->id ?>"><?= $product->sold_quantity ?></td>
@@ -541,7 +542,17 @@
         // open modal edit 
         function OpenModalEdit(id, status) {
             product_id = id;
-            console.log(status);
+            // var html = "<div class='upload__img-box'><div style='background-image: url(" + e.target.result + ")' data-number='" + $(".upload__img-close").length + "' data-file='" + f.name + "' class='img-bg'><div class='upload__img-close'></div></div></div>";
+            let images = document.getElementById("p-image-" + id).innerHTML;
+            let arr_img = images.split(",");
+            var imgWrap = document.getElementById('upload__img-wrap_edit');
+            imgWrap.innerHTML = ''; // clear previous images
+
+            arr_img.forEach(function(img) {
+                var img_url = 'http://shop.localhost.com:9292/uploads/' + img;
+                var html = "<div class='upload__img-box'><div style='background-image: url(" + img_url + ")' data-number='" + $(".upload__img-close").length + "' data-file='" + img + "' class='img-bg'><div class='upload__img-close'></div></div></div>";
+                imgWrap.innerHTML += html;
+            });
 
             document.getElementById("name_edit").value = document.getElementById("p-name-" + id).innerText;
             document.getElementById("price_edit").value = document.getElementById("p-price-" + id).innerText;
@@ -549,7 +560,6 @@
             document.getElementById("weight_edit").value = document.getElementById("p-weight-" + id).innerText;
             document.getElementById("size_edit").value = document.getElementById("p-size-" + id).innerText;
             document.getElementById("in-brand_edit").value = document.getElementById("p-brand-" + id).innerText;
-            // document.getElementById("status_edit").value = document.getElementById("p-status-" + id).innerHTML;
 
             $('#sn-desc_edit').summernote('code', document.getElementById("p-desc-" + id).innerHTML);
             $('#sn-special_features_edit').summernote('code', document.getElementById("p-special_features-" + id).innerHTML);
@@ -607,6 +617,83 @@
                                 <input id="size_edit" type="text" class="form-control" required>
                             </div>
                         </div>
+                        <!-- Multiple File Upload -->
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label>Image: </label>
+                                <div class="upload__box">
+                                    <div class="upload__img-wrap_edit" id="upload__img-wrap_edit"></div>
+                                    <div class="upload__btn-box">
+                                        <label class="upload__btn">
+                                            <p>Upload images</p>
+                                            <input type="file" name="image[]" multiple data-max_length="20" class="upload__inputfile_edit" style="opacity: 0;width: 0;height: 0;" accept="image/*">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <script>
+                            jQuery(document).ready(function() {
+                                ImgUploadEdit();
+                            });
+
+                            function ImgUploadEdit() {
+                                var imgWrap = "";
+                                var imgArray = [];
+
+                                $('.upload__inputfile_edit').each(function() {
+                                    $(this).on('change', function(e) {
+                                        imgWrap = $(this).closest('.upload__box').find('.upload__img-wrap_edit');
+                                        var maxLength = $(this).attr('data-max_length');
+
+                                        var files = e.target.files;
+                                        var filesArr = Array.prototype.slice.call(files);
+                                        var iterator = 0;
+                                        filesArr.forEach(function(f, index) {
+
+                                            if (!f.type.match('image.*')) {
+                                                return;
+                                            }
+
+                                            if (imgArray.length > maxLength) {
+                                                return false
+                                            } else {
+                                                var len = 0;
+                                                for (var i = 0; i < imgArray.length; i++) {
+                                                    if (imgArray[i] !== undefined) {
+                                                        len++;
+                                                    }
+                                                }
+                                                if (len > maxLength) {
+                                                    return false;
+                                                } else {
+                                                    imgArray.push(f);
+
+                                                    var reader = new FileReader();
+                                                    reader.onload = function(e) {
+                                                        var html = "<div class='upload__img-box'><div style='background-image: url(" + e.target.result + ")' data-number='" + $(".upload__img-close").length + "' data-file='" + f.name + "' class='img-bg'><div class='upload__img-close'></div></div></div>";
+                                                        imgWrap.append(html);
+                                                        iterator++;
+                                                    }
+                                                    reader.readAsDataURL(f);
+                                                }
+                                            }
+                                        });
+                                    });
+                                });
+
+                                $('body').on('click', ".upload__img-close", function(e) {
+                                    var file = $(this).parent().data("file");
+                                    for (var i = 0; i < imgArray.length; i++) {
+                                        if (imgArray[i].name === file) {
+                                            imgArray.splice(i, 1);
+                                            break;
+                                        }
+                                    }
+                                    $(this).parent().parent().remove();
+                                });
+                            }
+                        </script>
                         <div class="form-group" style="min-height: 321px;">
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item active">

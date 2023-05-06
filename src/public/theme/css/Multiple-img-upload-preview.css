@@ -41,6 +41,11 @@
   flex-wrap: wrap;
   margin: 0 -10px;
 }
+.upload__img-wrap_edit {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -10px;
+}
 .upload__img-box {
   width: 100px;
   padding: 0 10px;
