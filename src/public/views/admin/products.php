@@ -88,7 +88,8 @@
                                     </button>
 
                                     <?php if ($product->updated_by == $params["user_info"]['data'][0]->id || $product->role_id >= $params["user_info"]['data'][0]->role_id) { ?>
-                                        <button type="button" class="btn btn-warning" href="#editProductModal" onclick="ProductID(<?= $product->id ?>, <?= $product->status ?>)" class="edit" data-toggle="modal" style="color: #fff;">
+                                        <button type="button" class="btn btn-warning" href="#editProductModal" onclick="
+                                            OpenModalEdit(<?= $product->id ?>, <?= $product->status ?>)" class="edit" data-toggle="modal" style="color: #fff;">
                                             <i class="fas fa-edit" data-toggle="tooltip" title="Edit"></i>
                                         </button>
                                         <button type="button" class="btn btn-danger" href="#deleteProductModal" <?= ($product->status == 2) ? 'disabled' : "onclick='ProductID($product->id, $product->status)'" ?> class="delete" data-toggle="modal" style="color: #fff;">
@@ -445,6 +446,35 @@
             </div>
         </div>
     </div>
+
+
+    <script>
+        // open modal edit 
+        function OpenModalEdit(id, status) {
+            product_id = id;
+            console.log(status);
+
+            document.getElementById("name_edit").value = document.getElementById("p-name-" + id).innerText;
+            document.getElementById("price_edit").value = document.getElementById("p-price-" + id).innerText;
+            document.getElementById("quantity_edit").value = document.getElementById("p-sold_quantity-" + id).innerText;
+            document.getElementById("weight_edit").value = document.getElementById("p-weight-" + id).innerText;
+            document.getElementById("size_edit").value = document.getElementById("p-size-" + id).innerText;
+            document.getElementById("in-brand_edit").value = document.getElementById("p-brand-" + id).innerText;
+            // document.getElementById("status_edit").value = document.getElementById("p-status-" + id).innerHTML;
+
+            $('#sn-desc_edit').summernote('code', document.getElementById("p-desc-" + id).innerHTML);
+            $('#sn-special_features_edit').summernote('code', document.getElementById("p-special_features-" + id).innerHTML);
+            $('#sn-gift_info_edit').summernote('code', document.getElementById("p-gift_info-" + id).innerHTML);
+            $('#sn-warranty_edit').summernote('code', document.getElementById("p-warranty-" + id).innerHTML);
+
+            if (status == 1) {
+                document.getElementById('customRadioInline1').checked = true;
+            }
+            if (status == 0) {
+                document.getElementById('customRadioInline2').checked = true;
+            }
+        }
+    </script>
     <!-- Edit Modal HTML -->
     <div id="editProductModal" class="modal fade">
         <div class="modal-dialog modal-lg" style="max-width: 900px !important;">
@@ -455,16 +485,152 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
                     <div class="modal-body">
-                        <div class="form-group">
-                            <label>Name <span style="color: red;">(*)</span></label>
-                            <input id="name_edit" type="text" class="form-control" required>
+                        <div class="row">
+                            <div class="form-group col-7">
+                                <label>Name <span style="color: red;">(*)</span></label>
+                                <input id="name_edit" type="text" class="form-control" required>
+                            </div>
+                            <div class="form-group col-5">
+                                <label>Category <span style="color: red;">(*)</span></label>
+                                <select class="custom-select mr-sm-2" id="category_edit">
+                                    <option value="0" selected>Choose...</option>
+                                    <?php foreach ($categories as $category) { ?>
+                                        <option value="<?= $category->id ?>"><?= $category->name ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-3">
+                                <label>Price <span style="color: red;">(*)</span></label>
+                                <input id="price_edit" type="number" class="form-control" step="0.01" min="0" required>
+                            </div>
+                            <div class="form-group col-3">
+                                <label>Quantity <span style="color: red;">(*)</span></label>
+                                <input id="quantity_edit" type="number" class="form-control" min="0" required>
+                            </div>
+                            <div class="form-group col-3">
+                                <label>Weight</label>
+                                <input id="weight_edit" type="number" class="form-control" step="0.01" min="0" required>
+                            </div>
+                            <div class="form-group col-3">
+                                <label>Size</label>
+                                <input id="size_edit" type="text" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group" style="min-height: 321px;">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link" id="desc_edit-tab" data-toggle="tab" href="#desc_edit" role="tab" aria-controls="desc_edit" aria-selected="true">Description</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="special_features_edit-tab" data-toggle="tab" href="#special_features_edit" role="tab" aria-controls="special_features_edit" aria-selected="false">Special Features</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="gift_info_edit-tab" data-toggle="tab" href="#gift_info_edit" role="tab" aria-controls="gift_info_edit" aria-selected="false">Gift info</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="warranty_edit-tab" data-toggle="tab" href="#warranty_edit" role="tab" aria-controls="warranty_edit" aria-selected="false">Warranty</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="brand_edit-tab" data-toggle="tab" href="#brand_edit" role="tab" aria-controls="brand_edit" aria-selected="false">Brand</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="desc_edit" role="tabpanel" aria-labelledby="desc_edit-tab">
+                                    <textarea id="sn-desc_edit" name="editordata"></textarea>
+                                    <script>
+                                        $(document).ready(function() {
+                                            $('#sn-desc_edit').summernote({
+                                                placeholder: 'Description...',
+                                                toolbar: [
+                                                    ['style', ['bold', 'italic', 'underline']],
+                                                    ['para', ['ul', 'ol']],
+                                                    ['insert', ['table']],
+                                                    ['codeview']
+                                                ],
+                                                height: 200,
+                                                codemirror: {
+                                                    theme: 'monokai'
+                                                }
+                                            });
+                                        })
+                                    </script>
+
+                                    <style>
+                                        .note-editor button {
+                                            color: #797979 !important;
+                                            min-width: unset !important;
+                                        }
+                                    </style>
+                                </div>
+                                <div class="tab-pane fade" id="special_features_edit" role="tabpanel" aria-labelledby="special_features_edit-tab">
+                                    <textarea id="sn-special_features_edit" name="editordata"></textarea>
+                                    <script>
+                                        $(document).ready(function() {
+                                            $('#sn-special_features_edit').summernote({
+                                                placeholder: 'Special Features...',
+                                                toolbar: [
+                                                    ['style', ['bold', 'italic', 'underline']],
+                                                    ['para', ['ul', 'ol']],
+                                                    ['insert', ['table']],
+                                                    ['codeview']
+                                                ],
+                                                height: 200,
+                                                codemirror: {
+                                                    theme: 'monokai'
+                                                }
+                                            });
+                                        })
+                                    </script>
+                                </div>
+                                <div class="tab-pane fade" id="gift_info_edit" role="tabpanel" aria-labelledby="gift_info_edit-tab">
+                                    <textarea id="sn-gift_info_edit" name="editordata"></textarea>
+                                    <script>
+                                        $(document).ready(function() {
+                                            $('#sn-gift_info_edit').summernote({
+                                                placeholder: 'Gift info...',
+                                                toolbar: [
+                                                    ['style', ['bold', 'italic', 'underline']],
+                                                    ['para', ['ul', 'ol']],
+                                                    ['insert', ['table']],
+                                                    ['codeview']
+                                                ],
+                                                height: 200,
+                                                codemirror: {
+                                                    theme: 'monokai'
+                                                }
+                                            });
+                                        })
+                                    </script>
+                                </div>
+                                <div class="tab-pane fade" id="warranty_edit" role="tabpanel" aria-labelledby="warranty_edit-tab">
+                                    <textarea id="sn-warranty_edit" name="editordata"></textarea>
+                                    <script>
+                                        $(document).ready(function() {
+                                            $('#sn-warranty_edit').summernote({
+                                                placeholder: 'Gift info...',
+                                                toolbar: [
+                                                    ['style', ['bold', 'italic', 'underline']],
+                                                    ['para', ['ul', 'ol']],
+                                                    ['insert', ['table']],
+                                                    ['codeview']
+                                                ],
+                                                height: 200,
+                                                codemirror: {
+                                                    theme: 'monokai'
+                                                }
+                                            });
+                                        })
+                                    </script>
+                                </div>
+                                <div class="tab-pane fade" id="brand_edit" role="tabpanel" aria-labelledby="brand_edit-tab">
+                                    <input id="in-brand_edit" class="col-4" type="text" class="form-control" placeholder="Enter brand..." required>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label>Description</label>
-                            <textarea id="desc_edit" class="form-control" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>Status</label>
+                            <label>Status <span style="color: red;">(*)</span></label>
                             <div>
                                 <div class="custom-control custom-radio custom-control-inline">
                                     <input type="radio" id="customRadioInline1" name="editRadio" class="custom-control-input" value="1">
@@ -587,20 +753,3 @@
 <style id="css-header-bar">
     <?= load_css("product-admin") ?><?= load_css("modal-admin") ?>
 </style>
-
-<script>
-    $(document).ready(function() {
-        $('#datatable-buttons').DataTable({
-            responsive: true,
-            columnDefs: [{
-                    responsivePriority: 1,
-                    targets: 0
-                }, // cột đầu tiên
-                {
-                    responsivePriority: 2,
-                    targets: -1
-                } // cột cuối cùng
-            ]
-        });
-    });
-</script>

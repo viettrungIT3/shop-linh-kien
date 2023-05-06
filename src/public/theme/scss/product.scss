@@ -1,20 +1,42 @@
 // dataTables
-.table-striped tbody tr {
-    white-space: pre-wrap;
+.table-striped tbody tr td:nth-child(1),
+.table-striped tbody tr td:nth-child(2),
+.table-striped tbody tr td:nth-child(3) {
+    white-space: pre-wrap !important;
 }
 
 table.dataTable tr th:last-child,
 table.dataTable tr td:last-child {
-    display: table-cell !important; 
-    width: 141px !important;
+    display: table-cell !important;
+    max-width: 110px!important;
+    min-width: 100px!important;
 }
 
 @media screen and (max-width: 767px) {
+
     table.dataTable tr td:last-child,
     table.dataTable tr th:last-child {
         display: table-cell !important;
     }
 }
+
+
+.form-group {
+
+    .nav {
+
+        .nav-item {
+
+            .nav-link {
+                font-weight: normal !important;
+                font-size: 14px !important;
+                font-family: Hind, sans-serif !important;
+                text-transform: uppercase !important;
+            }
+        }
+    }
+}
+
 
 
 .pd-wrap {

@@ -77,22 +77,61 @@ function Detail(id) {
     document.getElementById("ua_detail").innerHTML = document.getElementById("p-timeU-" + id).innerText;
     document.getElementById("status_detail").innerHTML = document.getElementById("p-status-" + id).innerHTML;
 }
+
 // edit product
 function EditProduct() {
-    let name_edit = document.getElementById("name_edit").value;
-    let desc_edit = document.getElementById("desc_edit").value;
-    let status_edit = document.querySelector('input[name="editRadio"]:checked').value;
 
+
+    let name_edit = document.getElementById("name_edit").value;
+    let category_edit = document.getElementById("category_edit").value;
+    let price_edit = document.getElementById("price_edit").value;
+    let quantity_edit = document.getElementById("quantity_edit").value;
+    let weight_edit = document.getElementById("weight_edit").value;
+    let size_edit = document.getElementById("size_edit").value;
+    let description = document.getElementById("sn-desc_edit").value;
+    let special_features = document.getElementById("sn-special_features_edit").value;
+    let gift_info = document.getElementById("sn-gift_info_edit").value;
+    let warranty = document.getElementById("sn-warranty_edit").value;
+    let brand = document.getElementById("in-brand_edit").value;
+    let selectedRadio = document.querySelector('input[name="editRadio"]:checked');
+    
     if (name_edit.trim() === "") {
         alert("Cannot be left blank for input name!");
         return;
     }
+    if (category_edit == 0) {
+        alert('Please select category!');
+        return;
+    }
+    if (price_edit == 0) {
+        alert('Please enter price!');
+        return;
+    }
+    if (quantity_edit == 0) {
+        alert('Please enter quality!');
+        return;
+    }
+    if (!selectedRadio) {
+        alert('Please select status!');
+        return;
+    }
+
+    let status_edit = document.querySelector('input[name="editRadio"]:checked').value;
 
     let data = {
         "user_id": user_id,
         "id": product_id,
-        "name": name_edit.trim(),
-        "description": desc_edit.trim(),
+        "category_id": category_edit,
+        "name": name_edit,
+        "price": price_edit,
+        "description": description,
+        "brand": brand,
+        "warranty": warranty,
+        "gift_info": gift_info,
+        "quantity": quantity_edit,
+        "size": size_edit,
+        "weight": weight_edit,
+        "special_features": special_features,
         "status": parseInt(status_edit)
     }
     // console.log(data);
