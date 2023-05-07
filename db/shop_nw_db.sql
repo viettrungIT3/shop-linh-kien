@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : shop-linh-kien
+ Source Server         : shop
  Source Server Type    : MySQL
  Source Server Version : 50741
- Source Host           : localhost:3939
+ Source Host           : shop-nw-db-localhost:3939
  Source Schema         : shop_nw_db
 
  Target Server Type    : MySQL
  Target Server Version : 50741
  File Encoding         : 65001
 
- Date: 07/05/2023 09:00:54
+ Date: 07/05/2023 19:03:31
 */
 
 SET NAMES utf8mb4;
@@ -76,7 +76,7 @@ CREATE TABLE `Product_Images`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `product_id`(`product_id`) USING BTREE,
   CONSTRAINT `product_images_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `Products` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 23 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 95 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Table structure for Products
@@ -88,23 +88,23 @@ CREATE TABLE `Products`  (
   `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` decimal(10, 2) NOT NULL,
   `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
-  `brand` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `warranty` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `brand` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
+  `warranty` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
   `gift_info` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
-  `quantity` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL DEFAULT 0,
   `sold_quantity` int(11) NOT NULL DEFAULT 0,
   `size` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `weight` float NULL DEFAULT NULL,
   `special_features` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
   `status` tinyint(4) NULL DEFAULT 1 COMMENT '0: blocked| 1: showing | 2: deleted',
-  `created_by` tinyint(11) NULL DEFAULT NULL,
-  `updated_by` tinyint(11) NULL DEFAULT NULL,
+  `created_by` tinyint(11) NULL DEFAULT 2,
+  `updated_by` tinyint(11) NULL DEFAULT 2,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `category_id`(`category_id`) USING BTREE,
   CONSTRAINT `products_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `Categories` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 140 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 150 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Table structure for Promotion_Products
@@ -480,51 +480,51 @@ CREATE PROCEDURE `product_create`(IN in_user_id INT,
   IN in_category_id INT,
   IN in_name VARCHAR(255) CHARACTER SET utf8mb4,
   IN in_price DOUBLE,
-  IN in_description VARCHAR(1000) CHARACTER SET utf8mb4,
+  IN in_description VARCHAR(10000) CHARACTER SET utf8mb4,
   IN in_brand VARCHAR(255) CHARACTER SET utf8mb4,
-  IN in_warranty VARCHAR(255) CHARACTER SET utf8mb4,
-  IN in_gift_info VARCHAR(1000) CHARACTER SET utf8mb4,
+  IN in_warranty VARCHAR(10000) CHARACTER SET utf8mb4,
+  IN in_gift_info VARCHAR(10000) CHARACTER SET utf8mb4,
   IN in_quantity INT,
   IN in_size VARCHAR(255) CHARACTER SET utf8mb4,
   IN in_weight FLOAT,
-  IN in_special_features VARCHAR(1000) CHARACTER SET utf8mb4)
+  IN in_special_features VARCHAR(10000) CHARACTER SET utf8mb4)
 BEGIN
-	INSERT INTO Products (
-			category_id,
-			name,
-			price,
-			description,
-			brand,
-			warranty,
-			gift_info,
-			quantity,
-			size,
-			weight,
-			special_features,
-			created_by,
-			updated_by,
-			created_at
-	)
-	VALUES (
-			in_category_id,
-			in_name,
-			in_price,
-			in_description,
-			in_brand,
-			in_warranty,
-			in_gift_info,
-			in_quantity,
-			in_size,
-			in_weight,
-			in_special_features,
-			in_user_id, 
-			in_user_id, 
-			NOW()
-	);
-	
-	UPDATE Categories SET total_product = (SELECT COUNT(*) FROM Products WHERE category_id = in_category_id) WHERE id = in_category_id;
+    INSERT INTO Products (
+            category_id,
+            name,
+            price,
+            description,
+            brand,
+            warranty,
+            gift_info,
+            quantity,
+            size,
+            weight,
+            special_features,
+            created_by,
+            updated_by,
+            created_at
+    )
+    VALUES (
+            in_category_id,
+            in_name,
+            in_price,
+            in_description,
+            in_brand,
+            in_warranty,
+            in_gift_info,
+            in_quantity,
+            in_size,
+            in_weight,
+            in_special_features,
+            in_user_id, 
+            in_user_id, 
+            NOW()
+    );
+    
+    UPDATE Categories SET total_product = (SELECT COUNT(*) FROM Products WHERE category_id = in_category_id) WHERE id = in_category_id;
 
-	SELECT * FROM Products WHERE id = LAST_INSERT_ID();
+    SELECT * FROM Products WHERE id = LAST_INSERT_ID();
 END
 ;;
 delimiter ;
@@ -720,14 +720,13 @@ CREATE PROCEDURE `product_update`(IN in_user_id INT,
 	IN in_category_id INT,
   IN in_name VARCHAR(255) CHARACTER SET utf8mb4,
   IN in_price DOUBLE,
-  IN in_description VARCHAR(1000) CHARACTER SET utf8mb4,
-  IN in_brand VARCHAR(255) CHARACTER SET utf8mb4,
-  IN in_warranty VARCHAR(255) CHARACTER SET utf8mb4,
-  IN in_gift_info VARCHAR(1000) CHARACTER SET utf8mb4,
+  IN in_description VARCHAR(10000) CHARACTER SET utf8mb4,
+  IN in_warranty VARCHAR(10000) CHARACTER SET utf8mb4,
+  IN in_gift_info VARCHAR(10000) CHARACTER SET utf8mb4,
   IN in_quantity INT,
   IN in_size VARCHAR(255) CHARACTER SET utf8mb4,
   IN in_weight FLOAT,
-  IN in_special_features VARCHAR(1000) CHARACTER SET utf8mb4,
+  IN in_special_features VARCHAR(10000) CHARACTER SET utf8mb4,
 	IN in_status INT)
 BEGIN
 	UPDATE
