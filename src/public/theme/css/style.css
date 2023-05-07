@@ -274,7 +274,7 @@ body {
   padding: 80px 0 130px;
 }
 .single-product-area .zigzag-bottom {
-  background-color: #333333;
+  background-color: #1abc9c;
 }
 
 .slide-text-wrapper {
@@ -609,8 +609,8 @@ body {
 .footer-about-us span {
   color: #1abc9c;
 }
-.footer-about-us h2 {
-  font-weight: 200;
+.footer-about-us h1 a {
+  color: #555;
 }
 
 .footer-wid-title {

@@ -1,3 +1,4 @@
+$color_0: #1abc9c;
 $color_1: #888;
 $color_2: #555;
 $color_3: #1abc9c;
@@ -133,7 +134,7 @@ body {
 	}
 }
 .mainmenu-area {
-	background: none repeat scroll 0 0 #1abc9c;
+	background: none repeat scroll 0 0 $color_0;
 	font-family: $font-family_2;
 	text-transform: uppercase;
 	width: 100%;
@@ -199,7 +200,7 @@ body {
 		margin-left: 15px;
 	}
 	&:hover {
-		background: none repeat scroll 0 0 #1abc9c;
+		background: none repeat scroll 0 0 $color_0;
 		border-color: $border-color_1;
 		a {
 			color: $color_5;
@@ -218,7 +219,7 @@ body {
 	font-weight: 700;
 }
 .product-count {
-	background: none repeat scroll 0 0 #1abc9c;
+	background: none repeat scroll 0 0 $color_0;
 	border-radius: 50%;
 	color: $color_5;
 	display: inline-block;
@@ -239,7 +240,7 @@ body {
 .promo-area {
 	position: relative;
 	overflow: hidden;
-	background: none repeat scroll 0 0 #1abc9c;
+	background: none repeat scroll 0 0 $color_0;
 	color: $color_5;
 	padding: 77px 0 200px;
 	.zigzag-bottom {
@@ -249,7 +250,7 @@ body {
 .brands-area {
 	position: relative;
 	overflow: hidden;
-	background: none repeat scroll 0 0 #1abc9c;
+	background: none repeat scroll 0 0 $color_0;
 	color: $color_5;
 	padding: 0px 0 200px;
 	.zigzag-bottom {
@@ -264,7 +265,7 @@ body {
 .footer-top-area {
 	position: relative;
 	overflow: hidden;
-	background: none repeat scroll 0 0 #1abc9c;
+	background: none repeat scroll 0 0 $color_0;
 	color: $color_2;
 	padding: 35px 0 35px;
 	.zigzag-bottom {
@@ -277,7 +278,7 @@ body {
 	padding-bottom: 150px;
 	padding-top: 30px;
 	.zigzag-bottom {
-		background: #1abc9c;
+		background: $color_0;
 	}
 }
 .product-breadcroumb-area {
@@ -289,7 +290,7 @@ body {
 	overflow: hidden;
 	padding: 80px 0 130px;
 	.zigzag-bottom {
-		background-color: $background-color_2;
+		background-color: $color_0;
 	}
 }
 .slide-text-wrapper {
@@ -309,7 +310,7 @@ body {
 	}
 }
 .zigzag-bottom {
-	background: none repeat scroll 0 0 #1abc9c;
+	background: none repeat scroll 0 0 $color_0;
 	bottom: -80px;
 	height: 165px;
 	left: -5%;
@@ -363,9 +364,9 @@ body {
 	}
 }
 .readmore {
-	background: none repeat scroll 0 0 #1abc9c;
+	background: none repeat scroll 0 0 $color_0;
 	color: $color_5;
-	border: 1px solid #1abc9c;
+	border: 1px solid $color_0;
 	display: inline-block;
 	font-size: 20px;
 	margin-top: 15px;
@@ -424,7 +425,7 @@ body {
 		transition: .4s;
 	}
 	a {
-		background: none repeat scroll 0 0 #1abc9c;
+		background: none repeat scroll 0 0 $color_0;
 		border-radius: 5px;
 		color: $color_5;
 		display: block;
@@ -435,7 +436,7 @@ body {
 		position: absolute;
 		text-align: center;
 		text-transform: uppercase;
-		border: 1px solid #1abc9c;
+		border: 1px solid $color_0;
 		width: 80%;
 		z-index: 99;
 		transition: .4s;
@@ -504,7 +505,7 @@ body {
 		right: 0;
 		top: 0;
 		div {
-			border: 1px solid #1abc9c;
+			border: 1px solid $color_0;
 			color: $color_3;
 			display: inline-block;
 			margin-left: 15px;
@@ -519,7 +520,7 @@ body {
 .related-products-wrapper {
 	.owl-nav {
 		div {
-			border: 1px solid #1abc9c;
+			border: 1px solid $color_0;
 			color: $color_3;
 			display: inline-block;
 			margin-left: 15px;
@@ -597,7 +598,7 @@ body {
 	}
 }
 .wid-view-more {
-	background: none repeat scroll 0 0 #1abc9c;
+	background: none repeat scroll 0 0 $color_0;
 	color: $color_5;
 	padding: 3px 15px;
 	position: absolute;
@@ -623,8 +624,10 @@ body {
 	span {
 		color: $color_3;
 	}
-	h2 {
-		font-weight: 200;
+	h1 {
+		a {
+			color: $color_2;
+		}
 	}
 }
 .footer-wid-title {
@@ -651,7 +654,7 @@ body {
 }
 .footer-social {
 	a {
-		background: none repeat scroll 0 0 #1abc9c;
+		background: none repeat scroll 0 0 $color_0;
 		color: $color_2;
 		display: inline-block;
 		font-size: 20px;
@@ -661,7 +664,7 @@ body {
 		padding-top: 5px;
 		text-align: center;
 		width: 40px;
-		border: 1px solid #1abc9c;
+		border: 1px solid $color_0;
 		&:hover {
 			background-color: $background-color_1;
 			border-color: $border-color_4;
@@ -678,14 +681,14 @@ body {
 		width: 100%;
 	}
 	input[type="submit"] {
-		background: none repeat scroll 0 0 #1abc9c;
+		background: none repeat scroll 0 0 $color_0;
 		border: medium none;
 		color: $color_5;
 		display: inline-block;
 		font-size: 18px;
 		padding: 7px 20px;
 		text-transform: uppercase;
-		border: 1px solid #1abc9c;
+		border: 1px solid $color_0;
 		&:hover {
 			background: $background-color_1;
 			border-color: $border-color_4;
@@ -751,9 +754,7 @@ ol.slide-indicators {
 		margin: 10px 0 0;
 	}
 }
-// .product-big-title-area {
-// 	background: url(img/crossword.png) repeat scroll 0 0 #1ABC9C;
-// }
+
 .product-bit-title {
 	h2 {
 		font-family: $font-family_4;
@@ -806,7 +807,7 @@ textarea {
 	padding: 10px;
 }
 input[type="submit"] {
-	background: none repeat scroll 0 0 #1abc9c;
+	background: none repeat scroll 0 0 $color_0;
 	border: medium none;
 	color: $color_5;
 	padding: 11px 20px;
@@ -816,7 +817,7 @@ input[type="submit"] {
 	}
 }
 button[type=submit] {
-	background: none repeat scroll 0 0 #1abc9c;
+	background: none repeat scroll 0 0 $color_0;
 	border: medium none;
 	color: $color_5;
 	padding: 11px 20px;
@@ -898,13 +899,13 @@ button[type=submit] {
 	float: left;
 	margin-right: 15px;
 	input[type="number"] {
-		border: 1px solid #1abc9c;
+		border: 1px solid $color_0;
 		padding: 5px;
 		width: 50px;
 	}
 }
 .add_to_cart_button {
-	background: none repeat scroll 0 0 #1abc9c;
+	background: none repeat scroll 0 0 $color_0;
 	border: medium none;
 	color: $color_5;
 	padding: 6px 25px;
@@ -943,7 +944,7 @@ form.cart {
 		}
 	}
 	li.active {
-		background: none repeat scroll 0 0 #1abc9c;
+		background: none repeat scroll 0 0 $color_0;
 		a {
 			color: $color_5;
 		}
@@ -1041,7 +1042,7 @@ td.product-name {
 }
 div.quantity {
 	input.plus {
-		background: none repeat scroll 0 0 #1abc9c;
+		background: none repeat scroll 0 0 $color_0;
 		border: medium none;
 		color: $color_5;
 		height: 25px;
@@ -1052,7 +1053,7 @@ div.quantity {
 		}
 	}
 	input.minus {
-		background: none repeat scroll 0 0 #1abc9c;
+		background: none repeat scroll 0 0 $color_0;
 		border: medium none;
 		color: $color_5;
 		height: 25px;
@@ -1124,7 +1125,7 @@ div.cart-collaterals {
 			position: relative;
 			width: 198px;
 			.onsale {
-				background: none repeat scroll 0 0 #1abc9c;
+				background: none repeat scroll 0 0 $color_0;
 				color: $color_5;
 				padding: 5px 10px;
 				position: absolute;
