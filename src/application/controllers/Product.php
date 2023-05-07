@@ -168,10 +168,6 @@ class Product extends MY_Controller
             return $this->failed("Failed to update product ID= {$in_id}")->set("data", [])->render_json();
         endif;
 
-        // Delete image
-        $this->load->model("Product_Images_model", "product_images");
-        $this->product_images->delete($in_id);
-
         return $this
             ->success("Product has ID = {$in_id} was updated")
             ->set("data", $res['data'])

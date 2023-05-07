@@ -27,8 +27,6 @@ class Product_Images_model extends MY_Model
 			$in_product_id
 		));
 
-        var_dump($this->db->last_query()); die;
-
 		return $this->process_results($res)->get_results();
 	}
 }

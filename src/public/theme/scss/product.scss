@@ -28,6 +28,11 @@ table.dataTable tr td:last-child {
     }
 }
 
+// modal -> nav nav-tabs
+.modal #myTabContent {
+    padding: 0 !important;
+}
+
 .dataTables_wrapper .dataTables_paginate .paginate_button {
     padding: 0 !important;
 }

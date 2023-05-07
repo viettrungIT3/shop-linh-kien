@@ -19,8 +19,12 @@ class Product_Images extends MY_Controller
     public function create()
     {
         $posting_data = $this->get_posting_data();
-
         if (!isset($posting_data['product_id'])) return $this->failed("Missing product id")->render_json();
+
+        // Delete image old
+        $this->load->model("Product_Images_model", "product_images");
+        $this->product_images->delete($posting_data['product_id']);
+
 
         $product_id = $posting_data['product_id'];
         $images = $_FILES['image'];

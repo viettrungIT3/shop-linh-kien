@@ -26,6 +26,10 @@ table.dataTable tr td:last-child {
     display: table-cell !important;
   }
 }
+.modal #myTabContent {
+  padding: 0 !important;
+}
+
 .dataTables_wrapper .dataTables_paginate .paginate_button {
   padding: 0 !important;
 }

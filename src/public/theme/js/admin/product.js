@@ -180,8 +180,8 @@ function uploadImageEdit(product_id) {
         contentType: false,
         processData: false,
         success: function (response) {
-            console.log("success" = response);
-            // window.location.reload();
+            // console.log("success" = response);
+            window.location.reload();
         },
         error: function (xhr, status, error) {
             console.log(error);
@@ -200,6 +200,7 @@ function sendToServer(data) {
         dataType: "json",
         success: function (dataSuccess) {
             alert(dataSuccess['messages'][0]);
+            // window.location.reload();
         },
         error: function (xhr, status, error) {
             alert("Product update failed!");
