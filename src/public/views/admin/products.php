@@ -38,6 +38,7 @@
                         <tr>
                             <th style="max-width: 10px!important;">#</th>
                             <th>Name</th>
+                            <th class="d-none">Category id</th>
                             <th>Category</th>
                             <th class="d-none">Brand</th>
                             <th>Image</th>
@@ -69,6 +70,7 @@
                             <tr>
                                 <td style="text-align: end;"><?= $i ?></td>
                                 <td id="p-name-<?= $product->id ?>"><?= $product->name ?></td>
+                                <td id="p-category_id-<?= $product->id ?>" class="d-none"><?= $product->category_id ?></td>
                                 <td id="p-category_name-<?= $product->id ?>"><?= $product->category_name ?></td>
                                 <td id="p-brand-<?= $product->id ?>" class="d-none"><?= $product->brand ?></td>
                                 <td> <span id="p-image-<?= $product->id ?>" class="d-none"><?= $product->images ?></span>
@@ -544,19 +546,23 @@
             product_id = id;
             // var html = "<div class='upload__img-box'><div style='background-image: url(" + e.target.result + ")' data-number='" + $(".upload__img-close").length + "' data-file='" + f.name + "' class='img-bg'><div class='upload__img-close'></div></div></div>";
             let images = document.getElementById("p-image-" + id).innerHTML;
-            let arr_img = images.split(",");
             var imgWrap = document.getElementById('upload__img-wrap_edit');
             imgWrap.innerHTML = ''; // clear previous images
+            let arr_img = images.split(",");
 
-            arr_img.forEach(function(img) {
-                var img_url = 'http://shop.localhost.com:9292/uploads/' + img;
-                var html = "<div class='upload__img-box'><div style='background-image: url(" + img_url + ")' data-number='" + $(".upload__img-close").length + "' data-file='" + img + "' class='img-bg'><div class='upload__img-close'></div></div></div>";
-                imgWrap.innerHTML += html;
-            });
+            if (arr_img.length > 0 && arr_img[0] != "") {
+
+                arr_img.forEach(function(img) {
+                    var img_url = 'http://shop.localhost.com:9292/uploads/' + img;
+                    var html = "<div class='upload__img-box'><div style='background-image: url(" + img_url + ")' data-number='" + $(".upload__img-close").length + "' data-file='" + img + "' class='img-bg'><div class='upload__img-close'></div></div></div>";
+                    imgWrap.innerHTML += html;
+                });
+            }
 
             document.getElementById("name_edit").value = document.getElementById("p-name-" + id).innerText;
+            document.getElementById("category_edit").value = document.getElementById("p-category_id-" + id).innerText;
             document.getElementById("price_edit").value = document.getElementById("p-price-" + id).innerText;
-            document.getElementById("quantity_edit").value = document.getElementById("p-sold_quantity-" + id).innerText;
+            document.getElementById("quantity_edit").value = parseInt(document.getElementById("p-sold_quantity-" + id).innerText) + parseInt(document.getElementById("p-total-" + id).innerText);
             document.getElementById("weight_edit").value = document.getElementById("p-weight-" + id).innerText;
             document.getElementById("size_edit").value = document.getElementById("p-size-" + id).innerText;
             document.getElementById("in-brand_edit").value = document.getElementById("p-brand-" + id).innerText;
@@ -592,7 +598,6 @@
                             <div class="form-group col-5">
                                 <label>Category <span style="color: red;">(*)</span></label>
                                 <select class="custom-select mr-sm-2" id="category_edit">
-                                    <option value="0" selected>Choose...</option>
                                     <?php foreach ($categories as $category) { ?>
                                         <option value="<?= $category->id ?>"><?= $category->name ?></option>
                                     <?php } ?>
@@ -626,7 +631,7 @@
                                     <div class="upload__btn-box">
                                         <label class="upload__btn">
                                             <p>Upload images</p>
-                                            <input type="file" name="image[]" multiple data-max_length="20" class="upload__inputfile_edit" style="opacity: 0;width: 0;height: 0;" accept="image/*">
+                                            <input type="file" name="image2[]" multiple data-max_length="20" class="upload__inputfile_edit" style="opacity: 0;width: 0;height: 0;" accept="image/*">
                                         </label>
                                     </div>
                                 </div>

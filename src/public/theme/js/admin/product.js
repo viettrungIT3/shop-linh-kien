@@ -52,7 +52,7 @@ function AddProduct() {
     $.ajax(settings).done(function (response) {
         product_id = response.data[0].id;
         uploadImage(product_id);
-        // alert('Create product successful!');
+        alert('Create product successful!');
         window.location.reload();
     });
 
@@ -73,8 +73,7 @@ function uploadImage(product_id) {
         contentType: false,
         processData: false,
         success: function (response) {
-            console.log(response);
-            alert('Create product successful!');
+            
         },
         error: function (xhr, status, error) {
             console.log(error);
@@ -160,8 +159,34 @@ function EditProduct() {
         "special_features": special_features,
         "status": parseInt(status_edit)
     }
-    // console.log(data);
+    console.log(data);
     sendToServer(data);
+    uploadImageEdit(product_id);
+}
+
+
+function uploadImageEdit(product_id) {
+    var files = $('input[name="image2[]"]').prop('files');
+    var formData = new FormData();
+    $.each(files, function (key, value) {
+        formData.append('image[]', value);
+    });
+    formData.append('product_id', product_id);
+
+    $.ajax({
+        url: 'http://shop.localhost.com:9292/api/v1/product_images/create',
+        type: 'POST',
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function (response) {
+            console.log("success" = response);
+            // window.location.reload();
+        },
+        error: function (xhr, status, error) {
+            console.log(error);
+        }
+    })
 }
 
 // send data for edit and deltete /
@@ -175,7 +200,6 @@ function sendToServer(data) {
         dataType: "json",
         success: function (dataSuccess) {
             alert(dataSuccess['messages'][0]);
-            window.location.reload();
         },
         error: function (xhr, status, error) {
             alert("Product update failed!");

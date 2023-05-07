@@ -17,4 +17,18 @@ class Product_Images_model extends MY_Model
 
 		return $this->process_results($res)->get_results();
 	}
+
+	// description: func delete 
+	public function delete(
+		$in_product_id			= NULL
+	) {
+
+		$res = $this->db->query("call product_images_delete(?)", array(
+			$in_product_id
+		));
+
+        var_dump($this->db->last_query()); die;
+
+		return $this->process_results($res)->get_results();
+	}
 }
