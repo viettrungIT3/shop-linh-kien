@@ -134,10 +134,10 @@ body {
   padding: 20px;
 }
 .mainmenu-area ul.navbar-nav li:hover a {
-  background: #222;
+  background: #125e4f;
 }
 .mainmenu-area ul.navbar-nav li.active a {
-  background: #222;
+  background: #125e4f;
 }
 .mainmenu-area .nav > li > a:focus {
   color: #000;
@@ -749,7 +749,7 @@ ol.slide-indicators li.active {
 }
 
 .sidebar-title {
-  color: #3dc6ab;
+  color: #084d3f;
   font-size: 25px;
   margin-bottom: 30px;
   text-transform: uppercase;
@@ -986,7 +986,7 @@ form.cart {
 }
 
 .related-products-title {
-  color: #3dc6ab;
+  color: #084d3f;
   font-size: 25px;
   margin-bottom: 30px;
   text-transform: uppercase;
