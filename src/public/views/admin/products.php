@@ -75,7 +75,7 @@
                                 <td id="p-brand-<?= $product->id ?>" class="d-none"><?= $product->brand ?></td>
                                 <td> <span id="p-image-<?= $product->id ?>" class="d-none"><?= $product->images ?></span>
                                     <img style="height: 50px;" src="<?php $arr  = explode(",", $product->images);
-                                                                    echo (count($arr) > 0 ? 'http://shop.localhost.com:9292/uploads/' . $arr[0] : '') ?>" alt="">
+                                                                    echo (count($arr) > 0 ? get_uploads_file($arr[0]) : '') ?>" alt="">
                                 </td>
                                 <td id="p-price-<?= $product->id ?>"><?= $product->price ?></td>
                                 <td id="p-sold_quantity-<?= $product->id ?>"><?= $product->sold_quantity ?></td>
@@ -429,7 +429,6 @@
                                                 toolbar: [
                                                     ['style', ['bold', 'italic', 'underline']],
                                                     ['para', ['ul', 'ol']],
-                                                    ['insert', ['table']],
                                                     ['codeview']
                                                 ],
                                                 height: 200,
@@ -456,7 +455,6 @@
                                                 toolbar: [
                                                     ['style', ['bold', 'italic', 'underline']],
                                                     ['para', ['ul', 'ol']],
-                                                    ['insert', ['table']],
                                                     ['codeview']
                                                 ],
                                                 height: 200,
@@ -476,7 +474,6 @@
                                                 toolbar: [
                                                     ['style', ['bold', 'italic', 'underline']],
                                                     ['para', ['ul', 'ol']],
-                                                    ['insert', ['table']],
                                                     ['codeview']
                                                 ],
                                                 height: 200,
@@ -496,7 +493,6 @@
                                                 toolbar: [
                                                     ['style', ['bold', 'italic', 'underline']],
                                                     ['para', ['ul', 'ol']],
-                                                    ['insert', ['table']],
                                                     ['codeview']
                                                 ],
                                                 height: 200,
@@ -528,19 +524,19 @@
         function OpenModalEdit(id, status) {
             product_id = id;
             // var html = "<div class='upload__img-box'><div style='background-image: url(" + e.target.result + ")' data-number='" + $(".upload__img-close").length + "' data-file='" + f.name + "' class='img-bg'><div class='upload__img-close'></div></div></div>";
-            let images = document.getElementById("p-image-" + id).innerHTML;
-            var imgWrap = document.getElementById('upload__img-wrap_edit');
-            imgWrap.innerHTML = ''; // clear previous images
-            let arr_img = images.split(",");
+            // let images = document.getElementById("p-image-" + id).innerHTML;
+            // var imgWrap = document.getElementById('upload__img-wrap_edit');
+            // imgWrap.innerHTML = ''; // clear previous images
+            // let arr_img = images.split(",");
 
-            if (arr_img.length > 0 && arr_img[0] != "") {
+            // if (arr_img.length > 0 && arr_img[0] != "") {
 
-                arr_img.forEach(function(img) {
-                    var img_url = 'http://shop.localhost.com:9292/uploads/' + img;
-                    var html = "<div class='upload__img-box'><div style='background-image: url(" + img_url + ")' data-number='" + $(".upload__img-close").length + "' data-file='" + img + "' class='img-bg'><div class='upload__img-close'></div></div></div>";
-                    imgWrap.innerHTML += html;
-                });
-            }
+            //     arr_img.forEach(function(img) {
+            //         var img_url = get_uploads_file(img);
+            //         var html = "<div class='upload__img-box'><div style='background-image: url(" + img_url + ")' data-number='" + $(".upload__img-close").length + "' data-file='" + img + "' class='img-bg'><div class='upload__img-close'></div></div></div>";
+            //         imgWrap.innerHTML += html;
+            //     });
+            // }
 
             document.getElementById("name_edit").value = document.getElementById("p-name-" + id).innerText;
             document.getElementById("category_edit").value = document.getElementById("p-category_id-" + id).innerText;
@@ -710,7 +706,6 @@
                                                 toolbar: [
                                                     ['style', ['bold', 'italic', 'underline']],
                                                     ['para', ['ul', 'ol']],
-                                                    ['insert', ['table']],
                                                     ['codeview']
                                                 ],
                                                 height: 200,
@@ -737,7 +732,6 @@
                                                 toolbar: [
                                                     ['style', ['bold', 'italic', 'underline']],
                                                     ['para', ['ul', 'ol']],
-                                                    ['insert', ['table']],
                                                     ['codeview']
                                                 ],
                                                 height: 200,
@@ -757,7 +751,6 @@
                                                 toolbar: [
                                                     ['style', ['bold', 'italic', 'underline']],
                                                     ['para', ['ul', 'ol']],
-                                                    ['insert', ['table']],
                                                     ['codeview']
                                                 ],
                                                 height: 200,
@@ -777,7 +770,6 @@
                                                 toolbar: [
                                                     ['style', ['bold', 'italic', 'underline']],
                                                     ['para', ['ul', 'ol']],
-                                                    ['insert', ['table']],
                                                     ['codeview']
                                                 ],
                                                 height: 200,

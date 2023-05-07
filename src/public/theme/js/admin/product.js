@@ -24,9 +24,9 @@ function AddProduct() {
     let special_features = document.getElementById("summernote2").value;
     let gift_info = document.getElementById("summernote3").value;
     let warranty = document.getElementById("summernote4").value;
-    let brand = document.getElementById("brand").value;
+    let brand = document.getElementById("brand_add").value;
     var settings = {
-        "url": "http://shop.localhost.com:9292/api/v1/product/create",
+        "url": window.location.origin + "/api/v1/product/create",
         "method": "POST",
         "timeout": 0,
         "headers": {
@@ -49,11 +49,13 @@ function AddProduct() {
         }),
     };
 
+    console.log(settings);
+
     $.ajax(settings).done(function (response) {
         product_id = response.data[0].id;
         uploadImage(product_id);
         alert('Create product successful!');
-        window.location.reload();
+        // window.location.reload();
     });
 
 }
@@ -67,13 +69,13 @@ function uploadImage(product_id) {
     formData.append('product_id', product_id);
 
     $.ajax({
-        url: 'http://shop.localhost.com:9292/api/v1/product_images/create',
+        url: window.location.origin + '/api/v1/product_images/create',
         type: 'POST',
         data: formData,
         contentType: false,
         processData: false,
         success: function (response) {
-
+            window.location.reload();
         },
         error: function (xhr, status, error) {
             console.log(error);
@@ -111,7 +113,7 @@ function Detail(id) {
     if (arr_img.length > 0 && arr_img[0] != "") {
 
         arr_img.forEach(function (img, index, array) {
-            var img_url = 'http://shop.localhost.com:9292/uploads/' + img;
+            var img_url = window.location.origin + '/uploads/' + img;
             var html = "<div class='upload__img-box'><div style='background-image: url(" + img_url + ")' class='img-bg'></div></div>";
             imgWrap.innerHTML += html;
 
@@ -211,7 +213,7 @@ function uploadImageEdit(product_id) {
     formData.append('product_id', product_id);
 
     $.ajax({
-        url: 'http://shop.localhost.com:9292/api/v1/product_images/create',
+        url: window.location.origin + '/api/v1/product_images/create',
         type: 'POST',
         data: formData,
         contentType: false,
@@ -249,7 +251,7 @@ function sendToServer(data) {
 // delete product
 function DeleteProduct() {
     var settings = {
-        "url": "http://shop.localhost.com:9292/api/v1/product/delete/" + user_id + "/" + product_id,
+        "url": window.location.origin + "/api/v1/product/delete/" + user_id + "/" + product_id,
         "method": "DELETE",
         "timeout": 0,
     };

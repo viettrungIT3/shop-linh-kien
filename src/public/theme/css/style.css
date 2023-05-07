@@ -1290,3 +1290,13 @@ a.about_paypal {
 .pagination > li > span {
   color: #1abc9c;
 }
+
+.single-line-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  max-width: 100%;
+  line-height: 1.2em;
+  max-height: 2.4em;
+}
