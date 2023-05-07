@@ -145,52 +145,35 @@
                             <div class="container">
                                 <div class="row">
                                     <div class="col-md-5">
-                                        <div id="product-slider" class="owl-carousel product-slider">
-                                            <div class="item">
-                                                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" />
-                                            </div>
-                                            <div class="item">
-                                                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" />
-                                            </div>
-                                            <div class="item">
-                                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
-                                            </div>
-                                            <div class="item">
-                                                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" />
-                                            </div>
-                                            <div class="item">
-                                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
-                                            </div>
-                                            <div class="item">
-                                                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" />
-                                            </div>
-                                            <div class="item">
-                                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
-                                            </div>
-                                        </div>
-                                        <div id="product-thumb" class="owl-carousel product-thumb">
-                                            <div class="item">
-                                                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" />
-                                            </div>
-                                            <div class="item">
-                                                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" />
-                                            </div>
-                                            <div class="item">
-                                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
-                                            </div>
-                                            <div class="item">
-                                                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" />
-                                            </div>
-                                            <div class="item">
-                                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
-                                            </div>
-                                            <div class="item">
-                                                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" />
-                                            </div>
-                                            <div class="item">
-                                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
+                                        <div class="card social-feed-box">
+                                            <div class="card-body" style="margin: 0 !important; padding: 0 !important;">
+                                                <div id="twitter-slider" class="carousel slide social-feed-slider" data-ride="carousel" style="margin: 0 !important; padding: 0 !important;">
+                                                    <div class="carousel-inner" id="images-detail-slide" style="margin: 0 !important; padding: 0 !important;">
+                                                        <!-- <div class="carousel-item active"  style="margin: 0 !important; padding: 0 !important;">
+                                                            <div class="mt-3 mb-3" style="margin: 0 auto;display: flex;justify-content: center;">
+                                                                <img src="http://shop.localhost.com:9292/uploads/00d9da0057ed4c1be7a3923b817dc3c8_1683429889.jpg" alt="" height="200">
+                                                            </div>
+                                                        </div>
+                                                        <div class="carousel-item">
+                                                            <div class="mt-3 mb-3" style="margin: 0 auto;display: flex;justify-content: center;">
+                                                                <img src="http://shop.localhost.com:9292/uploads/0df11ca96b19fe4f8fe54fb40eb14632_1683429601.jpg" alt="" height="200">
+                                                            </div>
+                                                        </div>
+                                                        <div class="carousel-item">
+                                                            <div class="mt-3 mb-3" style="margin: 0 auto;display: flex;justify-content: center;">
+                                                                <img src="http://shop.localhost.com:9292/uploads/00d9da0057ed4c1be7a3923b817dc3c8_1683428668.jpg" alt="" height="200">
+                                                            </div>
+                                                        </div> -->
+                                                    </div>
+                                                </div>
+
                                             </div>
                                         </div>
+                                        
+                                        <div id="images-detail">
+
+                                        </div>
+
                                     </div>
                                     <div class="col-md-7">
                                         <div class="product-dtl">

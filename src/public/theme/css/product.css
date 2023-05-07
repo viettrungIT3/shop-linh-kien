@@ -30,6 +30,16 @@ table.dataTable tr td:last-child {
   padding: 0 !important;
 }
 
+div#images-detail {
+  display: flex;
+  flex-wrap: wrap;
+}
+div#images-detail .upload__img-box {
+  width: 50px !important;
+  padding: 0 3px !important;
+  margin-bottom: 3px !important;
+}
+
 .dataTables_wrapper .dataTables_paginate .paginate_button {
   padding: 0 !important;
 }

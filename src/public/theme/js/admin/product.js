@@ -73,7 +73,7 @@ function uploadImage(product_id) {
         contentType: false,
         processData: false,
         success: function (response) {
-            
+
         },
         error: function (xhr, status, error) {
             console.log(error);
@@ -101,6 +101,43 @@ function Detail(id) {
     document.getElementById("ca_detail").innerHTML = document.getElementById("p-timeC-" + id).innerText;
     document.getElementById("ua_detail").innerHTML = document.getElementById("p-timeU-" + id).innerText;
     document.getElementById("status_detail").innerHTML = document.getElementById("p-status-" + id).innerHTML;
+
+    let images = document.getElementById("p-image-" + id).innerHTML;
+    var imgWrap = document.getElementById('images-detail');
+    var imgWrap2 = document.getElementById('images-detail-slide');
+    imgWrap.innerHTML = ''; // clear previous images
+    let arr_img = images.split(",");
+
+    if (arr_img.length > 0 && arr_img[0] != "") {
+
+        arr_img.forEach(function (img, index, array) {
+            var img_url = 'http://shop.localhost.com:9292/uploads/' + img;
+            var html = "<div class='upload__img-box'><div style='background-image: url(" + img_url + ")' class='img-bg'></div></div>";
+            imgWrap.innerHTML += html;
+
+            if (index == 0) {
+                var html2 = `
+                    <div class="carousel-item active"  style="margin: 0 !important; padding: 0 !important;">
+                        <div class="mt-3 mb-3" style="margin: 0 auto;display: flex;justify-content: center;">
+                            <img src="` + img_url + `" alt="" height="200">
+                        </div>
+                    </div>
+                `;
+                imgWrap2.innerHTML += html2;
+
+            } else {
+                var html2 = `
+                    <div class="carousel-item"  style="margin: 0 !important; padding: 0 !important;">
+                        <div class="mt-3 mb-3" style="margin: 0 auto;display: flex;justify-content: center;">
+                            <img src="` + img_url + `" alt="" height="200">
+                        </div>
+                    </div>
+                `;
+                imgWrap2.innerHTML += html2;
+
+            }
+        });
+    }
 }
 
 // edit product

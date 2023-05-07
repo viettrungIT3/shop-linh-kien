@@ -16,8 +16,8 @@ table.dataTable tbody td {
 table.dataTable tr th:last-child,
 table.dataTable tr td:last-child {
     display: table-cell !important;
-    max-width: 110px!important;
-    min-width: 100px!important;
+    max-width: 110px !important;
+    min-width: 100px !important;
 }
 
 @media screen and (max-width: 767px) {
@@ -31,6 +31,18 @@ table.dataTable tr td:last-child {
 // modal -> nav nav-tabs
 .modal #myTabContent {
     padding: 0 !important;
+}
+
+// image-details
+div#images-detail {
+    display: flex;
+    flex-wrap: wrap;
+
+    .upload__img-box {
+        width: 50px !important;
+        padding: 0 3px!important;
+        margin-bottom: 3px!important;
+    }
 }
 
 .dataTables_wrapper .dataTables_paginate .paginate_button {
