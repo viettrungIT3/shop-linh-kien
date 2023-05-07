@@ -3,17 +3,22 @@
 <?php $products = $params["products"]['data'] ?>
 
 <!-- style -->
-<link rel='stylesheet' href='<?= get_assets_uri("libs/summernote/summernote-bs4.css") ?>'>
-<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/codemirror.css'>
-<link rel='stylesheet' href='<?= get_assets_uri("libs/monokai/monokai.css") ?>'>
+<!-- CSS Summernote -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.css" rel="stylesheet">
+
+<!-- CSS CodeMirror -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/codemirror.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/theme/blackboard.min.css" rel="stylesheet">
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 
 <div class="container-fluid">
 
     <!-- start  -->
     <div class="row">
         <div class="col-sm-10">
-            <h2 class="header-title mb-3 fs-2" style="font-size: 2rem;">Categories</h2>
+            <h2 class="header-title mb-3 fs-2" style="font-size: 2rem;">Products</h2>
         </div>
         <div class="col-sm-2 text-left">
             <a href="#addProductModal" class="btn btn-success" data-toggle="modal" style="display: grid;">
@@ -33,8 +38,10 @@
                         <tr>
                             <th style="max-width: 10px!important;">#</th>
                             <th>Name</th>
+                            <th class="d-none">Category id</th>
                             <th>Category</th>
                             <th class="d-none">Brand</th>
+                            <th>Image</th>
                             <th>Price</th>
                             <th>Sold</th>
                             <th>Inventory</th>
@@ -63,8 +70,13 @@
                             <tr>
                                 <td style="text-align: end;"><?= $i ?></td>
                                 <td id="p-name-<?= $product->id ?>"><?= $product->name ?></td>
+                                <td id="p-category_id-<?= $product->id ?>" class="d-none"><?= $product->category_id ?></td>
                                 <td id="p-category_name-<?= $product->id ?>"><?= $product->category_name ?></td>
                                 <td id="p-brand-<?= $product->id ?>" class="d-none"><?= $product->brand ?></td>
+                                <td> <span id="p-image-<?= $product->id ?>" class="d-none"><?= $product->images ?></span>
+                                    <img style="height: 50px;" src="<?php $arr  = explode(",", $product->images);
+                                                                    echo (count($arr) > 0 ? 'http://shop.localhost.com:9292/uploads/' . $arr[0] : '') ?>" alt="">
+                                </td>
                                 <td id="p-price-<?= $product->id ?>"><?= $product->price ?></td>
                                 <td id="p-sold_quantity-<?= $product->id ?>"><?= $product->sold_quantity ?></td>
                                 <td id="p-total-<?= $product->id ?>"><?= $product->quantity - $product->sold_quantity ?></td>
@@ -133,52 +145,35 @@
                             <div class="container">
                                 <div class="row">
                                     <div class="col-md-5">
-                                        <div id="product-slider" class="owl-carousel product-slider">
-                                            <div class="item">
-                                                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" />
-                                            </div>
-                                            <div class="item">
-                                                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" />
-                                            </div>
-                                            <div class="item">
-                                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
-                                            </div>
-                                            <div class="item">
-                                                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" />
-                                            </div>
-                                            <div class="item">
-                                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
-                                            </div>
-                                            <div class="item">
-                                                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" />
-                                            </div>
-                                            <div class="item">
-                                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
-                                            </div>
-                                        </div>
-                                        <div id="product-thumb" class="owl-carousel product-thumb">
-                                            <div class="item">
-                                                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" />
-                                            </div>
-                                            <div class="item">
-                                                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" />
-                                            </div>
-                                            <div class="item">
-                                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
-                                            </div>
-                                            <div class="item">
-                                                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" />
-                                            </div>
-                                            <div class="item">
-                                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
-                                            </div>
-                                            <div class="item">
-                                                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80" />
-                                            </div>
-                                            <div class="item">
-                                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQI6nUmObt62eDkqNSmIvCN_KkQExtbpJmUbVx_eTh_Y3v3r-Jw" />
+                                        <div class="card social-feed-box">
+                                            <div class="card-body" style="margin: 0 !important; padding: 0 !important;">
+                                                <div id="twitter-slider" class="carousel slide social-feed-slider" data-ride="carousel" style="margin: 0 !important; padding: 0 !important;">
+                                                    <div class="carousel-inner" id="images-detail-slide" style="margin: 0 !important; padding: 0 !important;">
+                                                        <!-- <div class="carousel-item active"  style="margin: 0 !important; padding: 0 !important;">
+                                                            <div class="mt-3 mb-3" style="margin: 0 auto;display: flex;justify-content: center;">
+                                                                <img src="http://shop.localhost.com:9292/uploads/00d9da0057ed4c1be7a3923b817dc3c8_1683429889.jpg" alt="" height="200">
+                                                            </div>
+                                                        </div>
+                                                        <div class="carousel-item">
+                                                            <div class="mt-3 mb-3" style="margin: 0 auto;display: flex;justify-content: center;">
+                                                                <img src="http://shop.localhost.com:9292/uploads/0df11ca96b19fe4f8fe54fb40eb14632_1683429601.jpg" alt="" height="200">
+                                                            </div>
+                                                        </div>
+                                                        <div class="carousel-item">
+                                                            <div class="mt-3 mb-3" style="margin: 0 auto;display: flex;justify-content: center;">
+                                                                <img src="http://shop.localhost.com:9292/uploads/00d9da0057ed4c1be7a3923b817dc3c8_1683428668.jpg" alt="" height="200">
+                                                            </div>
+                                                        </div> -->
+                                                    </div>
+                                                </div>
+
                                             </div>
                                         </div>
+                                        
+                                        <div id="images-detail">
+
+                                        </div>
+
                                     </div>
                                     <div class="col-md-7">
                                         <div class="product-dtl">
@@ -326,6 +321,86 @@
                                 <input id="size_add" type="text" class="form-control" required>
                             </div>
                         </div>
+
+                        <!-- Multiple File Upload -->
+                        <link href="<?= get_assets_uri("css/Multiple-img-upload-preview.css") ?>" rel="stylesheet" type="text/css" id="multi-img-stylesheet">
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label>Image: </label>
+                                <div class="upload__box">
+                                    <div class="upload__img-wrap"></div>
+                                    <div class="upload__btn-box">
+                                        <label class="upload__btn">
+                                            <p>Upload images</p>
+                                            <input type="file" name="image[]" multiple data-max_length="20" class="upload__inputfile" accept="image/*">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <script>
+                            jQuery(document).ready(function() {
+                                ImgUpload();
+                            });
+
+                            function ImgUpload() {
+                                var imgWrap = "";
+                                var imgArray = [];
+
+                                $('.upload__inputfile').each(function() {
+                                    $(this).on('change', function(e) {
+                                        imgWrap = $(this).closest('.upload__box').find('.upload__img-wrap');
+                                        var maxLength = $(this).attr('data-max_length');
+
+                                        var files = e.target.files;
+                                        var filesArr = Array.prototype.slice.call(files);
+                                        var iterator = 0;
+                                        filesArr.forEach(function(f, index) {
+
+                                            if (!f.type.match('image.*')) {
+                                                return;
+                                            }
+
+                                            if (imgArray.length > maxLength) {
+                                                return false
+                                            } else {
+                                                var len = 0;
+                                                for (var i = 0; i < imgArray.length; i++) {
+                                                    if (imgArray[i] !== undefined) {
+                                                        len++;
+                                                    }
+                                                }
+                                                if (len > maxLength) {
+                                                    return false;
+                                                } else {
+                                                    imgArray.push(f);
+
+                                                    var reader = new FileReader();
+                                                    reader.onload = function(e) {
+                                                        var html = "<div class='upload__img-box'><div style='background-image: url(" + e.target.result + ")' data-number='" + $(".upload__img-close").length + "' data-file='" + f.name + "' class='img-bg'><div class='upload__img-close'></div></div></div>";
+                                                        imgWrap.append(html);
+                                                        iterator++;
+                                                    }
+                                                    reader.readAsDataURL(f);
+                                                }
+                                            }
+                                        });
+                                    });
+                                });
+
+                                $('body').on('click', ".upload__img-close", function(e) {
+                                    var file = $(this).parent().data("file");
+                                    for (var i = 0; i < imgArray.length; i++) {
+                                        if (imgArray[i].name === file) {
+                                            imgArray.splice(i, 1);
+                                            break;
+                                        }
+                                    }
+                                    $(this).parent().parent().remove();
+                                });
+                            }
+                        </script>
+
                         <div class="form-group" style="min-height: 321px;">
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
@@ -359,7 +434,7 @@
                                                 ],
                                                 height: 200,
                                                 codemirror: {
-                                                    theme: 'monokai'
+                                                    theme: 'blackboard'
                                                 }
                                             });
                                         })
@@ -386,7 +461,7 @@
                                                 ],
                                                 height: 200,
                                                 codemirror: {
-                                                    theme: 'monokai'
+                                                    theme: 'blackboard'
                                                 }
                                             });
                                         })
@@ -406,7 +481,7 @@
                                                 ],
                                                 height: 200,
                                                 codemirror: {
-                                                    theme: 'monokai'
+                                                    theme: 'blackboard'
                                                 }
                                             });
                                         })
@@ -426,7 +501,7 @@
                                                 ],
                                                 height: 200,
                                                 codemirror: {
-                                                    theme: 'monokai'
+                                                    theme: 'blackboard'
                                                 }
                                             });
                                         })
@@ -452,15 +527,28 @@
         // open modal edit 
         function OpenModalEdit(id, status) {
             product_id = id;
-            console.log(status);
+            // var html = "<div class='upload__img-box'><div style='background-image: url(" + e.target.result + ")' data-number='" + $(".upload__img-close").length + "' data-file='" + f.name + "' class='img-bg'><div class='upload__img-close'></div></div></div>";
+            let images = document.getElementById("p-image-" + id).innerHTML;
+            var imgWrap = document.getElementById('upload__img-wrap_edit');
+            imgWrap.innerHTML = ''; // clear previous images
+            let arr_img = images.split(",");
+
+            if (arr_img.length > 0 && arr_img[0] != "") {
+
+                arr_img.forEach(function(img) {
+                    var img_url = 'http://shop.localhost.com:9292/uploads/' + img;
+                    var html = "<div class='upload__img-box'><div style='background-image: url(" + img_url + ")' data-number='" + $(".upload__img-close").length + "' data-file='" + img + "' class='img-bg'><div class='upload__img-close'></div></div></div>";
+                    imgWrap.innerHTML += html;
+                });
+            }
 
             document.getElementById("name_edit").value = document.getElementById("p-name-" + id).innerText;
+            document.getElementById("category_edit").value = document.getElementById("p-category_id-" + id).innerText;
             document.getElementById("price_edit").value = document.getElementById("p-price-" + id).innerText;
-            document.getElementById("quantity_edit").value = document.getElementById("p-sold_quantity-" + id).innerText;
+            document.getElementById("quantity_edit").value = parseInt(document.getElementById("p-sold_quantity-" + id).innerText) + parseInt(document.getElementById("p-total-" + id).innerText);
             document.getElementById("weight_edit").value = document.getElementById("p-weight-" + id).innerText;
             document.getElementById("size_edit").value = document.getElementById("p-size-" + id).innerText;
             document.getElementById("in-brand_edit").value = document.getElementById("p-brand-" + id).innerText;
-            // document.getElementById("status_edit").value = document.getElementById("p-status-" + id).innerHTML;
 
             $('#sn-desc_edit').summernote('code', document.getElementById("p-desc-" + id).innerHTML);
             $('#sn-special_features_edit').summernote('code', document.getElementById("p-special_features-" + id).innerHTML);
@@ -493,7 +581,6 @@
                             <div class="form-group col-5">
                                 <label>Category <span style="color: red;">(*)</span></label>
                                 <select class="custom-select mr-sm-2" id="category_edit">
-                                    <option value="0" selected>Choose...</option>
                                     <?php foreach ($categories as $category) { ?>
                                         <option value="<?= $category->id ?>"><?= $category->name ?></option>
                                     <?php } ?>
@@ -518,10 +605,87 @@
                                 <input id="size_edit" type="text" class="form-control" required>
                             </div>
                         </div>
+                        <!-- Multiple File Upload -->
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label>Image: </label>
+                                <div class="upload__box">
+                                    <div class="upload__img-wrap_edit" id="upload__img-wrap_edit"></div>
+                                    <div class="upload__btn-box">
+                                        <label class="upload__btn">
+                                            <p>Upload images</p>
+                                            <input type="file" name="image2[]" multiple data-max_length="20" class="upload__inputfile_edit" style="opacity: 0;width: 0;height: 0;" accept="image/*">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <script>
+                            jQuery(document).ready(function() {
+                                ImgUploadEdit();
+                            });
+
+                            function ImgUploadEdit() {
+                                var imgWrap = "";
+                                var imgArray = [];
+
+                                $('.upload__inputfile_edit').each(function() {
+                                    $(this).on('change', function(e) {
+                                        imgWrap = $(this).closest('.upload__box').find('.upload__img-wrap_edit');
+                                        var maxLength = $(this).attr('data-max_length');
+
+                                        var files = e.target.files;
+                                        var filesArr = Array.prototype.slice.call(files);
+                                        var iterator = 0;
+                                        filesArr.forEach(function(f, index) {
+
+                                            if (!f.type.match('image.*')) {
+                                                return;
+                                            }
+
+                                            if (imgArray.length > maxLength) {
+                                                return false
+                                            } else {
+                                                var len = 0;
+                                                for (var i = 0; i < imgArray.length; i++) {
+                                                    if (imgArray[i] !== undefined) {
+                                                        len++;
+                                                    }
+                                                }
+                                                if (len > maxLength) {
+                                                    return false;
+                                                } else {
+                                                    imgArray.push(f);
+
+                                                    var reader = new FileReader();
+                                                    reader.onload = function(e) {
+                                                        var html = "<div class='upload__img-box'><div style='background-image: url(" + e.target.result + ")' data-number='" + $(".upload__img-close").length + "' data-file='" + f.name + "' class='img-bg'><div class='upload__img-close'></div></div></div>";
+                                                        imgWrap.append(html);
+                                                        iterator++;
+                                                    }
+                                                    reader.readAsDataURL(f);
+                                                }
+                                            }
+                                        });
+                                    });
+                                });
+
+                                $('body').on('click', ".upload__img-close", function(e) {
+                                    var file = $(this).parent().data("file");
+                                    for (var i = 0; i < imgArray.length; i++) {
+                                        if (imgArray[i].name === file) {
+                                            imgArray.splice(i, 1);
+                                            break;
+                                        }
+                                    }
+                                    $(this).parent().parent().remove();
+                                });
+                            }
+                        </script>
                         <div class="form-group" style="min-height: 321px;">
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link" id="desc_edit-tab" data-toggle="tab" href="#desc_edit" role="tab" aria-controls="desc_edit" aria-selected="true">Description</a>
+                                <li class="nav-item active">
+                                    <a class="nav-link active" id="desc_edit-tab" data-toggle="tab" href="#desc_edit" role="tab" aria-controls="desc_edit" aria-selected="true">Description</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" id="special_features_edit-tab" data-toggle="tab" href="#special_features_edit" role="tab" aria-controls="special_features_edit" aria-selected="false">Special Features</a>
@@ -551,7 +715,7 @@
                                                 ],
                                                 height: 200,
                                                 codemirror: {
-                                                    theme: 'monokai'
+                                                    theme: 'blackboard'
                                                 }
                                             });
                                         })
@@ -578,7 +742,7 @@
                                                 ],
                                                 height: 200,
                                                 codemirror: {
-                                                    theme: 'monokai'
+                                                    theme: 'blackboard'
                                                 }
                                             });
                                         })
@@ -598,7 +762,7 @@
                                                 ],
                                                 height: 200,
                                                 codemirror: {
-                                                    theme: 'monokai'
+                                                    theme: 'blackboard'
                                                 }
                                             });
                                         })
@@ -618,7 +782,7 @@
                                                 ],
                                                 height: 200,
                                                 codemirror: {
-                                                    theme: 'monokai'
+                                                    theme: 'blackboard'
                                                 }
                                             });
                                         })
@@ -736,14 +900,13 @@
 <!-- Datatables init -->
 <script src="<?= get_assets_uri("js/admin/pages/datatables.init.js") ?>"></script>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css" integrity="sha512-uf06llspW44/LZpHzHT6qBOIVODjWtv4MxCricRxkzvopAlSWnTf6hpZTFxuuZcuNE9CBQhqE0Seu1CoRk84nQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-bs4.min.css" integrity="sha512-ngQ4IGzHQ3s/Hh8kMyG4FC74wzitukRMIcTOoKT3EyzFZCILOPF0twiXOQn75eDINUfKBYmzYn2AA8DkAk8veQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!-- JS Summernote -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote.min.js" integrity="sha512-6rE6Bx6fCBpRXG/FWpQmvguMWDLWMQjPycXMr35Zx/HRD9nwySZswkkLksgyQcvrpYMx0FELLJVBvWFtubZhDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.js" integrity="sha512-8RnEqURPUc5aqFEN04aQEiPlSAdE0jlFS/9iGgUyNtwFnSKCXhmB6ZTNl7LnDtDWKabJIASzXrzD0K+LYexU9g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/mode/xml/xml.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/2.36.0/formatting.js'></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/theme-monokai.js"></script>
+<!-- JS CodeMirror -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.52.2/mode/xml/xml.min.js"></script>
+
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/js/bootstrap.bundle.js"></script>
 
 <!-- Product js -->

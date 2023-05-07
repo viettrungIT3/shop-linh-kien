@@ -1,15 +1,23 @@
 // dataTables
-.table-striped tbody tr td:nth-child(1),
-.table-striped tbody tr td:nth-child(2),
-.table-striped tbody tr td:nth-child(3) {
+table.dataTable tbody tr,
+table.dataTable.nowrap th,
+table.dataTable tbody tr td:nth-child(2),
+table.dataTable tbody tr td:nth-child(3),
+table.dataTable tbody tr td:nth-child(4) {
+    min-height: 50px;
     white-space: pre-wrap !important;
+}
+
+table.dataTable tbody td {
+    min-height: 50px;
+    vertical-align: middle;
 }
 
 table.dataTable tr th:last-child,
 table.dataTable tr td:last-child {
     display: table-cell !important;
-    max-width: 110px!important;
-    min-width: 100px!important;
+    max-width: 110px !important;
+    min-width: 100px !important;
 }
 
 @media screen and (max-width: 767px) {
@@ -17,6 +25,23 @@ table.dataTable tr td:last-child {
     table.dataTable tr td:last-child,
     table.dataTable tr th:last-child {
         display: table-cell !important;
+    }
+}
+
+// modal -> nav nav-tabs
+.modal #myTabContent {
+    padding: 0 !important;
+}
+
+// image-details
+div#images-detail {
+    display: flex;
+    flex-wrap: wrap;
+
+    .upload__img-box {
+        width: 50px !important;
+        padding: 0 3px!important;
+        margin-bottom: 3px!important;
     }
 }
 

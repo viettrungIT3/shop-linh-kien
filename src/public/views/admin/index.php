@@ -107,6 +107,39 @@ $total = $params["total"];
     <div class="row">
         <div class="col-sm-12">
             <div class="card-box">
+                <h5 class="mt-0 font-14 mb-3">Top 5 employees best sell </h5>
+                <div class="table-responsive">
+                    <!-- <table class="table table-hover mails m-0 table table-actions-bar table-centered">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Sold</th>
+                                <th>Inventory</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <?php
+                            $products = $params["top_5_bestsellers"]['data'];
+                            foreach ($products as $product) { ?>
+                                <tr>
+                                    <td><?= $product->name ?></td>
+                                    <td><?= $product->price ?></td>
+                                    <td><?= $product->sold_quantity ?></td>
+                                    <td><?= $product->quantity - $product->sold_quantity ?></td>
+                                </tr>
+                            <?php } ?>
+
+                        </tbody>
+                    </table> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card-box">
                 <h5 class="mt-0 font-14 mb-3">Top 5 products best sell </h5>
                 <div class="table-responsive">
                     <table class="table table-hover mails m-0 table table-actions-bar table-centered">

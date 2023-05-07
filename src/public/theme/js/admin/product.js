@@ -25,14 +25,13 @@ function AddProduct() {
     let gift_info = document.getElementById("summernote3").value;
     let warranty = document.getElementById("summernote4").value;
     let brand = document.getElementById("brand").value;
-
     var settings = {
         "url": "http://shop.localhost.com:9292/api/v1/product/create",
         "method": "POST",
         "timeout": 0,
         "headers": {
             "Content-Type": "application/json",
-            "Cookie": "lskafi_9w98zad=573b60d7f90e20fa3aa11e04e1a0b75b91dd4b19"
+            "Cookie": document.cookie
         },
         "data": JSON.stringify({
             "user_id": user_id,
@@ -51,9 +50,35 @@ function AddProduct() {
     };
 
     $.ajax(settings).done(function (response) {
+        product_id = response.data[0].id;
+        uploadImage(product_id);
         alert('Create product successful!');
         window.location.reload();
     });
+
+}
+
+function uploadImage(product_id) {
+    var files = $('input[name="image[]"]').prop('files');
+    var formData = new FormData();
+    $.each(files, function (key, value) {
+        formData.append('image[]', value);
+    });
+    formData.append('product_id', product_id);
+
+    $.ajax({
+        url: 'http://shop.localhost.com:9292/api/v1/product_images/create',
+        type: 'POST',
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function (response) {
+
+        },
+        error: function (xhr, status, error) {
+            console.log(error);
+        }
+    })
 }
 
 // Detail product
@@ -76,6 +101,43 @@ function Detail(id) {
     document.getElementById("ca_detail").innerHTML = document.getElementById("p-timeC-" + id).innerText;
     document.getElementById("ua_detail").innerHTML = document.getElementById("p-timeU-" + id).innerText;
     document.getElementById("status_detail").innerHTML = document.getElementById("p-status-" + id).innerHTML;
+
+    let images = document.getElementById("p-image-" + id).innerHTML;
+    var imgWrap = document.getElementById('images-detail');
+    var imgWrap2 = document.getElementById('images-detail-slide');
+    imgWrap.innerHTML = ''; // clear previous images
+    let arr_img = images.split(",");
+
+    if (arr_img.length > 0 && arr_img[0] != "") {
+
+        arr_img.forEach(function (img, index, array) {
+            var img_url = 'http://shop.localhost.com:9292/uploads/' + img;
+            var html = "<div class='upload__img-box'><div style='background-image: url(" + img_url + ")' class='img-bg'></div></div>";
+            imgWrap.innerHTML += html;
+
+            if (index == 0) {
+                var html2 = `
+                    <div class="carousel-item active"  style="margin: 0 !important; padding: 0 !important;">
+                        <div class="mt-3 mb-3" style="margin: 0 auto;display: flex;justify-content: center;">
+                            <img src="` + img_url + `" alt="" height="200">
+                        </div>
+                    </div>
+                `;
+                imgWrap2.innerHTML += html2;
+
+            } else {
+                var html2 = `
+                    <div class="carousel-item"  style="margin: 0 !important; padding: 0 !important;">
+                        <div class="mt-3 mb-3" style="margin: 0 auto;display: flex;justify-content: center;">
+                            <img src="` + img_url + `" alt="" height="200">
+                        </div>
+                    </div>
+                `;
+                imgWrap2.innerHTML += html2;
+
+            }
+        });
+    }
 }
 
 // edit product
@@ -134,8 +196,34 @@ function EditProduct() {
         "special_features": special_features,
         "status": parseInt(status_edit)
     }
-    // console.log(data);
+    console.log(data);
     sendToServer(data);
+    uploadImageEdit(product_id);
+}
+
+
+function uploadImageEdit(product_id) {
+    var files = $('input[name="image2[]"]').prop('files');
+    var formData = new FormData();
+    $.each(files, function (key, value) {
+        formData.append('image[]', value);
+    });
+    formData.append('product_id', product_id);
+
+    $.ajax({
+        url: 'http://shop.localhost.com:9292/api/v1/product_images/create',
+        type: 'POST',
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function (response) {
+            // console.log("success" = response);
+            window.location.reload();
+        },
+        error: function (xhr, status, error) {
+            console.log(error);
+        }
+    })
 }
 
 // send data for edit and deltete /
@@ -149,7 +237,7 @@ function sendToServer(data) {
         dataType: "json",
         success: function (dataSuccess) {
             alert(dataSuccess['messages'][0]);
-            window.location.reload();
+            // window.location.reload();
         },
         error: function (xhr, status, error) {
             alert("Product update failed!");

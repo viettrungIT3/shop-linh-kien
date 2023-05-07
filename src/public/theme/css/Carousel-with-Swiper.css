@@ -1,0 +1,48 @@
+:root {
+  --white-100: hsl(206, 5%, 100%);
+  --white-200: hsl(206, 5%, 90%);
+  --white-300: hsl(206, 5%, 80%);
+  --white-400: hsl(206, 5%, 65%);
+  --white-500: hsl(206, 5%, 45%);
+  --black-100: hsl(210, 20%, 10%);
+  --black-200: hsl(210, 20%, 8%);
+  --black-300: hsl(210, 20%, 6%);
+  --black-400: hsl(210, 20%, 4%);
+  --black-500: hsl(210, 20%, 1%);
+}
+
+.section.slider-section {
+  margin: 0 auto;
+  padding-block: 0;
+}
+.section.slider-section a,
+.section.slider-section button {
+  cursor: pointer;
+  user-select: none;
+  border: none;
+  outline: none;
+  background: none;
+}
+.section.slider-section img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+.section.slider-section .swiper-button-next::after, .section.slider-section .swiper-button-prev::after {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 1rem;
+  width: 2rem;
+  height: 2rem;
+  opacity: 0.75;
+  border-radius: 50%;
+  color: var(--white-100);
+  background: var(--black-300);
+}

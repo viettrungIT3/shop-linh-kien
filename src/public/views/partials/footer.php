@@ -1,10 +1,9 @@
 <div class="footer-top-area">
-	<div class="zigzag-bottom"></div>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-3 col-sm-6">
 				<div class="footer-about-us">
-					<h2>e<span>Electronics</span></h2>
+					<?php $this->load->view("partials/icons/logo") ?>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis sunt id doloribus vero quam laborum quas alias dolores blanditiis iusto consequatur, modi aliquid eveniet eligendi iure eaque ipsam iste, pariatur omnis sint! Suscipit, debitis, quisquam. Laborum commodi veritatis magni at?</p>
 					<div class="footer-social">
 						<a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
@@ -63,7 +62,7 @@
 		<div class="row">
 			<div class="col-md-8">
 				<div class="copyright">
-					<p>&copy; 2023 eElectronics. All Rights Reserved. Coded with <i class="fa fa-heart"></i> by <a href="http://wpexpand.com" target="_blank">WP Expand</a></p>
+					<p>2023 &copy; <a href="https://github.com/viettrungIT3">viettrungIT3</a></p>
 				</div>
 			</div>
 
@@ -86,16 +85,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js" integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <!-- jQuery sticky menu -->
-<script src="<?= get_script_uri('owl.carousel.min') ?>"> </script>
-<script src="<?= get_script_uri('jquery.sticky') ?>"> </script>
-
+<script src="<?= get_assets_uri("js/owl.carousel.min.js") ?>"></script>
+<script src="<?= get_assets_uri("js/jquery.sticky.js") ?>"></script>
 
 <!-- jQuery easing -->
-<script src="<?= get_script_uri('jquery.easing.1.3.min') ?>"> </script>
-
+<script src="<?= get_assets_uri("js/jquery.easing.1.3.min.js") ?>"></script>
 
 <!-- Main Script -->
-<script src="<?= get_script_uri('main') ?>"> </script>
+<script src="<?= get_assets_uri("js/main.js") ?>"></script>
+
 
 <!-- OwlCarousel2 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

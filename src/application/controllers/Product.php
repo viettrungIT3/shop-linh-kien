@@ -129,7 +129,7 @@ class Product extends MY_Controller
     public function update()
     {
         $posting_data = $this->get_posting_data();
-
+        
         if (!isset($posting_data['id']) || NULL === $posting_data['id'])
             return $this->failed("Missing product id")->render_json();
         if (!isset($posting_data['user_id']) || NULL === $posting_data['user_id'])
@@ -163,7 +163,7 @@ class Product extends MY_Controller
             isset($posting_data['special_features']) ? $posting_data['special_features'] : $the_product->special_features,
             isset($posting_data['status']) ? $posting_data['status'] : $the_product->status
         );
-
+        
         if (false === ($res['status'] ?? FALSE) || 0 == count($res['data'])) :
             return $this->failed("Failed to update product ID= {$in_id}")->set("data", [])->render_json();
         endif;
