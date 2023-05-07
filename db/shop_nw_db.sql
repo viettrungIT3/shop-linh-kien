@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : shop
+ Source Server         : shop-linh-kien
  Source Server Type    : MySQL
  Source Server Version : 50741
- Source Host           : shop-nw-db-localhost:3939
+ Source Host           : localhost:3939
  Source Schema         : shop_nw_db
 
  Target Server Type    : MySQL
  Target Server Version : 50741
  File Encoding         : 65001
 
- Date: 04/05/2023 17:50:22
+ Date: 07/05/2023 09:00:54
 */
 
 SET NAMES utf8mb4;
@@ -32,7 +32,7 @@ CREATE TABLE `Categories`  (
   `created_at` datetime NULL DEFAULT NULL,
   `updated_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Table structure for Order_Details
@@ -76,7 +76,7 @@ CREATE TABLE `Product_Images`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `product_id`(`product_id`) USING BTREE,
   CONSTRAINT `product_images_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `Products` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 23 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Table structure for Products
@@ -104,7 +104,7 @@ CREATE TABLE `Products`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `category_id`(`category_id`) USING BTREE,
   CONSTRAINT `products_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `Categories` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 140 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Table structure for Promotion_Products
@@ -547,11 +547,152 @@ END
 delimiter ;
 
 -- ----------------------------
+-- Procedure structure for product_images_create
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `product_images_create`;
+delimiter ;;
+CREATE PROCEDURE `product_images_create`(IN in_product_id INT,
+  IN name_file VARCHAR(255))
+BEGIN
+	INSERT INTO
+		Product_Images (
+			product_id,
+			url
+		)
+	VALUES
+		(
+			in_product_id,
+			name_file
+		);
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for product_images_delete
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `product_images_delete`;
+delimiter ;;
+CREATE PROCEDURE `product_images_delete`(IN in_product_id INT)
+BEGIN
+	DELETE FROM Product_Images WHERE product_id = in_product_id;
+END
+;;
+delimiter ;
+
+-- ----------------------------
 -- Procedure structure for product_list
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `product_list`;
 delimiter ;;
 CREATE PROCEDURE `product_list`()
+BEGIN
+	SELECT
+		t0.*,
+		t3.`name`                                AS "category_name",
+		CONCAT(t1.first_name, " ", t1.last_name) AS "name_of_created_by",
+		CONCAT(t2.first_name, " ", t2.last_name) AS "name_of_updated_by",
+		t2.role_id,
+		GROUP_CONCAT(t4.url SEPARATOR ',')       AS 'images'
+	FROM
+		Products t0
+		INNER JOIN users t1 ON t0.created_by = t1.id
+		INNER JOIN users t2 ON t0.updated_by = t2.id
+		INNER JOIN Categories t3 ON t0.category_id = t3.id
+		LEFT JOIN Product_Images t4 ON t0.id = t4.product_id
+	GROUP BY
+		t0.id;
+
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for product_list_by_status
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `product_list_by_status`;
+delimiter ;;
+CREATE PROCEDURE `product_list_by_status`(IN in_status INT)
+BEGIN
+	SELECT
+		t0.*,
+		t3.`name`                                AS "category_name",
+		CONCAT(t1.first_name, " ", t1.last_name) AS "name_of_created_by",
+		CONCAT(t2.first_name, " ", t2.last_name) AS "name_of_updated_by",
+		t2.role_id,
+		GROUP_CONCAT(t4.url SEPARATOR ',')       AS 'images'
+	FROM
+		Products t0
+		INNER JOIN users t1 ON t0.created_by = t1.id
+		INNER JOIN users t2 ON t0.updated_by = t2.id
+		INNER JOIN Categories t3 ON t0.category_id = t3.id
+		LEFT JOIN Product_Images t4 ON t0.id = t4.product_id
+	WHERE t0.`status` = in_status
+	GROUP BY
+		t0.id;
+
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for product_list_by_user
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `product_list_by_user`;
+delimiter ;;
+CREATE PROCEDURE `product_list_by_user`(IN in_user_id INT)
+BEGIN
+	SELECT
+		t0.*,
+		t3.`name`                                AS "category_name",
+		CONCAT(t1.first_name, " ", t1.last_name) AS "name_of_created_by",
+		CONCAT(t2.first_name, " ", t2.last_name) AS "name_of_updated_by",
+		t2.role_id,
+		GROUP_CONCAT(t4.url SEPARATOR ',')       AS 'images'
+	FROM
+		Products t0
+		INNER JOIN users t1 ON t0.created_by = t1.id
+		INNER JOIN users t2 ON t0.updated_by = t2.id
+		INNER JOIN Categories t3 ON t0.category_id = t3.id
+		LEFT JOIN Product_Images t4 ON t0.id = t4.product_id
+	WHERE t0.created_by = in_user_id
+	GROUP BY
+		t0.id;
+
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for product_list_by_userID	
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `product_list_by_userID	`;
+delimiter ;;
+CREATE PROCEDURE `product_list_by_userID	`(IN in_user_id INT)
+BEGIN
+	SELECT 
+		t0.*,
+		t3.`name` AS "category_name",
+		CONCAT(t1.first_name, " ", t1.last_name) AS "name_of_created_by",
+		CONCAT(t2.first_name, " ", t2.last_name) AS "name_of_updated_by",
+		t2.role_id
+	FROM 
+		Products t0
+		INNER JOIN users t1 ON t0.created_by = t1.id
+		INNER JOIN users t2 ON t0.updated_by = t2.id
+		INNER JOIN Categories t3 ON t0.category_id = t3.id
+	WHERE t1.id = in_user_id;
+
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for product_list_showing
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `product_list_showing`;
+delimiter ;;
+CREATE PROCEDURE `product_list_showing`()
 BEGIN
 	SELECT 
 		t0.*,
@@ -584,7 +725,6 @@ CREATE PROCEDURE `product_update`(IN in_user_id INT,
   IN in_warranty VARCHAR(255) CHARACTER SET utf8mb4,
   IN in_gift_info VARCHAR(1000) CHARACTER SET utf8mb4,
   IN in_quantity INT,
-  IN in_sold_quantity INT,
   IN in_size VARCHAR(255) CHARACTER SET utf8mb4,
   IN in_weight FLOAT,
   IN in_special_features VARCHAR(1000) CHARACTER SET utf8mb4,
@@ -601,10 +741,9 @@ BEGIN
 		warranty = in_warranty,
 		gift_info = in_gift_info,
 		quantity = in_quantity,
-		sold_quantity = in_sold_quantity,
 		size = in_size,
 		weight = in_weight,
-		special_features = in_sold_quantity,
+		special_features = in_special_features,
 		`status` = in_status,
 		updated_by = in_user_id,
 		updated_at = NOW()
