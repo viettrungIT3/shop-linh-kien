@@ -149,7 +149,7 @@ body {
   font-weight: 400;
 }
 .logo h1 a {
-  color: #999;
+  color: #555;
 }
 .logo h1 a:hover {
   text-decoration: none;
@@ -245,12 +245,12 @@ body {
 .footer-top-area {
   position: relative;
   overflow: hidden;
-  background: none repeat scroll 0 0 #333;
-  color: #999;
-  padding: 35px 0 180px;
+  background: none repeat scroll 0 0 #1abc9c;
+  color: #555;
+  padding: 35px 0 35px;
 }
 .footer-top-area .zigzag-bottom {
-  background: #000;
+  background: #fff;
 }
 
 .product-widget-area {
@@ -260,7 +260,7 @@ body {
   padding-top: 30px;
 }
 .product-widget-area .zigzag-bottom {
-  background: #333;
+  background: #1abc9c;
 }
 
 .product-breadcroumb-area {
@@ -372,8 +372,9 @@ body {
 }
 .single-promo:hover {
   color: #fff;
-  background: #222;
-  border-color: #222;
+  background: #17a78b;
+  border-color: #1abc9c;
+  cursor: pointer;
 }
 
 .section-title {
@@ -589,7 +590,7 @@ body {
 }
 .wid-view-more:hover {
   color: #fff;
-  background-color: #222;
+  background-color: #666;
   text-decoration: none;
 }
 
@@ -598,9 +599,9 @@ body {
 }
 
 .footer-bottom-area {
-  background: #000;
+  background: #666;
   color: #fff;
-  background: none repeat scroll 0 0 #000;
+  background: none repeat scroll 0 0 #666;
   color: #fff;
   padding-bottom: 40px;
 }
@@ -615,8 +616,8 @@ body {
 .footer-wid-title {
   font-family: raleway;
   font-size: 30px;
-  font-weight: 100;
-  color: #fff;
+  font-weight: 600;
+  color: #555;
 }
 
 .footer-menu ul {
@@ -631,7 +632,7 @@ body {
 .footer-menu a {
   display: block;
   padding: 5px 0;
-  color: #999;
+  color: #555;
 }
 
 .footer-social {
@@ -639,7 +640,7 @@ body {
 }
 .footer-social a {
   background: none repeat scroll 0 0 #1abc9c;
-  color: #fff;
+  color: #555;
   display: inline-block;
   font-size: 20px;
   height: 40px;
@@ -651,7 +652,7 @@ body {
   border: 1px solid #1abc9c;
 }
 .footer-social a:hover {
-  background-color: #222;
+  background-color: #666;
   border-color: #666;
 }
 
@@ -676,7 +677,7 @@ body {
   border: 1px solid #1abc9c;
 }
 .newsletter-form input[type=submit]:hover {
-  background: #222;
+  background: #666;
   border-color: #666;
 }
 
@@ -803,7 +804,7 @@ input[type=submit] {
   text-transform: uppercase;
 }
 input[type=submit]:hover {
-  background-color: #222;
+  background-color: #666;
 }
 
 button[type=submit] {
@@ -814,7 +815,7 @@ button[type=submit] {
   text-transform: uppercase;
 }
 button[type=submit]:hover {
-  background-color: #222;
+  background-color: #666;
 }
 
 .thubmnail-recent {
@@ -908,7 +909,7 @@ button[type=submit]:hover {
   display: inline-block;
 }
 .add_to_cart_button:hover {
-  background-color: #222;
+  background-color: #666;
   color: #fff;
   text-decoration: none;
 }
@@ -1049,7 +1050,7 @@ div.quantity input.plus {
   width: 25px;
 }
 div.quantity input.plus:hover {
-  background-color: #222;
+  background-color: #666;
 }
 div.quantity input.minus {
   background: none repeat scroll 0 0 #1abc9c;
@@ -1060,7 +1061,7 @@ div.quantity input.minus {
   width: 25px;
 }
 div.quantity input.minus:hover {
-  background-color: #222;
+  background-color: #666;
 }
 
 td.product-quantity div.quantity {
@@ -1156,7 +1157,7 @@ div.cart-collaterals ul.products li.product a:hover h3 {
   color: #1ABC9C;
 }
 div.cart-collaterals ul.products li.product:hover .add_to_cart_button {
-  background-color: #222;
+  background-color: #666;
 }
 
 .woocommerce-info {

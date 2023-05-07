@@ -1,5 +1,5 @@
 $color_1: #888;
-$color_2: #999;
+$color_2: #555;
 $color_3: #1abc9c;
 $color_4: #666;
 $color_5: #fff;
@@ -14,8 +14,9 @@ $font-family_1: 'Titillium Web', sans-serif;
 $font-family_2: "Roboto Condensed",sans-serif;
 $font-family_3: "Raleway",sans-serif;
 $font-family_4: raleway;
-$background-color_1: #222;
+$background-color_1: #666;
 $background-color_2: #333333;
+$background-color_3: #17a78b;
 $border-color_1: #1abc9c;
 $border-color_2: #222;
 $border-color_3: #444;
@@ -263,11 +264,11 @@ body {
 .footer-top-area {
 	position: relative;
 	overflow: hidden;
-	background: none repeat scroll 0 0 #333;
+	background: none repeat scroll 0 0 #1abc9c;
 	color: $color_2;
-	padding: 35px 0 180px;
+	padding: 35px 0 35px;
 	.zigzag-bottom {
-		background: #000;
+		background: #fff;
 	}
 }
 .product-widget-area {
@@ -276,7 +277,7 @@ body {
 	padding-bottom: 150px;
 	padding-top: 30px;
 	.zigzag-bottom {
-		background: #333;
+		background: #1abc9c;
 	}
 }
 .product-breadcroumb-area {
@@ -388,8 +389,9 @@ body {
 	}
 	&:hover {
 		color: $color_5;
-		background: #222;
-		border-color: $border-color_2;
+		background: $background-color_3;
+		border-color: $border-color_1;
+		cursor: pointer;
 	}
 }
 .section-title {
@@ -611,9 +613,9 @@ body {
 	position: relative;
 }
 .footer-bottom-area {
-	background: #000;
+	background: $background-color_1;
 	color: $color_5;
-	background: none repeat scroll 0 0 #000;
+	background: none repeat scroll 0 0 $background-color_1;
 	color: $color_5;
 	padding-bottom: 40px;
 }
@@ -628,8 +630,8 @@ body {
 .footer-wid-title {
 	font-family: $font-family_4;
 	font-size: 30px;
-	font-weight: 100;
-	color: $color_5;
+	font-weight: 600;
+	color: $color_2;
 }
 .footer-menu {
 	ul {
@@ -650,7 +652,7 @@ body {
 .footer-social {
 	a {
 		background: none repeat scroll 0 0 #1abc9c;
-		color: $color_5;
+		color: $color_2;
 		display: inline-block;
 		font-size: 20px;
 		height: 40px;
@@ -685,7 +687,7 @@ body {
 		text-transform: uppercase;
 		border: 1px solid #1abc9c;
 		&:hover {
-			background: #222;
+			background: $background-color_1;
 			border-color: $border-color_4;
 		}
 	}

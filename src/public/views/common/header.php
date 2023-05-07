@@ -20,11 +20,11 @@
     <!-- App favicon -->
     <link rel="shortcut icon" href="<?= get_assets_uri('images/favicon.ico') ?>">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
     <?php echo $styles; ?>
 
-    <style id="css-main-template">
-        <?= load_css("core"); ?>
-    </style>
 </head>
 
 <body class="<?php echo $body_classes; ?>" <?php if (isset($is_ie) && $is_ie) : ?> data-browser='ie' <?php endif; ?>>

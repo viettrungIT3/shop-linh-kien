@@ -1,5 +1,3 @@
-
-
 <style>
     .slide-one {
         background-image: url("<?php echo (get_media_uri('slide-1.jpg')); ?>");
@@ -22,7 +20,7 @@
 
     <div class="wrapper-inner">
 
-        <div class="slider-area">
+        <!-- <div class="slider-area">
             <div class="zigzag-bottom"></div>
             <div id="slide-list" class="carousel carousel-fade slide" data-ride="carousel">
 
@@ -106,7 +104,30 @@
                 </div>
 
             </div>
-        </div> <!-- End slider area -->
+        </div> -->
+        <!-- End slider area -->
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+        <link href="<?= get_assets_uri("css/Carousel-with-Swiper.css") ?>" rel="stylesheet" type="text/css" id="slider-swiper-stylesheet">
+        <section class="section slider-section">
+            <div class="container slider-column">
+                <div class="swiper swiper-slider">
+                    <div class="swiper-wrapper">
+                        <img class="swiper-slide" src="https://source.unsplash.com/1920x1280/?animal" alt="Swiper">
+                        <img class="swiper-slide" src="https://source.unsplash.com/1920x1280/?nature" alt="Swiper">
+                        <img class="swiper-slide" src="https://source.unsplash.com/1920x1280/?people" alt="Swiper">
+                        <img class="swiper-slide" src="https://source.unsplash.com/1920x1280/?flower" alt="Swiper">
+                        <img class="swiper-slide" src="https://source.unsplash.com/1920x1280/?travel" alt="Swiper">
+                        <img class="swiper-slide" src="https://source.unsplash.com/1920x1280/?fruits" alt="Swiper">
+                    </div>
+                    <span class="swiper-pagination"></span>
+                    <span class="swiper-button-prev"></span>
+                    <span class="swiper-button-next"></span>
+                </div>
+            </div>
+        </section>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+        <script src="<?= get_assets_uri("js/Carousel-with-Swiper.js") ?>"></script>
 
         <div class="promo-area">
             <div class="zigzag-bottom"></div>
@@ -138,9 +159,10 @@
                     </div>
                 </div>
             </div>
-        </div> <!-- End promo area -->
+        </div>
+        <!-- End promo area -->
 
-        <div class="maincontent-area">
+        <!-- <div class="maincontent-area">
             <div class="zigzag-bottom"></div>
             <div class="container">
                 <div class="row">
@@ -242,9 +264,10 @@
                     </div>
                 </div>
             </div>
-        </div> <!-- End main content area -->
+        </div>  -->
+        <!-- End main content area -->
 
-        <div class="brands-area">
+        <!-- <div class="brands-area">
             <div class="zigzag-bottom"></div>
             <div class="container">
                 <div class="row">
@@ -265,7 +288,8 @@
                     </div>
                 </div>
             </div>
-        </div> <!-- End brands area -->
+        </div>  -->
+        <!-- End brands area -->
 
         <div class="product-widget-area">
             <div class="zigzag-bottom"></div>
@@ -422,3 +446,6 @@
     </div><!-- wrapper inner -->
 
 </div><!-- end of main page wrapper -->
+
+<!-- script -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
