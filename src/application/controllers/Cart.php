@@ -18,8 +18,7 @@ class Cart extends MY_Controller
      */
     public function list(
         $in_user_id
-    )
-    {
+    ) {
 
         $res = $this->cart->listByUserId($in_user_id);
 
@@ -75,20 +74,53 @@ class Cart extends MY_Controller
         if (!isset($posting_data['qty']) || NULL === $posting_data['qty'])
             return $this->failed("Missing quantity")->render_json();
 
-        $res = $this->cart->create(
-            $posting_data['user_id'],
-            $posting_data['product_id'],
-            $posting_data['price'],
-            $posting_data['qty']
-        );
+        $user_id    = $posting_data['user_id'];
+        $product_id = $posting_data['product_id'];
+        $price      = $posting_data['price'];
+        $qty        = $posting_data['qty'];
 
-        if (false === ($res['status'] ?? FALSE) || 0 == count($res['data'])) :
-            return $this->failed('Create cart fail')->set("data", [])->render_json();
-        endif;
+        $res_check = $this->cart->listByUserAndProduct($user_id, $product_id);
+        if (count($res_check['data']) > 0) {
+            // $qty += (int)$res_check['data'][0]->qty;
+            // echo '<pre>';
+            // var_dump($qty);
+            // echo '</pre>';
+            // die();
+            $res = $this->cart->update(
+                $user_id,
+                $product_id,
+                $price,
+                $qty + (int)$res_check['data'][0]->qty
+            );
+            if (false === ($res['status'] ?? FALSE) || 0 == count($res['data'])) :
+                return $this->failed('Update cart fail')->set("data", [])->render_json();
+            endif;
 
-        return $this
-            ->success("Create cart successful!")
-            ->set("data", $res['data'])
-            ->render_json();
+            return $this
+                ->success("Update cart successful!")
+                ->set("data", $res['data'])
+                ->render_json();
+        } else {
+            // echo '<pre>';
+            // var_dump("yyy");
+            // echo '</pre>';
+            // die();
+
+            $res = $this->cart->create(
+                $user_id,
+                $product_id,
+                $price,
+                $qty
+            );
+
+            if (false === ($res['status'] ?? FALSE) || 0 == count($res['data'])) :
+                return $this->failed('Create cart fail')->set("data", [])->render_json();
+            endif;
+
+            return $this
+                ->success("Create cart successful!")
+                ->set("data", $res['data'])
+                ->render_json();
+        }
     }
 }
