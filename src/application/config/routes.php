@@ -104,5 +104,8 @@ $route[$route_prefix.'product/delete/(:num)/(:num)']    = "product/delete/$1/$2"
 // product_images
 $route[$route_prefix.'product_images/create']                  = "product_images/create";
 
+// cart
+$route[$route_prefix.'cart/create']                  = "cart/create";
+
 // upload image
 $route['upload']            = "upload/index";
