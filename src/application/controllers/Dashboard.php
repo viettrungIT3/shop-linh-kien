@@ -9,7 +9,7 @@ class Dashboard extends MY_Controller
 		$this->load->model('User_model', 'user');
 		$this->load->model('Product_model', 'product');
 	}
-	
+
 	public function index()
 	{
 
@@ -47,10 +47,11 @@ class Dashboard extends MY_Controller
 	{
 
 		$user = $this->user->get_detail();
+		$products = $this->product->listPublic();
 
 		return $this
 			->set("user", $user)
-			->set("data_source", "")
+			->set("products", $products)
 			->set_full_layout(TRUE)
 			->set_body_class("dashboard-listing")
 			->set_page_title("Welcome")

@@ -411,7 +411,7 @@
                             ?>
                                 <div class="single-wid-product row">
                                     <a href="single-product col-4 col-sm-4"><img src="<?php $arr  = explode(",", $product->images);
-                                                                        echo (count($arr) > 0 ? get_uploads_file($arr[0]) : 'no-img.jpg') ?>" alt="" class="product-thumb"></a>
+                                                                        echo (count($arr) > 0 ? get_uploads_file($arr[0]) : get_uploads_file('no-img.jpg')) ?>" alt="" class="product-thumb"></a>
                                     <div class="col-8 col-sm-8 ">
                                         <h2>
                                             <a href="single-product" class="single-line-ellipsis" title="<?= $product->name ?>"><?= $product->name ?></a>

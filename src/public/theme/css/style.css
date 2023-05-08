@@ -1274,14 +1274,19 @@ a.about_paypal {
 
 .single-shop-product {
   margin-bottom: 50px;
+  background: rgba(0, 0, 0, 0.08);
+}
+.single-shop-product .product-upper {
+  height: 350px;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  background: #fff;
 }
 .single-shop-product h2 {
   font-size: 20px;
   margin: 10px 0;
-}
-
-.product-option-shop {
-  margin-top: 15px;
 }
 
 .pagination > li > a {

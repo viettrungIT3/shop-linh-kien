@@ -49,8 +49,6 @@ function AddProduct() {
         }),
     };
 
-    console.log(settings);
-
     $.ajax(settings).done(function (response) {
         product_id = response.data[0].id;
         uploadImage(product_id);

@@ -1515,16 +1515,28 @@ a.about_paypal {
 }
 
 .single-shop-product {
+	
+	margin-bottom: 50px;
+	background: rgb(0 0 0 / 8%);
+
+    .product-upper {
+        height: 350px;
+        align-items: center;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        background: #fff;
+    }
+
     h2 {
         font-size: 20px;
         margin: 10px 0;
     }
 
-    margin-bottom: 50px;
 }
 
 .product-option-shop {
-    margin-top: 15px;
+    // margin-top: 15px;
 }
 
 .pagination {
@@ -1543,10 +1555,10 @@ a.about_paypal {
 // nowrap 
 .single-line-ellipsis {
     white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: inline-block;
-  max-width: 100%;
-  line-height: 1.2em;
-  max-height: 2.4em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    max-width: 100%;
+    line-height: 1.2em;
+    max-height: 2.4em;
 }
