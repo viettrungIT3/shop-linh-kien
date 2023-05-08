@@ -11,6 +11,51 @@ class Cart extends MY_Controller
     }
 
     /**
+     * action:      cart/list/{user_id}
+     * method:      get
+     * description: get list categories
+     * return:      object
+     */
+    public function list(
+        $in_user_id
+    )
+    {
+
+        $res = $this->cart->listByUserId($in_user_id);
+
+        if (false === ($res['status'] ?? FALSE) || 0 == count($res['data'])) :
+            return $this->failed("Cart is empty")->render_json();
+        endif;
+
+        return $this
+            ->success()
+            ->set("data", $res['data'])
+            ->set("errors", [])
+            ->render_json();
+    }
+    /**
+     * action:      cart/list/
+     * method:      get
+     * description: get list categories
+     * return:      object
+     */
+    public function listAll()
+    {
+
+        $res = $this->cart->list();
+
+        if (false === ($res['status'] ?? FALSE) || 0 == count($res['data'])) :
+            return $this->failed("Cart is empty")->render_json();
+        endif;
+
+        return $this
+            ->success()
+            ->set("data", $res['data'])
+            ->set("errors", [])
+            ->render_json();
+    }
+
+    /**
      * action:      cart/create
      * method:      post
      * body:        json {}
