@@ -41,6 +41,7 @@
                         <?php $this->load->view("partials/header-nav") ?>
 
                         <?php if (isset($params['user'])) { ?>
+                            <span style="display: none;" id="user_id"><?= $params['user']->id ?></span>
                             <button type="button" class="btn btn-outline-danger"><a href="/logout">Logout</a></button>
                         <?php } else { ?>
                             <button type="button" class="btn btn-outline-primary"><a href="/register">Register</a></button>

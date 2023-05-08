@@ -2,7 +2,7 @@
 
 <?php
 // echo '<pre>';
-// var_dump($products);
+// var_dump(($params['user']));
 // echo '</pre>';
 // die();
 ?>
@@ -37,19 +37,19 @@
                                         echo ((count($arr) > 0 && $arr[0] != '') ? get_uploads_file($arr[0]) : get_uploads_file('/no-img.jpg')) ?>" alt="">
                         </div>
                         <h2>
-                        <a href="<?= base_url("/single-product/" . $product->id)?>" class="single-line-ellipsis" title="<?= $product->name ?>"><?= $product->name ?></a>
+                            <a href="<?= base_url("/single-product/" . $product->id) ?>" class="single-line-ellipsis" title="<?= $product->name ?>"><?= $product->name ?></a>
                         </h2>
 
-                            <div class="row">
-                                <div class="product-carousel-price col-6 col-sm-6">
-                                    <ins>$<?= $product->price ?></ins> <del>$999.00</del>
-                                </div>
-
-                                <div class="product-option-shop col-6 col-sm-6">
-                                    <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Add cart</a>
-                                </div>
+                        <div class="row">
+                            <div class="product-carousel-price col-6 col-sm-6">
+                                <ins>$<?= $product->price ?></ins> <del>$999.00</del>
                             </div>
-                   
+
+                            <div class="product-option-shop col-6 col-sm-6">
+                                <a class="add_to_cart_button" onclick="Add1Cart(<?= ($product->id . ',' . $product->price) ?>)">Add cart</a>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
@@ -58,3 +58,7 @@
         </div>
     </div>
 </div>
+
+
+<!-- cart -->
+<script src="<?= get_assets_uri("js/cart.js") ?>"></script>

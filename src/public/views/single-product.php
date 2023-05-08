@@ -63,12 +63,12 @@
                                 <ins>$<?= $product->price ?></ins> <del>$800.00</del>
                             </div>
 
-                            <form action="" class="cart">
+                            <div style="margin-bottom: 30px;">
                                 <div class="quantity">
-                                    <input type="number" size="4" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
+                                    <input type="number" id="qty-product" class="input-text qty text" title="Enter quantity..." name="quantity" min="1" step="1" placeholder="Enter quantity...">
                                 </div>
-                                <button class="add_to_cart_button" type="submit">Add to cart</button>
-                            </form>
+                                <button class="add_to_cart_button"  onclick="AddCart(<?= ($product->id . ',' . $product->price) ?>)" >Add to cart</button>
+                            </div>
                             <div role="tabpanel">
                                 <ul class="product-tab" role="tablist">
                                     <li role="presentation" class="active"> <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Description</a></li>
@@ -225,3 +225,8 @@
         </div>
     </div>
 </div>
+
+
+
+<!-- cart -->
+<script src="<?= get_assets_uri("js/cart.js") ?>"></script>
