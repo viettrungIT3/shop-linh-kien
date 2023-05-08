@@ -34,5 +34,6 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 
 system
 _sess
+uploads
 
 hash

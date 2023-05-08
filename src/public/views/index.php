@@ -1,3 +1,11 @@
+<?php $products_top5new = $params["products_top5new"]['data'] ?>
+
+<?php
+// echo '<pre>';
+// var_dump($products_top5new);
+// die();
+?>
+
 <style>
     .slide-one {
         background-image: url("<?php echo (get_media_uri('slide-1.jpg')); ?>");
@@ -395,48 +403,32 @@
                         <div class="single-product-widget">
                             <h2 class="product-wid-title">Top New</h2>
                             <a href="#" class="wid-view-more">View All</a>
-                            <div class="single-wid-product">
-                                <a href="single-product"><img src="<?php echo (get_media_uri('product-thumb-3.jpg')); ?>" alt="" class="product-thumb"></a>
-                                <h2><a href="single-product">Apple new i phone 6</a></h2>
-                                <div class="product-wid-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
+
+                            <?php $i = 0;
+                            foreach ($products_top5new as $product) {
+                                $i++;
+                                if ($i == 4) break;
+                            ?>
+                                <div class="single-wid-product row">
+                                    <a href="single-product col-4 col-sm-4"><img src="<?php $arr  = explode(",", $product->images);
+                                                                        echo (count($arr) > 0 ? get_uploads_file($arr[0]) : get_uploads_file('no-img.jpg')) ?>" alt="" class="product-thumb"></a>
+                                    <div class="col-8 col-sm-8 ">
+                                        <h2>
+                                            <a href="<?= base_url("/single-product/" . $product->id)?>" class="single-line-ellipsis" title="<?= $product->name ?>"><?= $product->name ?></a>
+                                        </h2>
+                                        <div class="product-wid-rating">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                        <div class="product-wid-price">
+                                            <ins>$<?= $product->price ?></ins> <del>$425.00</del>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="product-wid-price">
-                                    <ins>$400.00</ins> <del>$425.00</del>
-                                </div>
-                            </div>
-                            <div class="single-wid-product">
-                                <a href="single-product"><img src="<?php echo (get_media_uri('product-thumb-4.jpg')); ?>" alt="" class="product-thumb"></a>
-                                <h2><a href="single-product">Samsung gallaxy note 4</a></h2>
-                                <div class="product-wid-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                                <div class="product-wid-price">
-                                    <ins>$400.00</ins> <del>$425.00</del>
-                                </div>
-                            </div>
-                            <div class="single-wid-product">
-                                <a href="single-product"><img src="<?php echo (get_media_uri('product-thumb-1.jpg')); ?>" alt="" class="product-thumb"></a>
-                                <h2><a href="single-product">Sony playstation microsoft</a></h2>
-                                <div class="product-wid-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                                <div class="product-wid-price">
-                                    <ins>$400.00</ins> <del>$425.00</del>
-                                </div>
-                            </div>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>

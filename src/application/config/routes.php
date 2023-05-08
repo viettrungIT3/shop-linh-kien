@@ -69,7 +69,7 @@ $route['logout']              = "login/logout";
 $route['logout-due-to-inactivity']  = "login/activity_logout";
 
 // Dashboard 
-$route['single-product']            = "dashboard/single_product";
+$route['single-product/(:num)']     = "dashboard/single_product/$1";
 $route['shop']                      = "dashboard/shop";
 $route['checkout']                  = "dashboard/checkout";
 $route['cart']                      = "dashboard/cart";

@@ -936,7 +936,7 @@ form.cart {
   color: #222;
   display: block;
   font-size: 16px;
-  padding: 10px 30px;
+  padding: 10px;
 }
 .product-tab li a:hover {
   text-decoration: none;
@@ -1274,14 +1274,19 @@ a.about_paypal {
 
 .single-shop-product {
   margin-bottom: 50px;
+  background: rgba(0, 0, 0, 0.08);
+}
+.single-shop-product .product-upper {
+  height: 350px;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  background: #fff;
 }
 .single-shop-product h2 {
   font-size: 20px;
   margin: 10px 0;
-}
-
-.product-option-shop {
-  margin-top: 15px;
 }
 
 .pagination > li > a {
@@ -1289,4 +1294,14 @@ a.about_paypal {
 }
 .pagination > li > span {
   color: #1abc9c;
+}
+
+.single-line-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  max-width: 100%;
+  line-height: 1.2em;
+  max-height: 2.4em;
 }
