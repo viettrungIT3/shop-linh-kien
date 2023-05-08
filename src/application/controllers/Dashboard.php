@@ -8,6 +8,7 @@ class Dashboard extends MY_Controller
 		// $this->verify_authentication();
 		$this->load->model('User_model', 'user');
 		$this->load->model('Product_model', 'product');
+		$this->load->model("Cart_model", "cart");
 	}
 
 	public function index()
@@ -80,10 +81,15 @@ class Dashboard extends MY_Controller
 	{
 
 		$user = $this->user->get_detail();
+		$carts = $this->cart->listByUserId($user["id"]);
+		// echo '<pre>'; 
+		// var_dump($carts);
+		// echo '</pre>';
+		// die();
 
 		return $this
 			->set("user", $user)
-			->set("data_source", "")
+			->set("carts", $carts)
 			->set_full_layout(TRUE)
 			->set_body_class("dashboard-listing")
 			->set_page_title("Welcome")
