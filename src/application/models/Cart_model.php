@@ -74,4 +74,14 @@ class Cart_model extends MY_Model
 
         return $this->process_results($res)->get_results();
     }
+
+    // description: func to delte cart by user id and product id
+    public function DeleteByUserAndProduct(
+        $in_user_id = NULL,
+        $in_product_id = NULL
+    ) {
+        $res = $this->db->query("call cart_delete_by_user_and_product(?,?)", array($in_user_id, $in_product_id));
+
+        return $this->process_results($res)->get_results();
+    }
 }

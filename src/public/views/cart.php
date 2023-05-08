@@ -46,58 +46,38 @@
                         </div>
                         <div class="product-details">
                             <div class="product-title"><?= $cart->name ?></div>
-                            <p class="product-description">The best dog bones of all time. Holy crap. Your dog will be begging for these things! I got curious once and ate one myself. I'm a fan.</p>
+                            <p class="product-description"><?= $cart->gift_info ?></p>
                         </div>
                         <div class="product-price"><?= $cart->product_price ?></div>
                         <div class="product-quantity">
                             <input type="number" value="<?= $cart->qty ?>" min="1">
                         </div>
                         <div class="product-removal">
-                            <button class="remove-product">
+                            <button class="remove-product" onclick="DeleteCart(<?= $cart->user_id ?>, <?= $cart->product_id ?>)">
                                 Remove
                             </button>
                         </div>
-                        <div class="product-line-price">25.98</div>
+                        <div class="product-line-price"><?php echo ($cart->product_price * $cart->qty) ?></div>
                     </div>
 
                 <?php } ?>
 
-                <div class="product">
-                    <div class="product-image">
-                        <img src="https://s.cdpn.io/3/large-NutroNaturalChoiceAdultLambMealandRiceDryDogFood.png">
-                    </div>
-                    <div class="product-details">
-                        <div class="product-title">Nutro™ Adult Lamb and Rice Dog Food</div>
-                        <p class="product-description">Who doesn't like lamb and rice? We've all hit the halal cart at 3am while quasi-blackout after a night of binge drinking in Manhattan. Now it's your dog's turn!</p>
-                    </div>
-                    <div class="product-price">45.99</div>
-                    <div class="product-quantity">
-                        <input type="number" value="1" min="1">
-                    </div>
-                    <div class="product-removal">
-                        <button class="remove-product">
-                            Remove
-                        </button>
-                    </div>
-                    <div class="product-line-price">45.99</div>
-                </div>
-
                 <div class="totals">
                     <div class="totals-item">
                         <label>Subtotal</label>
-                        <div class="totals-value" id="cart-subtotal">71.97</div>
+                        <div class="totals-value" id="cart-subtotal"></div>
                     </div>
                     <div class="totals-item">
                         <label>Tax (5%)</label>
-                        <div class="totals-value" id="cart-tax">3.60</div>
+                        <div class="totals-value" id="cart-tax"></div>
                     </div>
                     <div class="totals-item">
                         <label>Shipping</label>
-                        <div class="totals-value" id="cart-shipping">15.00</div>
+                        <div class="totals-value" id="cart-shipping"></div>
                     </div>
                     <div class="totals-item totals-item-total">
                         <label>Grand Total</label>
-                        <div class="totals-value" id="cart-total">90.57</div>
+                        <div class="totals-value" id="cart-total"></div>
                     </div>
                 </div>
 

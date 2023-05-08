@@ -93,6 +93,21 @@ function senData() {
     });
 }
 
+function DeleteCart(u, p) {
+    var settings = {
+        "url": "http://shop.localhost.com:9292/api/v1/cart/delete/" + u + "/" + p,
+        "method": "GET",
+        "timeout": 0,
+        "headers": {
+            "Cookie": document.cookie.replace(/(?:(?:^|.*;\s*)my_cookie\s*\=\s*([^;]*).*$)|^.*$/, "$1")
+        },
+    };
+
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+    });
+}
+
 
 /* Set rates + misc */
 var taxRate = 0.05;
@@ -168,3 +183,5 @@ function removeItem(removeButton) {
         recalculateCart();
     });
 }
+
+recalculateCart();

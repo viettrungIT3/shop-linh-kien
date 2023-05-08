@@ -108,6 +108,7 @@ $route[$route_prefix.'product_images/create']                  = "product_images
 $route[$route_prefix.'cart/create']                     = "cart/create";
 $route[$route_prefix.'cart/list']                       = "cart/listAll";
 $route[$route_prefix.'cart/list/(:num)']                = "cart/list/$1";
+$route[$route_prefix.'cart/delete/(:num)/(:num)']       = "cart/delete/$1/$2";
 
 // upload image
 $route['upload']            = "upload/index";

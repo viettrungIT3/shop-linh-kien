@@ -123,4 +123,28 @@ class Cart extends MY_Controller
                 ->render_json();
         }
     }
+
+    /**
+     * action:      cart/delete/{user_id}/{product_id}
+     * method:      get
+     * description: delete cart 
+     * return:      object
+     */
+    public function delete(
+        $in_user_id     = NULL,
+        $in_product_id  = NULL
+    ) {
+
+        $res = $this->cart->DeleteByUserAndProduct(
+            $in_user_id,
+            $in_product_id
+        );
+
+        if (false === ($res['status'] ?? FALSE)) :
+            return $this->failed("Delete fail")->render_json();
+        endif;
+
+        return $this
+            ->success("Delete success")->render_json();
+    }
 }
