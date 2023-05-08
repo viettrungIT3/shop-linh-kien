@@ -37,7 +37,7 @@
                                         echo ((count($arr) > 0 && $arr[0] != '') ? get_uploads_file($arr[0]) : get_uploads_file('/no-img.jpg')) ?>" alt="">
                         </div>
                         <h2>
-                            <a href="single-product" class="single-line-ellipsis" title="<?= $product->name ?>"><?= $product->name ?></a>
+                        <a href="<?= base_url("/single-product/" . $product->id)?>" class="single-line-ellipsis" title="<?= $product->name ?>"><?= $product->name ?></a>
                         </h2>
 
                             <div class="row">

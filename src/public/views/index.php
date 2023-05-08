@@ -414,7 +414,7 @@
                                                                         echo (count($arr) > 0 ? get_uploads_file($arr[0]) : get_uploads_file('no-img.jpg')) ?>" alt="" class="product-thumb"></a>
                                     <div class="col-8 col-sm-8 ">
                                         <h2>
-                                            <a href="single-product" class="single-line-ellipsis" title="<?= $product->name ?>"><?= $product->name ?></a>
+                                            <a href="<?= base_url("/single-product/" . $product->id)?>" class="single-line-ellipsis" title="<?= $product->name ?>"><?= $product->name ?></a>
                                         </h2>
                                         <div class="product-wid-rating">
                                             <i class="fa fa-star"></i>

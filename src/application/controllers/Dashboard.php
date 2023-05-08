@@ -28,14 +28,16 @@ class Dashboard extends MY_Controller
 			->render();
 	}
 
-	public function single_product()
-	{
+	public function single_product(
+		$in_id = NULL
+	) {
 
 		$user = $this->user->get_detail();
+		$product = $this->product->get($in_id);
 
 		return $this
 			->set("user", $user)
-			->set("data_source", "")
+			->set("product", $product)
 			->set_full_layout(TRUE)
 			->set_body_class("dashboard-listing")
 			->set_page_title("Welcome")
