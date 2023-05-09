@@ -106,6 +106,7 @@ function Detail(id) {
     var imgWrap = document.getElementById('images-detail');
     var imgWrap2 = document.getElementById('images-detail-slide');
     imgWrap.innerHTML = ''; // clear previous images
+    imgWrap2.innerHTML = ''; // clear previous images
     let arr_img = images.split(",");
 
     if (arr_img.length > 0 && arr_img[0] != "") {

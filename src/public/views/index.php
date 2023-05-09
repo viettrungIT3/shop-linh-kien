@@ -121,12 +121,12 @@
             <div class="container slider-column">
                 <div class="swiper swiper-slider">
                     <div class="swiper-wrapper">
-                        <img class="swiper-slide" src="https://source.unsplash.com/1920x1280/?animal" alt="Swiper">
-                        <img class="swiper-slide" src="https://source.unsplash.com/1920x1280/?nature" alt="Swiper">
-                        <img class="swiper-slide" src="https://source.unsplash.com/1920x1280/?people" alt="Swiper">
-                        <img class="swiper-slide" src="https://source.unsplash.com/1920x1280/?flower" alt="Swiper">
-                        <img class="swiper-slide" src="https://source.unsplash.com/1920x1280/?travel" alt="Swiper">
-                        <img class="swiper-slide" src="https://source.unsplash.com/1920x1280/?fruits" alt="Swiper">
+                        <img class="swiper-slide" src="https://promotions.newegg.com/nepro/23-0612/1920x660.jpg" alt="Swiper">
+                        <img class="swiper-slide" src="https://promotions.newegg.com/msi/23-0621/1920x660.png" alt="Swiper">
+                        <img class="swiper-slide" src="https://promotions.newegg.com/samsung/21-2378/1920x660.jpg" alt="Swiper">
+                        <img class="swiper-slide" src="https://promotions.newegg.com/nepro/23-0588/1920x660.jpg" alt="Swiper">
+                        <img class="swiper-slide" src="https://promotions.newegg.com/nepro/22-2297/1920x660.jpg" alt="Swiper">
+                        <!-- <img class="swiper-slide" src="https://source.unsplash.com/1920x1280/?fruits" alt="Swiper"> -->
                     </div>
                     <span class="swiper-pagination"></span>
                     <span class="swiper-button-prev"></span>

@@ -72,10 +72,12 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a href="<?= base_url()?>">Home</a></li>
+                        <li><a href="<?= base_url()?>">Category <i class="fa fa-angle-down"></i></a></li>
                         <li><a href="<?= base_url("shop")?>">Shop page</a></li>
                         <li><a href="<?= base_url("cart")?>">Cart</a></li>
                         <li><a href="<?= base_url("checkout")?>">Checkout</a></li>
                         <li><a href="#">Others</a></li>
+                        <li><a href="#">Blog</a></li>
                         <li><a href="#">Contact</a></li>
                     </ul>
                 </div>
