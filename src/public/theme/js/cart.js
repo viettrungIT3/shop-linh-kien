@@ -131,7 +131,9 @@ function recalculateCart() {
 
     /* Sum up row totals */
     $('.product').each(function () {
-        subtotal += parseFloat($(this).children('.product-line-price').text());
+        if ($(this).find('input[type="checkbox"]').prop('checked')) {
+            subtotal += parseFloat($(this).children('.product-line-price').text());
+        }
     });
 
     /* Calculate totals */
@@ -185,3 +187,90 @@ function removeItem(removeButton) {
 }
 
 recalculateCart();
+
+
+// select all
+let checkAll = document.getElementById('check-all')
+let otherCheckboxes = document.querySelectorAll('input[type=checkbox]:not(#check-all)')
+
+checkAll.addEventListener('change', onCheckAllChange)
+otherCheckboxes.forEach(input => input.addEventListener('change', onOtherCheckboxChange))
+
+function onCheckAllChange() {
+    otherCheckboxes.forEach((input) => input.checked = checkAll.checked)
+    recalculateCart();
+}
+
+function onOtherCheckboxChange() {
+    let allChecked = Array.from(otherCheckboxes).every(input => input.checked);
+    checkAll.checked = allChecked;
+    recalculateCart();
+}
+
+// checkout all check
+function Checkout() {
+
+    var carts = [];
+    /* Sum up row totals */
+    $('.product').each(function () {
+        if ($(this).find('input[type="checkbox"]').prop('checked')) {
+            var data = {
+                "product_id": parseInt($(this).find('.product-id').val()),
+                "price": parseFloat($(this).children('.product-price').text()),
+                "quantity": parseInt($(this).find('.product-qty').val())
+            }
+            carts.push(data);
+        }
+    });
+
+    var orders = {
+        "user_id": user_id,
+        "tax": document.getElementById("cart-tax").innerText,
+        "shipping": document.getElementById("cart-shipping").innerText,
+        "total_amount": document.getElementById("cart-total").innerText,
+        "carts": carts
+    };
+    // console.log(orders);
+
+    let str = JSON.stringify(orders);
+    let encodedStr = encodeURIComponent(str);
+    console.log(encodedStr); // "SGVsbG8gV29ybGQh"
+
+    let decodedStr = decodeURIComponent(encodedStr);
+    console.log(decodedStr); 
+
+    // const myJSON = JSON.stringify(orders);
+    // const hash = CryptoJS.MD5(myJSON).toString();
+    // console.log(hash);
+    // window.location.href = window.location.origin + "/checkout/" + encodedStr;
+    // sendToServer(orders);
+}
+
+function sendData(data) {
+    // code
+    // Nếu thành công thì chuyển sang trang http://shop.localhost.com:9292/checkout kèm theo data
+}
+
+// send data for edit and deltete /
+function sendToServer(data) {
+
+    $.ajax({
+        type: "POST",
+        url: window.location.origin + "/checkout",
+        data: JSON.stringify(data),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (dataSuccess) {
+            // alert(dataSuccess['data']);
+            window.location.href = window.location.origin + "/checkout";
+            console.log(dataSuccess['data']);
+            // window.location.reload();
+        },
+        error: function (xhr, status, error) {
+            alert("Send failed!");
+            console.error("Error sending data:", error);
+        }
+    });
+
+    // window.location.href = window.location.origin + "/checkout";
+}

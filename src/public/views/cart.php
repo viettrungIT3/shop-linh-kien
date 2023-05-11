@@ -30,6 +30,7 @@
             <div class="shopping-cart">
 
                 <div class="column-labels">
+                    <label style="float: left;width: 2%;"><input type='checkbox' id='check-all' value='selectall' checked></label>
                     <label class="product-image">Image</label>
                     <label class="product-details">Product</label>
                     <label class="product-price">Price</label>
@@ -40,6 +41,9 @@
 
                 <?php foreach ($carts as $cart) { ?>
                     <div class="product">
+                        <div style="float: left;width: 2%;">
+                            <input type='checkbox' class="product-id" checked class="check" value="<?= $cart->product_price ?>">
+                        </div>
                         <div class="product-image">
                             <img src="<?php $arr  = explode(",", $cart->images);
                                         echo ((count($arr) > 0 && $arr[0] != '') ? get_uploads_file($arr[0]) : get_uploads_file('/no-img.jpg')) ?>">
@@ -50,7 +54,7 @@
                         </div>
                         <div class="product-price"><?= $cart->product_price ?></div>
                         <div class="product-quantity">
-                            <input type="number" value="<?= $cart->qty ?>" min="1">
+                            <input class="product-qty" type="number" value="<?= $cart->qty ?>" min="1">
                         </div>
                         <div class="product-removal">
                             <button class="remove-product" onclick="DeleteCart(<?= $cart->user_id ?>, <?= $cart->product_id ?>)">
@@ -81,7 +85,7 @@
                     </div>
                 </div>
 
-                <button class="checkout">Checkout</button>
+                <button class="checkout" onclick="Checkout()">Checkout</button>
 
             </div>
         </div>
