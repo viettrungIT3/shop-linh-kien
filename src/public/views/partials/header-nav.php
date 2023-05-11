@@ -22,7 +22,7 @@
                 <div style="margin: 0 12px;">
                     <a href="cart">
                         <i class="fa fa-cart-plus"></i>
-                        <span class="product-count">5</span>
+                        <span class="product-count"><?=$params["num_carts"]?></span>
                     </a>
                 </div>
             </li>

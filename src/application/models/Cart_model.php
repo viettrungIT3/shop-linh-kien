@@ -19,6 +19,15 @@ class Cart_model extends MY_Model
         return $this->process_results($res)->get_results();
     }
 
+    // description: func to get list cart by user
+    public function CountListByUserId(
+        $in_user_id = NULL
+    ) {
+        $res = $this->db->query("call cart_list_by_user(?)", array($in_user_id));
+
+        return $this->process_results($res)->get_results();
+    }
+
     // description: func to get get cart by product id
     public function listByProductId(
         $in_product_id = NULL
@@ -75,7 +84,7 @@ class Cart_model extends MY_Model
         return $this->process_results($res)->get_results();
     }
 
-    // description: func to delte cart by user id and product id
+    // description: func to delete cart by user id and product id
     public function DeleteByUserAndProduct(
         $in_user_id = NULL,
         $in_product_id = NULL
