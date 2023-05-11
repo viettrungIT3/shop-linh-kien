@@ -71,7 +71,7 @@ $route['logout-due-to-inactivity']  = "login/activity_logout";
 // Dashboard 
 $route['single-product/(:num)']     = "dashboard/single_product/$1";
 $route['shop']                      = "dashboard/shop";
-$route['checkout']                  = "dashboard/checkout";
+$route['checkout/(:any)']                  = "dashboard/checkout/$1";
 $route['cart']                      = "dashboard/cart";
 
 // Dashboard_Admin
@@ -109,6 +109,12 @@ $route[$route_prefix.'cart/create']                     = "cart/create";
 $route[$route_prefix.'cart/list']                       = "cart/listAll";
 $route[$route_prefix.'cart/list/(:num)']                = "cart/list/$1";
 $route[$route_prefix.'cart/delete/(:num)/(:num)']       = "cart/delete/$1/$2";
+
+// order
+$route[$route_prefix.'order/create']                     = "order/create";
+// $route[$route_prefix.'order/list']                       = "order/listAll";
+// $route[$route_prefix.'order/list/(:num)']                = "order/list/$1";
+// $route[$route_prefix.'order/delete/(:num)/(:num)']       = "order/delete/$1/$2";
 
 // upload image
 $route['upload']            = "upload/index";
