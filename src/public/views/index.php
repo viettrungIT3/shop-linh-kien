@@ -1,6 +1,5 @@
-<?php $products_top5new = $params["products_top5new"]['data'] ?>
+<?php $products_top5new = $params["products_top5new"]['data'];
 
-<?php
 // echo '<pre>';
 // var_dump($products_top5new);
 // die();

@@ -347,16 +347,10 @@
 </div>
 
 <script>
-    let encodedStr = "http://shop.localhost.com:9292/checkout/%7B%22user_id%22%3A1%2C%22tax%22%3A%2286.17%22%2C%22shipping%22%3A%2215.00%22%2C%22total_amount%22%3A%221824.46%22%2C%22carts%22%3A%5B%7B%22product_id%22%3A589%2C%22price%22%3A589.9%2C%22quantity%22%3A2%7D%2C%7B%22product_id%22%3A543%2C%22price%22%3A543.5%2C%22quantity%22%3A1%7D%5D%7D";
+    let encodedStr = window.location.pathname.split('/');
 
-    let decodedStr = decodeURIComponent(encodedStr);
-    console.log(decodedStr); // "http://shop.localhost.com:9292/checkout/{"user_id":1,"tax":"86.17","shipping":"15.00","total_amount":"1824.46","carts":[{"product_id":589,"price":589.9,"quantity":2},{"product_id":543,"price":543.5,"quantity":1}]}"
+    let orders = decodeURIComponent(encodedStr[2]);
+    console.log(decodedStr); 
 
-    // Cắt chuỗi để lấy thông tin về đơn hàng
-    let orderInfo = decodedStr.split('/checkout/')[1];
-    console.log(orderInfo); // "{"user_id":1,"tax":"86.17","shipping":"15.00","total_amount":"1824.46","carts":[{"product_id":589,"price":589.9,"quantity":2},{"product_id":543,"price":543.5,"quantity":1}]}"
-
-    // Giải mã chuỗi JSON
-    let orderObj = JSON.parse(orderInfo);
-    console.log(orderObj); // { user_id: 1, tax: '86.17', shipping: '15.00', total_amount: '1824.46', carts: [ { product_id: 589, price: 589.9, quantity: 2 }, { product_id: 543, price: 543.5, quantity: 1 } ] }
+    
 </script>

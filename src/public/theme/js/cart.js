@@ -234,7 +234,7 @@ function Checkout() {
 
     let str = JSON.stringify(orders);
     let encodedStr = encodeURIComponent(str);
-    console.log(encodedStr); // "SGVsbG8gV29ybGQh"
+    console.log(encodedStr);
 
     let decodedStr = decodeURIComponent(encodedStr);
     console.log(decodedStr); 

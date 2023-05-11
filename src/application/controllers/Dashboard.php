@@ -83,17 +83,15 @@ class Dashboard extends MY_Controller
 
 	public function cart()
 	{
-
-
-		$user = $this->user->get_detail();
-		$carts = $this->cart->listByUserId($user["id"]);
-		$num_carts = count($this->cart->CountListByUserId($user["id"])['data']);
+		if ($this->get("user") == NULL) {
+			echo '<script>alert("You must to login!"); window.location.href = "http://shop.localhost.com:9292/login"</script>';
+			die();
+		}
+		$carts = $this->cart->listByUserId($this->get("user")["id"]);
 
 
 
 		return $this
-			->set("user", $user)
-			->set("num_carts", $num_carts)
 			->set("carts", $carts)
 			->set_full_layout(TRUE)
 			->set_body_class("dashboard-listing")
