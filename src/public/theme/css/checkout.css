@@ -1,0 +1,97 @@
+.order-container .d-flex {
+  display: flex;
+  flex-direction: row;
+  background: #f6f6f6;
+  border-radius: 0 0 5px 5px;
+  padding: 25px;
+}
+.order-container .d-flex form {
+  flex: 4;
+}
+.order-container .d-flex .title {
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0, #5195A8), color-stop(100, #70EAFF));
+  background: -moz-linear-gradient(top left, #5195A8 0%, #70EAFF 100%);
+  background: -ms-linear-gradient(top left, #5195A8 0%, #70EAFF 100%);
+  background: -o-linear-gradient(top left, #5195A8 0%, #70EAFF 100%);
+  background: linear-gradient(to bottom right, #5195A8 0%, #70EAFF 100%);
+  border-radius: 5px 5px 0 0;
+  padding: 20px;
+  color: #f6f6f6;
+}
+.order-container .d-flex h2 {
+  margin: 0;
+  padding-left: 15px;
+}
+.order-container .d-flex .required {
+  color: red;
+}
+.order-container .d-flex label,
+.order-container .d-flex table {
+  display: block;
+  margin: 15px;
+}
+.order-container .d-flex label > span {
+  float: left;
+  width: 25%;
+  margin-top: 12px;
+  padding-right: 10px;
+}
+.order-container .d-flex input[type=text],
+.order-container .d-flex input[type=tel],
+.order-container .d-flex input[type=email],
+.order-container .d-flex select {
+  width: 70%;
+  height: 30px;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  border: 1px solid #dadada;
+  color: #888;
+}
+.order-container .d-flex .Yorder {
+  flex: 2;
+  margin-top: 15px;
+  height: 600px;
+  padding: 20px;
+  border: 1px solid #dadada;
+}
+.order-container .d-flex table {
+  margin: 0;
+  padding: 0;
+}
+.order-container .d-flex th {
+  border-bottom: 1px solid #dadada;
+  padding: 10px 0;
+}
+.order-container .d-flex tr > td:nth-child(1) {
+  text-align: left;
+  color: #2d2d2a;
+}
+.order-container .d-flex tr > td:nth-child(2) {
+  text-align: right;
+  color: #52ad9c;
+}
+.order-container .d-flex td {
+  border-bottom: 1px solid #dadada;
+  padding: 25px 25px 25px 0;
+}
+.order-container .d-flex p {
+  display: block;
+  color: #888;
+  margin: 0;
+  padding-left: 25px;
+}
+.order-container .d-flex button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 30px;
+  background: #52ad9c;
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+}
+.order-container .d-flex button:hover {
+  cursor: pointer;
+  background: #428a7d;
+}
