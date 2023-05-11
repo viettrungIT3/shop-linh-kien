@@ -11,7 +11,7 @@
  Target Server Version : 50741
  File Encoding         : 65001
 
- Date: 09/05/2023 09:32:06
+ Date: 11/05/2023 07:51:45
 */
 
 SET NAMES utf8mb4;
@@ -28,7 +28,7 @@ CREATE TABLE `Cart`  (
   `product_price` decimal(10, 2) NULL DEFAULT NULL,
   `qty` int(11) NULL DEFAULT 1,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for Categories
@@ -71,8 +71,10 @@ DROP TABLE IF EXISTS `Orders`;
 CREATE TABLE `Orders`  (
   `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_id` int(11) UNSIGNED NOT NULL,
-  `total_amount` decimal(10, 2) NOT NULL,
-  `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tax` decimal(10, 2) NULL DEFAULT 0.00,
+  `shipping` decimal(10, 2) NULL DEFAULT 0.00,
+  `total_amount` decimal(10, 2) NOT NULL DEFAULT 0.00,
+  `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1' COMMENT '1: Processing\r\n2: Processed\r\n3: Shipping\r\n4: Complete\r\n5: Cancelled\r\n6: On hold: Đơn hàng bị tạm dừng để chờ xử lý các vấn đề liên quan đến thanh toán hoặc sản phẩm.\r\n7: Failed: Đơn hàng không thành công do lỗi kỹ thuật hoặc khách hàng từ chối thanh toán.',
   `order_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `user_id`(`user_id`) USING BTREE
@@ -608,6 +610,78 @@ delimiter ;;
 CREATE PROCEDURE `forgot_password_hash_delete`(IN `user_id` INT)
 BEGIN
  DELETE FROM forgot_password_check_hash WHERE user_id = user_id;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for order_create
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `order_create`;
+delimiter ;;
+CREATE PROCEDURE `order_create`(IN in_user_id INT,
+	IN in_tax DOUBLE,
+	IN in_shipping DOUBLE,
+	IN in_total_amount DOUBLE)
+BEGIN
+	INSERT INTO
+		Orders (
+			user_id,
+			tax,
+			shipping,
+			total_amount
+		)
+	VALUES
+		(
+			in_user_id,
+			in_tax,
+			in_shipping,
+			in_total_amount
+		);
+
+	SELECT
+		*
+	FROM
+		Cart
+	WHERE
+		id = LAST_INSERT_ID();
+
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for order_detail_create
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `order_detail_create`;
+delimiter ;;
+CREATE PROCEDURE `order_detail_create`(IN in_user_id INT,
+	IN in_tax DOUBLE,
+	IN in_shipping DOUBLE,
+	IN in_total_amount DOUBLE)
+BEGIN
+	INSERT INTO
+		Orders (
+			user_id,
+			tax,
+			shipping,
+			total_amount
+		)
+	VALUES
+		(
+			in_user_id,
+			in_tax,
+			in_shipping,
+			in_total_amount
+		);
+
+	SELECT
+		*
+	FROM
+		Cart
+	WHERE
+		id = LAST_INSERT_ID();
+
 END
 ;;
 delimiter ;
