@@ -10,6 +10,15 @@ class Cart_model extends MY_Model
         return $this->process_results($res)->get_results();
     }
 
+    // description: func to get cart
+    public function get(
+        $in_id = NULL
+    ) {
+        $res = $this->db->query("call cart_get(?)", array($in_id));
+
+        return $this->process_results($res)->get_results();
+    }
+
     // description: func to get list cart by user
     public function listByUserId(
         $in_user_id = NULL
