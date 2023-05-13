@@ -6,7 +6,7 @@
   padding: 25px;
 }
 .order-container .d-flex form {
-  flex: 4;
+  flex: 6;
 }
 .order-container .d-flex .title {
   background: -webkit-gradient(linear, left top, right bottom, color-stop(0, #5195A8), color-stop(100, #70EAFF));
@@ -32,7 +32,7 @@
 }
 .order-container .d-flex label > span {
   float: left;
-  width: 25%;
+  width: 30%;
   margin-top: 12px;
   padding-right: 10px;
 }
@@ -40,7 +40,7 @@
 .order-container .d-flex input[type=tel],
 .order-container .d-flex input[type=email],
 .order-container .d-flex select {
-  width: 70%;
+  width: 65%;
   height: 30px;
   padding: 5px 10px;
   margin-bottom: 10px;
@@ -48,9 +48,8 @@
   color: #888;
 }
 .order-container .d-flex .Yorder {
-  flex: 2;
+  flex: 5;
   margin-top: 15px;
-  height: 600px;
   padding: 20px;
   border: 1px solid #dadada;
 }

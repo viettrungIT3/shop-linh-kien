@@ -67,20 +67,6 @@ class Dashboard extends MY_Controller
 			->render();
 	}
 
-	public function checkout(
-		$encodeStr = NULL
-	) {
-
-
-
-		return $this
-			->set_full_layout(TRUE)
-			->set_body_class("dashboard-listing")
-			->set_page_title("Welcome")
-			->set_main_template("checkout")
-			->render();
-	}
-
 	public function cart()
 	{
 		if ($this->get("user") == NULL) {
@@ -98,6 +84,29 @@ class Dashboard extends MY_Controller
 			->set_page_title("Welcome")
 			->set_page_title("Card")
 			->set_main_template("cart")
+			->render();
+	}
+
+	
+	public function checkout(
+		$url = NULL
+	) {
+
+		$arr_id = explode(',', urldecode($url));
+
+		$orders = [];
+
+		foreach ($arr_id as $id) {
+			$carts = $this->cart->get($id)['data'][0];
+			$orders[] = $carts;
+		}
+
+		return $this
+			->set("orders", $orders)
+			->set_full_layout(TRUE)
+			->set_body_class("dashboard-listing")
+			->set_page_title("Welcome")
+			->set_main_template("checkout")
 			->render();
 	}
 }

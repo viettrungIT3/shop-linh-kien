@@ -1,8 +1,8 @@
 <?php
-// $orders = $params["orders"];
+$user = $params['user'];
 
 // echo '<pre>'; 
-// var_dump($orders);
+// var_dump($user);
 // echo '</pre>';
 // die();
 ?>
@@ -14,7 +14,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="product-bit-title text-center">
-                    <h2>Shopping Cart</h2>
+                    <h2>Checkout</h2>
                 </div>
             </div>
         </div>
@@ -27,11 +27,11 @@
         <form action="" method="">
             <label>
                 <span class="name">Name <span class="required">*</span></span>
-                <input type="text" name="name">
+                <input id="name" type="text" name="name" value="<?= $user->first_name . " " . $user->last_name ?>">
             </label>
             <label>
                 <span>Country <span class="required">*</span></span>
-                <select name="selection">
+                <select id="country" name="selection">
                     <option value="select">Select a country...</option>
                     <option value="AFG">Afghanistan</option>
                     <option value="ALA">Åland Islands</option>
@@ -286,43 +286,66 @@
             </label>
             <label>
                 <span>Town / City <span class="required">*</span></span>
-                <input type="text" name="city">
+                <input id="city" type="text" name="city">
             </label>
             <label>
                 <span>State / County <span class="required">*</span></span>
-                <input type="text" name="city">
+                <input id="county" type="text" name="city">
+            </label>
+            </label>
+            <label>
+                <span>Address <span class="required">*</span></span>
+                <input id="address" type="text" name="city" value="<?= $user->address ?>">
             </label>
             <label>
                 <span>Street Address <span class="required">*</span></span>
-                <input type="text" name="houseadd" placeholder="House number and street name" required>
+                <input id="street_address" type="text" name="houseadd" placeholder="House number and street name" required>
             </label>
             <label>
                 <span>Postcode / ZIP <span class="required">*</span></span>
-                <input type="text" name="city">
+                <input id="zip" type="text" name="city">
             </label>
             <label>
                 <span>Phone <span class="required">*</span></span>
-                <input type="tel" name="city">
+                <input id="phone" type="tel" name="city" value="<?= $user->phone_number ?>">
             </label>
         </form>
         <div class="Yorder">
-            <table>
+            <table id="dataOrder">
                 <tr>
-                    <th colspan="2">Your order</th>
+                    <th colspan="2" style="text-align: center;font-size: 1.2rem;text-transform: uppercase;">Your order</th>
                 </tr>
-                <tr>
-                    <td>Product Name x 2(Qty)</td>
-                    <td>$88.00</td>
-                </tr>
-                <tr>
-                    <td>Subtotal</td>
-                    <td>$88.00</td>
-                </tr>
-                <tr>
-                    <td>Shipping</td>
-                    <td>Free shipping</td>
-                </tr>
-            </table><br>
+                <?php $orders = $params['orders'];
+                $total_amount = 0;
+                foreach ($orders as $order) {
+                    $total_amount += $order->product_price * $order->qty;
+                ?>
+                    <tr>
+                        <td><?= $order->name ?> x <?= $order->qty ?>(Qty)</td>
+                        <td><?= $order->product_price * $order->qty ?></td>
+                    </tr>
+                <? } ?>
+            </table>
+            <table id="dataOrder">
+                <tbody style="width: 100%;display: inline-table;">
+                    <tr>
+                        <th colspan="2" style="text-align: center;font-size: 1.2rem;text-transform: uppercase;">Info order</th>
+                    </tr>
+                    <tr>
+                        <td>Tax:</td>
+                        <td>5%</td>
+                    </tr>
+                    <tr>
+                        <td>Shipping: </td>
+                        <td>Free shipping</td>
+                    </tr>
+                    <tr>
+                        <td>Total: </td>
+                        <td id="total_amount"><?= $total_amount * 1.05 ?></td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
             <div>
                 <input id="rad1" type="radio" name="dbt" value="dbt" checked>
                 <label for="rad1" style="display: inline-block;">Direct Bank Transfer</label>
@@ -341,16 +364,10 @@
 
                 </label>
             </div>
-            <button type="button">Place Order</button>
+            <button type="button" onclick="Orders()">Place Order</button>
         </div><!-- Yorder -->
     </div>
 </div>
 
-<script>
-    let encodedStr = window.location.pathname.split('/');
-
-    let orders = decodeURIComponent(encodedStr[2]);
-    console.log(decodedStr); 
-
-    
-</script>
+<script src="<?= get_assets_uri("js/alert.js") ?>"></script>
+<script src="<?= get_assets_uri("js/checkout.js") ?>"></script>

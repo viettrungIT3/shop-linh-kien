@@ -42,7 +42,7 @@
                 <?php foreach ($carts as $cart) { ?>
                     <div class="product">
                         <div style="float: left;width: 2%;">
-                            <input type='checkbox' class="product-id" checked class="check" value="<?= $cart->product_price ?>">
+                            <input type='checkbox' class="product-id" checked class="check" value="<?= $cart->id ?>">
                         </div>
                         <div class="product-image">
                             <img src="<?php $arr  = explode(",", $cart->images);
