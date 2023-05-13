@@ -11,7 +11,7 @@
  Target Server Version : 50741
  File Encoding         : 65001
 
- Date: 11/05/2023 07:51:30
+ Date: 13/05/2023 12:20:34
 */
 
 SET NAMES utf8mb4;
@@ -28,21 +28,15 @@ CREATE TABLE `Cart`  (
   `product_price` decimal(10, 2) NULL DEFAULT NULL,
   `qty` int(11) NULL DEFAULT 1,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of Cart
 -- ----------------------------
-INSERT INTO `Cart` VALUES (11, 1, 144, 589.90, 2);
-INSERT INTO `Cart` VALUES (12, 1, 201, 543.50, 1);
-INSERT INTO `Cart` VALUES (13, 1, 157, 2.00, 1);
-INSERT INTO `Cart` VALUES (14, 1, 162, 45.40, 1);
-INSERT INTO `Cart` VALUES (15, 1, 208, 356.70, 1);
-INSERT INTO `Cart` VALUES (16, 1, 177, 79.32, 1);
-INSERT INTO `Cart` VALUES (17, 1, 168, 123.12, 1);
-INSERT INTO `Cart` VALUES (18, 1, 203, 242.53, 1);
-INSERT INTO `Cart` VALUES (19, 1, 199, 149.30, 1);
-INSERT INTO `Cart` VALUES (20, 1, 188, 10.40, 1);
+INSERT INTO `Cart` VALUES (21, 3, 221, 903.40, 1);
+INSERT INTO `Cart` VALUES (22, 1, 212, 433.50, 1);
+INSERT INTO `Cart` VALUES (23, 1, 187, 14.50, 1);
+INSERT INTO `Cart` VALUES (24, 1, 143, 2771.72, 1);
 
 -- ----------------------------
 -- Table structure for Categories
@@ -89,11 +83,17 @@ CREATE TABLE `Order_Details`  (
   INDEX `product_id`(`product_id`) USING BTREE,
   CONSTRAINT `order_details_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `Orders` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `order_details_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `Products` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of Order_Details
 -- ----------------------------
+INSERT INTO `Order_Details` VALUES (7, 17, 157, 1, 2.00);
+INSERT INTO `Order_Details` VALUES (8, 17, 177, 1, 79.32);
+INSERT INTO `Order_Details` VALUES (9, 17, 168, 1, 123.12);
+INSERT INTO `Order_Details` VALUES (10, 17, 203, 1, 242.53);
+INSERT INTO `Order_Details` VALUES (11, 17, 199, 1, 149.30);
+INSERT INTO `Order_Details` VALUES (12, 17, 188, 1, 10.40);
 
 -- ----------------------------
 -- Table structure for Orders
@@ -102,18 +102,23 @@ DROP TABLE IF EXISTS `Orders`;
 CREATE TABLE `Orders`  (
   `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_id` int(11) UNSIGNED NOT NULL,
-  `tax` decimal(10, 2) NULL DEFAULT 0.00,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `tax` decimal(10, 2) NULL DEFAULT 0.05 COMMENT '5% ',
   `shipping` decimal(10, 2) NULL DEFAULT 0.00,
   `total_amount` decimal(10, 2) NOT NULL DEFAULT 0.00,
   `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1' COMMENT '1: Processing\r\n2: Processed\r\n3: Shipping\r\n4: Complete\r\n5: Cancelled\r\n6: On hold: Đơn hàng bị tạm dừng để chờ xử lý các vấn đề liên quan đến thanh toán hoặc sản phẩm.\r\n7: Failed: Đơn hàng không thành công do lỗi kỹ thuật hoặc khách hàng từ chối thanh toán.',
   `order_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `phone_number` int(11) NULL DEFAULT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `user_id`(`user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of Orders
 -- ----------------------------
+INSERT INTO `Orders` VALUES (17, 1, 'Admin ', 0.05, 0.00, 637.00, '1', '2023-05-13 05:01:18', 'No. 298 E. Dien Bridge, Minh Khai, Bac Tu Liem, Hanoi(Minh Khai, Bac Tu Liem, Ha Noi, ALA)', 123456, '2023-05-13 05:01:18');
 
 -- ----------------------------
 -- Table structure for Product_Images
@@ -580,13 +585,14 @@ CREATE TABLE `users`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `role_id`(`role_id`) USING BTREE,
   CONSTRAINT `users_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
 INSERT INTO `users` VALUES (1, 'Admin', '', 'admin@gmail.com', '0cc175b9c0f1b6a831c399e269772661', 1, 1, NULL, NULL, 'avt.jpg', '2023-04-23 13:49:25', '2023-04-23 13:28:34');
 INSERT INTO `users` VALUES (2, 'Trung', 'Nguyễn', 'viettrungcntt03@gmail.com', '0cc175b9c0f1b6a831c399e269772661', 1, 2, NULL, NULL, 'avt.jpg', '2023-04-23 06:49:01', NULL);
+INSERT INTO `users` VALUES (3, 'Trung', 'Nguy?n Vi?t', 'user@gmail.com', '0cc175b9c0f1b6a831c399e269772661', 1, 3, NULL, NULL, NULL, '2023-05-11 14:29:19', NULL);
 
 -- ----------------------------
 -- Procedure structure for cart_create
@@ -634,6 +640,29 @@ CREATE PROCEDURE `cart_delete_by_user_and_product`(IN in_user_id INT,
 BEGIN
 	DELETE FROM Cart
 	WHERE user_id = in_user_id AND product_id = in_product_id;
+
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for cart_get
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `cart_get`;
+delimiter ;;
+CREATE PROCEDURE `cart_get`(IN in_id INT)
+BEGIN
+	SELECT 
+		t0.* ,
+		t1.name,
+		t1.gift_info,
+		GROUP_CONCAT(t2.url SEPARATOR ',')       AS 'images'
+	FROM Cart t0
+		INNER JOIN Products t1 ON t0.product_id = t1.id
+		LEFT JOIN Product_Images t2 ON t0.product_id = t2.product_id
+	WHERE t0.id = in_id
+	GROUP BY
+		t0.id;
 
 END
 ;;
@@ -988,29 +1017,41 @@ delimiter ;
 DROP PROCEDURE IF EXISTS `order_create`;
 delimiter ;;
 CREATE PROCEDURE `order_create`(IN in_user_id INT,
+	IN in_name VARCHAR(255),
 	IN in_tax DOUBLE,
 	IN in_shipping DOUBLE,
-	IN in_total_amount DOUBLE)
+	IN in_total_amount DOUBLE,
+	IN in_address VARCHAR(255),
+	IN in_phone_number INT)
 BEGIN
 	INSERT INTO
 		Orders (
 			user_id,
+			`name`,
 			tax,
 			shipping,
-			total_amount
+			total_amount,
+			address,
+			phone_number,
+			created_at
+
 		)
 	VALUES
 		(
 			in_user_id,
+			in_name,
 			in_tax,
 			in_shipping,
-			in_total_amount
+			in_total_amount,
+			in_address,
+			in_phone_number,
+			NOW()
 		);
 
 	SELECT
 		*
 	FROM
-		Cart
+		Orders
 	WHERE
 		id = LAST_INSERT_ID();
 
@@ -1023,30 +1064,30 @@ delimiter ;
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `order_detail_create`;
 delimiter ;;
-CREATE PROCEDURE `order_detail_create`(IN in_user_id INT,
-	IN in_tax DOUBLE,
-	IN in_shipping DOUBLE,
-	IN in_total_amount DOUBLE)
+CREATE PROCEDURE `order_detail_create`(IN in_order_id INT,
+	IN in_product_id INT,
+	IN in_quantity INT,
+	IN in_price DOUBLE)
 BEGIN
 	INSERT INTO
-		Orders (
-			user_id,
-			tax,
-			shipping,
-			total_amount
+		Order_Details (
+			order_id,
+			product_id,
+			quantity,
+			price
 		)
 	VALUES
 		(
-			in_user_id,
-			in_tax,
-			in_shipping,
-			in_total_amount
+			in_order_id,
+			in_product_id,
+			in_quantity,
+			in_price
 		);
 
 	SELECT
 		*
 	FROM
-		Cart
+		Order_Details
 	WHERE
 		id = LAST_INSERT_ID();
 
