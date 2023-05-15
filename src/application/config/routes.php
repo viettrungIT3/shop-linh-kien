@@ -82,6 +82,7 @@ $route['admin/my-categories']       = "Dashboard_Admin/my_categories";
 $route['admin/products']            = "Dashboard_Admin/products";
 $route['admin/my-products']         = "Dashboard_Admin/my_products";
 $route['admin/products/(:num)']     = "Dashboard_Admin/products_by_status/$1";
+$route['admin/orders']              = "Dashboard_Admin/orders";
 
 
 // ---------api----------

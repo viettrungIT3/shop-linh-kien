@@ -48,10 +48,17 @@ class Order_model extends MY_Model
         ));
 
         // echo '<pre>'; 
-		// var_dump($this->db->last_query());
-		// echo '</pre>';
-		// die();
+        // var_dump($this->db->last_query());
+        // echo '</pre>';
+        // die();
 
+        return $this->process_results($res)->get_results();
+    }
+
+    // description: func to get list order:
+    public function list()
+    {
+        $res = $this->db->query("call order_list()", array());
         return $this->process_results($res)->get_results();
     }
 }
