@@ -11,7 +11,7 @@
  Target Server Version : 50741
  File Encoding         : 65001
 
- Date: 13/05/2023 12:20:48
+ Date: 15/05/2023 12:26:52
 */
 
 SET NAMES utf8mb4;
@@ -720,6 +720,22 @@ BEGIN
 		Order_Details
 	WHERE
 		id = LAST_INSERT_ID();
+
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for order_list
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `order_list`;
+delimiter ;;
+CREATE PROCEDURE `order_list`()
+BEGIN
+	SELECT 
+		*
+	FROM 
+		Orders;
 
 END
 ;;
