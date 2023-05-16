@@ -80,6 +80,34 @@ class Order extends MY_Controller
 
 
     /**
+     * action:      order/get/{id}
+     * method:      get
+     * description: get info product by id
+     * return:      object
+     */
+    public function get(
+        $in_id     = NULL
+    ) {
+        if (NULL === $in_id) return $this->failed("Missing order id")->render_json();
+
+        $order_details = $this->order->listDetailByOrderId($in_id);
+
+        $res = $this->order->get($in_id);
+
+        if (false === ($res['status'] ?? FALSE)) :
+            return $this->failed("Not found!")->set("data", [])->render_json();
+        endif;
+
+        return $this
+            ->success("Order updated successfully!")
+            ->set("data", $res['data'])
+            ->set("orders", $res['data'])
+            ->set("order_details", $order_details['data'])
+            ->set("errors", [])
+            ->render_json();
+    }
+
+    /**
      * action:      order/{user_id}/change-status/{status}
      * method:      get
      * description: get info product by id

@@ -55,6 +55,15 @@ class Order_model extends MY_Model
         return $this->process_results($res)->get_results();
     }
 
+    // description: func to get get order:
+    public function get(
+        $in_order_id = null
+    )
+    {
+        $res = $this->db->query("call order_get(?)", array($in_order_id));
+        return $this->process_results($res)->get_results();
+    }
+
     // description: func to get list order:
     public function list(
         $in_status  = NULL
