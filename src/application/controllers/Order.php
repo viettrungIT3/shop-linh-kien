@@ -77,4 +77,43 @@ class Order extends MY_Controller
             ->set("data", "Create order successful!")
             ->render_json();
     }
+
+
+    /**
+     * action:      order/{user_id}/change-status/{status}
+     * method:      get
+     * description: get info product by id
+     * return:      object
+     */
+    public function changeStatus(
+        $in_id     = NULL,
+        $in_status = NULL
+    ) {
+        if (NULL === $in_id) return $this->failed("Missing product id")->render_json();
+
+        if ($in_status == 2) {
+            $order_details = $this->order->listDetailByOrderId($in_id)['data'];
+            foreach ($order_details as $item) {
+                $res_u = $this->order->ProductUpdateQtyAfterOrder($item->product_id, $item->quantity);
+                if ($res_u['data'][0]->message === 'Insufficient quantity') :
+                    return $this->failed("Insufficient quantity!")->set("data", ["product_id"=> $item->product_id])->render_json();
+                endif;
+                if (false === ($res_u['status'] ?? FALSE)) :
+                    return $this->failed("Update failed!")->set("data", [])->render_json();
+                endif;
+            }
+        }
+
+        $res = $this->order->changeStatus($in_id, $in_status);
+
+        if (false === ($res['status'] ?? FALSE)) :
+            return $this->failed("Update failed!")->set("data", [])->render_json();
+        endif;
+
+        return $this
+            ->success("Order updated successfully!")
+            ->set("data", $res['data'])
+            ->set("errors", [])
+            ->render_json();
+    }
 }

@@ -83,6 +83,7 @@ $route['admin/products']            = "Dashboard_Admin/products";
 $route['admin/my-products']         = "Dashboard_Admin/my_products";
 $route['admin/products/(:num)']     = "Dashboard_Admin/products_by_status/$1";
 $route['admin/orders']              = "Dashboard_Admin/orders";
+$route['admin/orders/(:num)']       = "Dashboard_Admin/orders/$1";
 
 
 // ---------api----------
@@ -112,7 +113,8 @@ $route[$route_prefix.'cart/list/(:num)']                = "cart/list/$1";
 $route[$route_prefix.'cart/delete/(:num)/(:num)']       = "cart/delete/$1/$2";
 
 // order
-$route[$route_prefix.'order/create']                     = "order/create";
+$route[$route_prefix.'order/create']                        = "order/create";
+$route[$route_prefix.'order/(:num)/change-status/(:num)']   = "order/changeStatus/$1/$2";
 // $route[$route_prefix.'order/list']                       = "order/listAll";
 // $route[$route_prefix.'order/list/(:num)']                = "order/list/$1";
 // $route[$route_prefix.'order/delete/(:num)/(:num)']       = "order/delete/$1/$2";

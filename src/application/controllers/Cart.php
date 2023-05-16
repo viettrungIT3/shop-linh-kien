@@ -81,11 +81,6 @@ class Cart extends MY_Controller
 
         $res_check = $this->cart->listByUserAndProduct($user_id, $product_id);
         if (count($res_check['data']) > 0) {
-            // $qty += (int)$res_check['data'][0]->qty;
-            // echo '<pre>';
-            // var_dump($qty);
-            // echo '</pre>';
-            // die();
             $res = $this->cart->update(
                 $user_id,
                 $product_id,
@@ -101,11 +96,6 @@ class Cart extends MY_Controller
                 ->set("data", $res['data'])
                 ->render_json();
         } else {
-            // echo '<pre>';
-            // var_dump("yyy");
-            // echo '</pre>';
-            // die();
-
             $res = $this->cart->create(
                 $user_id,
                 $product_id,

@@ -56,9 +56,49 @@ class Order_model extends MY_Model
     }
 
     // description: func to get list order:
-    public function list()
+    public function list(
+        $in_status  = NULL
+    )
     {
-        $res = $this->db->query("call order_list()", array());
+        if ($in_status == NULL) {
+            $res = $this->db->query("call order_list()", array());
+        } else {
+            $res = $this->db->query("call order_list_by_status(?)", array($in_status));
+        }
+        return $this->process_results($res)->get_results();
+    }
+
+    // description: func to get list order:
+    public function listDetailByOrderId(
+        $in_order_id = null
+    )
+    {
+        $res = $this->db->query("call order_detail_list(?)", array($in_order_id));
+        return $this->process_results($res)->get_results();
+    }
+
+    // description: func to change status order:
+    public function changeStatus(
+        $in_id      = null,
+        $in_status  = null
+    ) {
+        $res = $this->db->query("call order_change_status(?, ?)", array(
+            $in_id,
+            $in_status
+        ));
+
+        return $this->process_results($res)->get_results();
+    }
+
+    // description: func to update quantity after order:
+    public function ProductUpdateQtyAfterOrder(
+        $in_id      = null,
+        $in_qty     = null
+    ) {
+        $res = $this->db->query("call product_update_qty_after_order(?, ?)", array(
+            $in_id,
+            $in_qty
+        ));
         return $this->process_results($res)->get_results();
     }
 }
