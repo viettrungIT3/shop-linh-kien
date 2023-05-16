@@ -11,7 +11,7 @@
  Target Server Version : 50741
  File Encoding         : 65001
 
- Date: 15/05/2023 12:26:30
+ Date: 16/05/2023 07:37:16
 */
 
 SET NAMES utf8mb4;
@@ -118,7 +118,7 @@ CREATE TABLE `Orders`  (
 -- ----------------------------
 -- Records of Orders
 -- ----------------------------
-INSERT INTO `Orders` VALUES (17, 1, 'Admin ', 0.05, 0.00, 637.00, '1', '2023-05-13 05:01:18', 'No. 298 E. Dien Bridge, Minh Khai, Bac Tu Liem, Hanoi(Minh Khai, Bac Tu Liem, Ha Noi, ALA)', 123456, '2023-05-13 05:01:18');
+INSERT INTO `Orders` VALUES (17, 1, 'Admin ', 0.05, 0.00, 637.00, '3', '2023-05-13 05:01:18', 'No. 298 E. Dien Bridge, Minh Khai, Bac Tu Liem, Hanoi(Minh Khai, Bac Tu Liem, Ha Noi, ALA)', 123456, '2023-05-13 05:01:18');
 
 -- ----------------------------
 -- Table structure for Product_Images
@@ -398,7 +398,7 @@ INSERT INTO `Products` VALUES (153, 2, 'GIGABYTE AORUS GeForce RTX 4090 MASTER 2
 INSERT INTO `Products` VALUES (154, 2, 'RAM Kingston Fury Beast 8GB 3200 DDR4 RGB (KF432C16BBA/8)', 120.00, '<p>https://gearvn.com/products/8gb-ddr4-1x8g-3200-ram-kingston-fury-beast<br></p>', NULL, '', '', 120, 0, '8GB', 0.2, '', 1, 2, 2, '2023-05-07 14:22:48', NULL);
 INSERT INTO `Products` VALUES (155, 2, 'Ram PNY XLR8 Silver 1x8GB 3600 RGB', 50.00, '<p>https://gearvn.com/products/ram-pny-xlr8-silver-1-x-8gb-3600-rgb<br></p>', NULL, '', '', 135, 0, '8GB', 0.2, '', 1, 2, 2, '2023-05-07 14:27:47', NULL);
 INSERT INTO `Products` VALUES (156, 9, 'test', 1.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique, diam in consequat iaculis, est purus iaculis mauris, imperdiet facilisis ante ligula at nulla. Quisque volutpat nulla risus, id maximus ex aliquet ut. Suspendisse potenti. Nulla varius lectus id turpis dignissim porta. Quisque magna arcu, blandit quis felis vehicula, feugiat gravida diam. Nullam nec turpis ligula. Aliquam quis blandit elit, ac sodales nisl. Aliquam eget dolor eget elit malesuada aliquet. In varius lorem lorem, semper bibendum lectus lobortis ac.', NULL, '', '', 1, 0, '1', 1, '', 2, 1, 1, '2023-05-07 14:42:26', '2023-05-08 07:36:04');
-INSERT INTO `Products` VALUES (157, 9, 'new', 2.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique, diam in consequat iaculis, est purus iaculis mauris, imperdiet facilisis ante ligula at nulla. Quisque volutpat nulla risus, id maximus ex aliquet ut. Suspendisse potenti. Nulla varius lectus id turpis dignissim porta. Quisque magna arcu, blandit quis felis vehicula, feugiat gravida diam. Nullam nec turpis ligula. Aliquam quis blandit elit, ac sodales nisl. Aliquam eget dolor eget elit malesuada aliquet. In varius lorem lorem, semper bibendum lectus lobortis ac.', NULL, '', '', 2, 0, '2', 2, '', 1, 1, 1, '2023-05-07 14:44:10', '2023-05-08 01:08:53');
+INSERT INTO `Products` VALUES (157, 9, 'new', 2.00, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique, diam in consequat iaculis, est purus iaculis mauris, imperdiet facilisis ante ligula at nulla. Quisque volutpat nulla risus, id maximus ex aliquet ut. Suspendisse potenti. Nulla varius lectus id turpis dignissim porta. Quisque magna arcu, blandit quis felis vehicula, feugiat gravida diam. Nullam nec turpis ligula. Aliquam quis blandit elit, ac sodales nisl. Aliquam eget dolor eget elit malesuada aliquet. In varius lorem lorem, semper bibendum lectus lobortis ac.', NULL, '', '', 0, 1, '2', 2, '', 1, 1, 1, '2023-05-07 14:44:10', '2023-05-15 17:53:39');
 INSERT INTO `Products` VALUES (158, 1, 'Ram Corsair Vengeance RGB 32GB (2x16GB) 5600 DDR5 White (CMH32GX5M2B5600C36W)', 45.40, '<p><b>https://gearvn.com/products/ram-corsair-vengeance-rgb-32gb-2x16gb-5600-ddr5-white-cmh32gx5m2b5600c36w</b><br></p>', NULL, '<br>', '', 150, 0, '32GB', 0.1, '', 2, 2, 1, '2023-05-07 14:50:35', '2023-05-08 07:34:37');
 INSERT INTO `Products` VALUES (159, 7, 'test', 1.00, '<p>abc abc</p>', 'brand', '<p>warr</p>', '<p>gift</p>', 1, 0, '1', 1, '<p>abc</p>', 1, 1, 1, '2023-05-07 14:56:12', NULL);
 INSERT INTO `Products` VALUES (160, 1, 'Ram Corsair Vengeance RGB 32GB (2x16GB) 5600 DDR5 White (CMH32GX5M2B5600C36W)', 45.40, '<p><b>https://gearvn.com/products/ram-corsair-vengeance-rgb-32gb-2x16gb-5600-ddr5-white-cmh32gx5m2b5600c36w</b><br></p>', NULL, '36 months', '', 150, 0, '32GB', 0.1, '', 2, 2, 1, '2023-05-07 14:57:24', '2023-05-08 07:34:54');
@@ -408,14 +408,14 @@ INSERT INTO `Products` VALUES (163, 1, 'Ram Corsair Vengeance RGB 32GB (2x16GB) 
 INSERT INTO `Products` VALUES (164, 1, 'Ram Corsair Vengeance RGB 32GB (2x16GB) 5600 DDR5 White (CMH32GX5M2B5600C36W)', 45.40, '<p><b>https://gearvn.com/products/ram-corsair-vengeance-rgb-32gb-2x16gb-5600-ddr5-white-cmh32gx5m2b5600c36w</b><br></p>', NULL, '36 months', '', 150, 0, '32GB', 0.1, '', 2, 2, 1, '2023-05-07 14:58:57', '2023-05-08 07:35:31');
 INSERT INTO `Products` VALUES (165, 2, 'RAM Corsair Dominator Platinum 32GB (2x16GB) RGB 5600 DDR5 (CMT32GX5M2X5600C36)', 341.20, '<p>https://gearvn.com/products/32gb-ddr5-2x16gb-5600-ram-corsair-dominator-platinum-rgb-ddr5-cl36<br></p>', 'CORSAIR', '<p><span style=\"color: rgb(51, 51, 51); font-family: &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif; font-size: 20px;\">36 Months</span><br></p>', '', 110, 0, '32GB', 0.1, '', 1, 2, 2, '2023-05-07 15:06:44', NULL);
 INSERT INTO `Products` VALUES (167, 1, 'RAM Kingston Fury Beast RGB 64GB (2x32GB) bus 5600 DDR5 (KF556C40BBAK2-64)', 511.78, '<p>https://gearvn.com/products/ram-kingston-fury-beast-rgb-64gb-2x32gb-bus-5600-ddr5-kf556c40bbak2-64<br></p>', ' Kingston', '<p>36 months</p>', '', 200, 0, '64GB', 0.3, '', 1, 2, 2, '2023-05-07 15:10:31', NULL);
-INSERT INTO `Products` VALUES (168, 2, 'SSD SamSung 980 PRO 500GB M.2 PCIe gen 4 NVMe (MZ-V8P500BW)', 123.12, '<p>https://gearvn.com/products/ssd-samsung-980-pro-500gb-m-2-nvme-mz-v8p500bw<br></p>', 'SamSung ', '<p>60 months</p>', '', 120, 0, '500 GB', 0, '', 1, 2, 2, '2023-05-07 15:22:06', NULL);
+INSERT INTO `Products` VALUES (168, 2, 'SSD SamSung 980 PRO 500GB M.2 PCIe gen 4 NVMe (MZ-V8P500BW)', 123.12, '<p>https://gearvn.com/products/ssd-samsung-980-pro-500gb-m-2-nvme-mz-v8p500bw<br></p>', 'SamSung ', '<p>60 months</p>', '', 114, 1, '500 GB', 0, '', 1, 2, 2, '2023-05-07 15:22:06', '2023-05-15 17:53:39');
 INSERT INTO `Products` VALUES (169, 2, 'SSD Kingston NV1 500GB M.2 PCIe NVMe', 453.23, '<p>https://gearvn.com/products/ssd-kingston-nv1-500gb-m-2-pcie-nvme<br></p>', ' Kingston', '<p>36 months</p>', '', 300, 0, '500 GB', 0, '', 1, 2, 2, '2023-05-07 15:25:40', NULL);
 INSERT INTO `Products` VALUES (170, 2, 'SSD PNY CS1031 M.2 2280 256GB Gen 3x4', 231.29, '<p>https://gearvn.com/products/ssd-pny-cs1031-m-2-2280-256gb-gen-3x4<br></p>', 'PNY', '<p>36 months</p>', '', 99, 0, '256GB', 0.66, '', 1, 2, 2, '2023-05-07 15:28:26', NULL);
 INSERT INTO `Products` VALUES (171, 2, 'SSD Samsung 980 M.2 PCIe NVMe 250GB', 210.20, '<p>https://gearvn.com/products/ssd-samsung-980-m-2-pcie-nvme-250gb<br></p>', 'SamSung ', '<p>60 months</p>', '', 87, 0, '250 GB', 0, '', 1, 2, 2, '2023-05-07 15:31:25', NULL);
 INSERT INTO `Products` VALUES (172, 2, 'SSD MSI Spatium M390 500GB M.2 PCIe NVMe', 88.45, '<p>https://gearvn.com/products/ssd-msi-spatium-m390-500gb-m-2-pcie-nvme<br></p>', 'MSI', '<p>60 months</p>', '', 290, 0, '', 0, '', 1, 2, 2, '2023-05-07 15:34:10', NULL);
 INSERT INTO `Products` VALUES (173, 2, 'SSD Samsung 870 EVO 500GB 2.5\' SATA III', 45.32, '<p>https://gearvn.com/products/ssd-samsung-870-evo-500gb-2-5-sata-iii<br></p>', 'SamSung ', '<p>60 months</p>', '', 60, 0, '500 MB', 0, '', 1, 2, 2, '2023-05-07 15:40:17', NULL);
 INSERT INTO `Products` VALUES (174, 2, 'SSD Samsung 870 EVO 500GB 2.5\' SATA III', 50.10, '<p>https://gearvn.com/products/ssd-samsung-870-evo-500gb-2-5-sata-iii<br></p>', 'SamSung ', '<p>60 months</p>', '', 79, 0, '500 GB', 0, '', 1, 2, 2, '2023-05-07 15:42:05', NULL);
-INSERT INTO `Products` VALUES (177, 2, 'SSD Samsung 980 M.2 PCIe NVMe 500GB', 79.32, '<p>https://gearvn.com/products/ssd-samsung-980-m-2-pcie-nvme-500gb<br></p>', 'SamSung ', '<p>60 months</p>', '', 234, 0, '500 GB', 0, '', 1, 2, 2, '2023-05-07 15:45:33', NULL);
+INSERT INTO `Products` VALUES (177, 2, 'SSD Samsung 980 M.2 PCIe NVMe 500GB', 79.32, '<p>https://gearvn.com/products/ssd-samsung-980-m-2-pcie-nvme-500gb<br></p>', 'SamSung ', '<p>60 months</p>', '', 228, 1, '500 GB', 0, '', 1, 2, 2, '2023-05-07 15:45:33', '2023-05-15 17:53:39');
 INSERT INTO `Products` VALUES (178, 3, 'HDD WD Blue 1TB 7200rpm', 20.20, '<p>https://gearvn.com/products/wd-hdd-1tb-blue-7200rpm<br></p>', 'Western Digital', '<p>24 months</p>', '', 31, 0, '1 TB', 0, '', 1, 2, 2, '2023-05-07 15:48:14', NULL);
 INSERT INTO `Products` VALUES (179, 3, 'HDD Seagate Barracuda 1TB 7200rpm', 98.10, '<p>https://gearvn.com/products/hdd-seagate-barracuda-1tb-7200rpm<br></p>', 'Seagate', '<p>24 months</p>', '', 245, 0, '1 TB', 0, '', 1, 2, 2, '2023-05-07 15:49:35', NULL);
 INSERT INTO `Products` VALUES (181, 3, 'HDD WD Blue 2TB 5400rpm', 87.40, '<p>https://gearvn.com/products/hdd-wd-blue-2tb-5400rpm<br></p>', 'Western Digital', '<p>24 months</p>', '', 241, 0, '2 TB', 0, '', 1, 2, 2, '2023-05-07 15:51:19', NULL);
@@ -425,7 +425,7 @@ INSERT INTO `Products` VALUES (184, 3, 'HDD WD Black 4TB 7200rpm', 231.23, '<p>h
 INSERT INTO `Products` VALUES (185, 3, 'HDD Seagate Ironwolf 10TB 7200RPM Thông tin chung', 305.42, '<p>https://gearvn.com/products/hdd-seagate-ironwolf-10tb-7200rpm<br></p>', ' Seagate', '<p>60 months</p>', '', 42, 0, '10 TB', 0, '', 1, 2, 2, '2023-05-07 16:16:08', NULL);
 INSERT INTO `Products` VALUES (186, 4, 'Case 1st Player Fire Dancing V2-A (4 fan RGB)', 13.23, '<p>https://gearvn.com/products/case-1st-player-fire-dancing-v2-a<br></p>', ' 1st Player', '<p>12 months</p>', '', 323, 0, '', 0, '', 1, 2, 2, '2023-05-07 16:20:14', NULL);
 INSERT INTO `Products` VALUES (187, 4, 'Case Deepcool MATREXX 40 3FS (3 fan RGB)', 14.50, '<p>https://gearvn.com/products/case-deepcool-matrexx-40-3fs<br></p>', 'DEEPCOOL', '<p>12 months</p>', '', 100, 0, '', 0, '', 1, 2, 2, '2023-05-07 16:23:14', NULL);
-INSERT INTO `Products` VALUES (188, 4, 'Case JETEK EM4', 10.40, '<p>https://gearvn.com/products/case-jetek-em4<br></p>', 'JETEK', '<p>12 months</p>', '', 134, 0, '', 0, '', 1, 2, 2, '2023-05-07 16:25:08', NULL);
+INSERT INTO `Products` VALUES (188, 4, 'Case JETEK EM4', 10.40, '<p>https://gearvn.com/products/case-jetek-em4<br></p>', 'JETEK', '<p>12 months</p>', '', 128, 1, '', 0, '', 1, 2, 2, '2023-05-07 16:25:08', '2023-05-15 17:53:39');
 INSERT INTO `Products` VALUES (189, 4, 'Case Jetek Mini I8-22B (ITX)', 12.30, '<p>https://gearvn.com/products/case-jetek-mini-i8-22b-itx<br></p>', 'Jetek', '<p>36 months</p>', '', 323, 0, '', 0, '', 1, 2, 2, '2023-05-07 16:27:17', NULL);
 INSERT INTO `Products` VALUES (190, 4, 'Case XIGMATEK GEMINI II PINK 3FB', 15.04, '<p>https://gearvn.com/products/case-xigmatek-gemini-ii-pink-3fb-premium-gaming-m-atx<br></p>', 'XIGMATEK', '<p>12 months</p>', '', 241, 0, '390 x 210 x 420mm', 0, '', 1, 2, 2, '2023-05-07 16:30:21', NULL);
 INSERT INTO `Products` VALUES (191, 4, 'Case Asus TUF GT301 (3 fan RGB)', 14.40, '<p>https://gearvn.com/products/case-asus-tuf-gt301<br></p>', '	Asus', '<p>12 months</p>', '', 242, 0, '426 x 214 x 482 mm ', 0, '', 1, 2, 2, '2023-05-07 16:34:56', NULL);
@@ -436,11 +436,11 @@ INSERT INTO `Products` VALUES (195, 6, 'GIGABYTE Z690 AORUS ELITE AX DDR4 (rev. 
 INSERT INTO `Products` VALUES (196, 6, 'ASUS PRIME H510M-A WIFI', 240.50, '<p>https://gearvn.com/products/asus-prime-h510m-a-wifi<br></p>', 'ASUS', '<p>36 months</p>', '', 240, 0, '', 0, '', 1, 2, 2, '2023-05-07 16:50:36', NULL);
 INSERT INTO `Products` VALUES (197, 6, 'ASUS PRIME H610M-A WIFI D4', 124.50, '<p>https://gearvn.com/products/asus-prime-h610m-a-wifi-d4<br></p>', 'ASUS', '<p>36 months</p>', '', 256, 0, '', 0, '', 1, 2, 2, '2023-05-07 16:53:17', NULL);
 INSERT INTO `Products` VALUES (198, 6, 'MSI MAG B560M MORTAR WIFI', 134.30, '<p>https://gearvn.com/products/msi-mag-b560m-mortar-wifi<br></p>', 'MSI', '<p>36 months</p>', '', 421, 0, '', 0, '', 1, 2, 2, '2023-05-07 16:55:12', NULL);
-INSERT INTO `Products` VALUES (199, 7, 'ASUS ROG STRIX Z690-A GAMING WIFI DDR4', 149.30, '<p>https://gearvn.com/products/asus-rog-strix-z690-a-gaming-wifi-ddr4<br></p>', 'ASUS', '<p>36 months</p>', '', 525, 0, '', 0, '', 1, 2, 2, '2023-05-07 16:57:23', NULL);
+INSERT INTO `Products` VALUES (199, 7, 'ASUS ROG STRIX Z690-A GAMING WIFI DDR4', 149.30, '<p>https://gearvn.com/products/asus-rog-strix-z690-a-gaming-wifi-ddr4<br></p>', 'ASUS', '<p>36 months</p>', '', 519, 1, '', 0, '', 1, 2, 2, '2023-05-07 16:57:23', '2023-05-15 17:53:39');
 INSERT INTO `Products` VALUES (200, 4, 'MSI MPG Z690 FORCE WIFI DDR5', 342.40, '<p>https://gearvn.com/products/msi-mpg-z690-force-wifi<br></p>', 'MSI', '<p>36 months</p>', '', 240, 0, '', 0, '', 1, 2, 2, '2023-05-07 16:59:34', NULL);
 INSERT INTO `Products` VALUES (201, 6, 'ASUS ROG MAXIMUS Z690 HERO DDR5', 543.50, '<p>https://gearvn.com/products/asus-rog-maximus-z690-hero<br></p>', 'ASUS', '<p>36 months</p><p><br></p>', '', 245, 0, '', 0, '', 1, 2, 2, '2023-05-07 17:03:06', NULL);
 INSERT INTO `Products` VALUES (202, 7, 'Intel Core i5 12400F / 2.5GHz Turbo 4.4GHz / 6 Cores 12 Threads / 18MB / LGA 1700', 543.30, '<p>https://gearvn.com/products/intel-core-i5-12400f<br></p>', 'Intel', '<p>36 months</p>', '', 244, 0, '', 0, '', 1, 1, 1, '2023-05-08 08:20:23', NULL);
-INSERT INTO `Products` VALUES (203, 7, 'Intel Core i5 11400F / 12MB / 4.4GHZ / 6 cores 12 threads / LGA 1200', 242.53, '<p>https://gearvn.com/products/intel-core-i5-11400f<br></p>', 'Intel', '<p>36 months</p>', '', 532, 0, '', 0, '', 1, 1, 1, '2023-05-08 08:22:33', NULL);
+INSERT INTO `Products` VALUES (203, 7, 'Intel Core i5 11400F / 12MB / 4.4GHZ / 6 cores 12 threads / LGA 1200', 242.53, '<p>https://gearvn.com/products/intel-core-i5-11400f<br></p>', 'Intel', '<p>36 months</p>', '', 526, 1, '', 0, '', 1, 1, 1, '2023-05-08 08:22:33', '2023-05-15 17:53:39');
 INSERT INTO `Products` VALUES (204, 7, 'Intel Core i7 12700K / 3.6GHz Turbo 5.0GHz / 12 Cores 20 Threads / 25MB / LGA 1700', 134.50, '<p>https://gearvn.com/products/intel-core-i7-12700k<br></p>', 'Intel', '<p>36 months</p>', '', 342, 0, '', 0, '', 1, 1, 1, '2023-05-08 08:24:37', NULL);
 INSERT INTO `Products` VALUES (205, 7, 'Intel Core i9 12900KS / 3.4GHz Turbo 5.5GHz / 16 Cores 24 Threads / 30MB / LGA 1700', 325.50, '<p>https://gearvn.com/products/intel-core-i9-12900ks<br></p>', 'Intel', '<p>36 months</p>', '', 345, 0, '', 0, '', 1, 1, 1, '2023-05-08 08:26:18', NULL);
 INSERT INTO `Products` VALUES (206, 6, 'AMD Ryzen Threadripper 3960X / 3.8GHz Boost 4.5GHz / 24 cores 48 threads / 128MB / sTRX4', 535.80, '<p>https://gearvn.com/products/amd-threadripper-3960x-socket-strx4<br></p>', 'AMD', '<p><span style=\"color: rgb(51, 51, 51); font-family: &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif; font-size: 20px;\">36 months</span><br></p>', '', 643, 0, '', 0, '', 1, 1, 1, '2023-05-08 08:28:51', NULL);
@@ -1012,6 +1012,24 @@ END
 delimiter ;
 
 -- ----------------------------
+-- Procedure structure for order_change_status
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `order_change_status`;
+delimiter ;;
+CREATE PROCEDURE `order_change_status`(IN in_id INT,
+	IN in_status INT)
+BEGIN
+	UPDATE
+		Orders
+	SET
+		`status` = in_status
+	WHERE
+		id = in_id;
+END
+;;
+delimiter ;
+
+-- ----------------------------
 -- Procedure structure for order_create
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `order_create`;
@@ -1096,6 +1114,24 @@ END
 delimiter ;
 
 -- ----------------------------
+-- Procedure structure for order_detail_list
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `order_detail_list`;
+delimiter ;;
+CREATE PROCEDURE `order_detail_list`(IN in_order_id INT)
+BEGIN
+	SELECT 
+		*
+	FROM 
+		Order_Details
+	WHERE 
+		order_id = in_order_id;
+
+END
+;;
+delimiter ;
+
+-- ----------------------------
 -- Procedure structure for order_list
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `order_list`;
@@ -1106,6 +1142,23 @@ BEGIN
 		*
 	FROM 
 		Orders;
+
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for order_list_by_status
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `order_list_by_status`;
+delimiter ;;
+CREATE PROCEDURE `order_list_by_status`(IN in_status INT)
+BEGIN
+	SELECT 
+		*
+	FROM 
+		Orders
+	WHERE `status` = in_status;
 
 END
 ;;
@@ -1509,6 +1562,71 @@ BEGIN
 		Products
 	WHERE
 		id = in_id;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for product_update_qty
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `product_update_qty`;
+delimiter ;;
+CREATE PROCEDURE `product_update_qty`(IN in_id INT,
+  IN in_quantity INT,
+	IN in_status INT)
+BEGIN
+	UPDATE
+		Products
+	SET
+		quantity = in_quantity,
+		sold_quantity = in_sold_quantity
+	WHERE
+		id = in_id;
+		
+	SELECT
+		*
+	FROM
+		Products
+	WHERE
+		id = in_id;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for product_update_qty_after_order
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `product_update_qty_after_order`;
+delimiter ;;
+CREATE PROCEDURE `product_update_qty_after_order`(IN in_id INT,
+    IN in_quantity INT)
+BEGIN
+    DECLARE product_quantity INT;
+    DECLARE product_sold_quantity INT;
+    DECLARE message VARCHAR(255);
+
+    -- Lấy số lượng và số lượng đã bán của sản phẩm
+    SELECT quantity, sold_quantity INTO product_quantity, product_sold_quantity
+    FROM Products
+    WHERE id = in_id;
+
+    -- Kiểm tra điều kiện số lượng cần trừ phải nhỏ hơn hoặc bằng số lượng hiện có
+    IF product_quantity >= in_quantity THEN
+        -- Cập nhật số lượng và số lượng đã bán của sản phẩm
+        UPDATE Products
+        SET quantity = quantity - in_quantity,
+            sold_quantity = sold_quantity + in_quantity
+        WHERE id = in_id;
+
+        -- Gán thông báo thành công
+        SET message = 'Update successful';
+    ELSE
+        -- Gán thông báo lỗi
+        SET message = 'Insufficient quantity';
+    END IF;
+
+    -- Trả về giá trị của biến message
+    SELECT message AS message;
 END
 ;;
 delimiter ;

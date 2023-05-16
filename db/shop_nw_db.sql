@@ -11,7 +11,7 @@
  Target Server Version : 50741
  File Encoding         : 65001
 
- Date: 15/05/2023 12:26:52
+ Date: 16/05/2023 07:37:31
 */
 
 SET NAMES utf8mb4;
@@ -642,6 +642,24 @@ END
 delimiter ;
 
 -- ----------------------------
+-- Procedure structure for order_change_status
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `order_change_status`;
+delimiter ;;
+CREATE PROCEDURE `order_change_status`(IN in_id INT,
+	IN in_status INT)
+BEGIN
+	UPDATE
+		Orders
+	SET
+		`status` = in_status
+	WHERE
+		id = in_id;
+END
+;;
+delimiter ;
+
+-- ----------------------------
 -- Procedure structure for order_create
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `order_create`;
@@ -726,6 +744,24 @@ END
 delimiter ;
 
 -- ----------------------------
+-- Procedure structure for order_detail_list
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `order_detail_list`;
+delimiter ;;
+CREATE PROCEDURE `order_detail_list`(IN in_order_id INT)
+BEGIN
+	SELECT 
+		*
+	FROM 
+		Order_Details
+	WHERE 
+		order_id = in_order_id;
+
+END
+;;
+delimiter ;
+
+-- ----------------------------
 -- Procedure structure for order_list
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `order_list`;
@@ -736,6 +772,23 @@ BEGIN
 		*
 	FROM 
 		Orders;
+
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for order_list_by_status
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `order_list_by_status`;
+delimiter ;;
+CREATE PROCEDURE `order_list_by_status`(IN in_status INT)
+BEGIN
+	SELECT 
+		*
+	FROM 
+		Orders
+	WHERE `status` = in_status;
 
 END
 ;;
@@ -1139,6 +1192,71 @@ BEGIN
 		Products
 	WHERE
 		id = in_id;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for product_update_qty
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `product_update_qty`;
+delimiter ;;
+CREATE PROCEDURE `product_update_qty`(IN in_id INT,
+  IN in_quantity INT,
+	IN in_status INT)
+BEGIN
+	UPDATE
+		Products
+	SET
+		quantity = in_quantity,
+		sold_quantity = in_sold_quantity
+	WHERE
+		id = in_id;
+		
+	SELECT
+		*
+	FROM
+		Products
+	WHERE
+		id = in_id;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for product_update_qty_after_order
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `product_update_qty_after_order`;
+delimiter ;;
+CREATE PROCEDURE `product_update_qty_after_order`(IN in_id INT,
+    IN in_quantity INT)
+BEGIN
+    DECLARE product_quantity INT;
+    DECLARE product_sold_quantity INT;
+    DECLARE message VARCHAR(255);
+
+    -- Lấy số lượng và số lượng đã bán của sản phẩm
+    SELECT quantity, sold_quantity INTO product_quantity, product_sold_quantity
+    FROM Products
+    WHERE id = in_id;
+
+    -- Kiểm tra điều kiện số lượng cần trừ phải nhỏ hơn hoặc bằng số lượng hiện có
+    IF product_quantity >= in_quantity THEN
+        -- Cập nhật số lượng và số lượng đã bán của sản phẩm
+        UPDATE Products
+        SET quantity = quantity - in_quantity,
+            sold_quantity = sold_quantity + in_quantity
+        WHERE id = in_id;
+
+        -- Gán thông báo thành công
+        SET message = 'Update successful';
+    ELSE
+        -- Gán thông báo lỗi
+        SET message = 'Insufficient quantity';
+    END IF;
+
+    -- Trả về giá trị của biến message
+    SELECT message AS message;
 END
 ;;
 delimiter ;
