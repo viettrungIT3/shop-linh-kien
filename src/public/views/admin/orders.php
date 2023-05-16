@@ -14,6 +14,8 @@ $order_desc = [
 // echo '</pre>';
 // die();
 ?>
+
+<link href="<?= get_assets_uri("css/order-detail.css") ?>" rel="stylesheet" type="text/css" id="order-detail-stylesheet">
 <div class="container-fluid">
 
     <!-- start  -->
@@ -68,6 +70,10 @@ $order_desc = [
                                     <?= $order_desc[$order->status] ?>
                                 </td>
                                 <td>
+                                    <button type="button" class="btn btn-primary" href="#detailCategoryModal" onclick="Detail(<?= $order->id ?>)" class="detail" data-toggle="modal" style="color: #fff;">
+                                        Get info
+                                    </button>
+                                    <br>
                                     <?php if ($order->status == 1) { ?>
                                         <button class="btn btn-success" onclick="ConfirmOrder(<?= $order->id; ?>, <?= $order->status ?>)">Confirm Order</button>
                                     <?php } elseif ($order->status == 2) { ?>
@@ -91,49 +97,178 @@ $order_desc = [
 
     <!-- ===modal=== -->
     <!-- Detail Modal HTML -->
-    <div id="detailCategoryModal" class="modal fade">
-        <div class="modal-dialog modal-lg mt-5" style="max-width: 600px !important;">
+    <div id="detailCategoryModal" class="modal fade order-detail">
+        <div class="modal-dialog modal-lg mt-5" style="max-width: 850px !important;">
             <div class="modal-content">
-                <form>
-                    <div class="modal-header">
-                        <h4 class="modal-title">Detail Category</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <section class="h-100 gradient-custom">
+                    <div class="container h-100">
+                        <div class="row d-flex justify-content-center align-items-center h-100">
+                            <div class="col-12">
+                                <div class="card" style="border-radius: 10px;">
+                                    <div class="card-header px-4 py-5">
+                                        <h5 class="text-muted mb-0">Thanks for your Order, <span style="color: #a8729a;">Anna</span>!</h5>
+                                    </div>
+                                    <div class="card-body p-4">
+                                        <div class="d-flex justify-content-between align-items-center mb-4">
+                                            <p class="lead fw-normal mb-0" style="color: #a8729a;">Receipt</p>
+                                            <p class="small text-muted mb-0">Receipt Voucher : 1KAU9-84UIL</p>
+                                        </div>
+                                        <div class="card shadow-0 border mb-4">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/13.webp" class="img-fluid" alt="Phone">
+                                                    </div>
+                                                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                                                        <p class="text-muted mb-0">Samsung Galaxy</p>
+                                                    </div>
+                                                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                                                        <p class="text-muted mb-0 small">White</p>
+                                                    </div>
+                                                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                                                        <p class="text-muted mb-0 small">Capacity: 64GB</p>
+                                                    </div>
+                                                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                                                        <p class="text-muted mb-0 small">Qty: 1</p>
+                                                    </div>
+                                                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                                                        <p class="text-muted mb-0 small">$499</p>
+                                                    </div>
+                                                </div>
+                                                <!-- <hr class="mb-4" style="background-color: #e0e0e0; opacity: 1;">
+                                                <div class="row d-flex align-items-center">
+                                                    <div class="col-md-2">
+                                                        <p class="text-muted mb-0 small">Track Order</p>
+                                                    </div>
+                                                    <div class="col-md-10">
+                                                        <div class="progress" style="height: 6px; border-radius: 16px;">
+                                                            <div class="progress-bar" role="progressbar" style="width: 65%; border-radius: 16px; background-color: #a8729a;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        </div>
+                                                        <div class="d-flex justify-content-around mb-1">
+                                                            <p class="text-muted mt-1 mb-0 small ms-xl-5">Out for delivary</p>
+                                                            <p class="text-muted mt-1 mb-0 small ms-xl-5">Delivered</p>
+                                                        </div>
+                                                    </div>
+                                                </div> -->
+                                            </div>
+                                        </div>
+                                        <div class="card shadow-0 border mb-4">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/1.webp" class="img-fluid" alt="Phone">
+                                                    </div>
+                                                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                                                        <p class="text-muted mb-0">iPad</p>
+                                                    </div>
+                                                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                                                        <p class="text-muted mb-0 small">Pink rose</p>
+                                                    </div>
+                                                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                                                        <p class="text-muted mb-0 small">Capacity: 32GB</p>
+                                                    </div>
+                                                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                                                        <p class="text-muted mb-0 small">Qty: 1</p>
+                                                    </div>
+                                                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                                                        <p class="text-muted mb-0 small">$399</p>
+                                                    </div>
+                                                </div>
+                                                <!-- <hr class="mb-4" style="background-color: #e0e0e0; opacity: 1;">
+                                                <div class="row d-flex align-items-center">
+                                                    <div class="col-md-2">
+                                                        <p class="text-muted mb-0 small">Track Order</p>
+                                                    </div>
+                                                    <div class="col-md-10">
+                                                        <div class="progress" style="height: 6px; border-radius: 16px;">
+                                                            <div class="progress-bar" role="progressbar" style="width: 20%; border-radius: 16px; background-color: #a8729a;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        </div>
+                                                        <div class="d-flex justify-content-around mb-1">
+                                                            <p class="text-muted mt-1 mb-0 small ms-xl-5">Out for delivary</p>
+                                                            <p class="text-muted mt-1 mb-0 small ms-xl-5">Delivered</p>
+                                                        </div>
+                                                    </div>
+                                                </div> -->
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex justify-content-between pt-2">
+                                            <p class="fw-bold mb-0">Order Details</p>
+                                            <p class="text-muted mb-0"><span class="fw-bold me-4">Total</span> $898.00</p>
+                                        </div>
+
+                                        <div class="d-flex justify-content-between pt-2">
+                                            <p class="text-muted mb-0">Invoice Number : 788152</p>
+                                            <p class="text-muted mb-0"><span class="fw-bold me-4">Discount</span> $19.00</p>
+                                        </div>
+
+                                        <div class="d-flex justify-content-between">
+                                            <p class="text-muted mb-0">Invoice Date : 22 Dec,2019</p>
+                                            <p class="text-muted mb-0"><span class="fw-bold me-4">GST 18%</span> 123</p>
+                                        </div>
+
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <p class="text-muted mb-0">Recepits Voucher : 18KU-62IIK</p>
+                                            <p class="text-muted mb-0"><span class="fw-bold me-4">Delivery Charges</span> Free</p>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer border-0 px-4" style="background-color: #a8729a; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+                                        <h5 class="d-flex align-items-center justify-content-end text-white text-uppercase mb-0">Total
+                                            paid: <span class="h2 mb-0 ms-2">$1040</span></h5>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="card card-stepper text-black" style="border-radius: 16px;">
+
+                                    <div class="card-body">
+
+                                        <ul id="progressbar-2" class="d-flex justify-content-between mx-0 mt-0 mb-5 px-0 pt-0">
+                                            <li class="step0 active text-center" id="step1"></li>
+                                            <li class="step0 active text-center" id="step2"></li>
+                                            <li class="step0 active text-center" id="step3"></li>
+                                            <li class="step0 text-muted text-end" id="step4"></li>
+                                        </ul>
+
+                                        <div class="d-flex justify-content-between">
+                                            <div class="d-lg-flex align-items-center">
+                                                <i class="fas fa-clipboard-list fa-3x me-lg-4 mb-3 mb-lg-0"></i>
+                                                <div>
+                                                    <p class="fw-bold mb-1">Order</p>
+                                                    <p class="fw-bold mb-0">Processed</p>
+                                                </div>
+                                            </div>
+                                            <div class="d-lg-flex align-items-center">
+                                                <i class="fas fa-box-open fa-3x me-lg-4 mb-3 mb-lg-0"></i>
+                                                <div>
+                                                    <p class="fw-bold mb-1">Order</p>
+                                                    <p class="fw-bold mb-0">Shipped</p>
+                                                </div>
+                                            </div>
+                                            <div class="d-lg-flex align-items-center">
+                                                <i class="fas fa-shipping-fast fa-3x me-lg-4 mb-3 mb-lg-0"></i>
+                                                <div>
+                                                    <p class="fw-bold mb-1">Order</p>
+                                                    <p class="fw-bold mb-0">En Route</p>
+                                                </div>
+                                            </div>
+                                            <div class="d-lg-flex align-items-center">
+                                                <i class="fas fa-home fa-3x me-lg-4 mb-3 mb-lg-0"></i>
+                                                <div>
+                                                    <p class="fw-bold mb-1">Order</p>
+                                                    <p class="fw-bold mb-0">Arrived</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label> - Name: </label>
-                            <span id="name_detail" style="font-size: 1rem;"></span>
-                        </div>
-                        <div class="form-group">
-                            <label> - Description: </label>
-                            <span id="desc_detail" style="font-size: 1rem;"></span>
-                        </div>
-                        <div class="form-group">
-                            <label> - Total Products: </label>
-                            <span id="total_detail" style="font-size: 1rem;"></span>
-                        </div>
-                        <div class="form-group">
-                            <label> - Created by: </label>
-                            <span id="cb_detail" style="font-size: 1rem;"></span>
-                        </div>
-                        <div class="form-group">
-                            <label> - Updated by: </label>
-                            <span id="ub_detail" style="font-size: 1rem;"></span>
-                        </div>
-                        <div class="form-group">
-                            <label> - Created at: </label>
-                            <span id="ca_detail" style="font-size: 1rem;"></span>
-                        </div>
-                        <div class="form-group">
-                            <label> - Update ay: </label>
-                            <span id="ua_detail" style="font-size: 1rem;"></span>
-                        </div>
-                        <div class="form-group">
-                            <label> - Status: </label>
-                            <span id="status_detail" style="font-size: 1rem;"></span>
-                        </div>
-                    </div>
-                </form>
+                </section>
             </div>
         </div>
     </div>
