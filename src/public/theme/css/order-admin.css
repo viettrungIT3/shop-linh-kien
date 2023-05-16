@@ -1,0 +1,32 @@
+table.dataTable tbody tr,
+table.dataTable.nowrap th,
+table.dataTable tbody tr td:nth-child(2),
+table.dataTable tbody tr td:nth-child(3),
+table.dataTable tbody tr td:nth-child(4),
+table.dataTable tbody tr td:nth-child(5),
+table.dataTable tbody tr td:nth-child(6),
+table.dataTable tbody tr td:nth-child(7),
+table.dataTable tbody tr td:nth-child(8),
+table.dataTable tbody tr td:nth-child(9) {
+  min-height: 50px;
+  white-space: pre-wrap !important;
+}
+
+table.dataTable tbody td {
+  min-height: 50px;
+  vertical-align: middle;
+}
+
+table.dataTable tr th:last-child,
+table.dataTable tr td:last-child {
+  display: table-cell !important;
+  max-width: 110px !important;
+  min-width: 100px !important;
+}
+
+@media screen and (max-width: 767px) {
+  table.dataTable tr td:last-child,
+  table.dataTable tr th:last-child {
+    display: table-cell !important;
+  }
+}

@@ -322,10 +322,10 @@
                         </a>
                         <ul class="nav-second-level" aria-expanded="false">
                             <li><a href="<?php echo base_url("/admin/orders"); ?>">All</a></li>
-                            <li><a href="<?php echo base_url("/admin/orders"); ?>">Processing</a></li>
-                            <li><a href="<?php echo base_url("/admin/orders"); ?>">Processed</a></li>
-                            <li><a href="<?php echo base_url("/admin/orders"); ?>">Delivery in progress</a></li>
-                            <li><a href="<?php echo base_url("/admin/orders"); ?>">Accomplished</a></li>
+                            <li><a href="<?php echo base_url("/admin/orders/1"); ?>">Processing</a></li>
+                            <li><a href="<?php echo base_url("/admin/orders/2"); ?>">Processed</a></li>
+                            <li><a href="<?php echo base_url("/admin/orders/3"); ?>">Shipping</a></li>
+                            <li><a href="<?php echo base_url("/admin/orders/4"); ?>">Complete</a></li>
                         </ul>
                     </li>
 

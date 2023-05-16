@@ -150,11 +150,13 @@ class Dashboard_Admin extends MY_Controller
 	}
 
 
-	public function orders()
+	public function orders(
+		$in_status = NULL
+	)
 	{
 		$total = $this->statistical->total();
 		$users = $this->user->get_user_current();
-		$orders = $this->order->list();
+		$orders = $this->order->list($in_status);
 
 		// echo '<pre>'; 
 		// var_dump($orders);
@@ -165,6 +167,7 @@ class Dashboard_Admin extends MY_Controller
 			->set("total", ($total))
 			->set("user_info", ($users))
 			->set("orders", ($orders))
+			->set("order_status", ($in_status))
 			// ->set_full_layout(TRUE)
 			->set_body_class("dashboard-listing")
 			->set_page_title("Orders")

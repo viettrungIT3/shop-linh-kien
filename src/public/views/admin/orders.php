@@ -1,11 +1,27 @@
 ﻿<!-- Start container-fluid -->
-<?php $orders = $params["orders"]['data'] ?>
+<?php
+$orders = $params["orders"]['data'];
+$order_status = $params["order_status"];
+$order_desc = [
+    "1" => "Processing",
+    "2" => "Processed",
+    "3" => "Shipping",
+    "4" => "Complete"
+];
+
+// echo '<pre>';
+// var_dump(isset($order_desc[$order_status]) == NULL);
+// echo '</pre>';
+// die();
+?>
 <div class="container-fluid">
 
     <!-- start  -->
     <div class="row">
         <div class="col-sm-12">
-            <h2 class="header-title mb-3 fs-2" style="font-size: 2rem;">Order Processing</h2>
+            <h2 class="header-title mb-3 fs-2" style="font-size: 2rem;">
+                <?= isset($order_desc[$order_status]) != NULL ? $order_desc[$order_status] : "All Orders" ?>
+            </h2>
         </div>
     </div>
     <!-- end row -->
@@ -22,7 +38,7 @@
                             <th>Phone</th>
                             <th>Address</th>
                             <th>Tax</th>
-                            <th>Shipping</th>
+                            <th>Ship</th>
                             <th>Total price</th>
                             <th>Created at</th>
                             <th>Order date</th>
@@ -49,13 +65,16 @@
                                 <td id="o-created_at-<?= $order->id ?>"><?= $order->created_at ?></td>
                                 <td id="o-order_date-<?= $order->id ?>"><?= $order->order_date ?></td>
                                 <td id="o-status-<?= $order->id ?>">
-                                    <?php 
-                                        if ($order->status == 1) echo 'Processing';
-                                        else if ($order->status == 2) echo 'Processed';
-                                        else if ($order->status == 3) echo 'Shipping';
-                                    ?>
+                                    <?= $order_desc[$order->status] ?>
                                 </td>
                                 <td>
+                                    <?php if ($order->status == 1) { ?>
+                                        <button class="btn btn-success" onclick="ConfirmOrder(<?= $order->id; ?>, <?= $order->status ?>)">Confirm Order</button>
+                                    <?php } elseif ($order->status == 2) { ?>
+                                        <button class="btn btn-success" onclick="ConfirmOrder(<?= $order->id; ?>, <?= $order->status ?>)">Shipping</button>
+                                    <?php } elseif ($order->status == 3) { ?>
+                                        <button class="btn btn-success" onclick="ConfirmOrder(<?= $order->id; ?>, <?= $order->status ?>)">Complete</button>
+                                    <?php } ?>
 
                                 </td>
                             </tr>
@@ -271,10 +290,10 @@
 <!-- Datatables init -->
 <script src="<?= get_assets_uri("js/admin/pages/datatables.init.js") ?>"></script>
 
-<!-- Category js -->
-<script src="<?= get_assets_uri("js/admin/category.js") ?>"></script>
+<!-- order js -->
+<script src="<?= get_assets_uri("js/admin/order.js") ?>"></script>
 
 
 <style id="css-header-bar">
-    <?= load_css("category-admin") ?><?= load_css("modal-admin") ?>
+    <?= load_css("category-admin"); ?><?= load_css("modal-admin"); ?><?= load_css("order-admin"); ?>
 </style>
