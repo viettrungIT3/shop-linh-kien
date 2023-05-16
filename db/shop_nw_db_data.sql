@@ -11,7 +11,7 @@
  Target Server Version : 50741
  File Encoding         : 65001
 
- Date: 16/05/2023 07:37:16
+ Date: 16/05/2023 22:44:09
 */
 
 SET NAMES utf8mb4;
@@ -28,7 +28,7 @@ CREATE TABLE `Cart`  (
   `product_price` decimal(10, 2) NULL DEFAULT NULL,
   `qty` int(11) NULL DEFAULT 1,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of Cart
@@ -1022,7 +1022,8 @@ BEGIN
 	UPDATE
 		Orders
 	SET
-		`status` = in_status
+		`status` = in_status,
+		order_date = NOW()
 	WHERE
 		id = in_id;
 END
@@ -1121,11 +1122,33 @@ delimiter ;;
 CREATE PROCEDURE `order_detail_list`(IN in_order_id INT)
 BEGIN
 	SELECT 
+		t0.* ,
+		t1.name,
+		GROUP_CONCAT(t2.url SEPARATOR ',')       AS 'images'
+	FROM Order_Details t0
+		INNER JOIN Products t1 ON t0.product_id = t1.id
+		LEFT JOIN Product_Images t2 ON t0.product_id = t2.product_id
+	WHERE 
+		order_id = in_order_id
+	GROUP BY
+		t0.id;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for order_get
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `order_get`;
+delimiter ;;
+CREATE PROCEDURE `order_get`(IN in_order_id INT)
+BEGIN
+	SELECT 
 		*
 	FROM 
-		Order_Details
+		Orders
 	WHERE 
-		order_id = in_order_id;
+		id = in_order_id;
 
 END
 ;;
@@ -1605,27 +1628,27 @@ BEGIN
     DECLARE product_sold_quantity INT;
     DECLARE message VARCHAR(255);
 
-    -- Lấy số lượng và số lượng đã bán của sản phẩm
+    
     SELECT quantity, sold_quantity INTO product_quantity, product_sold_quantity
     FROM Products
     WHERE id = in_id;
 
-    -- Kiểm tra điều kiện số lượng cần trừ phải nhỏ hơn hoặc bằng số lượng hiện có
+    
     IF product_quantity >= in_quantity THEN
-        -- Cập nhật số lượng và số lượng đã bán của sản phẩm
+        
         UPDATE Products
         SET quantity = quantity - in_quantity,
             sold_quantity = sold_quantity + in_quantity
         WHERE id = in_id;
 
-        -- Gán thông báo thành công
+        
         SET message = 'Update successful';
     ELSE
-        -- Gán thông báo lỗi
+        
         SET message = 'Insufficient quantity';
     END IF;
 
-    -- Trả về giá trị của biến message
+    
     SELECT message AS message;
 END
 ;;

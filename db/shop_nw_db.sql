@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : shop
+ Source Server         : shop-linh-kien
  Source Server Type    : MySQL
  Source Server Version : 50741
- Source Host           : shop-nw-db-localhost:3939
+ Source Host           : localhost:3939
  Source Schema         : shop_nw_db
 
  Target Server Type    : MySQL
  Target Server Version : 50741
  File Encoding         : 65001
 
- Date: 16/05/2023 18:07:36
+ Date: 16/05/2023 22:44:24
 */
 
 SET NAMES utf8mb4;
@@ -752,11 +752,33 @@ delimiter ;;
 CREATE PROCEDURE `order_detail_list`(IN in_order_id INT)
 BEGIN
 	SELECT 
+		t0.* ,
+		t1.name,
+		GROUP_CONCAT(t2.url SEPARATOR ',')       AS 'images'
+	FROM Order_Details t0
+		INNER JOIN Products t1 ON t0.product_id = t1.id
+		LEFT JOIN Product_Images t2 ON t0.product_id = t2.product_id
+	WHERE 
+		order_id = in_order_id
+	GROUP BY
+		t0.id;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for order_get
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `order_get`;
+delimiter ;;
+CREATE PROCEDURE `order_get`(IN in_order_id INT)
+BEGIN
+	SELECT 
 		*
 	FROM 
-		Order_Details
+		Orders
 	WHERE 
-		order_id = in_order_id;
+		id = in_order_id;
 
 END
 ;;
