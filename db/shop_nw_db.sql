@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : shop-linh-kien
+ Source Server         : shop
  Source Server Type    : MySQL
  Source Server Version : 50741
- Source Host           : localhost:3939
+ Source Host           : shop-nw-db-localhost:3939
  Source Schema         : shop_nw_db
 
  Target Server Type    : MySQL
  Target Server Version : 50741
  File Encoding         : 65001
 
- Date: 16/05/2023 07:37:31
+ Date: 16/05/2023 18:07:36
 */
 
 SET NAMES utf8mb4;
@@ -28,7 +28,7 @@ CREATE TABLE `Cart`  (
   `product_price` decimal(10, 2) NULL DEFAULT NULL,
   `qty` int(11) NULL DEFAULT 1,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Table structure for Categories
@@ -652,7 +652,8 @@ BEGIN
 	UPDATE
 		Orders
 	SET
-		`status` = in_status
+		`status` = in_status,
+		order_date = NOW()
 	WHERE
 		id = in_id;
 END
@@ -1235,27 +1236,27 @@ BEGIN
     DECLARE product_sold_quantity INT;
     DECLARE message VARCHAR(255);
 
-    -- Lấy số lượng và số lượng đã bán của sản phẩm
+    
     SELECT quantity, sold_quantity INTO product_quantity, product_sold_quantity
     FROM Products
     WHERE id = in_id;
 
-    -- Kiểm tra điều kiện số lượng cần trừ phải nhỏ hơn hoặc bằng số lượng hiện có
+    
     IF product_quantity >= in_quantity THEN
-        -- Cập nhật số lượng và số lượng đã bán của sản phẩm
+        
         UPDATE Products
         SET quantity = quantity - in_quantity,
             sold_quantity = sold_quantity + in_quantity
         WHERE id = in_id;
 
-        -- Gán thông báo thành công
+        
         SET message = 'Update successful';
     ELSE
-        -- Gán thông báo lỗi
+        
         SET message = 'Insufficient quantity';
     END IF;
 
-    -- Trả về giá trị của biến message
+    
     SELECT message AS message;
 END
 ;;
