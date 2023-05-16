@@ -115,6 +115,7 @@ $route[$route_prefix.'cart/delete/(:num)/(:num)']       = "cart/delete/$1/$2";
 // order
 $route[$route_prefix.'order/create']                        = "order/create";
 $route[$route_prefix.'order/(:num)/change-status/(:num)']   = "order/changeStatus/$1/$2";
+$route[$route_prefix.'order/get/(:num)']                    = "order/get/$1";
 // $route[$route_prefix.'order/list']                       = "order/listAll";
 // $route[$route_prefix.'order/list/(:num)']                = "order/list/$1";
 // $route[$route_prefix.'order/delete/(:num)/(:num)']       = "order/delete/$1/$2";
