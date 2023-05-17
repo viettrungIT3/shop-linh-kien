@@ -5,6 +5,9 @@ $categories = $params["categories"]['data'];
 <style id="css-header-bar">
     <?= load_css("main-nav") ?>
 </style>
+<style id="user-profile-dropdown-menu">
+    <?= load_css("user-profile-dropdown-menu") ?>
+</style>
 <style id="css-responsive">
     <?= load_css("style"); ?>
 </style>
@@ -32,6 +35,7 @@ $categories = $params["categories"]['data'];
     }
 </style>
 
+
 <div class="shop">
     <div class="wrapper-inner">
 
@@ -46,7 +50,26 @@ $categories = $params["categories"]['data'];
 
                         <?php if (isset($params['user'])) { ?>
                             <span style="display: none;" id="user_id"><?= $params['user']->id ?></span>
-                            <button type="button" class="btn btn-outline-danger"><a href="/logout">Logout</a></button>
+                            <nav class="profile-dropdown-menu"><!--Navigation Bar Starts Here-->
+                                <ul>
+                                    <li>
+                                        <a href="#" class="display-picture">
+                                            <img src="https://i.pravatar.cc/85" alt="">
+                                        </a><!--Profile Image-->
+                                        <div class="card hidden"><!--ADD TOGGLE HIDDEN CLASS ATTRIBUTE HERE-->
+                                            <ul><!--MENU-->
+                                                <li><a href="#">Profile</a></li>
+                                                <li><a href="#">Account</a></li>
+                                                <li><a href="#">Settings</a></li>
+                                                <hr>
+                                                <li><a href="<?= base_url("logout") ?>">Log Out</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </nav><!--Navigation Bar Starts Here-->
+                            <script src="<?= get_assets_uri("js/user-profile-dropdown-menu.js") ?>"></script>
+
                         <?php } else { ?>
                             <button type="button" class="btn btn-outline-primary"><a href="/register">Register</a></button>
                             <button type="button" class="btn btn-outline-primary"><a href="/login">Log in</a></button>
@@ -80,7 +103,7 @@ $categories = $params["categories"]['data'];
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Category <i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu" role="menu">
                                 <?php foreach ($categories as $category) { ?>
-                                <li><a href="<?= base_url("shop/" . $category->id) ?>"><?= $category->name; ?></a></li>
+                                    <li><a href="<?= base_url("shop/" . $category->id) ?>"><?= $category->name; ?></a></li>
                                 <?php } ?>
                             </ul>
                         </li>

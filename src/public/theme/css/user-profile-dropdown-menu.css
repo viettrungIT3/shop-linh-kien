@@ -1,0 +1,58 @@
+.profile-dropdown-menu * {
+  margin: 0;
+  padding: 0;
+}
+.profile-dropdown-menu ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+.profile-dropdown-menu .display-picture {
+  margin-left: auto;
+}
+.profile-dropdown-menu .display-picture img {
+  width: 50px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+.profile-dropdown-menu .display-picture img:hover {
+  border: 2px solid #E78341;
+}
+.profile-dropdown-menu .card {
+  transition: 0.5s ease;
+  margin: 0 !important;
+  border: none !important;
+  position: relative;
+  z-index: 999;
+}
+.profile-dropdown-menu .card ul {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  position: absolute;
+  top: 0rem;
+  right: 0rem;
+  border-radius: 10px;
+  padding: 10px 50px 10px 20px;
+  color: #797979;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #dee2e6;
+  border-radius: 0.2rem;
+}
+.profile-dropdown-menu .card ul li {
+  padding: 5px 0;
+  color: #797979;
+  font-size: 14px;
+}
+.profile-dropdown-menu .hidden {
+  display: none;
+}
+.profile-dropdown-menu a {
+  text-decoration: none;
+  color: #797979;
+  cursor: pointer;
+  z-index: 999;
+}
