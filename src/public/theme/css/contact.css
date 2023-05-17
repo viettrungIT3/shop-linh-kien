@@ -1,0 +1,144 @@
+.contact-page {
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+.contact-page .contain {
+  background-color: #eee;
+  max-width: 1170px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1em;
+}
+.contact-page div.form {
+  background-color: #eee;
+}
+.contact-page .contact-wrapper {
+  margin: auto 0;
+}
+.contact-page .submit-btn {
+  float: left;
+  padding: 1em;
+  background: transparent;
+  border: 1px solid #ec1c24;
+  color: #ec1c24;
+  border-radius: 15px;
+  padding: 5px 20px;
+  text-transform: uppercase;
+}
+.contact-page .submit-btn:hover {
+  background: #ec1c24;
+  outline: 0;
+  color: #eee;
+}
+.contact-page .submit-btn:focus {
+  background: #ec1c24;
+  outline: 0;
+  color: #eee;
+}
+.contact-page .reset-btn {
+  float: right;
+}
+.contact-page .form-headline:after {
+  content: "";
+  display: block;
+  width: 10%;
+  padding-top: 10px;
+  border-bottom: 3px solid #ec1c24;
+}
+.contact-page .highlight-text {
+  color: #ec1c24;
+}
+.contact-page .hightlight-contact-info {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.5;
+}
+.contact-page .highlight-text-grey {
+  font-weight: 500;
+}
+.contact-page .email-info {
+  margin-top: 20px;
+}
+.contact-page::-webkit-input-placeholder {
+  font-family: "Roboto", sans-serif;
+}
+.contact-page .required-input {
+  color: black;
+}
+.contact-page h3 {
+  margin: 0;
+  margin-bottom: 1rem;
+}
+.contact-page ul {
+  margin: 0;
+  list-style: none;
+  padding: 0;
+}
+.contact-page .form-input {
+  width: 100%;
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
+  padding: 1em;
+}
+.contact-page .form-input:focus {
+  outline: 1.5px solid #ec1c24;
+}
+.contact-page textarea {
+  width: 100%;
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
+  padding: 1em;
+}
+.contact-page textarea:focus {
+  outline: 1.5px solid #ec1c24;
+}
+.contact-page .wrapper > * {
+  padding: 1em;
+}
+.contact-page .contacts {
+  color: #212d31;
+}
+.contact-page .form {
+  background: #fff;
+}
+.contact-page form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+}
+.contact-page form label {
+  display: block;
+}
+.contact-page form p {
+  margin: 0;
+}
+.contact-page .full-width {
+  grid-column: 1/3;
+}
+.contact-page button {
+  padding: 1em;
+  background: transparent;
+  border: 1px solid #ec1c24;
+  color: #ec1c24;
+  border-radius: 15px;
+  padding: 5px 20px;
+  text-transform: uppercase;
+}
+.contact-page button:hover {
+  background: #ec1c24;
+  outline: 0;
+  color: #eee;
+}
+.contact-page button:focus {
+  background: #ec1c24;
+  outline: 0;
+  color: #eee;
+}
+.contact-page .error {
+  color: #ec1c24;
+}
+@media (min-width: 600px) {
+  .contact-page .contain {
+    padding: 0;
+  }
+}
