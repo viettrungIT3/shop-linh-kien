@@ -71,9 +71,9 @@ $order_desc = [
                                 </td>
                                 <td>
                                     <button type="button" class="btn btn-primary" href="#detailCategoryModal" onclick='Detail(<?= $order->id; ?>)' class="detail" data-toggle="modal" style="color: #fff;">
-                                        Get info
+                                        See details
                                     </button>
-                                    <br>
+                                    <br> <br>
                                     <?php if ($order->status == 1) { ?>
                                         <button class="btn btn-success" onclick="ConfirmOrder(<?= $order->id; ?>, <?= $order->status ?>)">Confirm Order</button>
                                     <?php } elseif ($order->status == 2) { ?>

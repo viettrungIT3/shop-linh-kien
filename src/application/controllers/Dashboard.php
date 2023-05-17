@@ -105,8 +105,29 @@ class Dashboard extends MY_Controller
 			->set("orders", $orders)
 			->set_full_layout(TRUE)
 			->set_body_class("dashboard-listing")
-			->set_page_title("Welcome")
+			->set_page_title("Checkout Order")
 			->set_main_template("checkout")
+			->render();
+	}
+
+
+	
+	public function order()
+	{
+		if ($this->get("user") == NULL) {
+			echo '<script>alert("You must to login!"); window.location.href = "http://shop.localhost.com:9292/login"</script>';
+			die();
+		}
+		// $carts = $this->cart->listByUserId($this->get("user")["id"]);
+		$orders = $this->order->listDetailByUser($this->get("user")["id"]);
+
+		return $this
+			->set("orders", $orders)
+			->set_full_layout(TRUE)
+			->set_body_class("dashboard-listing")
+			->set_page_title("Welcome")
+			->set_page_title("Order")
+			->set_main_template("order")
 			->render();
 	}
 }

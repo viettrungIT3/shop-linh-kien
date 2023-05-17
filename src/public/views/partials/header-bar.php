@@ -76,7 +76,7 @@
                         <li><a href="<?= base_url("shop")?>">Shop page</a></li>
                         <li><a href="<?= base_url("cart")?>">Cart</a></li>
                         <li><a href="<?= base_url("checkout")?>">Checkout</a></li>
-                        <li><a href="#">Others</a></li>
+                        <li><a href="<?= base_url("order")?>">Others</a></li>
                         <li><a href="#">Blog</a></li>
                         <li><a href="#">Contact</a></li>
                     </ul>

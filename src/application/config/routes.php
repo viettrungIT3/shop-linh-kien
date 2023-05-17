@@ -73,6 +73,7 @@ $route['single-product/(:num)']     = "dashboard/single_product/$1";
 $route['shop']                      = "dashboard/shop";
 $route['checkout/(:any)']                  = "dashboard/checkout/$1";
 $route['cart']                      = "dashboard/cart";
+$route['order']                      = "dashboard/order";
 
 // Dashboard_Admin
 $route['admin']                     = "Dashboard_Admin/index";

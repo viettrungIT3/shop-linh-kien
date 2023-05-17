@@ -86,6 +86,15 @@ class Order_model extends MY_Model
         return $this->process_results($res)->get_results();
     }
 
+    // description: func to get list order:
+    public function listDetailByUser(
+        $in_user_id = null
+    )
+    {
+        $res = $this->db->query("call order_list_by_user(?)", array($in_user_id));
+        return $this->process_results($res)->get_results();
+    }
+
     // description: func to change status order:
     public function changeStatus(
         $in_id      = null,
