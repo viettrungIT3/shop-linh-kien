@@ -137,6 +137,7 @@
         overflow: hidden;
         border-radius: 50%;
         margin: 0 auto;
+        display: flex;
 
         .lx-btn {
             opacity: 0;
@@ -164,17 +165,17 @@
             object-position: center;
         }
 
-        .lx-btn {
+        .lx-btn.active {
             cursor: pointer;
             opacity: 0.6;
+            display: flex;
         }
 
         &:focus,
         &:focus-within,
         &:hover {
-            .lx-btn {
+            .lx-btn.active {
                 opacity: 1;
-                display: flex;
             }
         }
     }

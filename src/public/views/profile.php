@@ -16,11 +16,12 @@
         <div class="row">
             <!-- Sidenav -->
             <div class="sidenav col-12 col-sm-4">
-                <div class="card">
-                    <div class="pic bs-md">
-                        <img src="<?php echo $_ENV["BASE_URL"] . "/uploads/" . ($params['user']->avatar != null ? $params['user']->avatar : "no-avt.png") ?>" alt="" width="100" height="100" loading="lazy">
+                <div class="card" id="card-profile-img">
+                    <label for="imageUpload" class="pic bs-md">
+                        <img  id="imagePreview" src="<?php echo $_ENV["BASE_URL"] . "/uploads/" . ($params['user']->avatar != null ? $params['user']->avatar : "no-avt.png") ?>" alt="" width="100" height="100" loading="lazy">
                         <a id="change-avatar" class="lx-btn"><i class="fas fa-camera-retro"></i></a>
-                    </div>
+                    </label>
+                    <input style="display: none;" type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
 
                     <div class="sidenav-url">
                         <div class="url">

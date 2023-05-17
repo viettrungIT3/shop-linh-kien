@@ -106,6 +106,7 @@
   overflow: hidden;
   border-radius: 50%;
   margin: 0 auto;
+  display: flex;
 }
 .profile-page .pic .lx-btn {
   opacity: 0;
@@ -131,13 +132,13 @@
   object-fit: cover;
   object-position: center;
 }
-.profile-page .pic .lx-btn {
+.profile-page .pic .lx-btn.active {
   cursor: pointer;
   opacity: 0.6;
-}
-.profile-page .pic:focus .lx-btn, .profile-page .pic:focus-within .lx-btn, .profile-page .pic:hover .lx-btn {
-  opacity: 1;
   display: flex;
+}
+.profile-page .pic:focus .lx-btn.active, .profile-page .pic:focus-within .lx-btn.active, .profile-page .pic:hover .lx-btn.active {
+  opacity: 1;
 }
 .profile-page #save-profile {
   display: none;
