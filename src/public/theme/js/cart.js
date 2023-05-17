@@ -212,21 +212,14 @@ function onOtherCheckboxChange() {
 function Checkout() {
 
     var carts = [];
-    /* Sum up row totals */
     $('.product').each(function () {
         if ($(this).find('input[type="checkbox"]').prop('checked')) {
-            // console.log($(this).find('input[type="checkbox"]').val());
-            // var data = {
-            //     "product_id": parseInt($(this).find('.product-id').val()),
-            //     "price": parseFloat($(this).children('.product-price').text()),
-            //     "quantity": parseInt($(this).find('.product-qty').val())
-            // }
             carts.push($(this).find('input[type="checkbox"]').val());
         }
     });
 
     var encodedString = encodeURIComponent(carts);
 
-    window.open( window.location.origin + "/checkout/" + encodedString);
+    window.location.href = window.location.origin + "/checkout/" + encodedString;
 }
 
