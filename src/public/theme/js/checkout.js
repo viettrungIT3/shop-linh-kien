@@ -43,5 +43,6 @@ function Orders() {
     $.ajax(settings).done(function (response) {
         console.log(response);
         createAlert('', ' Successful order!', ' Your order is waiting for admin confirmation. You can check your Orders for details.', 'success', true, true, 'pageMessages');
+        window.location.href = window.location.origin + '/order';
     });
 }

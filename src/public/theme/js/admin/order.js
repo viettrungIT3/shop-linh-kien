@@ -51,6 +51,11 @@ function Detail(id) {
         var step3 = document.getElementById('step3');
         var step4 = document.getElementById('step4');
 
+        step1.classList.remove('active');
+        step2.classList.remove('active');
+        step3.classList.remove('active');
+        step4.classList.remove('active');
+
         // Xác định trạng thái của mỗi bước và điều chỉnh lớp CSS và nội dung tương ứng
         if (status >= 1) {
             step1.classList.add('active');

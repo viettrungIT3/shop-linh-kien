@@ -13,7 +13,7 @@ $order_desc = [
 // die();
 ?>
 
-
+<link href="<?= get_assets_uri("css/admin/bootstrap.min.css") ?>" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
 <link href="<?= get_assets_uri("css/order.css") ?>" rel="stylesheet" type="text/css" id="cart-stylesheet">
 <link href="<?= get_assets_uri("css/order-detail.css") ?>" rel="stylesheet" type="text/css" id="order-detail-stylesheet">
 
@@ -80,10 +80,10 @@ $order_desc = [
                                     </td>
                                     <td><span class=""><?= $order_desc[$order->status]; ?></span></td>
                                     <td style="text-align: center;">
-                                        <button type="button" class="btn btn-primary" href="#detailModal" data-toggle="modal">See details</button>
+                                        <button type="button" class="btn btn-primary" href="#detailModal" onclick='Detail(<?= $order->id; ?>)' data-toggle="modal">See details</button>
                                         <br> <br>
                                         <?php if ($order->status == 3) { ?>
-                                            <button type="button" class="btn btn-success">Order received</button>
+                                            <button type="button" class="btn btn-success" onclick="ConfirmOrderClient(<?= $order->id; ?>, <?= $order->status ?>)">Order received</button>
                                         <?php } else if ($order->status == 1) { ?>
                                         <?php } else { ?>
                                             <i class="fa fa-ellipsis-h text-black-50"></i>
@@ -98,6 +98,7 @@ $order_desc = [
         </div>
     </div>
 </div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap-grid.min.css" integrity="sha512-JQksK36WdRekVrvdxNyV3B0Q1huqbTkIQNbz1dlcFVgNynEMRl0F8OSqOGdVppLUDIvsOejhr/W5L3G/b3J+8w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <!-- ===modal=== -->
 <!-- Detail Modal HTML -->
@@ -217,5 +218,44 @@ $order_desc = [
     </div>
 </div>
 
+<!-- partial -->
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script>
+<script src="">
+    $(document).ready(function() {
+        // Activate tooltip
+        $('[data-toggle=btooltip"]').tooltip();
+
+        // Select/Deselect checkboxes
+        var checkbox = $('table tbody input[type="checkbox"]');
+        $("#selectAll").click(function() {
+            if (this.checked) {
+                checkbox.each(function() {
+                    this.checked = true;
+                });
+            } else {
+                checkbox.each(function() {
+                    this.checked = false;
+                });
+            }
+        });
+        checkbox.click(function() {
+            if (!this.checked) {
+                $("#selectAll").prop("checked", false);
+            }
+        });
+    });
+</script>
+
 <!-- order js -->
 <script src="<?= get_assets_uri("js/admin/order.js") ?>"></script>
+<script src="<?= get_assets_uri("js/order.js") ?>"></script>
+
+<style>
+    <?= load_css("modal-admin"); ?><?= load_css("order-admin"); ?><?= load_css("order-detail"); ?>
+</style>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
