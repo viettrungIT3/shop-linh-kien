@@ -127,13 +127,13 @@ body {
   width: 100%;
   z-index: 999;
 }
-.mainmenu-area ul.navbar-nav li a {
+.mainmenu-area ul.navbar-nav > li > a {
   color: #fff;
   font-size: 16px;
   font-weight: 700;
   padding: 20px;
 }
-.mainmenu-area ul.navbar-nav li:hover a {
+.mainmenu-area ul.navbar-nav > li:hover > a {
   background: #125e4f;
 }
 .mainmenu-area ul.navbar-nav li.active a {

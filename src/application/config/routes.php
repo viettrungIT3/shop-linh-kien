@@ -71,9 +71,10 @@ $route['logout-due-to-inactivity']  = "login/activity_logout";
 // Dashboard 
 $route['single-product/(:num)']     = "dashboard/single_product/$1";
 $route['shop']                      = "dashboard/shop";
-$route['checkout/(:any)']                  = "dashboard/checkout/$1";
+$route['shop/(:num)']               = "dashboard/shop/$1";
+$route['checkout/(:any)']           = "dashboard/checkout/$1";
 $route['cart']                      = "dashboard/cart";
-$route['order']                      = "dashboard/order";
+$route['order']                     = "dashboard/order";
 
 // Dashboard_Admin
 $route['admin']                     = "Dashboard_Admin/index";
