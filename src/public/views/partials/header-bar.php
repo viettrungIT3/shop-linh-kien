@@ -58,9 +58,9 @@ $categories = $params["categories"]['data'];
                                         </a><!--Profile Image-->
                                         <div class="card hidden"><!--ADD TOGGLE HIDDEN CLASS ATTRIBUTE HERE-->
                                             <ul><!--MENU-->
-                                                <li><a href="#">Profile</a></li>
-                                                <li><a href="#">Account</a></li>
-                                                <li><a href="#">Settings</a></li>
+                                                <li><a href="<?= base_url("profile") ?>">Profile</a></li>
+                                                <li><a href="<?= base_url("") ?>">Account</a></li>
+                                                <li><a href="<?= base_url("") ?>">Settings</a></li>
                                                 <hr>
                                                 <li><a href="<?= base_url("logout") ?>">Log Out</a></li>
                                             </ul>

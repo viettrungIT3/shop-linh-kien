@@ -77,6 +77,7 @@ $route['cart']                      = "dashboard/cart";
 $route['order']                     = "dashboard/order";
 $route['blog']                      = "dashboard/blog";
 $route['contact']                   = "dashboard/contact";
+$route['profile']                   = "dashboard/profile";
 
 // Dashboard_Admin
 $route['admin']                     = "Dashboard_Admin/index";

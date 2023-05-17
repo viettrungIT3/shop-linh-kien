@@ -160,4 +160,15 @@ class Dashboard extends MY_Controller
 			->set_main_template("contact")
 			->render();
 	}
+
+	public function profile()
+	{
+
+		return $this
+			->set_full_layout(TRUE)
+			->set_body_class("dashboard-listing")
+			->set_page_title("Profile")
+			->set_main_template("profile")
+			->render();
+	}
 }
