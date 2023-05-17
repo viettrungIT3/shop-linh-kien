@@ -54,7 +54,7 @@ $categories = $params["categories"]['data'];
                                 <ul>
                                     <li>
                                         <a href="#" class="display-picture">
-                                            <img src="https://i.pravatar.cc/85" alt="">
+                                            <img src="<?php echo $_ENV["BASE_URL"] . "/uploads/" . ($params['user']->avatar != null ? $params['user']->avatar : "no-avt.png")?>" alt="">
                                         </a><!--Profile Image-->
                                         <div class="card hidden"><!--ADD TOGGLE HIDDEN CLASS ATTRIBUTE HERE-->
                                             <ul><!--MENU-->
