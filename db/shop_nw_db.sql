@@ -11,7 +11,7 @@
  Target Server Version : 50741
  File Encoding         : 65001
 
- Date: 16/05/2023 22:44:24
+ Date: 17/05/2023 07:37:20
 */
 
 SET NAMES utf8mb4;
@@ -774,7 +774,8 @@ delimiter ;;
 CREATE PROCEDURE `order_get`(IN in_order_id INT)
 BEGIN
 	SELECT 
-		*
+		*,
+		CONV(SUBSTRING(MD5(id), 1, 5), 16, 10) as 'key'
 	FROM 
 		Orders
 	WHERE 
@@ -792,7 +793,8 @@ delimiter ;;
 CREATE PROCEDURE `order_list`()
 BEGIN
 	SELECT 
-		*
+		*,
+		CONV(SUBSTRING(MD5(id), 1, 5), 16, 10) as 'key'
 	FROM 
 		Orders;
 
@@ -808,10 +810,30 @@ delimiter ;;
 CREATE PROCEDURE `order_list_by_status`(IN in_status INT)
 BEGIN
 	SELECT 
-		*
+		*,
+		CONV(SUBSTRING(MD5(id), 1, 5), 16, 10) as 'key'
 	FROM 
 		Orders
 	WHERE `status` = in_status;
+
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for order_list_by_user
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `order_list_by_user`;
+delimiter ;;
+CREATE PROCEDURE `order_list_by_user`(IN in_user_id INT)
+BEGIN
+	SELECT 
+		*,
+		CONV(SUBSTRING(MD5(id), 1, 5), 16, 10) as 'key'
+	FROM 
+		Orders
+	WHERE user_id = in_user_id
+	ORDER BY order_date DESC;
 
 END
 ;;
