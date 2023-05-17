@@ -71,8 +71,9 @@ $route['logout-due-to-inactivity']  = "login/activity_logout";
 // Dashboard 
 $route['single-product/(:num)']     = "dashboard/single_product/$1";
 $route['shop']                      = "dashboard/shop";
-$route['checkout']                  = "dashboard/checkout";
+$route['checkout/(:any)']                  = "dashboard/checkout/$1";
 $route['cart']                      = "dashboard/cart";
+$route['order']                      = "dashboard/order";
 
 // Dashboard_Admin
 $route['admin']                     = "Dashboard_Admin/index";
@@ -82,6 +83,8 @@ $route['admin/my-categories']       = "Dashboard_Admin/my_categories";
 $route['admin/products']            = "Dashboard_Admin/products";
 $route['admin/my-products']         = "Dashboard_Admin/my_products";
 $route['admin/products/(:num)']     = "Dashboard_Admin/products_by_status/$1";
+$route['admin/orders']              = "Dashboard_Admin/orders";
+$route['admin/orders/(:num)']       = "Dashboard_Admin/orders/$1";
 
 
 // ---------api----------
@@ -103,6 +106,20 @@ $route[$route_prefix.'product/delete/(:num)/(:num)']    = "product/delete/$1/$2"
 
 // product_images
 $route[$route_prefix.'product_images/create']                  = "product_images/create";
+
+// cart
+$route[$route_prefix.'cart/create']                     = "cart/create";
+$route[$route_prefix.'cart/list']                       = "cart/listAll";
+$route[$route_prefix.'cart/list/(:num)']                = "cart/list/$1";
+$route[$route_prefix.'cart/delete/(:num)/(:num)']       = "cart/delete/$1/$2";
+
+// order
+$route[$route_prefix.'order/create']                        = "order/create";
+$route[$route_prefix.'order/(:num)/change-status/(:num)']   = "order/changeStatus/$1/$2";
+$route[$route_prefix.'order/get/(:num)']                    = "order/get/$1";
+// $route[$route_prefix.'order/list']                       = "order/listAll";
+// $route[$route_prefix.'order/list/(:num)']                = "order/list/$1";
+// $route[$route_prefix.'order/delete/(:num)/(:num)']       = "order/delete/$1/$2";
 
 // upload image
 $route['upload']            = "upload/index";

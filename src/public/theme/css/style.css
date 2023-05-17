@@ -898,7 +898,6 @@ button[type=submit]:hover {
 .quantity input[type=number] {
   border: 1px solid #1abc9c;
   padding: 5px;
-  width: 50px;
 }
 
 .add_to_cart_button {
@@ -1304,4 +1303,27 @@ a.about_paypal {
   max-width: 100%;
   line-height: 1.2em;
   max-height: 2.4em;
+}
+
+#pageMessages {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  width: 30%;
+  z-index: 1;
+}
+
+.alert {
+  position: relative;
+}
+
+.alert .close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 1em;
+}
+
+.alert .fa {
+  margin-right: 0.3em;
 }

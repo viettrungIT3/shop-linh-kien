@@ -1,21 +1,34 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : shop
+ Source Server         : shop-linh-kien
  Source Server Type    : MySQL
  Source Server Version : 50741
- Source Host           : shop-nw-db-localhost:3939
+ Source Host           : localhost:3939
  Source Schema         : shop_nw_db
 
  Target Server Type    : MySQL
  Target Server Version : 50741
  File Encoding         : 65001
 
- Date: 07/05/2023 19:03:31
+ Date: 17/05/2023 07:37:20
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for Cart
+-- ----------------------------
+DROP TABLE IF EXISTS `Cart`;
+CREATE TABLE `Cart`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `product_price` decimal(10, 2) NULL DEFAULT NULL,
+  `qty` int(11) NULL DEFAULT 1,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Table structure for Categories
@@ -49,7 +62,7 @@ CREATE TABLE `Order_Details`  (
   INDEX `product_id`(`product_id`) USING BTREE,
   CONSTRAINT `order_details_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `Orders` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `order_details_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `Products` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Table structure for Orders
@@ -58,12 +71,18 @@ DROP TABLE IF EXISTS `Orders`;
 CREATE TABLE `Orders`  (
   `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_id` int(11) UNSIGNED NOT NULL,
-  `total_amount` decimal(10, 2) NOT NULL,
-  `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
+  `tax` decimal(10, 2) NULL DEFAULT 0.05 COMMENT '5% ',
+  `shipping` decimal(10, 2) NULL DEFAULT 0.00,
+  `total_amount` decimal(10, 2) NOT NULL DEFAULT 0.00,
+  `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1' COMMENT '1: Processing\r\n2: Processed\r\n3: Shipping\r\n4: Complete\r\n5: Cancelled\r\n6: On hold: Đơn hàng bị tạm dừng để chờ xử lý các vấn đề liên quan đến thanh toán hoặc sản phẩm.\r\n7: Failed: Đơn hàng không thành công do lỗi kỹ thuật hoặc khách hàng từ chối thanh toán.',
   `order_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `phone_number` int(11) NULL DEFAULT NULL,
+  `created_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `user_id`(`user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Table structure for Product_Images
@@ -76,7 +95,7 @@ CREATE TABLE `Product_Images`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `product_id`(`product_id`) USING BTREE,
   CONSTRAINT `product_images_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `Products` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 95 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 322 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Table structure for Products
@@ -104,7 +123,7 @@ CREATE TABLE `Products`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `category_id`(`category_id`) USING BTREE,
   CONSTRAINT `products_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `Categories` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 150 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 222 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Table structure for Promotion_Products
@@ -171,7 +190,7 @@ CREATE TABLE `otp_checks`  (
   `otp_hash` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Table structure for role
@@ -203,7 +222,223 @@ CREATE TABLE `users`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `role_id`(`role_id`) USING BTREE,
   CONSTRAINT `users_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Procedure structure for cart_create
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `cart_create`;
+delimiter ;;
+CREATE PROCEDURE `cart_create`(IN in_user_id INT,
+	IN in_product_id INT,
+	IN in_product_price DOUBLE,
+	IN in_qty INT)
+BEGIN
+	INSERT INTO
+		Cart (
+			user_id,
+			product_id,
+			product_price,
+			qty
+		)
+	VALUES
+		(
+			in_user_id,
+			in_product_id,
+			in_product_price,
+			in_qty
+		);
+
+	SELECT
+		*
+	FROM
+		Cart
+	WHERE
+		id = LAST_INSERT_ID();
+
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for cart_delete_by_user_and_product
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `cart_delete_by_user_and_product`;
+delimiter ;;
+CREATE PROCEDURE `cart_delete_by_user_and_product`(IN in_user_id INT,
+	IN in_product_id INT)
+BEGIN
+	DELETE FROM Cart
+	WHERE user_id = in_user_id AND product_id = in_product_id;
+
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for cart_get
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `cart_get`;
+delimiter ;;
+CREATE PROCEDURE `cart_get`(IN in_id INT)
+BEGIN
+	SELECT 
+		t0.* ,
+		t1.name,
+		t1.gift_info,
+		GROUP_CONCAT(t2.url SEPARATOR ',')       AS 'images'
+	FROM Cart t0
+		INNER JOIN Products t1 ON t0.product_id = t1.id
+		LEFT JOIN Product_Images t2 ON t0.product_id = t2.product_id
+	WHERE t0.id = in_id
+	GROUP BY
+		t0.id;
+
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for cart_list
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `cart_list`;
+delimiter ;;
+CREATE PROCEDURE `cart_list`()
+BEGIN
+	SELECT 
+		t0.* ,
+		t1.name,
+		GROUP_CONCAT(t2.url SEPARATOR ',')       AS 'images'
+	FROM Cart t0
+		INNER JOIN Products t1 ON t0.product_id = t1.id
+		LEFT JOIN Product_Images t2 ON t0.product_id = t2.product_id
+	GROUP BY
+		t0.id;
+
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for cart_list_by user_and_product
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `cart_list_by user_and_product`;
+delimiter ;;
+CREATE PROCEDURE `cart_list_by user_and_product`(IN in_user_id INT,
+	IN in_product_id INT)
+BEGIN
+	SELECT 
+		t0.* ,
+		t1.name,
+		GROUP_CONCAT(t2.url SEPARATOR ',')       AS 'images'
+	FROM Cart t0
+		INNER JOIN Products t1 ON t0.product_id = t1.id
+		LEFT JOIN Product_Images t2 ON t0.product_id = t2.product_id
+	WHERE t0.user_id = in_user_id AND t0.product_id = in_product_id
+	GROUP BY
+		t0.id;
+
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for cart_list_by_product
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `cart_list_by_product`;
+delimiter ;;
+CREATE PROCEDURE `cart_list_by_product`(IN in_product_id INT)
+BEGIN
+	SELECT 
+		t0.* ,
+		t1.name,
+		GROUP_CONCAT(t2.url SEPARATOR ',')       AS 'images'
+	FROM Cart t0
+		INNER JOIN Products t1 ON t0.product_id = t1.id
+		LEFT JOIN Product_Images t2 ON t0.product_id = t2.product_id
+	WHERE t0.product_id = in_product_id
+	GROUP BY
+		t0.id;
+
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for cart_list_by_user
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `cart_list_by_user`;
+delimiter ;;
+CREATE PROCEDURE `cart_list_by_user`(IN in_user_id INT)
+BEGIN
+	SELECT 
+		t0.* ,
+		t1.name,
+		t1.gift_info,
+		GROUP_CONCAT(t2.url SEPARATOR ',')       AS 'images'
+	FROM Cart t0
+		INNER JOIN Products t1 ON t0.product_id = t1.id
+		LEFT JOIN Product_Images t2 ON t0.product_id = t2.product_id
+	WHERE t0.user_id = in_user_id
+	GROUP BY
+		t0.id;
+
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for cart_list_by_user_and_product
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `cart_list_by_user_and_product`;
+delimiter ;;
+CREATE PROCEDURE `cart_list_by_user_and_product`(IN in_user_id INT,
+	IN in_product_id INT)
+BEGIN
+	SELECT 
+		t0.* ,
+		t1.name,
+		GROUP_CONCAT(t2.url SEPARATOR ',')       AS 'images'
+	FROM Cart t0
+		INNER JOIN Products t1 ON t0.product_id = t1.id
+		LEFT JOIN Product_Images t2 ON t0.product_id = t2.product_id
+	WHERE t0.user_id = in_user_id AND t0.product_id = in_product_id
+	GROUP BY
+		t0.id;
+
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for cart_update
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `cart_update`;
+delimiter ;;
+CREATE PROCEDURE `cart_update`(IN in_user_id INT,
+	IN in_product_id INT,
+	IN in_product_price DOUBLE,
+	IN in_qty INT)
+BEGIN
+	UPDATE
+		Cart
+	SET
+		user_id = in_user_id,
+		product_id = in_product_id,
+		product_price = in_product_price,
+		qty = in_qty
+	WHERE
+		user_id = in_user_id AND product_id = in_product_id;
+		
+	SELECT
+		*
+	FROM
+		Cart
+	WHERE
+		user_id = in_user_id AND product_id = in_product_id;
+END
+;;
+delimiter ;
 
 -- ----------------------------
 -- Procedure structure for category_create
@@ -407,6 +642,204 @@ END
 delimiter ;
 
 -- ----------------------------
+-- Procedure structure for order_change_status
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `order_change_status`;
+delimiter ;;
+CREATE PROCEDURE `order_change_status`(IN in_id INT,
+	IN in_status INT)
+BEGIN
+	UPDATE
+		Orders
+	SET
+		`status` = in_status,
+		order_date = NOW()
+	WHERE
+		id = in_id;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for order_create
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `order_create`;
+delimiter ;;
+CREATE PROCEDURE `order_create`(IN in_user_id INT,
+	IN in_name VARCHAR(255),
+	IN in_tax DOUBLE,
+	IN in_shipping DOUBLE,
+	IN in_total_amount DOUBLE,
+	IN in_address VARCHAR(255),
+	IN in_phone_number INT)
+BEGIN
+	INSERT INTO
+		Orders (
+			user_id,
+			`name`,
+			tax,
+			shipping,
+			total_amount,
+			address,
+			phone_number,
+			created_at
+
+		)
+	VALUES
+		(
+			in_user_id,
+			in_name,
+			in_tax,
+			in_shipping,
+			in_total_amount,
+			in_address,
+			in_phone_number,
+			NOW()
+		);
+
+	SELECT
+		*
+	FROM
+		Orders
+	WHERE
+		id = LAST_INSERT_ID();
+
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for order_detail_create
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `order_detail_create`;
+delimiter ;;
+CREATE PROCEDURE `order_detail_create`(IN in_order_id INT,
+	IN in_product_id INT,
+	IN in_quantity INT,
+	IN in_price DOUBLE)
+BEGIN
+	INSERT INTO
+		Order_Details (
+			order_id,
+			product_id,
+			quantity,
+			price
+		)
+	VALUES
+		(
+			in_order_id,
+			in_product_id,
+			in_quantity,
+			in_price
+		);
+
+	SELECT
+		*
+	FROM
+		Order_Details
+	WHERE
+		id = LAST_INSERT_ID();
+
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for order_detail_list
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `order_detail_list`;
+delimiter ;;
+CREATE PROCEDURE `order_detail_list`(IN in_order_id INT)
+BEGIN
+	SELECT 
+		t0.* ,
+		t1.name,
+		GROUP_CONCAT(t2.url SEPARATOR ',')       AS 'images'
+	FROM Order_Details t0
+		INNER JOIN Products t1 ON t0.product_id = t1.id
+		LEFT JOIN Product_Images t2 ON t0.product_id = t2.product_id
+	WHERE 
+		order_id = in_order_id
+	GROUP BY
+		t0.id;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for order_get
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `order_get`;
+delimiter ;;
+CREATE PROCEDURE `order_get`(IN in_order_id INT)
+BEGIN
+	SELECT 
+		*,
+		CONV(SUBSTRING(MD5(id), 1, 5), 16, 10) as 'key'
+	FROM 
+		Orders
+	WHERE 
+		id = in_order_id;
+
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for order_list
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `order_list`;
+delimiter ;;
+CREATE PROCEDURE `order_list`()
+BEGIN
+	SELECT 
+		*,
+		CONV(SUBSTRING(MD5(id), 1, 5), 16, 10) as 'key'
+	FROM 
+		Orders;
+
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for order_list_by_status
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `order_list_by_status`;
+delimiter ;;
+CREATE PROCEDURE `order_list_by_status`(IN in_status INT)
+BEGIN
+	SELECT 
+		*,
+		CONV(SUBSTRING(MD5(id), 1, 5), 16, 10) as 'key'
+	FROM 
+		Orders
+	WHERE `status` = in_status;
+
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for order_list_by_user
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `order_list_by_user`;
+delimiter ;;
+CREATE PROCEDURE `order_list_by_user`(IN in_user_id INT)
+BEGIN
+	SELECT 
+		*,
+		CONV(SUBSTRING(MD5(id), 1, 5), 16, 10) as 'key'
+	FROM 
+		Orders
+	WHERE user_id = in_user_id
+	ORDER BY order_date DESC;
+
+END
+;;
+delimiter ;
+
+-- ----------------------------
 -- Procedure structure for otp_check_exist
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `otp_check_exist`;
@@ -537,10 +970,14 @@ delimiter ;;
 CREATE PROCEDURE `product_get`(IN in_id INT)
 BEGIN
 	SELECT 
-		*
-	FROM 
-		Products
-	WHERE id = in_id;
+		t0.*,
+		GROUP_CONCAT(t4.url SEPARATOR ',')       AS 'images'
+	FROM
+		Products t0
+		LEFT JOIN Product_Images t4 ON t0.id = t4.product_id
+	WHERE t0.id = in_id
+	GROUP BY
+		t0.id;
 
 END
 ;;
@@ -688,6 +1125,28 @@ END
 delimiter ;
 
 -- ----------------------------
+-- Procedure structure for product_list_public
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `product_list_public`;
+delimiter ;;
+CREATE PROCEDURE `product_list_public`()
+BEGIN
+	SELECT
+		t0.*,
+		GROUP_CONCAT(t4.url SEPARATOR ',')       AS 'images'
+	FROM
+		Products t0
+		LEFT JOIN Product_Images t4 ON t0.id = t4.product_id
+	WHERE t0.`status` = 1
+	GROUP BY
+		t0.id
+	ORDER BY RAND();
+
+END
+;;
+delimiter ;
+
+-- ----------------------------
 -- Procedure structure for product_list_showing
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `product_list_showing`;
@@ -705,6 +1164,28 @@ BEGIN
 		INNER JOIN users t1 ON t0.created_by = t1.id
 		INNER JOIN users t2 ON t0.updated_by = t2.id
 		INNER JOIN Categories t3 ON t0.category_id = t3.id;
+
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for product_list_top5_new
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `product_list_top5_new`;
+delimiter ;;
+CREATE PROCEDURE `product_list_top5_new`()
+BEGIN
+	SELECT
+		t0.*,
+		GROUP_CONCAT(t4.url SEPARATOR ',')       AS 'images'
+	FROM
+		Products t0
+		LEFT JOIN Product_Images t4 ON t0.id = t4.product_id
+	GROUP BY
+        t0.id
+	ORDER BY t0.created_at DESC 
+    LIMIT 5;
 
 END
 ;;
@@ -756,6 +1237,71 @@ BEGIN
 		Products
 	WHERE
 		id = in_id;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for product_update_qty
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `product_update_qty`;
+delimiter ;;
+CREATE PROCEDURE `product_update_qty`(IN in_id INT,
+  IN in_quantity INT,
+	IN in_status INT)
+BEGIN
+	UPDATE
+		Products
+	SET
+		quantity = in_quantity,
+		sold_quantity = in_sold_quantity
+	WHERE
+		id = in_id;
+		
+	SELECT
+		*
+	FROM
+		Products
+	WHERE
+		id = in_id;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for product_update_qty_after_order
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `product_update_qty_after_order`;
+delimiter ;;
+CREATE PROCEDURE `product_update_qty_after_order`(IN in_id INT,
+    IN in_quantity INT)
+BEGIN
+    DECLARE product_quantity INT;
+    DECLARE product_sold_quantity INT;
+    DECLARE message VARCHAR(255);
+
+    
+    SELECT quantity, sold_quantity INTO product_quantity, product_sold_quantity
+    FROM Products
+    WHERE id = in_id;
+
+    
+    IF product_quantity >= in_quantity THEN
+        
+        UPDATE Products
+        SET quantity = quantity - in_quantity,
+            sold_quantity = sold_quantity + in_quantity
+        WHERE id = in_id;
+
+        
+        SET message = 'Update successful';
+    ELSE
+        
+        SET message = 'Insufficient quantity';
+    END IF;
+
+    
+    SELECT message AS message;
 END
 ;;
 delimiter ;

@@ -1,0 +1,122 @@
+.order-detail {
+    .card-stepper {
+        z-index: 0;
+    }
+
+    #progressbar-2 {
+        color: #455A64;
+
+        li {
+            list-style-type: none;
+            font-size: 13px;
+            width: 33.33%;
+            float: left;
+            position: relative;
+
+            &:before {
+                line-height: 37px;
+                display: block;
+                font-size: 12px;
+                background: #c5cae9;
+                border-radius: 50%;
+            }
+
+            &:after {
+                content: '';
+                width: 100%;
+                height: 10px;
+                background: #c5cae9;
+                position: absolute;
+                left: 0%;
+                right: 0%;
+                top: 15px;
+                z-index: -1;
+            }
+
+            &:nth-child(1) {
+                &:after {
+                    left: 1%;
+                    width: 100%;
+                }
+            }
+
+            &:nth-child(2) {
+                &:after {
+                    left: 1%;
+                    width: 100%;
+                }
+            }
+
+            &:nth-child(3) {
+                &:after {
+                    left: 1%;
+                    width: 100%;
+                    background: #c5cae9 !important;
+                }
+            }
+
+            &:nth-child(4) {
+                left: 0;
+                width: 37px;
+
+                &:after {
+                    left: 0;
+                    width: 0;
+                }
+            }
+        }
+
+        #step1 {
+            &:before {
+                content: '\f058';
+                font-family: "Font Awesome 5 Free";
+                color: #fff;
+                width: 37px;
+                margin-left: 0px;
+                padding-left: 0px;
+            }
+        }
+
+        #step2 {
+            &:before {
+                content: '\f058';
+                font-family: "Font Awesome 5 Free";
+                color: #fff;
+                width: 37px;
+            }
+        }
+
+        #step3 {
+            &:before {
+                content: '\f058';
+                font-family: "Font Awesome 5 Free";
+                color: #fff;
+                width: 37px;
+                margin-right: 0;
+                text-align: center;
+            }
+        }
+
+        #step4 {
+            &:before {
+                content: '\f111';
+                font-family: "Font Awesome 5 Free";
+                color: #fff;
+                width: 37px;
+                margin-right: 0;
+                text-align: center;
+            }
+        }
+
+        li.active {
+            &:before {
+                background: #6520ff;
+            }
+
+            &:after {
+                background: #6520ff;
+            }
+        }
+    }
+
+}

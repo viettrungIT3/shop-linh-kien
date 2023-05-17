@@ -11,6 +11,7 @@ class Dashboard_Admin extends MY_Controller
 		$this->load->model('User_model', 'user');
 		$this->load->model('Category_model', 'category');
 		$this->load->model('Product_model', 'product');
+		$this->load->model('Order_model', 'order');
 		$this->check_login_admin();
 	}
 
@@ -25,7 +26,7 @@ class Dashboard_Admin extends MY_Controller
 		} else if ($users['role_id'] == 3) {
 			echo "<script>alert('Your account is not allowed to login to this site!');</script>";
 			redirect('/');
-		} 
+		}
 		ob_end_clean();
 	}
 
@@ -68,11 +69,11 @@ class Dashboard_Admin extends MY_Controller
 	public function my_categories()
 	{
 		$total = $this->statistical->total();
-		$users = $this->user->get_user_current();		
+		$users = $this->user->get_user_current();
 		$categories = $this->category->listByUserID($users['data'][0]->id);
-		
+
 		return $this
-		->set("total", ($total))
+			->set("total", ($total))
 			->set("user_info", ($users))
 			->set("categories", ($categories))
 			->set("download_url", get_csv_url())
@@ -92,7 +93,7 @@ class Dashboard_Admin extends MY_Controller
 		$products = $this->product->list();
 
 		return $this
-		->set("total", ($total))
+			->set("total", ($total))
 			->set("user_info", ($users))
 			->set("products", ($products))
 			->set("categories", ($categories))
@@ -113,7 +114,7 @@ class Dashboard_Admin extends MY_Controller
 		$products = $this->product->listByUserID($users['data'][0]->id);
 
 		return $this
-		->set("total", ($total))
+			->set("total", ($total))
 			->set("user_info", ($users))
 			->set("products", ($products))
 			->set("categories", ($categories))
@@ -127,15 +128,15 @@ class Dashboard_Admin extends MY_Controller
 	}
 
 	public function products_by_status(
-        $in_status = NULL
-    ) {
+		$in_status = NULL
+	) {
 		$total = $this->statistical->total();
 		$users = $this->user->get_user_current();
 		$categories = $this->category->list();
 		$products = $this->product->listByStatus($in_status);
 
 		return $this
-		->set("total", ($total))
+			->set("total", ($total))
 			->set("user_info", ($users))
 			->set("products", ($products))
 			->set("categories", ($categories))
@@ -145,6 +146,32 @@ class Dashboard_Admin extends MY_Controller
 			->set_body_class("dashboard-listing")
 			->set_page_title("Products")
 			->set_main_template("admin/products")
+			->render();
+	}
+
+
+	public function orders(
+		$in_status = NULL
+	)
+	{
+		$total = $this->statistical->total();
+		$users = $this->user->get_user_current();
+		$orders = $this->order->list($in_status);
+
+		// echo '<pre>'; 
+		// var_dump($orders);
+		// echo '</pre>';
+		// die();
+
+		return $this
+			->set("total", ($total))
+			->set("user_info", ($users))
+			->set("orders", ($orders))
+			->set("order_status", ($in_status))
+			// ->set_full_layout(TRUE)
+			->set_body_class("dashboard-listing")
+			->set_page_title("Orders")
+			->set_main_template("admin/orders")
 			->render();
 	}
 }

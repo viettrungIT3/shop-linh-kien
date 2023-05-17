@@ -316,22 +316,23 @@
                     </li>
                     <li>
                         <a href="javascript: void(0);">
-                        <i class="fas fa-ambulance"></i>
-                            <span> Order  </span>
+                            <i class="fas fa-ambulance"></i>
+                            <span> Order </span>
                             <span class="menu-arrow"></span>
                         </a>
                         <ul class="nav-second-level" aria-expanded="false">
-                        <li><a href="<?php echo base_url("/admin/o"); ?>">Processing</a></li>
-                            <li><a href="<?php echo base_url("/admin/o"); ?>">Processed</a></li>
-                            <li><a href="<?php echo base_url("/admin/o"); ?>">Delivery in progress</a></li>
-                            <li><a href="<?php echo base_url("/admin/o"); ?>">Accomplished</a></li>
+                            <li><a href="<?php echo base_url("/admin/orders"); ?>">All</a></li>
+                            <li><a href="<?php echo base_url("/admin/orders/1"); ?>">Processing</a></li>
+                            <li><a href="<?php echo base_url("/admin/orders/2"); ?>">Processed</a></li>
+                            <li><a href="<?php echo base_url("/admin/orders/3"); ?>">Shipping</a></li>
+                            <li><a href="<?php echo base_url("/admin/orders/4"); ?>">Complete</a></li>
                         </ul>
                     </li>
 
                     <li>
                         <a href="javascript: void(0);">
                             <i class="text-info mdi mdi-account-multiple"></i>
-                            <span> Employee  </span>
+                            <span> Employee </span>
                             <span class="menu-arrow"></span>
                         </a>
                     </li>

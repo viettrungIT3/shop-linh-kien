@@ -1,0 +1,16 @@
+.container-order {
+    .table {
+        margin-top: 20px;
+
+        thead {
+            background: #666;
+        }
+
+        .cell-1 {
+            border-collapse: separate;
+            border-spacing: 0 4em;
+            background: #fff;
+            background-clip: padding-box;
+        }
+    }
+}

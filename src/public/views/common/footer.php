@@ -2,6 +2,7 @@
 
 </div><!--end of page wrapper-->
 
+<div id="pageMessages"></div>
 
 <?php
 $currentPage = basename($_SERVER['REQUEST_URI']);

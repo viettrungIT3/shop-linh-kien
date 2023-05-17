@@ -1069,7 +1069,6 @@ button[type=submit] {
     input[type="number"] {
         border: 1px solid $color_0;
         padding: 5px;
-        width: 50px;
     }
 }
 
@@ -1516,8 +1515,8 @@ a.about_paypal {
 
 .single-shop-product {
 
-	margin-bottom: 50px;
-	background: rgb(0 0 0 / 8%);
+    margin-bottom: 50px;
+    background: rgb(0 0 0 / 8%);
 
     .product-upper {
         height: 350px;
@@ -1561,4 +1560,27 @@ a.about_paypal {
     max-width: 100%;
     line-height: 1.2em;
     max-height: 2.4em;
+}
+
+#pageMessages {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    width: 30%;
+    z-index: 1;
+}
+
+.alert {
+    position: relative;
+}
+
+.alert .close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 1em;
+}
+
+.alert .fa {
+    margin-right: .3em;
 }
