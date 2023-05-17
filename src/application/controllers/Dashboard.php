@@ -134,9 +134,19 @@ class Dashboard extends MY_Controller
 			->set("orders", $orders)
 			->set_full_layout(TRUE)
 			->set_body_class("dashboard-listing")
-			->set_page_title("Welcome")
 			->set_page_title("Order")
 			->set_main_template("order")
+			->render();
+	}
+
+	public function blog()
+	{
+
+		return $this
+			->set_full_layout(TRUE)
+			->set_body_class("dashboard-listing")
+			->set_page_title("Blog")
+			->set_main_template("blog")
 			->render();
 	}
 
@@ -146,7 +156,6 @@ class Dashboard extends MY_Controller
 		return $this
 			->set_full_layout(TRUE)
 			->set_body_class("dashboard-listing")
-			->set_page_title("Welcome")
 			->set_page_title("Contact")
 			->set_main_template("contact")
 			->render();

@@ -87,7 +87,7 @@ $categories = $params["categories"]['data'];
                         <li><a href="<?= base_url("shop") ?>">Shop page</a></li>
                         <li><a href="<?= base_url("cart") ?>">Cart</a></li>
                         <li><a href="<?= base_url("order") ?>">Others</a></li>
-                        <li><a href="<?= base_url() ?>">Blog</a></li>
+                        <li><a href="<?= base_url("blog") ?>">Blog</a></li>
                         <li><a href="<?= base_url("contact") ?>">Contact</a></li>
                     </ul>
                 </div>
