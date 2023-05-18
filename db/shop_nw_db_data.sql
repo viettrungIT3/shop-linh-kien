@@ -11,7 +11,7 @@
  Target Server Version : 50741
  File Encoding         : 65001
 
- Date: 18/05/2023 07:06:54
+ Date: 18/05/2023 07:36:02
 */
 
 SET NAMES utf8mb4;
@@ -1851,6 +1851,10 @@ BEGIN
 				avatar = in_avatar,
 				updated_on = NOW()
 	  WHERE id =  in_id;
+		
+		SELECT *
+		FROM users
+		WHERE id =  in_id;
 END
 ;;
 delimiter ;
@@ -1892,6 +1896,35 @@ BEGIN
 		users
 	WHERE
 		id = LAST_INSERT_ID();
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for user_get_by_id
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `user_get_by_id`;
+delimiter ;;
+CREATE PROCEDURE `user_get_by_id`(IN `in_id` INT)
+BEGIN
+  SELECT
+    id,
+    first_name,
+    last_name,
+    login,
+    `password`,
+    `status`,
+    role_id,
+    address,
+    phone_number,
+    avatar,
+    created_at,
+    updated_at
+  FROM
+    users
+  WHERE
+    id = in_id;
+
 END
 ;;
 delimiter ;
