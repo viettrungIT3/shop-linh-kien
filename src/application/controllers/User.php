@@ -49,6 +49,34 @@ class User extends MY_Controller
     }
 
     /**
+     * action:      /api/v1/user/create-employee
+     * method:      post
+     * body:        json {}
+     * description: create user    
+     * return:      object
+     */
+    public function createEmployee()
+    {
+
+        $posting_data = $this->get_posting_data();
+
+        $res = $this->user->createEmployee(
+            $posting_data['login'],
+            $posting_data['password']
+        );
+
+        if (false === ($res['status'] ?? FALSE) || 0 == count($res['data'])) :
+            return $this->failed('Create user fail')->set("data", [])->render_json();
+        endif;
+
+        return $this
+            ->success()
+            ->set("data", $res['data'])
+            ->set("errors", [])
+            ->render_json();
+    }
+
+    /**
      * action:      user/get/{device_id}
      * method:      get
      * description: get info user by device_id     

@@ -76,6 +76,20 @@ class User_model extends MY_Model
 		return $this->process_results($res)->get_results();
 	}
 
+	public function createEmployee(
+		$input_user_login 		= NULL,
+		$input_user_password	= NULL
+	) {
+
+		$res = $this->db->query("call user_create_employee(?,?)", array(
+			$input_user_login,
+			hash_password($input_user_password)
+		));
+
+
+		return $this->process_results($res)->get_results();
+	}
+
 	public function update2(
 		$in_id = NULL, 
 		$in_first_name = NULL,
