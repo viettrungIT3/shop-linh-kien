@@ -67,7 +67,7 @@ class User_model extends MY_Model
 		}
 		return $this->process_results($res)->get_results();
 	}
-	
+
 
 	public function create(
 		$input_user_first_name 	= NULL,
@@ -332,4 +332,17 @@ class User_model extends MY_Model
 			return $this->failed("Your code is invalid. Please check your message again and make sure that the code entered matches what is in your email.")->get_results();
 		}
 	}
+
+	    // description: func to change status order:
+		public function changeStatus(
+			$in_id      = null,
+			$in_status  = null
+		) {
+			$res = $this->db->query("call user_change_status(?, ?)", array(
+				$in_id,
+				$in_status
+			));
+	
+			return $this->process_results($res)->get_results();
+		}
 }

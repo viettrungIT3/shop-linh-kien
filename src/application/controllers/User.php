@@ -202,4 +202,32 @@ class User extends MY_Controller
             ->set("errors", [])
             ->render_json();
     }
+
+    
+    /**
+     * action:      user/delete/{id}
+     * method:      get
+     * description: get info user by id     
+     * return:      object
+     */
+    public function delete(
+        $in_id   = NULL
+    ) {
+        if (NULL === $in_id) return $this->failed("Missing id")->render_json();
+
+        $res_user = $this->user->getByID($in_id);
+
+        if (false === ($res_user['status'] ?? FALSE) || 0 == count($res_user['data'])) :
+            return $this->failed('Get user not found')->set("data", [])->render_json();
+        endif;
+        $res_delete = $this->user->changeStatus($in_id, 0);
+
+        if (false === ($res_delete['status'] ?? FALSE)) :
+            return $this->failed('Delete failed')->set("data", [])->render_json();
+        endif;
+
+        return $this
+            ->success("Delete user successfully")
+            ->render_json();
+    }
 }

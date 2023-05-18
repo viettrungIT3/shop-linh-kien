@@ -130,6 +130,7 @@ $route[$route_prefix.'order/get/(:num)']                    = "order/get/$1";
 // user
 $route[$route_prefix.'user/update2']                        = "user/update2";
 $route[$route_prefix.'user/create-employee']                = "user/createEmployee";
+$route[$route_prefix.'user/delete/(:num)']                  = "user/delete/$1";
 
 // upload image
 $route['upload']            = "upload/index";
