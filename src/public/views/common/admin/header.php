@@ -329,14 +329,21 @@
                         </ul>
                     </li>
 
+                    <?php if ($user->role_id == 1) { ?>
                     <li>
                         <a href="javascript: void(0);">
                             <i class="text-info mdi mdi-account-multiple"></i>
                             <span> Employee </span>
                             <span class="menu-arrow"></span>
                         </a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li><a href="<?php echo base_url("/admin/user"); ?>">All</a></li>
+                            <li><a href="<?php echo base_url("/admin/user/3"); ?>">Users</a></li>
+                            <li><a href="<?php echo base_url("/admin/user/2"); ?>">Employee</a></li>
+                            <li><a href="<?php echo base_url("/admin/user/1"); ?>">Admin</a></li>
+                        </ul>
                     </li>
-
+                    <?php } ?>
                     <li>
                         <a href="charts">
                             <i class="fas fa-chart-pie"></i>

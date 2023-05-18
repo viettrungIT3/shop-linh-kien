@@ -58,6 +58,16 @@ class User_model extends MY_Model
 		return $this->process_results($res)->get_results();
 	}
 
+	public function list($in_role = NULL)
+	{
+		if ($in_role == NULL) {
+			$res = $this->db->query("call users_list()", array());
+		} else {
+			$res = $this->db->query("call users_list_by_role(?)", array($in_role));
+		}
+		return $this->process_results($res)->get_results();
+	}
+	
 
 	public function create(
 		$input_user_first_name 	= NULL,

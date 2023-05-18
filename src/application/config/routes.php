@@ -89,6 +89,8 @@ $route['admin/my-products']         = "Dashboard_Admin/my_products";
 $route['admin/products/(:num)']     = "Dashboard_Admin/products_by_status/$1";
 $route['admin/orders']              = "Dashboard_Admin/orders";
 $route['admin/orders/(:num)']       = "Dashboard_Admin/orders/$1";
+$route['admin/user']                = "Dashboard_Admin/user";
+$route['admin/user/(:num)']         = "Dashboard_Admin/user/$1";
 
 
 // ---------api----------
@@ -127,6 +129,7 @@ $route[$route_prefix.'order/get/(:num)']                    = "order/get/$1";
 
 // user
 $route[$route_prefix.'user/update2']                        = "user/update2";
+$route[$route_prefix.'user/create-employee']                = "user/createEmployee";
 
 // upload image
 $route['upload']            = "upload/index";
