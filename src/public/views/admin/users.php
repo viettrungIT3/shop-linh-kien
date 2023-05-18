@@ -6,8 +6,8 @@
     <div class="row">
         <div class="col-sm-10">
             <h2 class="header-title mb-3 fs-2" style="font-size: 2rem;">
-            <?= ($params["role_id"] == 1 ? "List Admin" : ($params["role_id"] == 2 ? "List Employee" : "List Users")) ?>
-        </h2>
+                <?= ($params["role_id"] == 1 ? "List Admin" : ($params["role_id"] == 2 ? "List Employee" : "List Users")) ?>
+            </h2>
         </div>
         <div class="col-sm-2 text-left">
             <a href="#addCategoryModal" class="btn btn-success" data-toggle="modal" style="display: grid;">
@@ -33,7 +33,7 @@
                             <th>Avatar</th>
                             <th>Created at</th>
                             <th>Status</th>
-                            <th style="max-width: 110px!important;">Actions</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
 
@@ -59,29 +59,16 @@
                                     ?>
                                 </td>
                                 <td id="ca-status-<?= $user_item->id ?>">
-                                    <?= ($user_item->status == 1 ? '<button type="button" style="cursor:default;" class="btn btn-success" disabled>Showing</button>' : ($user_item->status == 0 ? '<button type="button" style="cursor:default;" class="btn btn-warning" disabled>Blocked</button>' :
-                                        '<button type="button" style="cursor:default;" class="btn btn-danger" disabled>Deleted</button>')) ?>
+                                    <?= ($user_item->status == 1 ? '<button type="button" style="cursor:default;" class="btn btn-success" disabled>Showing</button>' :
+                                        '<button type="button" style="cursor:default;" class="btn btn-danger" disabled>Deleted</button>') ?>
                                 </td>
-                                <td></td>
-                                <!-- <td>
-                                    <button type="button" class="btn btn-primary" href="#detailCategoryModal" onclick="Detail(<?= $user_item->id ?>)" class="detail" data-toggle="modal" style="color: #fff;"><i class="far fa-eye" title="Detail"></i></button>
-
-                                    <?php if ($user_item->updated_by == $params["user_info"]['data'][0]->id || $user_item->role_id >= $params["user_info"]['data'][0]->role_id) { ?>
-                                        <button type="button" class="btn btn-warning" href="#editCategoryModal" onclick="CategoryID(<?= $user_item->id ?>, <?= $user_item->status ?>)" class="edit" data-toggle="modal" style="color: #fff;">
-                                            <i class="fas fa-edit" data-toggle="tooltip" title="Edit"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-danger" href="#deleteCategoryModal" <?= ($user_item->status == 2) ? 'disabled' : "onclick='CategoryID($user_item->id, $user_item->status)'" ?> class="delete" data-toggle="modal" style="color: #fff;">
+                                <td>
+                                    <?php if ($params["user_info"]['data'][0]->role_id == 1 && $user_item->role_id != 1 && $user_item->status == 1) { ?>
+                                        <button type="button" class="btn btn-danger" href="#deleteUserModal" onclick='GetID(<?= $user_item->id ?>)' class="delete" data-toggle="modal" style="color: #fff;">
                                             <i class="far fa-trash-alt" data-toggle="tooltip" title="Delete"></i>
                                         </button>
-                                    <?php } else { ?>
-                                        <button type="button" class="btn btn-warning" onclick="DontPermission('edit')" style="color: #fff; opacity: .65;">
-                                            <i class="fas fa-edit" data-toggle="tooltip" title="You don't have permission to edit"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-danger" onclick="DontPermission('delete')" style="color: #fff; opacity: .65;">
-                                            <i class="far fa-trash-alt" data-toggle="tooltip" title="You don't have permission to delete"></i>
-                                        </button>
                                     <?php } ?>
-                                </td> -->
+                                </td>
                             </tr>
                         <?php } ?>
                     </tbody>
@@ -124,12 +111,14 @@
     </div>
 
     <!-- Delete Modal HTML -->
-    <div id="deleteCategoryModal" class="modal fade">
+    <div id="deleteUserModal" class="modal fade">
         <div class="modal-dialog modal-lg mt-5">
             <div class="modal-content">
                 <form>
                     <div class="modal-header">
-                        <h4 class="modal-title">Delete Category</h4>
+                        <h4 class="modal-title"> Delete
+                        <?= ($params["role_id"] == 1 ? "Admin" : ($params["role_id"] == 2 ? "Employee" : "Users")) ?>
+                        </h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
                     <div class="modal-body">
@@ -138,7 +127,7 @@
                     </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Cancel">
-                        <input type="button" class="btn btn-danger" value="Delete" onclick="DeleteCategory()">
+                        <input type="button" class="btn btn-danger" value="Delete" onclick="DeleteUser()">
                     </div>
                 </form>
             </div>
