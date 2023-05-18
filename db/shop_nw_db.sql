@@ -11,7 +11,7 @@
  Target Server Version : 50741
  File Encoding         : 65001
 
- Date: 17/05/2023 07:37:20
+ Date: 18/05/2023 07:06:24
 */
 
 SET NAMES utf8mb4;
@@ -28,7 +28,7 @@ CREATE TABLE `Cart`  (
   `product_price` decimal(10, 2) NULL DEFAULT NULL,
   `qty` int(11) NULL DEFAULT 1,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 26 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Table structure for Categories
@@ -62,7 +62,7 @@ CREATE TABLE `Order_Details`  (
   INDEX `product_id`(`product_id`) USING BTREE,
   CONSTRAINT `order_details_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `Orders` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `order_details_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `Products` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Table structure for Orders
@@ -82,7 +82,7 @@ CREATE TABLE `Orders`  (
   `created_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `user_id`(`user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Table structure for Product_Images
@@ -1147,6 +1147,28 @@ END
 delimiter ;
 
 -- ----------------------------
+-- Procedure structure for product_list_public_by_category
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `product_list_public_by_category`;
+delimiter ;;
+CREATE PROCEDURE `product_list_public_by_category`(IN in_category_id INT)
+BEGIN
+	SELECT
+		t0.*,
+		GROUP_CONCAT(t4.url SEPARATOR ',')       AS 'images'
+	FROM
+		Products t0
+		LEFT JOIN Product_Images t4 ON t0.id = t4.product_id
+	WHERE t0.`status` = 1 AND t0.category_id = in_category_id
+	GROUP BY
+		t0.id
+	ORDER BY RAND();
+
+END
+;;
+delimiter ;
+
+-- ----------------------------
 -- Procedure structure for product_list_showing
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `product_list_showing`;
@@ -1430,6 +1452,32 @@ BEGIN
         last_name = in_last_name,
 		status = in_status,
 		updated_on = NOW()
+	  WHERE id =  in_id;
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for users_update2
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `users_update2`;
+delimiter ;;
+CREATE PROCEDURE `users_update2`(IN `in_id` INT, 
+	IN `in_first_name` VARCHAR(50), 
+	IN `in_last_name` VARCHAR(50), 
+	IN in_login VARCHAR(50),
+	IN in_address VARCHAR(2555),
+	IN in_phone int,
+	IN in_avatar VARCHAR(255))
+BEGIN
+	  UPDATE users SET
+        first_name = in_first_name,
+        last_name = in_last_name,
+				login = in_login,
+				address = in_address,
+				phone_number = in_phone,
+				avatar = in_avatar,
+				updated_on = NOW()
 	  WHERE id =  in_id;
 END
 ;;
