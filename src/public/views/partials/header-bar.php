@@ -54,10 +54,13 @@ $categories = $params["categories"]['data'];
                                 <ul>
                                     <li>
                                         <a href="#" class="display-picture">
-                                            <img src="<?php echo $_ENV["BASE_URL"] . "/uploads/" . ($params['user']->avatar != null ? $params['user']->avatar : "no-avt.png")?>" alt="">
+                                            <img src="<?php echo $_ENV["BASE_URL"] . "/uploads/" . ($params['user']->avatar != null ? $params['user']->avatar : "no-avt.png") ?>" alt="">
                                         </a><!--Profile Image-->
                                         <div class="card hidden"><!--ADD TOGGLE HIDDEN CLASS ATTRIBUTE HERE-->
                                             <ul><!--MENU-->
+                                                <?php if ($params['user']->role_id != 3) { ?>
+                                                    <li><a href="<?= base_url("admin") ?>">Go page admin</a></li>
+                                                <?php } ?>
                                                 <li><a href="<?= base_url("profile") ?>">Profile</a></li>
                                                 <li><a href="<?= base_url("") ?>">Account</a></li>
                                                 <li><a href="<?= base_url("") ?>">Settings</a></li>
