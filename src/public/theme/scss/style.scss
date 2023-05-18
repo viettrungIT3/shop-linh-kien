@@ -171,8 +171,8 @@ body {
     z-index: 999;
 
     ul.navbar-nav {
-        li {
-            a {
+        > li {
+            > a {
                 color: $color_5;
                 font-size: 16px;
                 font-weight: 700;
@@ -180,7 +180,7 @@ body {
             }
 
             &:hover {
-                a {
+                > a {
                     background: #125e4f;
                 }
             }

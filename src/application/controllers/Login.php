@@ -31,6 +31,10 @@ class Login extends MY_Controller
 
 					if (isset($res['status']) && $res['status']) :
 
+						if ($res['data'][0]->role_id != 3) {
+							redirect("/admin");
+						}
+
 						if (isset($res['use_two_way_auth']) && $res['use_two_way_auth'] == (int)USE_TWO_WAY_AUTH) {
 							$this->verify_authentication_otp(base_url("/verify/" . $res['data'][0]->id));
 						} else {

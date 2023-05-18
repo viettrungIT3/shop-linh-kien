@@ -34,7 +34,7 @@
 								</div>
 								<div class="form-group">
 									<input name="recover-submit" class="btn btn-lg btn-primary btn-block"
-										value="Reset Password" type="submit">
+										value="Reset Password" type="submit" style="background: #1abc9c !important;">
 								</div>
 
 

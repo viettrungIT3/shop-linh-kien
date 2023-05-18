@@ -1,5 +1,12 @@
+<?php
+$categories = $params["categories"]['data'];
+?>
+
 <style id="css-header-bar">
     <?= load_css("main-nav") ?>
+</style>
+<style id="user-profile-dropdown-menu">
+    <?= load_css("user-profile-dropdown-menu") ?>
 </style>
 <style id="css-responsive">
     <?= load_css("style"); ?>
@@ -28,6 +35,7 @@
     }
 </style>
 
+
 <div class="shop">
     <div class="wrapper-inner">
 
@@ -42,7 +50,29 @@
 
                         <?php if (isset($params['user'])) { ?>
                             <span style="display: none;" id="user_id"><?= $params['user']->id ?></span>
-                            <button type="button" class="btn btn-outline-danger"><a href="/logout">Logout</a></button>
+                            <nav class="profile-dropdown-menu"><!--Navigation Bar Starts Here-->
+                                <ul>
+                                    <li>
+                                        <a href="#" class="display-picture">
+                                            <img src="<?php echo $_ENV["BASE_URL"] . "/uploads/" . ($params['user']->avatar != null ? $params['user']->avatar : "no-avt.png") ?>" alt="">
+                                        </a><!--Profile Image-->
+                                        <div class="card hidden"><!--ADD TOGGLE HIDDEN CLASS ATTRIBUTE HERE-->
+                                            <ul><!--MENU-->
+                                                <?php if ($params['user']->role_id != 3) { ?>
+                                                    <li><a href="<?= base_url("admin") ?>">Go page admin</a></li>
+                                                <?php } ?>
+                                                <li><a href="<?= base_url("profile") ?>">Profile</a></li>
+                                                <li><a href="<?= base_url("") ?>">Account</a></li>
+                                                <li><a href="<?= base_url("") ?>">Settings</a></li>
+                                                <hr>
+                                                <li><a href="<?= base_url("logout") ?>">Log Out</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </nav><!--Navigation Bar Starts Here-->
+                            <script src="<?= get_assets_uri("js/user-profile-dropdown-menu.js") ?>"></script>
+
                         <?php } else { ?>
                             <button type="button" class="btn btn-outline-primary"><a href="/register">Register</a></button>
                             <button type="button" class="btn btn-outline-primary"><a href="/login">Log in</a></button>
@@ -71,13 +101,20 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav" style="flex-direction: row;">
-                        <li><a href="<?= base_url()?>">Home</a></li>
-                        <li><a href="<?= base_url()?>">Category <i class="fa fa-angle-down"></i></a></li>
-                        <li><a href="<?= base_url("shop")?>">Shop page</a></li>
-                        <li><a href="<?= base_url("cart")?>">Cart</a></li>
-                        <li><a href="<?= base_url("order")?>">Others</a></li>
-                        <li><a href="<?= base_url()?>">Blog</a></li>
-                        <li><a href="<?= base_url()?>">Contact</a></li>
+                        <li><a href="<?= base_url() ?>">Home</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Category <i class="fa fa-angle-down"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <?php foreach ($categories as $category) { ?>
+                                    <li><a href="<?= base_url("shop/" . $category->id) ?>"><?= $category->name; ?></a></li>
+                                <?php } ?>
+                            </ul>
+                        </li>
+                        <li><a href="<?= base_url("shop") ?>">Shop page</a></li>
+                        <li><a href="<?= base_url("cart") ?>">Cart</a></li>
+                        <li><a href="<?= base_url("order") ?>">Others</a></li>
+                        <li><a href="<?= base_url("blog") ?>">Blog</a></li>
+                        <li><a href="<?= base_url("contact") ?>">Contact</a></li>
                     </ul>
                 </div>
             </div>

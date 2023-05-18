@@ -11,7 +11,7 @@
  Target Server Version : 50741
  File Encoding         : 65001
 
- Date: 17/05/2023 07:37:04
+ Date: 18/05/2023 07:36:02
 */
 
 SET NAMES utf8mb4;
@@ -28,15 +28,15 @@ CREATE TABLE `Cart`  (
   `product_price` decimal(10, 2) NULL DEFAULT NULL,
   `qty` int(11) NULL DEFAULT 1,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 26 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of Cart
 -- ----------------------------
-INSERT INTO `Cart` VALUES (21, 3, 221, 903.40, 1);
 INSERT INTO `Cart` VALUES (22, 1, 212, 433.50, 1);
 INSERT INTO `Cart` VALUES (23, 1, 187, 14.50, 1);
 INSERT INTO `Cart` VALUES (24, 1, 143, 2771.72, 1);
+INSERT INTO `Cart` VALUES (25, 3, 196, 240.50, 1);
 
 -- ----------------------------
 -- Table structure for Categories
@@ -83,7 +83,7 @@ CREATE TABLE `Order_Details`  (
   INDEX `product_id`(`product_id`) USING BTREE,
   CONSTRAINT `order_details_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `Orders` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `order_details_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `Products` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of Order_Details
@@ -94,6 +94,7 @@ INSERT INTO `Order_Details` VALUES (9, 17, 168, 1, 123.12);
 INSERT INTO `Order_Details` VALUES (10, 17, 203, 1, 242.53);
 INSERT INTO `Order_Details` VALUES (11, 17, 199, 1, 149.30);
 INSERT INTO `Order_Details` VALUES (12, 17, 188, 1, 10.40);
+INSERT INTO `Order_Details` VALUES (13, 18, 221, 1, 903.40);
 
 -- ----------------------------
 -- Table structure for Orders
@@ -113,12 +114,13 @@ CREATE TABLE `Orders`  (
   `created_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `user_id`(`user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of Orders
 -- ----------------------------
 INSERT INTO `Orders` VALUES (17, 1, 'Admin ', 0.05, 0.00, 637.00, '3', '2023-05-13 05:01:18', 'No. 298 E. Dien Bridge, Minh Khai, Bac Tu Liem, Hanoi(Minh Khai, Bac Tu Liem, Ha Noi, ALA)', 123456, '2023-05-13 05:01:18');
+INSERT INTO `Orders` VALUES (18, 3, 'Trung Nguy?n', 0.05, 0.00, 948.57, '4', '2023-05-17 14:32:58', 'No 298, Cau Dien Bridge(Minh Khai, Bac Tu Liem, Ha Noi, VNM)', 123456789, '2023-05-17 12:01:48');
 
 -- ----------------------------
 -- Table structure for Product_Images
@@ -458,7 +460,7 @@ INSERT INTO `Products` VALUES (217, 7, 'Fan Cooler Master SICKLEFLOW 120 ARGB 3 
 INSERT INTO `Products` VALUES (218, 5, 'Fan Cooler Master MASTERFAN MF120 HALO kit 3 fan', 232.20, '<p>https://gearvn.com/products/masterfan-mf120-halo<br></p>', 'CoolerMaster', '<p>36 months</p>', '', 425, 0, '120 x 120 x 25 mm', 0, '', 1, 1, 1, '2023-05-08 08:57:44', NULL);
 INSERT INTO `Products` VALUES (219, 3, '( 500W ) SilverStone ST50F-ES230 - 80 Plus . Power', 876.80, '<p>https://gearvn.com/products/500w-silverstone-st50f-es230-80-plus<br></p>', 'SliverStone', '<p><span style=\"color: rgb(51, 51, 51); font-family: &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif; font-size: 20px;\">36 Months</span><br></p>', '', 346, 0, '', 0, '', 1, 1, 1, '2023-05-08 09:01:12', NULL);
 INSERT INTO `Products` VALUES (220, 6, '( 750W ) CoolerMaster MWE 750 BRONZE - V2 230V . Power', 453.50, '<p>https://gearvn.com/products/750w-nguon-may-tinh-cooler-master-mwe-750-bronze-v2-230v<br></p>', 'Cooler Master', '<p><span style=\"color: rgb(51, 51, 51); font-family: &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif; font-size: 20px;\">60 Months</span><br></p>', '', 352, 0, '', 0, '', 1, 1, 1, '2023-05-08 09:04:15', NULL);
-INSERT INTO `Products` VALUES (221, 4, '( 1200W ) Power Supply ASUS Rog Thor 1200P - 80 Plus Platinum - Full Modular', 903.40, '<p>https://gearvn.com/products/1200w-platinum-nguon-asus-rog-thor-1200p-80-plus-platinum<br></p>', 'ASUS', '<p><span style=\"color: rgb(51, 51, 51); font-family: &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif; font-size: 20px; background-color: rgb(201, 215, 241);\">10 years</span><br></p>', '', 240, 0, '', 0, '', 1, 1, 1, '2023-05-08 09:06:12', NULL);
+INSERT INTO `Products` VALUES (221, 4, '( 1200W ) Power Supply ASUS Rog Thor 1200P - 80 Plus Platinum - Full Modular', 903.40, '<p>https://gearvn.com/products/1200w-platinum-nguon-asus-rog-thor-1200p-80-plus-platinum<br></p>', 'ASUS', '<p><span style=\"color: rgb(51, 51, 51); font-family: &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif; font-size: 20px; background-color: rgb(201, 215, 241);\">10 years</span><br></p>', '', 239, 1, '', 0, '', 1, 1, 1, '2023-05-08 09:06:12', '2023-05-17 14:30:26');
 
 -- ----------------------------
 -- Table structure for Promotion_Products
@@ -592,7 +594,7 @@ CREATE TABLE `users`  (
 -- ----------------------------
 INSERT INTO `users` VALUES (1, 'Admin', '', 'admin@gmail.com', '0cc175b9c0f1b6a831c399e269772661', 1, 1, NULL, NULL, 'avt.jpg', '2023-04-23 13:49:25', '2023-04-23 13:28:34');
 INSERT INTO `users` VALUES (2, 'Trung', 'Nguyễn', 'viettrungcntt03@gmail.com', '0cc175b9c0f1b6a831c399e269772661', 1, 2, NULL, NULL, 'avt.jpg', '2023-04-23 06:49:01', NULL);
-INSERT INTO `users` VALUES (3, 'Trung', 'Nguy?n Vi?t', 'user@gmail.com', '0cc175b9c0f1b6a831c399e269772661', 1, 3, NULL, NULL, NULL, '2023-05-11 14:29:19', NULL);
+INSERT INTO `users` VALUES (3, 'Trung', 'Nguyễn', 'user@gmail.com', '0cc175b9c0f1b6a831c399e269772661', 1, 3, NULL, NULL, NULL, '2023-05-11 14:29:19', NULL);
 
 -- ----------------------------
 -- Procedure structure for cart_create
@@ -1517,6 +1519,28 @@ END
 delimiter ;
 
 -- ----------------------------
+-- Procedure structure for product_list_public_by_category
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `product_list_public_by_category`;
+delimiter ;;
+CREATE PROCEDURE `product_list_public_by_category`(IN in_category_id INT)
+BEGIN
+	SELECT
+		t0.*,
+		GROUP_CONCAT(t4.url SEPARATOR ',')       AS 'images'
+	FROM
+		Products t0
+		LEFT JOIN Product_Images t4 ON t0.id = t4.product_id
+	WHERE t0.`status` = 1 AND t0.category_id = in_category_id
+	GROUP BY
+		t0.id
+	ORDER BY RAND();
+
+END
+;;
+delimiter ;
+
+-- ----------------------------
 -- Procedure structure for product_list_showing
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `product_list_showing`;
@@ -1806,6 +1830,36 @@ END
 delimiter ;
 
 -- ----------------------------
+-- Procedure structure for users_update2
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `users_update2`;
+delimiter ;;
+CREATE PROCEDURE `users_update2`(IN `in_id` INT, 
+	IN `in_first_name` VARCHAR(50), 
+	IN `in_last_name` VARCHAR(50), 
+	IN in_login VARCHAR(50),
+	IN in_address VARCHAR(2555),
+	IN in_phone int,
+	IN in_avatar VARCHAR(255))
+BEGIN
+	  UPDATE users SET
+        first_name = in_first_name,
+        last_name = in_last_name,
+				login = in_login,
+				address = in_address,
+				phone_number = in_phone,
+				avatar = in_avatar,
+				updated_on = NOW()
+	  WHERE id =  in_id;
+		
+		SELECT *
+		FROM users
+		WHERE id =  in_id;
+END
+;;
+delimiter ;
+
+-- ----------------------------
 -- Procedure structure for user_create
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `user_create`;
@@ -1842,6 +1896,35 @@ BEGIN
 		users
 	WHERE
 		id = LAST_INSERT_ID();
+END
+;;
+delimiter ;
+
+-- ----------------------------
+-- Procedure structure for user_get_by_id
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `user_get_by_id`;
+delimiter ;;
+CREATE PROCEDURE `user_get_by_id`(IN `in_id` INT)
+BEGIN
+  SELECT
+    id,
+    first_name,
+    last_name,
+    login,
+    `password`,
+    `status`,
+    role_id,
+    address,
+    phone_number,
+    avatar,
+    created_at,
+    updated_at
+  FROM
+    users
+  WHERE
+    id = in_id;
+
 END
 ;;
 delimiter ;

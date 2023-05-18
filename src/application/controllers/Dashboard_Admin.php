@@ -152,16 +152,10 @@ class Dashboard_Admin extends MY_Controller
 
 	public function orders(
 		$in_status = NULL
-	)
-	{
+	) {
 		$total = $this->statistical->total();
 		$users = $this->user->get_user_current();
 		$orders = $this->order->list($in_status);
-
-		// echo '<pre>'; 
-		// var_dump($orders);
-		// echo '</pre>';
-		// die();
 
 		return $this
 			->set("total", ($total))
@@ -172,6 +166,26 @@ class Dashboard_Admin extends MY_Controller
 			->set_body_class("dashboard-listing")
 			->set_page_title("Orders")
 			->set_main_template("admin/orders")
+			->render();
+	}
+
+
+	public function user(
+		$in_role_id = null
+	)
+	{
+		$total = $this->statistical->total();
+		$users = $this->user->get_user_current();
+		$users_list = $this->user->list($in_role_id);
+
+		return $this
+			->set("total", ($total))
+			->set("user_info", ($users))
+			->set("users_list", ($users_list))
+			->set("role_id", ($in_role_id))
+			->set_body_class("dashboard-listing")
+			->set_page_title("Admin page")
+			->set_main_template("admin/users")
 			->render();
 	}
 }

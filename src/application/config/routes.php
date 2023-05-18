@@ -71,9 +71,13 @@ $route['logout-due-to-inactivity']  = "login/activity_logout";
 // Dashboard 
 $route['single-product/(:num)']     = "dashboard/single_product/$1";
 $route['shop']                      = "dashboard/shop";
-$route['checkout/(:any)']                  = "dashboard/checkout/$1";
+$route['shop/(:num)']               = "dashboard/shop/$1";
+$route['checkout/(:any)']           = "dashboard/checkout/$1";
 $route['cart']                      = "dashboard/cart";
-$route['order']                      = "dashboard/order";
+$route['order']                     = "dashboard/order";
+$route['blog']                      = "dashboard/blog";
+$route['contact']                   = "dashboard/contact";
+$route['profile']                   = "dashboard/profile";
 
 // Dashboard_Admin
 $route['admin']                     = "Dashboard_Admin/index";
@@ -85,6 +89,8 @@ $route['admin/my-products']         = "Dashboard_Admin/my_products";
 $route['admin/products/(:num)']     = "Dashboard_Admin/products_by_status/$1";
 $route['admin/orders']              = "Dashboard_Admin/orders";
 $route['admin/orders/(:num)']       = "Dashboard_Admin/orders/$1";
+$route['admin/user']                = "Dashboard_Admin/user";
+$route['admin/user/(:num)']         = "Dashboard_Admin/user/$1";
 
 
 // ---------api----------
@@ -120,6 +126,11 @@ $route[$route_prefix.'order/get/(:num)']                    = "order/get/$1";
 // $route[$route_prefix.'order/list']                       = "order/listAll";
 // $route[$route_prefix.'order/list/(:num)']                = "order/list/$1";
 // $route[$route_prefix.'order/delete/(:num)/(:num)']       = "order/delete/$1/$2";
+
+// user
+$route[$route_prefix.'user/update2']                        = "user/update2";
+$route[$route_prefix.'user/create-employee']                = "user/createEmployee";
+$route[$route_prefix.'user/delete/(:num)']                  = "user/delete/$1";
 
 // upload image
 $route['upload']            = "upload/index";

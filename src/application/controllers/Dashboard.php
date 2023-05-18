@@ -10,8 +10,11 @@ class Dashboard extends MY_Controller
 		$this->load->model('Product_model', 'product');
 		$this->load->model("Cart_model", "cart");
 		$this->load->model("Order_model", "order");
+		$this->load->model("Category_model", "category");
 
 		$user = $this->user->get_detail();
+		$categories = $this->category->list();
+
 		if ($user == null) {
 			$num_carts = 0;
 		} else {
@@ -19,6 +22,7 @@ class Dashboard extends MY_Controller
 		}
 		return $this
 			->set("user", $user)
+			->set("categories", $categories)
 			->set("num_carts", $num_carts);
 	}
 
@@ -53,12 +57,18 @@ class Dashboard extends MY_Controller
 			->render();
 	}
 
-	public function shop()
-	{
-
-		$products = $this->product->listPublic();
+	public function shop(
+		$category_id = NULL
+	) {
+		if ($category_id == NULL) {
+			$products = $this->product->listPublic();
+		} else {
+			$products = $this->product->listPublicByCategory($category_id);
+			$category_name = $this->category->get($category_id)['data'][0]->name;
+		}
 
 		return $this
+			->set("category_name", $category_name ?? '')
 			->set("products", $products)
 			->set_full_layout(TRUE)
 			->set_body_class("dashboard-listing")
@@ -87,7 +97,7 @@ class Dashboard extends MY_Controller
 			->render();
 	}
 
-	
+
 	public function checkout(
 		$url = NULL
 	) {
@@ -111,23 +121,54 @@ class Dashboard extends MY_Controller
 	}
 
 
-	
+
 	public function order()
 	{
 		if ($this->get("user") == NULL) {
 			echo '<script>alert("You must to login!"); window.location.href = "http://shop.localhost.com:9292/login"</script>';
 			die();
 		}
-		// $carts = $this->cart->listByUserId($this->get("user")["id"]);
 		$orders = $this->order->listDetailByUser($this->get("user")["id"]);
 
 		return $this
 			->set("orders", $orders)
 			->set_full_layout(TRUE)
 			->set_body_class("dashboard-listing")
-			->set_page_title("Welcome")
 			->set_page_title("Order")
 			->set_main_template("order")
+			->render();
+	}
+
+	public function blog()
+	{
+
+		return $this
+			->set_full_layout(TRUE)
+			->set_body_class("dashboard-listing")
+			->set_page_title("Blog")
+			->set_main_template("blog")
+			->render();
+	}
+
+	public function contact()
+	{
+
+		return $this
+			->set_full_layout(TRUE)
+			->set_body_class("dashboard-listing")
+			->set_page_title("Contact")
+			->set_main_template("contact")
+			->render();
+	}
+
+	public function profile()
+	{
+
+		return $this
+			->set_full_layout(TRUE)
+			->set_body_class("dashboard-listing")
+			->set_page_title("Profile")
+			->set_main_template("profile")
 			->render();
 	}
 }

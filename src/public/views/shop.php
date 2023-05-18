@@ -2,7 +2,7 @@
 
 <?php
 // echo '<pre>';
-// var_dump(($params['user']));
+// var_dump($products);
 // echo '</pre>';
 // die();
 ?>
@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="product-bit-title text-center">
-                    <h2>Shop</h2>
+                    <h2>Shop <?= $params["category_name"] ?></h2>
                 </div>
             </div>
         </div>

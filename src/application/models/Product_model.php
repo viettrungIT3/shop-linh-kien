@@ -41,6 +41,14 @@ class Product_model extends MY_Model
         return $this->process_results($res)->get_results();
     }
 
+    // description: func to get list product public
+    public function listPublicByCategory(
+        $category_id = NULL
+    ) {
+        $res = $this->db->query("call product_list_public_by_category(?)", array($category_id));
+        return $this->process_results($res)->get_results();
+    }
+
     // description: func to get list product top 5 new
     public function listTop5New() {
         $res = $this->db->query("call product_list_top5_new()");

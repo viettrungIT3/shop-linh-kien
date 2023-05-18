@@ -29,7 +29,7 @@
 						</ion-icon>
 					</div>
 				</div>
-				<button type="submit" class='btn btn-lg btn-primary' id="login">Log in</button>
+				<button type="submit" class='btn btn-lg btn-primary' id="login" style="background: #1abc9c !important;">Log in</button>
 
 				<div class="footer">
 					<span><a href="/register">Register</a></span>

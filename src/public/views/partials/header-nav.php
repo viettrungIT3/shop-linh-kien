@@ -19,10 +19,14 @@
                 </ul>
             </li>
             <li>
-                <div style="margin: 0 12px;">
-                    <a href="<?= base_url("cart")?>">
+                <div style="margin-right: 12px;">
+                    <a href="<?= base_url("cart") ?>"  style="margin-right: 12px;">
                         <i class="fa fa-cart-plus"></i>
-                        <span class="product-count"><?=$params["num_carts"]?></span>
+                        <span class="product-count"><?= $params["num_carts"] ?></span>
+                    </a>
+                    <a href="<?= base_url() ?>">
+                        <i class="fa fa-bell"></i>
+                        <span class="product-count">4</span>
                     </a>
                 </div>
             </li>

@@ -52,7 +52,7 @@
 					</div>
 				</div>
 
-				<button type="submit" class='btn btn-lg btn-primary' id="register">Register</button>
+				<button type="submit" class='btn btn-lg btn-primary' id="register" style="background: #1abc9c !important;">Register</button>
 
 				<div class="footer">
 					<span><a href="/login">Log in</a></span>
