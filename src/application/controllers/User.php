@@ -76,6 +76,60 @@ class User extends MY_Controller
 
 
     /**
+     * action:      user/update2
+     * method:      post
+     * body:        json {}
+     * description: update info user by user_id  
+     * return:      object
+     */
+    public function update2()
+    {
+        $posting_data = $this->get_posting_data();
+
+        if (!isset($posting_data['id']) || NULL === $posting_data['id'])
+            return $this->failed("Missing user id")->render_json();
+
+        $res_user = $this->user->getByID($posting_data['id']);
+
+        echo '<pre>'; 
+		var_dump($res_user);
+		echo '</pre>';
+		die();
+
+        if (false === ($res_user['status'] ?? FALSE) || 0 == count($res_user['data'])) :
+            return $this->failed('Get user not found')->render_json();
+        endif;
+
+        $the_user = $res_user['data'][0];
+
+        // delete imge from the server
+        if (isset($posting_data['avatar']) ) {
+            $this->delete_img($the_user->avatar);
+        } 
+
+        $res = $this->user->update2(
+            $posting_data['id'],
+            isset($posting_data['first_name']) ? $posting_data['first_name'] : $the_user->first_name,
+            isset($posting_data['last_name']) ? $posting_data['last_name'] : $the_user->last_name,
+            isset($posting_data['login']) ? $posting_data['login'] : $the_user->login,
+            isset($posting_data['address']) ? $posting_data['address'] : $the_user->address,
+            isset($posting_data['phone_number']) ? $posting_data['phone_number'] : $the_user->phone_number,
+            isset($posting_data['phone_number']) ? $posting_data['phone_number'] : $the_user->phone_number,
+            isset($posting_data['avatar']) ? $posting_data['avatar'] : $the_user->avatar
+        );
+
+        if (false === ($res['status'] ?? FALSE)) :
+            return $this->failed('Update user fail')->set("data", [])->render_json();
+        endif;
+
+        return $this
+            ->success("Update user success")
+            ->set("data", $res['data'])
+            ->set("errors", [])
+            ->render_json();
+    }
+
+    /**
      * action:      user/update
      * method:      post
      * body:        json {}

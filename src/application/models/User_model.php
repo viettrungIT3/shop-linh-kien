@@ -31,6 +31,15 @@ class User_model extends MY_Model
 		return $this->process_results($res)->get_results();
 	}
 
+	public function getByID(
+        $in_id              = NULL
+    ) {
+        if (NULL === $in_id)        
+			return $this->failed("Missing id")->get_results();
+        $res = $this->db->query("call user_get_by_id(?)", array($in_id));
+        return $this->process_results($res)->get_results();
+    }
+
 	/*
      * @description: to check if loggedin via 2 ways auth
      * @return boolean
@@ -63,6 +72,29 @@ class User_model extends MY_Model
 			$input_user_login,
 			hash_password($input_user_password)
 		));
+
+		return $this->process_results($res)->get_results();
+	}
+
+	public function update2(
+		$in_id = NULL, 
+		$in_first_name = NULL,
+		$in_last_name = NULL,
+		$in_login = NULL,
+		$in_address = NULL,
+		$in_phone = NULL,
+		$in_avatar = NULL
+	) {
+
+		$res = $this->db->query("call users_update2(?,?,?,?,?,?,?)", array(
+            $in_id, 
+			$in_first_name,
+			$in_last_name,
+			$in_login,
+			$in_address,
+			$in_phone,
+			$in_avatar
+        ));
 
 		return $this->process_results($res)->get_results();
 	}

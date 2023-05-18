@@ -125,5 +125,8 @@ $route[$route_prefix.'order/get/(:num)']                    = "order/get/$1";
 // $route[$route_prefix.'order/list/(:num)']                = "order/list/$1";
 // $route[$route_prefix.'order/delete/(:num)/(:num)']       = "order/delete/$1/$2";
 
+// user
+$route[$route_prefix.'user/update2']                        = "user/update2";
+
 // upload image
 $route['upload']            = "upload/index";
